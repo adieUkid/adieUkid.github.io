@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="设计模式," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Head First设计模式_注释笔记">
+<meta property="og:url" content="http://adieUkid.github.io/2017/02/27/Head-First设计模式-注释笔记/index.html">
+<meta property="og:site_name" content="Lancelot&#39;s Notes">
+<meta property="og:description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/celuezhe.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/guanchazhe.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/zhuangshizhe.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/shipeiqi.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/mingling.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/waiguan.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/daili.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/dongtai.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/bijiao.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/gongchangfangfa.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/chouxianggongchang.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/muban.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/diedai.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/zuhe.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/zhuangtai.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/peidui.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/Head-First/fenlei.jpg">
+<meta property="og:updated_time" content="2018-02-03T12:33:57.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Head First设计模式_注释笔记">
+<meta name="twitter:description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程">
+<meta name="twitter:image" content="http://adieukid.github.io/images/Head-First/celuezhe.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://adieUkid.github.io/2017/02/27/Head-First设计模式-注释笔记/"/>
+
+
+
+
+
+  <title>Head First设计模式_注释笔记 | Lancelot's Notes</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?94a8565d2829b2f9641fe2f93513cd52";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lancelot's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">笔记分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://adieUkid.github.io/2017/02/27/Head-First设计模式-注释笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lancelot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lancelot's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Head First设计模式_注释笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-27T00:27:15+08:00">
+                2017-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><ol>
+<li>把可能变化之处独立出来，以免影响固定代码。</li>
+<li>针对接口编程，而不是针对实现编程<a id="more"></a></li>
+<li>多用组合，少用继承</li>
+<li>设计交互对象之间的松耦合</li>
+<li>扩展-关闭原则：类应该对扩展开发，对修改关闭。</li>
+<li>依赖抽象，不要依赖具体类。</li>
+<li>最少知识原则：只和你的密友谈话。</li>
+<li>好莱坞原则：高层组件对待低层组件的方式：别调用我们，我们会调用你。<br>避免高层和低层出现明显的环装依赖</li>
+<li>一个类应该只有一个引起变化的原因。高内聚，低耦合。（单一职责）</li>
+</ol>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><pre><code>7：
+//采用
+public int GetCount()
+{     return target.GetCount();     //只认识target        }
+//不采用
+public int GetCount()
+{
+     var obj=target.GetObj();     //多认识（依赖）了一个对象
+     return obj.GetCount();
+}
+</code></pre><p>PS：如果某对象是调用其他方法的返回结果，不要调用它的方法。<br>意味着，不清楚他的方法细节。并不认识此对象，也就不依赖它。</p>
+<h2 id="针对接口（超类型）编程"><a href="#针对接口（超类型）编程" class="headerlink" title="针对接口（超类型）编程"></a>针对接口（超类型）编程</h2><pre><code>针对实现：
+Dog d=new Dog();
+d.bark();
+针对接口：
+Animal a=new Dog();
+a.makeSound();
+运行时
+Animal a=getAnimal();
+a.makeSound();
+</code></pre><h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>定义了算法族，分别封装起来，让它们之间可以互相替换。此模式让算法的变化独立于使用算法的客户。</p>
+<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/celuezhe.jpg" alt="类图"></p>
+<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>定义了对象间的一对多依赖（订阅），这样依赖，当一个对象改变时，它的所有依赖者都会受到通知并更新。Subject主题，Observer观察者。</p>
+<h2 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/guanchazhe.jpg" alt="类图"></p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>PS：另可以用多播委托实现此过程。</p>
+<pre><code>public class DeleteAction : IDisposable
+{
+    private readonly Action _onDispose;
+    public DeleteAction(Action onDispose)
+    {            _onDispose = onDispose;        }
+
+    public void Dispose()
+    {            _onDispose();        }
+}
+public class Msg
+{        public string Name { get; set; }    }
+
+public class Report : IObservable&lt;Msg&gt;
+{
+    private List&lt;IObserver&lt;Msg&gt;&gt; os = new List&lt;IObserver&lt;Msg&gt;&gt;();
+
+    public void Notify(string msg)
+    {os.ForEach(o =&gt; { o.OnNext(new Msg { Name = msg }); o.OnCompleted(); });}
+
+    public IDisposable Subscribe(IObserver&lt;Msg&gt; observer)
+    {
+        os.Add(observer);
+        return new DeleteAction(() =&gt; { os.Remove(observer); });
+    }
+
+    public void Err()
+    {os.ForEach(o =&gt; { o.OnError(new Exception(&quot;自定义错误！&quot;)); });}
+}
+public class Screen : IObserver&lt;Msg&gt;
+{
+    public int Id { get; set; }
+    public Screen(int id)        {            Id = id;        }
+    public void OnNext(Msg value)
+    {Console.WriteLine(&quot;接收Id：&quot; + Id + &quot;，信息为：&quot; + value.Name);}
+
+    public void OnError(Exception error)
+    {Console.WriteLine(&quot;接收Id：&quot; + Id + &quot;，错误！信息：&quot; + error.Message);}
+
+    public void OnCompleted()
+    {Console.WriteLine(&quot;接收Id：&quot; + Id + &quot;，完成！&quot;);}
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Report re = new Report();
+        Screen s1 = new Screen(1);
+        Screen s2 = new Screen(2);
+        var o1 = re.Subscribe(s1);
+        var o2 = re.Subscribe(s2);
+        re.Notify(&quot;哎呀&quot;);
+        o1.Dispose();
+        re.Notify(&quot;少人&quot;);
+    }
+}
+</code></pre><h1 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h1><h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>动态地将责任附加到对象上。<br>若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</p>
+<h2 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/zhuangshizhe.jpg" alt="类图"></p>
+<h2 id="代码示例-1"><a href="#代码示例-1" class="headerlink" title="代码示例"></a>代码示例</h2><pre><code>public abstract class Phone
+{
+    public abstract void Ring();
+    public abstract decimal GetPrice();
+}
+public class Apple : Phone     //被装饰者
+{
+    public override void Ring()        
+    {    Console.WriteLine(&quot;这是苹果手机...&quot;);        }
+    public override decimal GetPrice()        
+    {            return 4500;        }
+}
+public abstract class Decorator : Phone     //装饰者
+{
+    protected Phone p;     //被装饰者引用
+    protected Decorator(Phone p)        
+    {            this.p = p;        }
+}
+public class Sticker : Decorator 
+{
+    public Sticker(Phone p)   : base(p)        {        }
+    public override void Ring()
+    {
+        p.Ring();    //被装饰者行为
+        AddSticker();     //新增行为/责任
+    }
+    public override decimal GetPrice()        
+    {return p.GetPrice() + 1.5m;}
+    public void AddSticker()        
+    {Console.WriteLine(&quot;加了贴膜！&quot;);}
+}
+    static void Main(string[] args)
+    {
+        Phone m = new Apple();
+        m = new Sticker(m);
+        m = new Sticker(m);    //贴了2层
+        m = new Accessories(m);
+
+        m.Ring();
+        Console.WriteLine(&quot;当前价格为：&quot; + m.GetPrice());
+        Console.ReadKey();
+    }
+</code></pre><h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><p>抽象构件（Phone）角色：给出一个抽象接口，以规范准备接受附加责任的对象。<br>具体构件（AppPhone）角色：定义一个将要接收附加责任的类。<br>装饰（Dicorator）角色：持有一个构件（Component）对象的实例，并定义一个与抽象构件接口一致的接口。<br>具体装饰（Sticker和Accessories）角色：负责给构件对象 ”贴上“附加的责任。</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>优点：<br>装饰者模式和继承的目的都是扩展对象的功能，但装饰者模式比继承更灵活<br>通过使用不同的具体装饰类以及这些类的排列组合，设计师可以创造出很多不同行为的组合<br>装饰者模式有很好地可扩展性<br>缺点：<br>装饰者模式会导致设计中出现许多小对象，如果过度使用，会让程序变的更复杂。并且更多的对象会是的差错变得困难，特别是这些对象看上去都很像。</p>
+<h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p>将一个类的接口，转换成客户（使用者）期望的另一个接口。适配器让原本不兼容的类可以合作无间。</p>
+<h2 id="类图-3"><a href="#类图-3" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/shipeiqi.jpg" alt="类图"></p>
+<h2 id="代码示例-2"><a href="#代码示例-2" class="headerlink" title="代码示例"></a>代码示例</h2><pre><code>public interface IDuck    {        void Quack();    }
+public interface ITurkey    {        void SpecialQuack();    }
+public class Duck : IDuck     //鸭子类
+{
+    public void Quack()        
+    {            Console.WriteLine(&quot;鸭子叫！&quot;);        }
+}
+public class Turkey : ITurkey     //火鸡类
+{
+    public void SpecialQuack()        
+    {      Console.WriteLine(&quot;火鸡叫！&quot;);        }
+}
+public class Adapter : IDuck     //适配器，把火鸡转换成鸭子
+{
+    private ITurkey t;     //持有（包装）的火鸡引用
+    public Adapter(ITurkey t)        
+    {            this.t = t;        }
+    public void Quack()
+    {            t.SpecialQuack();        }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Adapter duckAdapter = new Adapter(new Turkey());   //使用适配器切换了接口
+        ShootDuck(duckAdapter);     //原调用代码，不用更改。
+        Console.ReadKey();
+    }
+    static void ShootDuck(IDuck d)        
+    {            d.Quack();        }     //原调用代码，不用更改。
+}
+</code></pre><h2 id="理解-1"><a href="#理解-1" class="headerlink" title="理解"></a>理解</h2><p>系统A，原本某一块功能（如客户出入金）需要从一个提供商甲切换到提供商乙，不改变系统代码的情况下。可以创建适配器，封装乙的接口实现切换动作，让系统仍然像使用甲的接口那样，正常运作。过程不需修改代码，只需扩展适配器。处理遗留问题。</p>
+<h1 id="装饰者和适配器的异同"><a href="#装饰者和适配器的异同" class="headerlink" title="装饰者和适配器的异同"></a>装饰者和适配器的异同</h1><p>适用条件的差别：<br>装饰模式一般在下列情况使用：需要扩展一个类的功能或者给你个类增加附加责任；需要动态的给一个对象增加功能，这些功能可以再动态的撤销；需要增加有一些基本功能的排列组合而产生非常大量的功能，从而使得继承关系变得不现实。<br>适配器模式一般使用的情况包括：系统需要使用现有的类，但此类已经不符合系统的需要；<br>想要建立一个可以重复使用的类，用于与一些彼此之间没有太大关联的一些类，包括一些可能在将来引进的的类一起工作。适配器模式在系统升级的时候使用的频率很高，对旧系统的一些功能方法在新系统中引用。</p>
+<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><h2 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h2><p>确保一个类只有一个实例，并提供一个全局访问点。</p>
+<h2 id="代码示例-3"><a href="#代码示例-3" class="headerlink" title="代码示例"></a>代码示例</h2><p>线程安全</p>
+<pre><code>public class Singleton
+{
+    private Singleton() { }
+    private static Singleton singleton;
+    public static Singleton GetInstance()
+    {
+        if (singleton == null)
+        {
+            lock (typeof(Singleton))
+            {
+                if (singleton == null)
+                {
+                    singleton = new Singleton();
+                }
+            }
+        }
+        return singleton;
+    }
+}
+</code></pre><h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><h2 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h2><p>将“请求”封装成对象，以便使用不同的请求、队列或日志来参数化其他对象。命令模式也支持可撤销的操作。</p>
+<h2 id="类图-4"><a href="#类图-4" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/mingling.jpg" alt="类图"></p>
+<h2 id="代码示例-4"><a href="#代码示例-4" class="headerlink" title="代码示例"></a>代码示例</h2><pre><code>public class Receiver
+{
+    public void Action()
+    {            Console.WriteLine(&quot;Called Receiver.Action()&quot;);        }
+}
+public abstract class Command
+{
+    protected Receiver receiver;
+    public Command(Receiver receiver)
+    {        this.receiver = receiver;        }
+    public abstract void Execute();
+}
+public class ConcreteCommand : Command
+{
+    public ConcreteCommand(Receiver receiver): base(receiver){}
+    public override void Execute()        
+    {            receiver.Action();        }
+}
+public class Invoker
+{
+    private Command _command;
+    public void SetCommand(Command command)
+    {            this._command = command;        }
+    public void ExecuteCommand()
+    {            _command.Execute();        }
+}
+    static void Main(string[] args)
+    {
+        Receiver receiver = new Receiver();
+        Command command = new ConcreteCommand(receiver);
+        Invoker invoker = new Invoker();
+        invoker.SetCommand(command);
+        invoker.ExecuteCommand();
+    }
+</code></pre><h2 id="理解-2"><a href="#理解-2" class="headerlink" title="理解"></a>理解</h2><p>将请求者和执行者（接受者）解耦。<br>如果执行者种类繁多，且不属于同一个体系，也没有统一执行接口。请求者请求命令，需要知道所有执行者的外露接口，耦合很高。<br>命令模式，加入中间层：调用者，让请求者只认识调用者，向调用者发出指定执行者且接口固定的命令对象，调用者只执行指定命令对象的固定接口，命令对象包含执行者的引用和一组方法，知道如何完成操作。<br>这种封装命令对象的模式，为命令模式。如待完成列表，可以在任何时间被执行。</p>
+<h1 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h1><h2 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h2><p>提供了一个统一的接口，用来访问子系统中的一群接口。外观定义了一个高层接口，让子系统更容易适用。</p>
+<h2 id="类图-5"><a href="#类图-5" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/waiguan.jpg" alt="类图"></p>
+<h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><h2 id="定义-7"><a href="#定义-7" class="headerlink" title="定义"></a>定义</h2><p>为另一个对象提供一个替身或占位符以控制对这个对象的访问。</p>
+<h2 id="类图-6"><a href="#类图-6" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/daili.jpg" alt="类图"></p>
+<p><img src="/images/Head-First/dongtai.jpg" alt="类图"></p>
+<h2 id="代理分类"><a href="#代理分类" class="headerlink" title="代理分类"></a>代理分类</h2><ul>
+<li>远程代理：为一个位于不同的地址空间的对象提供一个局域代表对象。这个不同的地址空间可以是在本机器中，也可是在另一台机器中。这样可以隐藏一个对象在不同地址空间的事实。<br>例如：WebService，WCF</li>
+<li>虚拟代理:   根据需要创建一个资源消耗较大的对象，通过它来存放实例化需要长时间的真实对象，使得此对象只在需要时才会被真正创建。</li>
+<li>保护代理：用来控制真实对象的访问时的权限。如果需要，可以给不同的用户提供不同级别的使用权限。</li>
+<li>智能代理：指当调用真实对象时，代理处理另外一些事。提供一些额外的操作，比如将对此对象调用的次数记录下来等。</li>
+<li>同步（Synchronization）代理：多线程情况下，为主题提供安全的访问。</li>
+<li>复杂隐藏（Complexity Hiding）代理：隐藏一个类的复杂集合的复杂度，有时候称为外观代理（Facade Proxy）。此代理控制访问，外观模式只提供另一组接口。</li>
+<li>写入时复制（Copy-on-Write）代理：虚拟代理的变种。把复制（克隆）延迟到只有在客户端需要时，才真正采取行动。</li>
+<li>缓存（Cache）代理：为开销大的运算结果提供临时的存储空间，以便多个客户端可以共享这些结果，以减少计算或网络延迟。</li>
+<li>防火墙（Firewall）代理：控制网络资源的访问，不让恶意用户接近。</li>
+</ul>
+<h1 id="装饰者，外观，代理，适配器四种模式的比较"><a href="#装饰者，外观，代理，适配器四种模式的比较" class="headerlink" title="装饰者，外观，代理，适配器四种模式的比较"></a>装饰者，外观，代理，适配器四种模式的比较</h1><p><img src="/images/Head-First/bijiao.jpg" alt="类图"></p>
+<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><h2 id="定义-8"><a href="#定义-8" class="headerlink" title="定义"></a>定义</h2><p>定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类把实例化推迟到子类。</p>
+<h2 id="类图-7"><a href="#类图-7" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/gongchangfangfa.jpg" alt="类图"></p>
+<h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><h2 id="定义-9"><a href="#定义-9" class="headerlink" title="定义"></a>定义</h2><p>提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指明具体类。</p>
+<h2 id="类图-8"><a href="#类图-8" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/chouxianggongchang.jpg" alt="类图"></p>
+<h1 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h1><h2 id="定义-10"><a href="#定义-10" class="headerlink" title="定义"></a>定义</h2><p>在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。</p>
+<h2 id="类图-9"><a href="#类图-9" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/muban.jpg" alt="类图"></p>
+<h2 id="代码示例-5"><a href="#代码示例-5" class="headerlink" title="代码示例"></a>代码示例</h2><pre><code>public abstract class Beverage
+{
+    public void Prepare()
+    {
+        BoilWater();
+        Brew();
+        PourInCup();
+        //钩子，可由子类视情况（是否覆盖），反控制基类中的算法（顺序或步骤）
+        if (IsCondiments())     
+        {                AddCondiments();            }
+    }
+    protected abstract void AddCondiments();     //由子类实现部分算法
+    protected abstract void Brew();     //可有子类控制，推迟到子类中实现
+    protected virtual bool IsCondiments()     
+    {      return false;   }     //钩子
+
+    private void PourInCup()        
+    {       Console.WriteLine(&quot;倒入杯子&quot;);     }     //基类默认实现部分
+
+    private void BoilWater()        
+    {       Console.WriteLine(&quot;烧水&quot;);        }     //同上
+}
+public class Coffee : Beverage
+{
+    protected override bool IsCondiments()        
+    {            return GetResult();        }     //根据结果是否覆盖使用此钩子
+
+    protected override void AddCondiments()
+    {            Console.WriteLine(&quot;加糖，加奶&quot;);        }
+
+    protected override void Brew()
+    {            Console.WriteLine(&quot;磨碎咖啡豆，泡咖啡粉...&quot;);        }
+}
+    static void Main(string[] args)
+    {
+        Beverage co = new Coffee();
+        co.Prepare();
+    }
+</code></pre><h2 id="模板方法模式的变种"><a href="#模板方法模式的变种" class="headerlink" title="模板方法模式的变种"></a>模板方法模式的变种</h2><p>不使用继承，而使用组合。<br>java中Arrays.sort(object[] arr)中的算法，进行两个对象之间的比较。</p>
+<pre><code>...
+ Comparable obj...     //接口
+ obj.compareTo(obj2)...
+...
+</code></pre><p>算法待实现部分，不再交由子类负责实现（数组不可继承）。而是传入一个实现了Comparable接口的元素组成的数组，由此数组的元素负责。</p>
+<h1 id="模板方法模式和工厂方法模式，区别"><a href="#模板方法模式和工厂方法模式，区别" class="headerlink" title="模板方法模式和工厂方法模式，区别"></a>模板方法模式和工厂方法模式，区别</h1><p>模板方法，指的是实现算法的方法，包含基类实现部分和待子类实现部分（抽象方法）。<br>工厂方法，指的是可由子类继承实现的抽象方法，不同子类决定不同的功能。会由基类调用。</p>
+<h1 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h1><h2 id="定义-11"><a href="#定义-11" class="headerlink" title="定义"></a>定义</h2><p>提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示。</p>
+<h2 id="类图-10"><a href="#类图-10" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/diedai.jpg" alt="类图"></p>
+<h2 id="代码示例-6"><a href="#代码示例-6" class="headerlink" title="代码示例"></a>代码示例</h2><pre><code>public class Item
+{
+    public string Name { get; set; }
+    public double Price { get; set; }
+
+    public override string ToString()
+    {            return &quot;名称：&quot; + Name + &quot;，价格：&quot; + rice;        }
+}
+public class MenuManager : IEnumerable     //可被foreach迭代
+{
+    private Item[] items;
+    private int Index { get; set; }
+    public MenuManager()
+    {
+        items = new Item[10];
+        AddItem(&quot;煎饼&quot;, 2);
+        AddItem(&quot;拉面&quot;, 7);
+        AddItem(&quot;快餐&quot;, 10);
+    }
+    public IEnumerator GetEnumerator()
+    { return new MenuEnumrator(items); }  //继承实现，返回一个迭代器供foreach使用
+    public void AddItem(string name, double price)
+    {
+        Item i = new Item { Name = name, Price = price };
+        items[Index] = i;
+        Index++;
+    }
+    public void ChgItem(string name, double price, int destIndex)
+    {
+        Item i = new Item { Name = name, Price = price };
+        items[destIndex] = i;
+    }
+}
+public class MenuEnumrator : IEnumerator     //迭代器接口
+{
+    private List&lt;Item&gt; list;
+    private int index;
+    public MenuEnumrator(IEnumerable&lt;Item&gt; arr)
+    {
+        list = arr.ToList();
+        index = -1;
+    }
+    public bool MoveNext()     //继承实现，先后移动
+    {
+        index++;
+        bool result = list.Count &gt; index &amp;&amp; list[index].Price &lt; 3;     //自定义条件
+        if (result)
+            Current = list[index];
+        return result;
+    }
+    public void Reset()
+    {            index = -1;        }     //继承实现，重置索引
+    public object Current { get; private set; }     //继承实现，当前项
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        MenuManager dm = new MenuManager();
+        dm.AddItem(&quot;汽水&quot;, 1);
+        foreach (Item item in dm)
+        {
+            Console.WriteLine(item);
+        }
+        dm.ChgItem(&quot;干拌面&quot;, 9, 1);
+    }
+}
+</code></pre><h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><h2 id="定义-12"><a href="#定义-12" class="headerlink" title="定义"></a>定义</h2><p>允许你将对象组合成树形结构来表现“整体/部分”层次结构。<br>组合能让客户以一致的方式处理个别对象以及对象组合。</p>
+<p>安全式和透明式组合模式：<br>透明式：<br>以单一责任设计原则换取透明性。减少客户代码，失去了一些安全性。可能会抛出异常。<br>安全式：<br>将责任区分开放在不同的接口中，符合单一责任原则。比较安全，但失去了透明性。客户代码必须判断类型，处理不同类型的节点。</p>
+<h2 id="类图-11"><a href="#类图-11" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/zuhe.jpg" alt="类图"></p>
+<h3 id="透明式的组合模式"><a href="#透明式的组合模式" class="headerlink" title="透明式的组合模式"></a>透明式的组合模式</h3><pre><code>public class Graphics
+{
+    protected string Name { get; set; }
+    protected Graphics(string name)        {            this.Name = name;        }
+    public virtual void Draw()
+    {            throw new NotSupportedException();        }
+
+    //默认抛出异常，避免叶对象或不合理的操作。
+    //简单图形（叶对象）Add或Remove方法没有任何意义
+    //如果客户端调用了将会抛出异常
+    public virtual void Add(Graphics g)
+    {            throw new NotSupportedException();        }
+    public virtual void Remove(Graphics g)
+    {            throw new NotSupportedException();        }
+}
+
+public class Line : Graphics
+{
+    public Line(string name) : base(name) { }
+    public override void Draw()
+    {            Console.WriteLine(&quot;画 &quot; + Name);        }
+}
+
+public class Circle : Graphics
+{
+    public Circle(string name) : base(name) { }
+    public override void Draw()
+    {            Console.WriteLine(&quot;画 &quot; + Name);        }
+}
+
+public class ComplexGraphics : Graphics
+{
+    public ComplexGraphics(string name) : base(name) { }
+    private List&lt;Graphics&gt; list = new List&lt;Graphics&gt;();
+    public override void Draw()
+    {
+        foreach (var item in list)
+            item.Draw();
+    }
+
+    public override void Add(Graphics g)
+    {            list.Add(g);        }
+    public override void Remove(Graphics g)
+    {            list.Remove(g);        }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Graphics complexGraphics = new ComplexGraphics(&quot;一个复杂图形和两条线段组成的复杂图形&quot;);
+        complexGraphics.Add(new Line(&quot;线段A&quot;));
+        Graphics l = new Line(&quot;线段B&quot;);
+        complexGraphics.Add(l);
+        Graphics CompositeCG = new ComplexGraphics(&quot;一个圆和一条线组成的复杂图形&quot;);
+        CompositeCG.Add(new Circle(&quot;圆&quot;));
+        CompositeCG.Add(new Circle(&quot;线段C&quot;));
+        complexGraphics.Add(CompositeCG);
+
+        // 显示复杂图形的画法
+        Console.WriteLine(&quot;复杂图形的绘制如下：&quot;);
+        complexGraphics.Draw();
+        Console.WriteLine(&quot;复杂图形绘制完成\n&quot;);
+
+        // 移除一个组件再显示复杂图形的画法
+        complexGraphics.Remove(l);
+        Console.WriteLine(&quot;移除线段C后，复杂图形的绘制如下：&quot;);
+        complexGraphics.Draw();
+        Console.WriteLine(&quot;复杂图形绘制完成&quot;);
+    }
+</code></pre><p>}</p>
+<h3 id="安全式的组合模式"><a href="#安全式的组合模式" class="headerlink" title="安全式的组合模式"></a>安全式的组合模式</h3><pre><code>public abstract class Graphics
+{
+    protected string Name { get; set; }
+    protected Graphics(string name)
+    {            this.Name = name;       }
+    public abstract void Draw();
+    // 移除了Add和Remove方法
+    // 把管理子对象的方法放到了ComplexGraphics类中进行管理
+    // 因为这些方法只在复杂图形中才有意义，且符合单一责任原则。
+}
+
+public class Line : Graphics
+{
+    public Line(string name) : base(name) { }
+    public override void Draw()
+    {            Console.WriteLine(&quot;画 &quot; + Name);        }
+}
+public class Circle : Graphics
+{
+    public Circle(string name) : base(name) { }
+    public override void Draw()
+    {            Console.WriteLine(&quot;画 &quot; + Name);        }
+}
+public class ComplexGraphics : Graphics
+{
+    public ComplexGraphics(string name) : base(name) { }
+    private List&lt;Graphics&gt; list = new List&lt;Graphics&gt;();
+    public override void Draw()
+    {
+        foreach (var item in list)
+            item.Draw();
+    }
+    public void Add(Graphics g)
+    {            list.Add(g);        }
+    public void Remove(Graphics g)
+    {            list.Remove(g);        }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        ComplexGraphics complexGraphics = new ComplexGraphics(&quot;一个复杂图形和两条线段组成的复杂图形&quot;);
+        complexGraphics.Add(new Line(&quot;线段A&quot;));
+        Line l = new Line(&quot;线段B&quot;);
+        complexGraphics.Add(l);
+        ComplexGraphics CompositeCG = new ComplexGraphics(&quot;一个圆和一条线组成的复杂图形&quot;);
+        CompositeCG.Add(new Circle(&quot;圆&quot;));
+        CompositeCG.Add(new Circle(&quot;线段C&quot;));
+        complexGraphics.Add(CompositeCG);
+
+        // 显示复杂图形的画法
+        Console.WriteLine(&quot;复杂图形的绘制如下：&quot;);
+        complexGraphics.Draw();
+        Console.WriteLine(&quot;复杂图形绘制完成&quot;);
+
+        // 移除一个组件再显示复杂图形的画法
+        complexGraphics.Remove(l);
+        Console.WriteLine(&quot;移除线段C后，复杂图形的绘制如下：&quot;);
+        complexGraphics.Draw();
+        Console.WriteLine(&quot;复杂图形绘制完成&quot;);
+    }
+}
+</code></pre><h1 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h1><h2 id="定义-13"><a href="#定义-13" class="headerlink" title="定义"></a>定义</h2><p>允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类。</p>
+<h2 id="类图-12"><a href="#类图-12" class="headerlink" title="类图"></a>类图</h2><p><img src="/images/Head-First/zhuangtai.jpg" alt="类图"></p>
+<h2 id="代码示例-7"><a href="#代码示例-7" class="headerlink" title="代码示例"></a>代码示例</h2><p>Machine：</p>
+<pre><code>public class Machine
+{
+    internal State SoldOutState { get; set; }        //内部包装的状态
+    internal State NoCoinState { get; set; }
+    internal State HasCoinState { get; set; }
+    internal State SoldingState { get; set; }
+    public int Count { get; internal set; }    //对外暴露的显示
+    public int CoinCount { get; internal set; }
+    internal State State { get; set; }
+    public Machine(int count)
+    {
+        SoldOutState = new SoldOutState(this);
+        NoCoinState = new NoCoinState(this);
+        HasCoinState = new HasCoinState(this);
+        SoldingState = new SoldingState(this);
+        Count = count;
+        CoinCount = 0;
+        State = count &gt; 0 ? NoCoinState : SoldOutState;
+    }
+    public void Insert() { State.Insert(); }
+    public void Eject() { State.Eject(); }
+    public void Turn()    //对外暴露的接口（按钮）
+    {
+        State.Turn();    //内部执行的动作，由状态类负责
+        if (CoinCount &gt; 0)
+            State.Give();
+    }
+    internal void SetState(State state) { State = state; }
+    public void FillBall(int count)
+    {
+        Console.WriteLine(&quot;上货&quot; + count + &quot;个&quot;);
+        Count += count;
+    }
+    internal void ReleaseBall()
+    {
+        Console.WriteLine(&quot;发放商品&quot;);
+        if (Count != 0)
+            Count--;
+    }
+    public override string ToString()
+    {
+        return &quot;\n============================\n自动售货机\n货物个数：&quot; + Count + &quot;\t当前状态：&quot; + State + &quot;\n============================\n&quot;;
+    }
+}
+</code></pre><p>状态类：</p>
+<pre><code>internal abstract class State
+{
+    public abstract void Insert();
+    public abstract void Eject();
+    public abstract void Turn();
+    public abstract void Give();
+    protected virtual void Error() { Console.WriteLine(&quot;错误操作&quot;); }
+}
+
+internal class NoCoinState : State
+{
+    private Machine Mac { get; set; }
+    public NoCoinState(Machine mac) { Mac = mac; }
+    public override void Insert()
+    {
+        Console.WriteLine(&quot;投入硬币&quot;);
+        Mac.CoinCount++;
+        Mac.SetState(Mac.HasCoinState);
+    }
+    public override void Eject() { Error(); }
+    public override void Turn() { Error(); }
+    public override void Give() { Error(); }
+    public override string ToString() { return &quot;等待投入硬币...&quot;; }
+}
+
+internal class HasCoinState : State
+{
+    private Machine Mac { get; set; }
+    public HasCoinState(Machine mac){Mac = mac;}
+    public override void Insert(){Error();}
+    public override void Eject()
+    {
+        Console.WriteLine(&quot;硬币归还&quot;);
+        Mac.CoinCount--;
+        Mac.SetState(Mac.NoCoinState);
+    }
+    public override void Turn()
+    {
+        Console.WriteLine(&quot;转动&quot;);
+        Mac.SetState(Mac.SoldingState);
+    }
+    public override void Give(){Error();}
+    public override string ToString(){return &quot;有硬币，可以转动...&quot;;}
+}
+
+internal class SoldingState : State
+{
+    private Machine Mac { get; set; }
+    public SoldingState(Machine mac) { Mac = mac; }
+    public override void Insert() { Error(); }
+    public override void Eject() { Error(); }
+    public override void Turn() { Error(); }
+    public override void Give()
+    {
+        Mac.ReleaseBall();
+        if (Mac.Count &gt; 0)
+            Mac.SetState(Mac.NoCoinState);
+        else
+        {
+            Console.WriteLine(&quot;已售罄&quot;);
+            Mac.SetState(Mac.SoldOutState);
+        }
+    }
+    public override string ToString() { return &quot;正在出货...&quot;; }
+}
+
+internal class SoldOutState : State
+{
+    private Machine Mac { get; set; }
+    public SoldOutState(Machine mac) { Mac = mac; }
+    public override void Insert() { Error(); }
+    public override void Eject() { Error(); }
+    public override void Turn() { Error(); }
+    public override void Give() { Error(); }
+    public override string ToString() { return &quot;已售罄...&quot;; }
+</code></pre><p>}</p>
+<p>测试代码：</p>
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Machine mac = new Machine(5);
+        Console.WriteLine(mac);
+        mac.Eject();
+        mac.Turn();
+        mac.FillBall(1);
+        mac.Insert();
+        Console.WriteLine(mac);
+        mac.Eject();
+        mac.Insert();
+        mac.Insert();
+        mac.Turn();
+        mac.Turn();
+
+        Console.ReadKey();
+    }
+</code></pre><p>}</p>
+<h1 id="模式配对"><a href="#模式配对" class="headerlink" title="模式配对"></a>模式配对</h1><p><img src="/images/Head-First/peidui.jpg" alt="类图"></p>
+<h1 id="模式分类"><a href="#模式分类" class="headerlink" title="模式分类"></a>模式分类</h1><p><img src="/images/Head-First/fenlei.jpg" alt="类图"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lancelot 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lancelot 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Lancelot
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://adieUkid.github.io/2017/02/27/Head-First设计模式-注释笔记/" title="Head First设计模式_注释笔记">http://adieUkid.github.io/2017/02/27/Head-First设计模式-注释笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/26/c-入门经典-注释笔记/" rel="next" title="C#入门经典_注释笔记">
+                <i class="fa fa-chevron-left"></i> C#入门经典_注释笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/04/C-高级编程-注释笔记/" rel="prev" title="C#高级编程_注释笔记">
+                C#高级编程_注释笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Lancelot" />
+            
+              <p class="site-author-name" itemprop="name">Lancelot</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原则"><span class="nav-number">1.</span> <span class="nav-text">设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备注"><span class="nav-number">1.1.</span> <span class="nav-text">备注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对接口（超类型）编程"><span class="nav-number">1.2.</span> <span class="nav-text">针对接口（超类型）编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">2.</span> <span class="nav-text">策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图"><span class="nav-number">2.2.</span> <span class="nav-text">类图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式"><span class="nav-number">3.</span> <span class="nav-text">观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-1"><span class="nav-number">3.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">3.3.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰者模式"><span class="nav-number">4.</span> <span class="nav-text">装饰者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-2"><span class="nav-number">4.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-1"><span class="nav-number">4.3.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#角色"><span class="nav-number">4.4.</span> <span class="nav-text">角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">4.5.</span> <span class="nav-text">理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适配器模式"><span class="nav-number">5.</span> <span class="nav-text">适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-3"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-3"><span class="nav-number">5.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-2"><span class="nav-number">5.3.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-1"><span class="nav-number">5.4.</span> <span class="nav-text">理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰者和适配器的异同"><span class="nav-number">6.</span> <span class="nav-text">装饰者和适配器的异同</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式"><span class="nav-number">7.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-4"><span class="nav-number">7.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-3"><span class="nav-number">7.2.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式"><span class="nav-number">8.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-5"><span class="nav-number">8.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-4"><span class="nav-number">8.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-4"><span class="nav-number">8.3.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-2"><span class="nav-number">8.4.</span> <span class="nav-text">理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外观模式"><span class="nav-number">9.</span> <span class="nav-text">外观模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-6"><span class="nav-number">9.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-5"><span class="nav-number">9.2.</span> <span class="nav-text">类图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理模式"><span class="nav-number">10.</span> <span class="nav-text">代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-7"><span class="nav-number">10.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-6"><span class="nav-number">10.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理分类"><span class="nav-number">10.3.</span> <span class="nav-text">代理分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰者，外观，代理，适配器四种模式的比较"><span class="nav-number">11.</span> <span class="nav-text">装饰者，外观，代理，适配器四种模式的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂方法模式"><span class="nav-number">12.</span> <span class="nav-text">工厂方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-8"><span class="nav-number">12.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-7"><span class="nav-number">12.2.</span> <span class="nav-text">类图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象工厂模式"><span class="nav-number">13.</span> <span class="nav-text">抽象工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-9"><span class="nav-number">13.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-8"><span class="nav-number">13.2.</span> <span class="nav-text">类图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板方法模式"><span class="nav-number">14.</span> <span class="nav-text">模板方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-10"><span class="nav-number">14.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-9"><span class="nav-number">14.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-5"><span class="nav-number">14.3.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法模式的变种"><span class="nav-number">14.4.</span> <span class="nav-text">模板方法模式的变种</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板方法模式和工厂方法模式，区别"><span class="nav-number">15.</span> <span class="nav-text">模板方法模式和工厂方法模式，区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器模式"><span class="nav-number">16.</span> <span class="nav-text">迭代器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-11"><span class="nav-number">16.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-10"><span class="nav-number">16.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-6"><span class="nav-number">16.3.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合模式"><span class="nav-number">17.</span> <span class="nav-text">组合模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-12"><span class="nav-number">17.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-11"><span class="nav-number">17.2.</span> <span class="nav-text">类图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#透明式的组合模式"><span class="nav-number">17.2.1.</span> <span class="nav-text">透明式的组合模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全式的组合模式"><span class="nav-number">17.2.2.</span> <span class="nav-text">安全式的组合模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态模式"><span class="nav-number">18.</span> <span class="nav-text">状态模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-13"><span class="nav-number">18.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类图-12"><span class="nav-number">18.2.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例-7"><span class="nav-number">18.3.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式配对"><span class="nav-number">19.</span> <span class="nav-text">模式配对</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式分类"><span class="nav-number">20.</span> <span class="nav-text">模式分类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lancelot</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.6"  zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

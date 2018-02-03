@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然">
+<meta name="keywords" content="C#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精通C#-注释笔记">
+<meta property="og:url" content="http://adieUkid.github.io/2017/05/09/精通C-注释笔记/index.html">
+<meta property="og:site_name" content="Lancelot&#39;s Notes">
+<meta property="og:description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/cts.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/mscoree.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/namespace.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/delegate.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/strong.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/tree.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/relation.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/relation2.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/mapping.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/reflection.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/threading.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/io.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/map.jpg">
+<meta property="og:image" content="http://adieukid.github.io/images/MasterC/save.jpg">
+<meta property="og:updated_time" content="2018-02-03T12:38:40.793Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="精通C#-注释笔记">
+<meta name="twitter:description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然">
+<meta name="twitter:image" content="http://adieukid.github.io/images/MasterC/cts.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://adieUkid.github.io/2017/05/09/精通C-注释笔记/"/>
+
+
+
+
+
+  <title>精通C#-注释笔记 | Lancelot's Notes</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?94a8565d2829b2f9641fe2f93513cd52";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lancelot's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">笔记分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://adieUkid.github.io/2017/05/09/精通C-注释笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lancelot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lancelot's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">精通C#-注释笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T19:05:53+08:00">
+                2017-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一部分：C-与-NET平台"><a href="#第一部分：C-与-NET平台" class="headerlink" title="第一部分：C#与.NET平台"></a>第一部分：C#与.NET平台</h2><h3 id="源码-IL-汇编过程"><a href="#源码-IL-汇编过程" class="headerlink" title="源码-IL-汇编过程"></a>源码-IL-汇编过程</h3><p>.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然<a id="more"></a>而，IL却包含一些抽象概念(比如：类、异常)，这也是这种语言被称为中间语言的原因。IL被打包在DLL或EXE文件中，而DLL和EXE在.NET中的主要区别就是：只有EXE可以直接被运行，而二者都可被某个正在执行的进程动态装载。由于机器的CPU只能执行本地汇编语言，而不是IL，进一步将IL编译成汇编语言的工作(也就是第二阶段)需要在运行时进行，这个过程由即时编译器(JIT)完成。 </p>
+<p>高级语言在初次被编译时，编译器做两件事：首先把编译得到的IL存储在DLL或EXE中，然后为类的每个方法创建一个stub函数，此函数会调用即时编译器，并将自身的地址作为参数传给编译器。即时编译器则从DLL或EXE中获取相应的IL，编译成机器语言，并将内存中的原零时调用函数替换成机器语言。这个过程的思想，是用已编译的方法调用未编译的方法，实质上被调用的是stub函数；stub函数再调用编译器，将自身编译为本地机器语言；最后，.NET会重新调用该方法，方法此时才被真正地执行。函数被反复调用时，机器指令会被直接执行，而只由编译器对方法进行初次编译需要花费时间。至于那些没有被调用的方法，则不会被编译。 </p>
+<p>当编译器生成一个EXE文件后， 该程序的入口函数为Main() 方法。装载器将这个EXE 文件载入，探测到该这是一个托管EXE，于是又载入 .NET运行时库文件(包括即时编译器)， 接着调用了EXE 的Main() 方法。这将触发对Main()方法的即时编译， Main()方法在内存中被替换为本地机器语言，于是 .NET应用程序开始运行。在被编译为本地语言后，应用程序便可以自由调用本地代码了。当程序中止时，本地代码从内存中释放，所以在下次运行时，IL需要被即时编译器重新编译。</p>
+<h3 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h3><p>类型规范，规定了类型必须如何定义才能被CLR承载。<br>內建的CTS数据类型：<br><img src="/images/MasterC/cts.jpg" alt="CTS"></p>
+<h3 id="CLS"><a href="#CLS" class="headerlink" title="CLS"></a>CLS</h3><p>不同的语言有不同的表示，理想情况是所有支持.NET的语言都有一个可遵循的基准。<br>描述了支持.NET的编译器必须支持的最小的和完全的特征集。以生成可由CLR承载的代码。</p>
+<h3 id="mscoree-dll工作流"><a href="#mscoree-dll工作流" class="headerlink" title="mscoree.dll工作流"></a>mscoree.dll工作流</h3><p><img src="/images/MasterC/mscoree.jpg" alt="mscoree"></p>
+<h3 id="NET命名空间举例"><a href="#NET命名空间举例" class="headerlink" title=".NET命名空间举例"></a>.NET命名空间举例</h3><p><img src="/images/MasterC/namespace.jpg" alt="namespace"></p>
+<h3 id="Microsoft根命名空间"><a href="#Microsoft根命名空间" class="headerlink" title="Microsoft根命名空间"></a>Microsoft根命名空间</h3><p>包含的类型用于和那些只属于Windows操作系统的服务进行交互</p>
+<h3 id="NET-SKD"><a href="#NET-SKD" class="headerlink" title=".NET SKD"></a>.NET SKD</h3><p>配置Path或者 开始-所有程序-Vs-VS Tools-开发人员命令提示</p>
+<pre><code>csc /t:exe[/target:exe] 1.cs
+csc 1.cs（默认）
+csc /t:library 1.cs（输出dll）
+</code></pre><h3 id="响应文件"><a href="#响应文件" class="headerlink" title="响应文件"></a>响应文件</h3><p>外部引用</p>
+<pre><code>/r:System.Windows.Forms.dll
+</code></pre><p>输出</p>
+<pre><code>/target:exe /out:TestApp.exe *cs
+</code></pre><p>默认响应文件csc.rsp（与csc.exe同目录），包含大部分常用程序集引用。默认被csc.exe引用。可以简写为：</p>
+<pre><code>csc /out:TestApp.exe *.cs
+</code></pre><p>##</p>
+<hr>
+<h2 id="第二-三部分：C-核心编程结构-C-面向对象编程"><a href="#第二-三部分：C-核心编程结构-C-面向对象编程" class="headerlink" title="第二/三部分：C#核心编程结构/C#面向对象编程"></a>第二/三部分：C#核心编程结构/C#面向对象编程</h2><h3 id="char的静态方法"><a href="#char的静态方法" class="headerlink" title="char的静态方法"></a>char的静态方法</h3><p>char.IsDigit              是否为数字<br>char.IsLetter            是否为字母<br>char.IsWhiteSpace  是否为空白<br>char.IsPunctuation   是否为标点<br>char.IsLower            是否为小写<br>char.IsUpper            是否为大写</p>
+<h3 id="改变枚举底层存储类型"><a href="#改变枚举底层存储类型" class="headerlink" title="改变枚举底层存储类型"></a>改变枚举底层存储类型</h3><pre><code>enum EmpType
+{
+    Manager,
+    Grunt,
+    Contractor,
+    VicePresident
+}
+</code></pre><p>可以节省内存。但小心溢出<br>可以定义未核心系统类型（byte,short,int或long）</p>
+<p>PS：<br>获取底层存储类型</p>
+<pre><code>Enum.GetUnderlyingType(typeof(EmpType))   -&gt;   System.Int32
+</code></pre><p>获取名值对</p>
+<pre><code>var ret = Enum.GetValues(typeof(EmpType));
+foreach (var item in ret)
+{
+    Console.WriteLine(&quot;{0}，{0:D}&quot;, item);
+}
+</code></pre><h3 id="System-ValueType"><a href="#System-ValueType" class="headerlink" title="System.ValueType"></a>System.ValueType</h3><p>枚举，结构都隐式派生自此类型。分配在栈上运行</p>
+<h3 id="浅-深复制"><a href="#浅-深复制" class="headerlink" title="浅/深复制"></a>浅/深复制</h3><p>当一个值类型中包含一个引用类型。<br>如结构中包含对象引用，直接等号赋值时会有两个独立的结构，内部生成一个引用的副本，指向内存中同一个对象的引用。（浅复制）</p>
+<h3 id="默认访问修饰符"><a href="#默认访问修饰符" class="headerlink" title="默认访问修饰符"></a>默认访问修饰符</h3><p>类型成员（变量，方法），是隐式【私有】的。类型（对象）是隐式【内部】的。</p>
+<pre><code>class Radio   //内部
+{
+   Radie(){}   //私有
+}
+</code></pre><h3 id="Const-readonly-static"><a href="#Const-readonly-static" class="headerlink" title="Const,readonly,static"></a>Const,readonly,static</h3><p>const(常量)=readonly(只读)+static(静态)<br>编译期确定   运行期确定<br>都不可再更改</p>
+<p>##</p>
+<hr>
+<h2 id="第四部分：高级C-编程结构"><a href="#第四部分：高级C-编程结构" class="headerlink" title="第四部分：高级C#编程结构"></a>第四部分：高级C#编程结构</h2><h3 id="delegate关键字"><a href="#delegate关键字" class="headerlink" title="delegate关键字"></a>delegate关键字</h3><p>使用此关键字创建委托时，就间接声明了一个派生自MulticastDelegate的类。不会直接派生自这些基类，但这个类“是”MulticastDelegate<br><img src="/images/MasterC/delegate.jpg" alt="delegate"></p>
+<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>一个委托对象维护一个可调用方法的列表，而不是一个单独的方法。<br>添加方法，使用+=即可。<br>编译器会将+=转换为Delegate.Combine()方法调用。+=更简洁<br>-=则转换为Delegate.Remove()</p>
+<h3 id="event事件"><a href="#event事件" class="headerlink" title="event事件"></a>event事件</h3><p>事件会扩展为两个隐藏的公共方法，一个add_xx，一个remove_xx。调用者仅需使用+=和-=操作符（操作符将在后台触发正确的add_xx和remove_xx方法，来对原委托进行操作）。</p>
+<h3 id="EventHanlder"><a href="#EventHanlder" class="headerlink" title="EventHanlder"></a>EventHanlder<t></t></h3><p>自定义EventArgs的泛型委托</p>
+<pre><code>class My
+{
+    public event EventHandler&lt;MyEventArgs&gt; Display;
+
+    public void Do(MyEventArgs msg)
+    {
+        if (Display != null)
+        {
+            Display(this, msg);
+        }
+    }
+}
+</code></pre><p>不再需要定义一个自定义委托类型</p>
+<h3 id="操作符重载的思考"><a href="#操作符重载的思考" class="headerlink" title="操作符重载的思考"></a>操作符重载的思考</h3><p>通常仅在构建原子数据类型时才有用。文本，点，举行，分数等都是操作符重载的很好候选。人，经理，汽车，数据库连接等却不是。<br>如果一个重载操作符会使用户更难于理解该类型的功能，那就别用它。</p>
+<h3 id="Try-catch的CIL实现"><a href="#Try-catch的CIL实现" class="headerlink" title="Try catch的CIL实现"></a>Try catch的CIL实现</h3><p>对一个实现了IDispose对象的using{}语句块会被CIL解析为<br>一个try{}finally{}块。确保Dispose的执行。</p>
+<h3 id="new关键字的CIL实现"><a href="#new关键字的CIL实现" class="headerlink" title="new关键字的CIL实现"></a>new关键字的CIL实现</h3><p>使用new时，等同于CIL指令newobj：<br>执行：<br>1，计算分配对象需要总内存数<br>2，检查托管堆，如果空间足够，则调用类型构造函数，最终将内存中新对象的应用返回给调用者。它的地址恰好是下一个对象的上一个位置。如果空间不足，则执行一次垃圾回收来尝试是否内存。<br>3，返回引用之前，移动下一个对象的指针，指向托管堆上的下一个可用的位置。</p>
+<h3 id="自动属性的CIL实现"><a href="#自动属性的CIL实现" class="headerlink" title="自动属性的CIL实现"></a>自动属性的CIL实现</h3><p>自动属性的get;set;标记会在元数据中被编译器映射成一个私有字段Name和两个方法get_Name(),set_Name()。</p>
+<h3 id="应用程序根"><a href="#应用程序根" class="headerlink" title="应用程序根"></a>应用程序根</h3><p>根(root)就是一个存储位置，保存着对托管堆上对象的引用。<br>垃圾回收时，CLR判读托管堆上的对象，判断应用程序是否仍然可访问它们(是否还有根)。为此，CLR建立一个对象图。不可访问的对象被标记为终结(finalize，垃圾)，它们就会从内测中清除。此时，堆上剩余的空间被压缩调整，引起CLR修改活动应用程序根的集合，指向正确的内存位置。下一个对象的指针被重新调整指向下一个可用位置。</p>
+<h3 id="对象的代"><a href="#对象的代" class="headerlink" title="对象的代"></a>对象的代</h3><p>设计思路：对象在堆上存在的时间越长，他就更可能应该保留。(WinForm主窗口)最近才放在堆上的对象可能很快就不可访问了。(一个方法中创建的对象)。<br>第0代：从没有被标记为回收的新分配对象。<br>第1代：在上一次垃圾回收中没有被回收的对象(曾被标记为回收，但因为已经从其他对象获取了足够的堆空间而没有被删除)<br>第2代：在一次以上的垃圾回收后仍然没被回收的对象。</p>
+<p>通过给对象赋一个表示代的值，尽快的删除一些较新的对象(本地变量)，而不会经常打扰一些旧对象(主窗体)</p>
+<h3 id="强制垃圾回收"><a href="#强制垃圾回收" class="headerlink" title="强制垃圾回收"></a>强制垃圾回收</h3><pre><code>GC.Collect();   //强制回收所有代
+//GC.Collect(1, GCCollectionMode.Forced);   //回收0-1代
+GC.WaitForPendingFinalizers();   //挂起线程，等待回收结束
+</code></pre><p>适用：<br>1，程序将进入一段代码，后者不希望被可能得垃圾回收中断。<br>2，刚刚分配分厂多的对象，想尽可能多地删除已获得的内存。</p>
+<h3 id="GC测试"><a href="#GC测试" class="headerlink" title="GC测试"></a>GC测试</h3><p> //输出堆上估计得字节数</p>
+<pre><code>Console.WriteLine(GC.GetTotalMemory(false));
+//目前最高代
+Console.WriteLine(GC.MaxGeneration);
+//某对象处于多少代
+object obj = new object();
+Console.WriteLine(GC.GetGeneration(obj));
+//测试数组
+object[] objs = new object[500000];
+for (int i = 0; i &lt; 500000; i++)
+    objs[i] = new object();
+//输出堆上估计得字节数
+Console.WriteLine(GC.GetTotalMemory(false));
+//回收第1代
+GC.Collect(0, GCCollectionMode.Forced);
+GC.WaitForPendingFinalizers();
+Console.WriteLine(GC.GetGeneration(obj));
+//看一下9000是否还活着
+if (objs[9000] != null)
+    Console.WriteLine(&quot;活着：处于&quot; + GC.GetGeneration(objs[9000]) + &quot;代&quot;);
+else
+    Console.WriteLine(&quot;死了&quot;);
+//某代被回收次数
+Console.WriteLine(&quot;0代：{0}，1代：{1}，2代：{2}&quot;, GC.CollectionCount(0), GC.CollectionCount(1), GC.CollectionCount(2));
+</code></pre><p>//跳过对象的终结阶段，通知CLR不在调用对象的析构函数</p>
+<pre><code>GC.SuppressFinalize(this);   
+</code></pre><h3 id="资源包装器"><a href="#资源包装器" class="headerlink" title="资源包装器"></a>资源包装器</h3><p>引用托管或非托管宝贵的资源(数据库，文件句柄等)时，希望尽可能快的释放资源。而不能依靠GC的回收。</p>
+<pre><code>class MyResourceWrapper : IDisposable
+{
+    //判断Dispose()是否被调用过
+    private bool disposed = false;
+
+    //用户忘了Dispose()，垃圾回收器会调用这个方法
+    ~MyResourceWrapper()
+    {
+        //调用辅助方法，指定false表示GC触发了清理
+        CleanUp(false);
+    }
+
+    //用户可以主动调用，来尽快清除资源
+    public void Dispose()
+    {
+        //调用辅助方法，指定true表示用户触发了清理
+        CleanUp(true);
+        GC.SuppressFinalize(this);                        
+    }
+
+    private void CleanUp(bool disposing)
+    {
+        if (!disposed)
+        {
+            //如果disposing为true，释放所有托管资源。如果disposing为false，不确定托管资源是否还在内存中，不执行释放。
+            if (disposing)
+            {
+                //释放托管的资源
+            }
+            //在这里释放非托管的资源
+        }
+        disposed = true;
+    }
+}
+</code></pre><p>测试：</p>
+<pre><code>~MyResourceWrapper()
+{
+    Console.Beep();   //命令行一声响声
+    CleanUp(false);
+}
+
+static void Main(string[] args)
+{
+    MyResourceWrapper m = new MyResourceWrapper();
+    m.Dispose();
+
+    MyResourceWrapper m1 = new MyResourceWrapper();
+    //此时会响一声
+} 
+</code></pre><h3 id="Lazy-延迟加载"><a href="#Lazy-延迟加载" class="headerlink" title="Lazy 延迟加载"></a>Lazy<t> 延迟加载</t></h3><pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        MP3 m = new MP3();     //不使用Lazy，此句加载SDCard，然后初始化Song[]
+
+        var r = m.Card;             
+        var v = r.Value;              //使用Lazy，此句加载SDCard，然后初始化Song[]
+        //或
+        var c = m.GetCard();
+
+        Console.ReadKey();
+    }
+}
+
+class Song
+{
+    public string FileName { get; set; }
+    public string FileLength { get; set; }
+}
+
+class SDCard
+{
+    public decimal Price { get; set; }
+    private Song[] allSongs = new Song[100000];
+
+    public SDCard()
+    {    Console.WriteLine(&quot;装满歌曲&quot;);    }
+}
+
+class MP3
+{
+    //public void Play() //播放
+    //public void Pause() //暂停
+    //public void Stop() //停止
+
+    public Lazy&lt;SDCard&gt; Card = new Lazy&lt;SDCard&gt;(() =&gt;       //不传参或传一个Lambda表达式
+    {
+        var newCard = new SDCard { Price = 50 };
+        return newCard;
+    });
+
+    public SDCard GetCard()
+    {
+        return Card.Value;
+    }
+}
+</code></pre><hr>
+<h2 id="第五部分：用-NET程序集编程"><a href="#第五部分：用-NET程序集编程" class="headerlink" title="第五部分：用.NET程序集编程"></a>第五部分：用.NET程序集编程</h2><h3 id="NET程序集的作用"><a href="#NET程序集的作用" class="headerlink" title=".NET程序集的作用"></a>.NET程序集的作用</h3><p>1，促进代码重用。一个代码库(<em>.dll或</em>.exe)被打包后，可以被外部应用程序调用。.NET平台允许我们以语言无关的方式来重用其中的类型，如C#创建，其他.NET语言调用。<br>2，确定类型便捷。类型的完全限定名需要加上类型所在程序集。如两个不同程序集中命名空间相同的类，被认为是不同的。<br>3，可版本化的单元。每个程序集被分配一个<major>.<minor>.<build>.<revision>的四部分数字版本号(默认1.0.0.0，默认VS项目设置)。版本号加上可选的公钥值(即程序集强名)使一个程序集的不同版本可在同一台机器共存而不冲突 。通过强名，CLR保证客户端调用程序能加载正确版本的程序集。<br>4，自描述。程序集记录了清单数据(自身运行需要的外部程序集)，还包含了一些元数据(程序集包含的每一个类型的组成，成员名称，接口，基类，构造等)。由于信息被详细的记录了，CLR不需要访问注册表来解析程序集的位置(区别于与微软原来的COM编程模型)<br>5，可配置的。程序集可“私有”或“共享”。私有：与调用它的客户端应用程序处于同一个目录或子目录下，共享：被部署在全局程序集缓存（GAC）的特定目录中。通过编写XML的配置文件，CLR可以指定位置朝赵，加载指定版本的程序集。查阅本地，网络或URL上的任意目录。</revision></build></minor></major></p>
+<h3 id="程序集和托管模块"><a href="#程序集和托管模块" class="headerlink" title="程序集和托管模块"></a>程序集和托管模块</h3><p>一个团队（程序集），是一个逻辑单位。<br>里面有很多成员（托管模块）<br>成员分2类：<br>普通成员（托管模块，后缀.netModule。持有元数据和CIL代码）<br>领导成员（主模块，后缀.exe或.dll。持有程序集清单），了解每个成员<br>一般与这个团队（程序集）沟通或合作是面向它的领导（主模块），同样以领导名称来称呼这个团队。</p>
+<p>C#生成的程序集一般为单模块程序集（只有主模块）。</p>
+<h3 id="NET程序集的格式"><a href="#NET程序集的格式" class="headerlink" title=".NET程序集的格式"></a>.NET程序集的格式</h3><p>(<em>.dll或</em>.exe)<br>包含：<br>1，Windows文件首部：<br>可被Windows操作系统加载，标识了应用程序以什么类型（控制台，图形用户界面还是*.dll代码库）驻留于Windows操作系统中。<br>2，CLR文件首部<br>使CLR了解托管文件的布局，位置和强名等<br>3，CIL代码<br>独立于平台和CPU的中间语言，运行时才被JIT变异成特定平台和CPU的指令。<br>4，类型元数据<br>内含类型和外部应用类型的格式。<br>5，程序集清单<br>记录了每一个模块，版本和引用的外部程序集。<br>6，可选的嵌入资源<br>图标，图像，声音，字符串表。卫星程序集(附属程序集)可构建国际化软件系统。</p>
+<p>代码中的每个字符串字面量都记录在元数据的User Strings 标记下<br>所以不能储存敏感信息。</p>
+<h3 id="私有程序集"><a href="#私有程序集" class="headerlink" title="私有程序集"></a>私有程序集</h3><p>应用程序添加外部程序集引用的时候，把副本文件放在本地bin文件夹下。调用时，CLR只是加载本地的副本。并不查询系统注册表。</p>
+<p>配置私有程序集：<br>Test.exe     //一个Console控制台程序<br>Carlib.dll    //控制台会调用的程序集</p>
+<p>以下三种情况会正常运行：<br>1，把Test.exe和Carlib.dll放在同一个文件夹下<br>2，找不到Carlib.dll的文件，会查找同一个文件夹下具有相同友好名称的可执行程序集.exe文件<br>3，找与程序集同名的文件夹下是否有此程序集。如Carlib/Carlib.dll<br>4，如果有Test.exe.config配置文件，CLR会根据配置的“规则”探测指定文件夹下是否有此程序集。<br>例：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;configuration&gt;
+  &lt;runtime&gt;
+    &lt;assemblyBinding xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+      &lt;probing privatePath=&quot;CarLibChg/&quot; /&gt;
+    &lt;/assemblyBinding&gt;
+  &lt;/runtime&gt;
+&lt;/configuration&gt;
+</code></pre><p>如果还是找不到，会引发FileNotFoundException异常</p>
+<p>PS：VS的App.config会在编译的时候，把App.config的数据复制到bin/debug/文件下，并改一个合适的名称。如Test.exe.config，FrontWeb.dll.config</p>
+<h3 id="共享程序集"><a href="#共享程序集" class="headerlink" title="共享程序集"></a>共享程序集</h3><p>例如mscorlib.dll，旨在多个项目中服用的类型的集合，共享程序集的一个副本可供一台机器上的多个应用程序使用，是机器级别的类库（machine wide）。</p>
+<p>全局程序集缓存：<br>.NET 3.5以前的位置在，C:\Windows\assembly下<br>4.0以上的在C:\Windows\Microsoft.NET\assembly\GAC_MSIL下<br>的v4.0_major.minor.build.revision_publicKeyTokenValue子文件夹下。例如：v4.0_4.0.0.0__b77a5c561934e089。</p>
+<h3 id="强名称"><a href="#强名称" class="headerlink" title="强名称"></a>强名称</h3><p>1，需要.NET的sn.exe工具生成公钥/私钥对。生成一个<em>.snk（Strong Name Key）文件。C#编译器确定</em>.snk文件的位置后，会在编译时把公钥值记录在程序集清单的.publickey标记中。<br>2，产生一个基于整个程序集内容（CIL代码，元数据等）的散列值（某一固定输入的独一无二的数值输出，如果更改了程序集的内容，就算只一个字符，陈胜的讲师完全不同的散列码）。散列码结合私钥组成数字签名，并把它嵌入到程序集的CLR首部数据中。</p>
+<p><img src="/images/MasterC/strong.jpg" alt="strong"></p>
+<p>用命令行生成强名：<br>developer Command Prompt下</p>
+<pre><code>sn -k 文件名.snk
+</code></pre><p>再在AssemblyInfo.cs文件中指定位置</p>
+<pre><code>[assembly: AssemblyKeyFile(@&quot;C:\MyTestKeyPair.snk&quot;)]
+</code></pre><p>编译时，公钥被压缩成散列值加入到清单中 .publicKeyToken标记</p>
+<p>用VS生成强名：<br>Properties -&gt; 签名 -&gt;新建<br>便会在根目录下生成一个*.snk文件</p>
+<h3 id="在GAC中安装强名称的程序集"><a href="#在GAC中安装强名称的程序集" class="headerlink" title="在GAC中安装强名称的程序集"></a>在GAC中安装强名称的程序集</h3><p>使用Developer Command Prompt定位到*.dll所在目录（bin\debug）<br>使用 </p>
+<pre><code>gacutil -i test.dll/test.exe  //安装
+gacutil -l test  //核实
+gacutil -u  test //卸载
+</code></pre><p>VS引用程序集时，如果清单中含有.publickey值时，VS会嘉定这个具有强名称的程序集以备部署到GAC中，那么引用的属性窗口中的，复制本地就为false。不会对该程序集进行复制到本地debug文件夹中的工作。</p>
+<h3 id="配置共享程序集"><a href="#配置共享程序集" class="headerlink" title="配置共享程序集"></a>配置共享程序集</h3><p>发布了1.0.0.0版本后，添加了一些新的功能，产生了2.0.0.0版本。如果客户端应用程序想要使用2.0.0.0版本的新功能，可以把2.0.0.0版本发布到目标机器，让2和1版本和平共处。需要的时候修改*.config文件，动态的定向到2.0.0.0版本。这一切并不需要重新编译和部署。</p>
+<p>动态重定向到共享程序集：</p>
+<pre><code>&lt;dependentAssembly&gt;
+  &lt;assemblyIdentity name=&quot;System.Web.Mvc&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
+  &lt;bindingRedirect oldVersion=&quot;0.0.0.0-5.2.3.0&quot; newVersion=&quot;5.2.3.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+</code></pre><p>定义了程序清单当前指向的版本(oldVersion)和GAC中的替代版本(newVersion)</p>
+<h3 id="元素"><a href="#元素" class="headerlink" title="元素"></a><codebase>元素</codebase></h3><p>用于指示CLR探测位于任意位置（网络重点，其他本地目录）的依赖程序集。当指向远程计算机时，相关程序集会下载到GAC的下载缓存中。通过此元素加载的程序集必须具有强名称。</p>
+<p>例：</p>
+<pre><code>&lt;codeBase version=&quot;2.0.0.0&quot; href=&quot;http://www.MySite.con/Assemblies/CarLibrary.dll&quot; /&gt;
+</code></pre><h3 id="Type类型"><a href="#Type类型" class="headerlink" title="Type类型"></a>Type类型</h3><pre><code>Car c = new Car();
+Type t1 = c.GetType();      //编译器获得Type实例，需要类型实例
+Type t2 = typeof(Car);      //同上，不需类型实例
+Type t3 = Type.GetType(&quot;ConsoleApplication2.Person&quot;, false, true);      //完全限定名（不抛出异常，忽略大小写）
+Type t4 = Type.GetType(&quot;ConsoleApplication2.Person+Sex&quot;, false, true);  //获得类型中的嵌套类型，加“+”
+Type t5 = Type.GetType(&quot;CarLib.Car,CarLib&quot;, false, true);               //引用外部程序集类型，加“,”
+Type t6 = Type.GetType(&quot;System.Collections.Generic.List`1&quot;, false, true);       //对于泛型，加“`”+数字（类型参数的个数）
+Console.ReadKey();
+</code></pre><h3 id="动态加载程序集"><a href="#动态加载程序集" class="headerlink" title="动态加载程序集"></a>动态加载程序集</h3><pre><code>Assembly asm = Assembly.Load(&quot;Carlib&quot;);             //需要保证程序集二进制文件在Debug文件夹下
+asm = Assembly.LoadFrom(@&quot;C:\Code\Carlib.dll&quot;);     //绝对路径，以编程的形式提供&lt;codeBase&gt;值
+asm.GetTypes().ToList().ForEach(Console.WriteLine);
+</code></pre><h3 id="反射共享程序集"><a href="#反射共享程序集" class="headerlink" title="反射共享程序集"></a>反射共享程序集</h3><pre><code>string displayName = @&quot;System.Windows.Form.dll,Version=4.0.0.0,PublicKeyToken=b77a5c561934e089,Culture=&quot;&quot;&quot;;
+//显示名称：标识一个程序集的一组术语
+//加载共享程序集必须指定公钥标记值
+
+AssemblyName asmName = new AssemblyName();
+asmName.Version = new Version(4, 0, 0, 0);  //或者使用面向对象的类来传递Version,PublicKeyToken等参数
+
+Assembly asm = Assembly.Load(displayName);
+asm = Assembly.Load(asmName);
+</code></pre><h3 id="晚期绑定"><a href="#晚期绑定" class="headerlink" title="晚期绑定"></a>晚期绑定</h3><pre><code>Assembly asm = Assembly.Load(&quot;CarLib&quot;);     //无需引用，只需把程序集文件放在Debug文件夹下
+Type car = asm.GetType(&quot;CarLib.Car&quot;);       
+object obj = Activator.CreateInstance(car); //建立一个晚期绑定类型的实例，类型为object。
+object obj1 = Activator.CreateInstance(&quot;CarLib&quot;, &quot;CarLib.Car&quot;).Unwrap();
+
+MethodInfo mi = car.GetMethod(&quot;Run&quot;);   //无法转换类型，使用反射调用实例方法。默认搜索公共方法成员
+mi.Invoke(obj, null);                   //调用无参方法
+
+MethodInfo mi2 = car.GetMethod(&quot;Stop&quot;, BindingFlags.Instance | BindingFlags.NonPublic);     //指定私有成员包含在搜索内
+mi2.Invoke(obj, new object[] { &quot;停车&quot; }); //指定参数列表
+</code></pre><p>关键在于，在没有某个程序集清单数据的情况下，创建程序集的类型实例。</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>用于类型，成员，程序集或模块的代码注解。把更多的元数据嵌入到程序集中。</p>
+<h3 id="程序集级别特性"><a href="#程序集级别特性" class="headerlink" title="程序集级别特性"></a>程序集级别特性</h3><p>使用[assembly:]标签，给特定程序集所有类型应用特性。<br>例：[assembly: CLSCompliant(true)]<br>强制所有程序集中的公共类型符合CLS</p>
+<h3 id="构建可扩展的应用程序"><a href="#构建可扩展的应用程序" class="headerlink" title="构建可扩展的应用程序"></a>构建可扩展的应用程序</h3><p>比如VS，开发的时候允许其他软件提供商向IDE开发环境中插入各种“钩子”（自定义模块），一个可能得思路如下：</p>
+<p>1，可扩展的应用程序必须提供一些输入手段，允许用户指定被插入的模块。这需要动态加载<br>2，必须要确定模块是否支持正确的功能（一组需要的接口）。这需要反射<br>3，必须获取一个需要的基础架构的引用（例如接口类型）并调用成员触发底层功能。这经常需要晚期绑定。</p>
+<p>1，构建每个插件对象需要实现的类型定义<br>应用于插件对象和承载应用程序。保证功能统一</p>
+<pre><code>namespace CommonSnappableTypes
+{
+    public interface IAppFunctionality
+    {
+        void DoIt();
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public sealed class CompanyInfoAttribute : Attribute
+    {
+        public string CompanyName { get; set; }
+        public string CompanyUrl { get; set; }
+    }
+}
+</code></pre><p>2，构建C#插件</p>
+<pre><code>namespace CSharpSnapIn
+{
+    [CompanyInfo(CompanyName = &quot;JetBrains&quot;, CompanyUrl = &quot;www.xxx.com&quot;)]
+    public class CSharpModule : IAppFunctionality
+    {
+        void IAppFunctionality.DoIt()       //显示的接口实现，DoIt方法没有在CSharpModule中公开
+        {
+            Console.WriteLine(&quot;使用了自定义插件&quot;);
+        }
+
+        或
+
+        public void DoIt()
+        {
+            Console.WriteLine(&quot;使用了自定义插件&quot;);
+        }
+    }
+}
+</code></pre><p>3，构建承载的应用程序</p>
+<pre><code>namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string path = &quot;...&quot;;    //可以从WinForm等应用程序中选择程序集文件
+            Assembly asm = Assembly.LoadFrom(path);     //注意非空判断
+
+            //得到程序集中所有兼容IAppFunctionality的类
+            var types = asm.GetTypes().Where(m =&gt; m.IsClass &amp;&amp; m.GetInterface(&quot;IAppFunctionality&quot;) != null);
+            foreach (var item in types)
+            {
+                IAppFunctionality app = (IAppFunctionality)asm.CreateInstance(item.FullName, true);   //用晚期绑定获得实例
+                或
+                IAppFunctionality app1 = (IAppFunctionality)Activator.CreateInstance(item);
+                app.DoIt();
+            }
+            Console.ReadKey();
+        }
+    }
+}
+</code></pre><h3 id="dynamic"><a href="#dynamic" class="headerlink" title="dynamic"></a>dynamic</h3><p>允许我们在类型安全的强类型世界里使用校本化的行为。可以认为dynamic关键字是一个特殊形式的System.Object。但提供了更多特性，并且动态数据不是强类型的，或者说动态数据不是静态类型。</p>
+<p>作用范围：<br>字段，属性，返回值，参数</p>
+<h3 id="调用动态声明的数据成员"><a href="#调用动态声明的数据成员" class="headerlink" title="调用动态声明的数据成员"></a>调用动态声明的数据成员</h3><p>动态数据不属于静态类型，和js一样，直到运行时你才会直到所调用的动态数据是否支持指定的成员，参数以及成员的拼写是否无误等。编译时不能触发智能感知提示。</p>
+<h3 id="dynamic实际用途"><a href="#dynamic实际用途" class="headerlink" title="dynamic实际用途"></a>dynamic实际用途</h3><p>构建一个需要大量使用后期绑定（通过反射）的.NET应用程序时。或者构建一个需要与遗留的COM库（如Office）进行交互的.NET应用程序。<br>使用dynamic可以大大减少打字时间，简化代码。但代价是失去了类型的安全性。</p>
+<h3 id="DLR-dynamic-language-runtime，动态语言运行时-的特性"><a href="#DLR-dynamic-language-runtime，动态语言运行时-的特性" class="headerlink" title="DLR(dynamic language runtime，动态语言运行时)的特性"></a>DLR(dynamic language runtime，动态语言运行时)的特性</h3><p>1，机器灵活的代码库，重构时不需要频繁修改数据类型<br>2，不同平台和语言所构建的对象类型之间进行互操作非常简便。<br>3，可以在运行时为内存中的类型添加或移除成员。</p>
+<h3 id="使用dynamic简化晚期绑定"><a href="#使用dynamic简化晚期绑定" class="headerlink" title="使用dynamic简化晚期绑定"></a>使用dynamic简化晚期绑定</h3><pre><code>Type type=...;
+</code></pre><p>1，通过反射</p>
+<pre><code>object obj=Activator.CreateInstance(type);
+MethodInfo mi=tpe.GetMethod(&quot;Run&quot;);
+object[] param=10,20;
+mi.Invoke(obj,param);
+</code></pre><p>2，通过dynamic</p>
+<pre><code>dynamic obj=Activator.CreateInstance(type);
+obj.Run(10,20);
+</code></pre><p>简化了查询程序集元数据和打包参数等操作。</p>
+<h3 id="互操作程序集"><a href="#互操作程序集" class="headerlink" title="互操作程序集"></a>互操作程序集</h3><p>IDE以COM库为基础生成的全新程序集，包含了COM元数据的.NET描述和一小部分将COM事件转换为.NET事件的代码。封装，避免了内部COM的复杂性。</p>
+<p>CLR（如果使用dynamic就是DLR）自动对.NET数据类型和COM类型进行映射，因此可以直接在C#代码中使用互操作程序集。在后台，使用RCW（Runtime Callable Wrapper，一个动态生成的代理）对数据进行封送，使其在.NET和COM应用程序之间交互。</p>
+<h3 id="主互操作程序集"><a href="#主互操作程序集" class="headerlink" title="主互操作程序集"></a>主互操作程序集</h3><p>许多COM库供应商提供了一个“官方”的互操作程序集，成为主互操作程序集，简称PIA。PIA是优化的互操作程序集，比通过IDE添加COM库引用生成的代码更整洁，也更具扩展性。<br>PIA存在的情况下，添加应用一个COM库，VS会使用提供的PIA，而不是生成一个新的互操作程序集。</p>
+<h3 id="嵌入互操作元数据"><a href="#嵌入互操作元数据" class="headerlink" title="嵌入互操作元数据"></a>嵌入互操作元数据</h3><p>添加COM库（PIA或其他）时，IDE会自动将该库的“嵌入互操作类型”置为true。<br>这样，必要的互操作元数据（你真正使用的那部分，而不是全部）已经硬编码到.NET程序中，我们就不必在.NET应用程序中携带互操作程序集的副本了。减少了安装包的尺寸，客户端计算机也不必包含改互操作程序集的副本。</p>
+<h3 id="表达式树"><a href="#表达式树" class="headerlink" title="表达式树"></a>表达式树</h3><p>当使用DLR进行处理动态数据时，自动创建的“表达式树”将被传递给正确的动态语言帮顶起。帮顶起解析表达式树并传递给正确的对象成员。</p>
+<p><img src="/images/MasterC/tree.jpg" alt="tree"></p>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>一个正在运行的应用程序的固定的安全的边界。<br>用来描述一组资源（外部代码库和主线程）和程序运行所必须的内存分配。</p>
+<p>应用程序域：<br>对该进程的逻辑细分。一个应用程序域进一步被细分成多个上下文边界，用来分组目的相似的.NET对象。</p>
+<p>进程，应用程序域，上下文的关系：</p>
+<p><img src="/images/MasterC/relation.jpg" alt="relation"></p>
+<p>线程：<br>进程中的独立的基本的执行单元。每一个进程都有一个（在可执行入口处创建的）主线程和其他包含以编程方式创建的额外线程。</p>
+<p>进程和线程的关系：<br>当一个线程的时间片用完的时候，会被挂起，以便执行其他线程。线程把挂起前的情况写到线程本地存储中（Thread Local Storage，TLS），并且它们还要获得一个独立的调用栈（call stack）</p>
+<p><img src="/images/MasterC/relation2.jpg" alt="relation2"></p>
+<h3 id="Process类"><a href="#Process类" class="headerlink" title="Process类"></a>Process类</h3><pre><code>using System.Diagnostics;
+
+var procs = Process.GetProcesses(&quot;.&quot;);
+procs.OrderBy(m =&gt; m.Id).ToList().ForEach(m =&gt; Console.WriteLine(&quot;{0}：{1}&quot;, m.Id, m.ProcessName));
+var proc = Process.GetProcessById(4);   //进程不存在则引发异常
+//PID为0的System Idle Prcess，表示系统核心虚拟出来的表示CPU空闲的状态。输入会出错。
+Console.WriteLine(proc.Id + &quot;：&quot; + proc.ProcessName);
+
+//ProcessThread并不用于操作线程，只是用户获取运行进程中线程的诊断信息
+foreach (ProcessThread item in proc.Threads)
+{
+    Console.WriteLine(&quot;{0}：{1}：{2}：{3}&quot;, item.Id, item.PriorityLevel, item.StartTime, item.ThreadState);
+}
+</code></pre><h3 id="查看进程中的模块"><a href="#查看进程中的模块" class="headerlink" title="查看进程中的模块"></a>查看进程中的模块</h3><pre><code>var proc = Process.GetProcessById(10284);
+var modls = proc.Modules;
+foreach (ProcessModule item in modls)
+{
+    Console.WriteLine(&quot;{0}：{1}&quot;, item.ModuleName, item.ModuleMemorySize);
+}
+</code></pre><h3 id="编程方式启动或结束进程"><a href="#编程方式启动或结束进程" class="headerlink" title="编程方式启动或结束进程"></a>编程方式启动或结束进程</h3><pre><code>var proc = Process.Start(&quot;Chrome&quot;, &quot;www.baidu.com&quot;);
+Console.WriteLine(&quot;启动：&quot; + proc.ProcessName + &quot;，PID：&quot; + proc.Id);
+Console.ReadKey();
+proc.Kill();    //如果进程已关闭，或附加到别的进程上。则此处会抛出异常
+</code></pre><h3 id="ProcessStartInfo启动进程"><a href="#ProcessStartInfo启动进程" class="headerlink" title="ProcessStartInfo启动进程"></a>ProcessStartInfo启动进程</h3><pre><code>ProcessStartInfo info = new ProcessStartInfo
+{
+    FileName = &quot;Chrome&quot;,
+    Arguments = &quot;www.baidu.com&quot;,
+    WindowStyle = ProcessWindowStyle.Hidden
+};
+var proc = Process.Start(info);
+</code></pre><h3 id="应用程序域"><a href="#应用程序域" class="headerlink" title="应用程序域"></a>应用程序域</h3><p>传统的非托管程序直接承载在进程上，而.NET可执行程序承载在进程的一个逻辑分区中，即应用程序域（AppDomain）。运行在某个应用程序域中的应用程序将无法访问其他应用程序域中的数据（无论是全局变量还是静态字段），除非使用分布式编程协议（如WCF）<br>好处在于：<br>1，应用程序域是.NET平台操作系统独立性的关键特性。将不同操作系统表现加载可执行程序的差异抽象化了。<br>2，和一个完整的进程相比，应用程序域的CPU和内存占用都有小的多。因此CLR加载和卸载应用程序域比起来完整的进程来说也快得多，并且可以快速提升服务器应用程序的可扩展性。<br>3，应用程序域为承载的应用程序提供了深度的隔离。如果进程中一个应用程序域失败了，剩余的应用程序域也能保持正常。</p>
+<p>.NET平台不允许从内存中卸载指定的程序集。已编程方式卸载库的唯一方式是使用Unload()方法销毁承载的应用程序域。</p>
+<h3 id="默认程序域"><a href="#默认程序域" class="headerlink" title="默认程序域"></a>默认程序域</h3><p>一个.NET可执行文件启动时，CLR会自动将其放置到宿主进程的默认应用程序域中。<br>访问当前线程的应用程序域</p>
+<pre><code>AppDomain app = AppDomain.CurrentDomain;
+Console.WriteLine(&quot;{0}：{1}：{2}：{3}&quot;,app.FriendlyName,app.Id,app.IsDefaultAppDomain(),app.BaseDirectory);
+//BaseDirectory，程序集解约程序用它来探测程序集
+</code></pre><h3 id="应用程序域中加载的-NET程序集"><a href="#应用程序域中加载的-NET程序集" class="headerlink" title="应用程序域中加载的.NET程序集"></a>应用程序域中加载的.NET程序集</h3><pre><code>AppDomain app = AppDomain.CurrentDomain;
+var asms = app.GetAssemblies();
+foreach (Assembly item in asms)
+{
+    Console.WriteLine(item.GetName().Name + &quot;：&quot; + item.GetName().Version);
+}
+</code></pre><h3 id="接收程序集加载通知"><a href="#接收程序集加载通知" class="headerlink" title="接收程序集加载通知"></a>接收程序集加载通知</h3><pre><code>AppDomain app = AppDomain.CurrentDomain;
+app.AssemblyLoad += (o, s) =&gt;
+{
+    Console.WriteLine(s.LoadedAssembly.GetName().Name);
+};
+</code></pre><h3 id="创建新的应用程序域"><a href="#创建新的应用程序域" class="headerlink" title="创建新的应用程序域"></a>创建新的应用程序域</h3><pre><code>AppDomain app = AppDomain.CreateDomain(&quot;Second&quot;);
+
+foreach (Assembly item in app.GetAssemblies())
+{
+    //只加载了mscorlib。如果调试的话还会加载用于调试的额外程序集
+    Console.WriteLine(item.GetName().Name);
+}
+
+app.Load(&quot;CarLib&quot;);           //向自定义应用程序域中加载程序集，此时加载的程序集多了一个
+
+AppDomain.Unload(app);  //卸载自定义应用程序域
+</code></pre><h3 id="上下文边界"><a href="#上下文边界" class="headerlink" title="上下文边界"></a>上下文边界</h3><p>给定对象“特定的家”<br>一个进程定义了默认的应用程序域，每个应用程序域都有一个默认的上下文（总是第一个创建），也成为上下文0（context 0）。用于组合那些对上下文没有具体的或唯一性需求的.NET对象（大多数对象）。</p>
+<p>不需要指定特定上下文的.NET类型称为上下文灵活（context-agile）对象，可以从应用程序域的任何位置访问，与对象的运行时需求没有关系。<br>需要指定特定上下文的对象称为上下文绑定（context-bound）对象，只能在其被创建的那个上下文中正常运行。必须派生自System.ContextBoundObject基类</p>
+<h3 id="定义上下文绑定对象"><a href="#定义上下文绑定对象" class="headerlink" title="定义上下文绑定对象"></a>定义上下文绑定对象</h3><p>自动线程安全的类</p>
+<pre><code>using System.Runtime.Remoting.Contexts;
+using System.Threading;
+
+[Synchronization]
+public class ContextObject : ContextBoundObject
+{
+    public void Do()
+    {
+        for (int i = 0; i &lt; 10; i++)
+        {
+            Console.WriteLine(i + &quot;：当前线程-&quot; + Thread.CurrentThread.ManagedThreadId);
+        }
+    }
+}
+
+static void Main(string[] args)
+{
+    ContextObject obj = new ContextObject();
+    Task.Run(() =&gt; obj.Do());
+    Task.Run(() =&gt; obj.Do());
+}
+</code></pre><h3 id="研究上下文"><a href="#研究上下文" class="headerlink" title="研究上下文"></a>研究上下文</h3><pre><code>using System.Runtime.Remoting.Contexts;
+using System.Threading;
+
+[Synchronization]
+public class ContextObjectBound : ContextBoundObject
+{
+    public ContextObjectBound()
+    {
+        Context ctx = Thread.CurrentContext;
+        Console.WriteLine(this + &quot; 在上下文中： &quot; + ctx.ContextID);
+        foreach (var item in ctx.ContextProperties)
+        {
+            Console.WriteLine(item.Name);
+        }
+    }
+}
+
+public class ContextObject
+{
+    public ContextObject()
+    {
+        Context ctx = Thread.CurrentContext;
+        Console.WriteLine(this + &quot; 在上下文中： &quot; + ctx.ContextID);
+        foreach (var item in ctx.ContextProperties)
+        {
+            Console.WriteLine(item.Name);
+        }
+    }
+}
+
+static void Main(string[] args)
+{
+    ContextObject obj = new ContextObject();     
+    //0，LeaseLifeTimeServiceProperty
+    ContextObject obj1 = new ContextObject();    
+    //0，LeaseLifeTimeServiceProperty
+    ContextObjectBound objTs = new ContextObjectBound();     
+    //1，LeaseLifeTimeServiceProperty，Synchronization
+
+    Console.ReadKey();
+}
+</code></pre><h3 id="CIL"><a href="#CIL" class="headerlink" title="CIL"></a>CIL</h3><p>.NET平台语言（C#，VB，F#等）的母语，某个语言相关联的编译器会把源代码翻译成CIL</p>
+<h3 id="CIL标记分为3类"><a href="#CIL标记分为3类" class="headerlink" title="CIL标记分为3类"></a>CIL标记分为3类</h3><p>1，CIL指令<br>以.前缀，例如：.namespace、.class、.pulickeytoken、.method、.assembly<br>2，CIL特性<br>例如：public，extends（指定这个类型的基类），implements（支持的一系列接口）<br>3，CIL操作码<br>例如：ldstr（LoadString，定义一个字符串变量），实际上是操作码的助记符。<br>真正的操作码是二进制码。<br>add - 0x58，sub - 0x59，newobj - 0x73</p>
+<h3 id="CIL基于栈的本质"><a href="#CIL基于栈的本质" class="headerlink" title="CIL基于栈的本质"></a>CIL基于栈的本质</h3><p>CIL不允许直接访问一个数据（本地变量、参数变量或属性）。而是通过虚拟执行栈来访问。<br>string myMessage=”Hello”;             //分为1-3<br>Console.WriteLine(myMessage);    //分为4-5</p>
+<p>1，.locals init ([0] string myMessage)<br>定义一个本地字符串变量（在Call Stack本地变量索引0处）<br>2，ldstr “Hello”<br>将字符串的引用放在了Envaluation Stack中，而真正的字符串放在了Managed Heap中<br>3，stloc.0<br>将Envaluation Stack中的值保存到 Call Stack中索引为0的本地变量中（V0，栈低已存在args[最底]和return address），因为Envaluation Stack中存放的是“hello”字符串的地址，所以变量中存放的也是字符串的地址。<br>4，ldloc.0<br>把Call Stack中索引0处变量的的值（引用地址），加载到Envaluation Stack中<br>5，call void [mscorlib]System.Console::WriteLine(string)<br>从 Evaluation Stack 中取出一个值，此值为 Reference Type，调用方法</p>
+<p>PS：<br>1，Managed Heap（托管堆）：这是动态配置（Dynamic Allocation）的记忆体，由GC在执行时自动管理，整个 Process 共用一个 Managed Heap，可以理解为引用类型的东西都放在这个Managed Heap中。<br>2，Call Stack（调用栈）：CLR在执行时自动管理的记忆体，每个Thread都有自己的Call Stack堆栈。每调用一次method，就会使得Call Stack上多了一个Record Frame；调用完毕之后，此Record Frame会被丢弃。一般来说，Record Frame内记录着method参数（Parameter）、返回位址（Return Address）、以及局部变量（Local Variable）。CLR使用零基索引的方式来识别局部变量。<br>3，Evaluation Stack（虚拟执行栈）：这是由 CLR在执行时自动管理的记忆体，每个Thread都有自己的Evaluation Stack。压入的到Evaluation Stack的值，当方法调用结束时必须保持这个堆栈的平衡（清空），这里面存放例如局部变量值，以及引用类型的地址。如果忘记清空，ilasm仍然会编译成功。可以用peverify.exe工具诊断。peverify test.dll<br>4，ld，加载，用于压栈到虚拟执行栈<br>5，st，存储，用于弹栈虚拟执行栈顶的值到内存调用栈中</p>
+<h3 id="CIL的代码标签"><a href="#CIL的代码标签" class="headerlink" title="CIL的代码标签"></a>CIL的代码标签</h3><p>例如：IL_0001：，IL_000c<br>大多数标签是可选的，完全可以移除。只有编写有多个分支和循环结构的CIL代码时，通过这些标签指定逻辑流转到哪里的时候，才是必需的。</p>
+<h3 id="使用ilasm-exe编译CIL代码"><a href="#使用ilasm-exe编译CIL代码" class="headerlink" title="使用ilasm.exe编译CIL代码"></a>使用ilasm.exe编译CIL代码</h3><pre><code>ilasm /exe Hello.il /output=NewAssembly.exe
+</code></pre><p>-?查看选项参数</p>
+<h3 id="CIL指令和特性"><a href="#CIL指令和特性" class="headerlink" title="CIL指令和特性"></a>CIL指令和特性</h3><p>1，指定外部应用程序集</p>
+<pre><code>.assembly extern mscorlib
+{
+     .publickeytoken=(B7 7A 5C 56 19 34 E0 89)
+     .ver 4:0:0:0
+}
+</code></pre><p>2，定义当前程序集</p>
+<pre><code>.assembly CILTypes
+{
+     .ver 1:0:0:0
+}
+
+.module CILTypes.dll            //单模块程序集
+</code></pre><p>3，定义命名空间</p>
+<pre><code>.namespace MyNamespance{}
+.namespace Myconpany.MyNamespace{}
+</code></pre><p>4，定义类类型</p>
+<pre><code>.namespace MyNamespace
+{
+     .class public MyBaseClass
+         extends [BaseEntity]BaseEntity.AuditEntityBase{}
+     //CIL要求使用完整的名字
+}
+</code></pre><p>5，定义和实现接口</p>
+<pre><code>.class public interface IMyInterface{}
+.class public MyBaseClass{}
+.class public MyDerivedClass
+ extends MyNamespace.MyBaseClass
+ implements MyNamespace.IMyInterface{}
+ //同一程序集下可以省略“[]”前缀。
+ //extends在前，implements在后，多个接口用“，”分隔
+ //接口派生接口使用implements
+</code></pre><p>6，定义结构</p>
+<pre><code>.class public sealed MyStruct extends [mscorlib]System.ValueType{}
+</code></pre><p>简化：</p>
+<pre><code>.class public sealed value MyStruct{}
+</code></pre><p>7，定义枚举</p>
+<pre><code>.class public sealed MyEnum extends [mscorlib]Sytem.Enum{}
+</code></pre><p>简化：</p>
+<pre><code>.class public sealed enum MyEnum{}
+</code></pre><p>8，定义泛型<br>C#：</p>
+<pre><code>List&lt;int&gt; myIntes=new List&lt;int&gt;();
+</code></pre><p>CIL：</p>
+<pre><code>newobj instance void class [mscorlib]Sytem.Collections.Generic.List`1&lt;int32&gt;::.ctor()
+</code></pre><p>9，定义数据字段</p>
+<pre><code>.class public sealed enum MyEnum
+{
+     .field public static literal valuetype
+     MyNamespace.MyEnum A=int32(0)
+     .field public static literal valuetype
+     MyNamespace.MyEnum B=int32(1)
+}
+</code></pre><p>私有成员</p>
+<pre><code>.class public MyBaseClass
+{
+     .filed private string stringField=&quot;hello!&quot;
+     .filed private int32 intField=int32(42)
+}
+</code></pre><p>10，定义属性</p>
+<pre><code>.class public MyBaseClass
+{
+     .method public hidebysig specialname
+       instance string get_TheString() cil managed
+     {     //实现     }
+     .method public hidebysig specialname
+       instance void set_TheString(string &apos;value&apos;) cil managed
+     {     //实现     }
+     .property instance string TheString()
+     {
+            .get instance string
+               MyNamespace.MyBaseClass::get_TheString()
+            .set instance void
+               MyNamespace.MyBaseClass::set_TheString(string)
+     }    
+}
+</code></pre><p>11，定义构造函数</p>
+<pre><code>.class public MyBaseClass
+{
+     .fileld private int32 intField
+     .method public hidebysig specialname rtsspecialname
+     instance void .ctor(string s,int32 i) cil managed
+     {     //实现     }
+     //.ctor指令和instance特性结合使用
+     //cil managed标识出这个方法包含的是CIL代码而不是非托管代码
+}
+</code></pre><p>12，定义参数<br>C#：</p>
+<pre><code>public static void MyMethod(int inputInt,ref int refInt,ArrayList ar,out outputInt)
+{   outputInt=0; }
+</code></pre><p>CIL：</p>
+<pre><code>.method public hidebysig static void MyMethod(int32 inputInt,
+    int32&amp; refInt,
+    class [mscorlib]System.Collections.ArrayList ar,
+    [out] int32&amp; outputInt) cil managed
+{     //...    }
+</code></pre><h3 id="NET-基础类库、C-和CIL数据类型的映射"><a href="#NET-基础类库、C-和CIL数据类型的映射" class="headerlink" title=".NET 基础类库、C#和CIL数据类型的映射"></a>.NET 基础类库、C#和CIL数据类型的映射</h3><p><img src="/images/MasterC/mapping.jpg" alt="mapping"></p>
+<h3 id="maxstack指令"><a href="#maxstack指令" class="headerlink" title=".maxstack指令"></a>.maxstack指令</h3><p>确定一个在方法执行阶段可以被压入栈中的最大变量数目。默认值是8</p>
+<h3 id="在CIL中映射参数到本地变量"><a href="#在CIL中映射参数到本地变量" class="headerlink" title="在CIL中映射参数到本地变量"></a>在CIL中映射参数到本地变量</h3><p>C#：</p>
+<pre><code>public static int Add(int a,int b)
+{
+    return a+b;
+}
+</code></pre><p>CIL：<br>//已简化</p>
+<pre><code>.method public hidebysig static int32 Add(int32 a,int32 b) cilmanaged
+{
+   .maxstack 2
+   ldarg.0     //加载&apos;a&apos;到栈中
+   ldarg.1     //加载&apos;b&apos;到栈中
+   add          //从栈中弹出这2个值，并求和，并将计算结果存回栈中
+   ret            //将和弹出栈，并通过ret操作码返回到调用者
+}
+</code></pre><h3 id="this隐式引用"><a href="#this隐式引用" class="headerlink" title="this隐式引用"></a>this隐式引用</h3><p>虚拟执行栈索引是从0开始。在使用CIL代码时，任何非静态函数在接收传入参数时都自动隐式地接受了一个附加参数，即当前对象的引用（this）。<br>C#：</p>
+<pre><code>public int Add(int a,int b)
+{
+   return a+b;
+}
+</code></pre><p>CIL：<br>//伪代码，this是隐式的接受的</p>
+<pre><code>.method public hidebysig static int32 AddTwoInt(MyClass_HiddenThisPointer this,int32 a,int32 b) cil managed
+{
+   ldarg.0   //加载MyClass_HiddenThisPointer到虚拟执行栈上
+   ldarg.1   //加载&apos;a&apos;
+   ldarg.2   //加载&apos;b&apos;
+}
+</code></pre><h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>C#：</p>
+<pre><code>public static void CountToTen()
+{
+ for(int i=0;i&lt;10;i++);
+}
+</code></pre><p>CIL：</p>
+<pre><code>.method public hidebysig static void COuntToTen() cil managed
+{
+   .maxstack 2
+   .locals init ([0] int32 i)   //初始化本地变量&apos;i&apos;
+   IL_0000:   loc.i4.0        //压栈&apos;0&apos;到栈中
+   IL_0001:   stloc.0         //弹栈&apos;0&apos;，并存储这个值到调用栈变量索引&apos;0&apos;
+   IL_0002:   br.s IL_0008//跳转到IL_0008
+   IL_0004:   ldloc.0          //压栈索引0的值
+   IL_0005:   ldc.i4.1         //压栈&apos;1&apos;
+   IL_0006:   add               //两值弹栈，相加，结果压栈
+   IL_0007:   stloc.0
+   IL_0008:   ldloc.0          //压栈索引0的值
+   IL_0009:   ldc.i4.s  10   //压栈&apos;10‘
+   IL_000b:   blt.s IL_0004 //两值弹栈，比较。小于10？如果是，跳转IL_0004
+   IL_oood:   ret                  //
+}
+</code></pre><h3 id="动态程序集"><a href="#动态程序集" class="headerlink" title="动态程序集"></a>动态程序集</h3><pre><code>静态程序集：存在于磁盘的.NET二进制文件
+动态程序集：运行中通过使用System.Reflection.Emit命名空间提供的类型在内存中创建程序集及其模块，类型定义以及CIL实现逻辑。并可以保存到磁盘上生成一个新的静态程序集。
+用处：
+构建需要根据用户输入来生成程序集文件的.NET开发工具
+构建需要在运行时通过元数据来生成远程类型的代理的程序
+加载静态程序集并能动态插入新类型到二进制图像中。
+</code></pre><h3 id="System-Reflection-Emit命名空间的成员"><a href="#System-Reflection-Emit命名空间的成员" class="headerlink" title="System.Reflection.Emit命名空间的成员"></a>System.Reflection.Emit命名空间的成员</h3><p><img src="/images/MasterC/reflection.jpg" alt="reflection"></p>
+<h3 id="ILGenerator"><a href="#ILGenerator" class="headerlink" title="ILGenerator"></a>ILGenerator</h3><p>注入CIL操作码到一个给定的类型成员</p>
+<h3 id="产生动态程序集，保存并实现延迟绑定"><a href="#产生动态程序集，保存并实现延迟绑定" class="headerlink" title="产生动态程序集，保存并实现延迟绑定"></a>产生动态程序集，保存并实现延迟绑定</h3><pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        CreateMyAm(AppDomain.CurrentDomain);
+
+        Assembly asm = Assembly.Load(&quot;MyAssembly&quot;);
+        Type type = asm.GetType(&quot;MyAssembly.HelloWorld&quot;);
+        var mi = type.GetMethod(&quot;SayHello&quot;);
+        object obj = Activator.CreateInstance(type, &quot;123&quot;);
+        mi.Invoke(obj, null);
+        mi = type.GetMethod(&quot;GetMsg&quot;);
+        Console.WriteLine(mi.Invoke(obj, null));
+
+        Console.ReadKey();
+    }
+
+    static void CreateMyAm(AppDomain app)
+    {
+        //建立通用程序集特征
+        AssemblyName asmName = new AssemblyName
+        {
+            Name = &quot;MyAssembly&quot;,
+            Version = new Version(1, 0, 0, 0),
+            KeyPair = new StrongNameKeyPair(File.ReadAllBytes(@&quot;C:\test.snk&quot;))     //产生强名，才可以直接引用，并使用using
+        };
+        //在当前应用程序域中创建一个新的程序集
+        AssemblyBuilder asm = app.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save);
+        //因为是单文件程序集，模块的名字就是程序集的名字
+        ModuleBuilder module = asm.DefineDynamicModule(&quot;MyAssembly&quot;, &quot;MyAssembly.dll&quot;);
+        //定义一个公共类
+        TypeBuilder myClass = module.DefineType(&quot;MyAssembly.HelloWorld&quot;, TypeAttributes.Public);
+        //定义一个私有字符串成员变量
+        FieldBuilder strField = myClass.DefineField(&quot;theMessage&quot;, typeof(string), FieldAttributes.Private);
+
+        //创建自定义的构造函数
+        ConstructorBuilder ctor = myClass.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, new[] { typeof(string) });
+        ILGenerator ilCtor = ctor.GetILGenerator();
+        ilCtor.Emit(OpCodes.Ldarg_0);
+        ConstructorInfo superCtor = typeof(object).GetConstructor(new Type[0]);
+        ilCtor.Emit(OpCodes.Call, superCtor);   //调用基类构造函数
+        ilCtor.Emit(OpCodes.Ldarg_0);           //压栈对象的this指针
+        ilCtor.Emit(OpCodes.Ldarg_1);           //压栈参数
+        ilCtor.Emit(OpCodes.Stfld, strField);   //存储在this的strField
+        ilCtor.Emit(OpCodes.Ret);
+        //创建默认构造函数
+        myClass.DefineDefaultConstructor(MethodAttributes.Public);
+
+        //创建GetMsg()方法
+        MethodBuilder getMsg = myClass.DefineMethod(&quot;GetMsg&quot;, MethodAttributes.Public, typeof(string), null);
+        ILGenerator ilMethod = getMsg.GetILGenerator();
+        ilMethod.Emit(OpCodes.Ldarg_0);
+        ilMethod.Emit(OpCodes.Ldfld, strField);
+        ilMethod.Emit(OpCodes.Ret);
+        //创建SayHello()方法
+        MethodBuilder sayHello = myClass.DefineMethod(&quot;SayHello&quot;, MethodAttributes.Public);
+        ilMethod = sayHello.GetILGenerator();
+        ilMethod.EmitWriteLine(&quot;Hello World!&quot;);
+        ilMethod.Emit(OpCodes.Ret);
+
+        //创建类Hello World
+        myClass.CreateType();
+        //保存程序集
+        asm.Save(&quot;MyAssembly.dll&quot;);
+    }
+}
+</code></pre><hr>
+<h2 id="第六部分：-NET基础类库"><a href="#第六部分：-NET基础类库" class="headerlink" title="第六部分：.NET基础类库"></a>第六部分：.NET基础类库</h2><h3 id="应用程序域和线程"><a href="#应用程序域和线程" class="headerlink" title="应用程序域和线程"></a>应用程序域和线程</h3><p>一个应用程序域可以承载多个线程，线程可以跨越不同的应用程序域</p>
+<pre><code>AppDomain ad=Thread.GetDomain();
+</code></pre><p>获取正在承载当前线程的应用程序域</p>
+<pre><code>Context ctx=Thread.CurrentContext;
+</code></pre><p>获取当前操作线程所处的上下文</p>
+<h3 id="委托的异步性"><a href="#委托的异步性" class="headerlink" title="委托的异步性"></a>委托的异步性</h3><pre><code>class Program
+{
+    public delegate int MyMethod(int x, int y);
+    private static bool isDone = false;
+    static void Main(string[] args)
+    {
+        Console.WriteLine(&quot;Main，线程ID：&quot; + Thread.CurrentThread.ManagedThreadId);
+        MyMethod m = Add;
+        IAsyncResult ar = m.BeginInvoke(10, 10, AddComplete, &quot;R U Ok?&quot;);    //开启异步，使用的是线程池的工作者线程（后台线程）
+        //轮询方式
+        //while (!ar.AsyncWaitHandle.WaitOne(1000,true))
+        //{
+        //    Console.WriteLine(&quot;Working...&quot;);
+        //}
+
+        //回调方式
+        while (!isDone)
+        {
+            Thread.Sleep(1000);
+            Console.WriteLine(&quot;Working...&quot;);
+        }
+        Console.ReadKey();
+    }
+
+    static int Add(int x, int y)
+    {
+        Console.WriteLine(&quot;Add，线程ID：&quot; + Thread.CurrentThread.ManagedThreadId);
+        Thread.Sleep(3000);
+        return x + y;
+    }
+
+    static void AddComplete(IAsyncResult result)
+    {
+        Console.WriteLine(&quot;Complete，线程ID：&quot; + Thread.CurrentThread.ManagedThreadId + &quot;，Msg&quot; + result.AsyncState);
+        AsyncResult ar = (AsyncResult)result;
+        MyMethod m = (MyMethod)ar.AsyncDelegate;
+        Console.WriteLine(&quot;Result：&quot; + m.EndInvoke(result));
+        isDone = true;
+    }
+}
+</code></pre><h3 id="Threading命名空间"><a href="#Threading命名空间" class="headerlink" title="Threading命名空间"></a>Threading命名空间</h3><p><img src="/images/MasterC/threading.jpg" alt="threading"></p>
+<h3 id="AutoResetEvent类"><a href="#AutoResetEvent类" class="headerlink" title="AutoResetEvent类"></a>AutoResetEvent类</h3><p>线程同步的通知类</p>
+<pre><code>public static AutoResetEvent waitHandle = new AutoResetEvent(false);
+</code></pre><p>//阻塞一个线程，直到收到通知</p>
+<pre><code>waitHandle.WaitOne();
+</code></pre><p>//通知一个或多个线程事件终止，允许继续</p>
+<pre><code>waitHandle.Set();
+</code></pre><h3 id="TimerCallBack"><a href="#TimerCallBack" class="headerlink" title="TimerCallBack"></a>TimerCallBack</h3><p>定时任务</p>
+<pre><code>static void Main(string[] args)
+{
+    Timer t = new Timer(Print, &quot;时间：&quot;, 0, 1000);
+
+    Console.ReadKey();
+}
+
+static void Print(object state)
+{
+    Console.Clear();
+    Console.WriteLine(state + DateTime.Now.ToLongTimeString());
+}
+</code></pre><h3 id="ThreadPool的好处"><a href="#ThreadPool的好处" class="headerlink" title="ThreadPool的好处"></a>ThreadPool的好处</h3><p>1，减少了线程创建、开始和停止的次数，这提高了效率<br>2，能够使我们将注意力放到业务逻辑上而不是多线程架构上</p>
+<p>某些情况仍应优先使用手工线程管理：<br>1，需要前台线程或设置优先级别，线程池中的线程总是后台线程，优先级是默认的。无法修改<br>2，需要一个带有固定标识的线程便于退出、挂起或通过名字发现它。</p>
+<h3 id="Parallel类"><a href="#Parallel类" class="headerlink" title="Parallel类"></a>Parallel类</h3><pre><code>class Program
+{
+    private static CancellationTokenSource cts = new CancellationTokenSource();
+    static void Main(string[] args)
+    {
+        string filePath = @&quot;C:\Pictures&quot;;
+        string[] files = Directory.GetFiles(filePath, &quot;*.jpg&quot;, SearchOption.TopDirectoryOnly);
+        string newPath = @&quot;C:\Pictures\new&quot;;
+        if (!Directory.Exists(newPath))
+        {
+            Directory.CreateDirectory(newPath);
+        }
+
+        //并行方式
+        ParallelOptions option = new ParallelOptions
+        {
+            CancellationToken = cts.Token,
+            MaxDegreeOfParallelism = System.Environment.ProcessorCount
+        };
+        try
+        {
+            //主线程仍然被阻塞，等待其他线程完成工作
+            Parallel.ForEach(files, option, m =&gt;
+            {
+                option.CancellationToken.ThrowIfCancellationRequested();
+                string fileName = Path.GetFileName(m);
+                using (Bitmap map = new Bitmap(m))
+                {
+                    map.RotateFlip(RotateFlipType.RotateNoneFlipX); //左右翻转
+                    map.Save(Path.Combine(newPath, fileName));
+                    Console.WriteLine(&quot;Id：&quot; + Thread.CurrentThread.ManagedThreadId);
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            //处理
+        }
+        Console.WriteLine(&quot;等待中...（最后才显示）&quot;);
+        Console.ReadKey();
+    }
+}
+
+Parallel.Invoke(() =&gt;
+{
+    var ret = DoSomething();
+}, () =&gt;
+{
+    var ret = DoAnthor();
+});
+</code></pre><h3 id="次线程访问UI线程的控件"><a href="#次线程访问UI线程的控件" class="headerlink" title="次线程访问UI线程的控件"></a>次线程访问UI线程的控件</h3><pre><code>this.Invoke((Action)delegate
+{
+   this.Text=....;
+});
+</code></pre><p>WinForm中，线程创建的控件具有“线程相关性”。次线程不能直接访问主线程（UI线程）创建的控件，可以通过此方法传递异步委托执行。</p>
+<h3 id="async-await关键字"><a href="#async-await关键字" class="headerlink" title="async await关键字"></a>async await关键字</h3><pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine(&quot;Main Id:&quot; + Thread.CurrentThread.ManagedThreadId);   //主线程
+        new Program().Entry();
+        Console.WriteLine(&quot;等待中...&quot;);    //先出现
+        Console.WriteLine(&quot;Main Id:&quot; + Thread.CurrentThread.ManagedThreadId);   //主线程
+        Console.ReadKey();
+    }
+
+    public async Task&lt;string&gt; DoItAsync()   //约定以Asynv后缀
+    {
+        Console.WriteLine(&quot;DoIt Id:&quot; + Thread.CurrentThread.ManagedThreadId);  //主线程
+        var r = await Task.Run(() =&gt;        //开启新线程，主线程在执行完await标记的代码（Task.Run创建新线程部分，不包含内部的委托部分）后跳出
+        {
+            Thread.Sleep(3000);
+            Console.WriteLine(&quot;DoIt Id:&quot; + Thread.CurrentThread.ManagedThreadId); //新线程
+            return &quot;haha&quot;;
+        });
+        Console.WriteLine(&quot;DoIt Id:&quot; + Thread.CurrentThread.ManagedThreadId);  //新线程
+        return r;
+    }
+
+    public async void Entry()
+    {
+        Console.WriteLine(&quot;Entry Id:&quot; + Thread.CurrentThread.ManagedThreadId);   //主线程
+        string ret = await DoItAsync();     //await 负责提取包含在Task对象中的内在返回值。
+        //主线程把具有await标记的DoIt() 执行完毕之后，跳出此方法到调用处继续执行。
+        Console.WriteLine(&quot;Entry Id:&quot; + Thread.CurrentThread.ManagedThreadId);   //新线程
+        Console.WriteLine(ret); 
+    }
+}
+</code></pre><h3 id="返回void的异步方法"><a href="#返回void的异步方法" class="headerlink" title="返回void的异步方法"></a>返回void的异步方法</h3><p>返回非泛型的Task类，并忽略return</p>
+<pre><code>private asynv Task MethodVoidAsync()
+{
+   await Task.Run(() =&gt; 
+   {
+      //...
+   }
+}
+</code></pre><h3 id="多个await的异步方法"><a href="#多个await的异步方法" class="headerlink" title="多个await的异步方法"></a>多个await的异步方法</h3><pre><code>public async void Entry()
+{
+    //调用者线程
+    Console.WriteLine(&quot;Entry Id:&quot; + Thread.CurrentThread.ManagedThreadId);
+    //调用者跳出返回，开启新线程1
+    await Task.Run(() =&gt; Thread.Sleep(3000));
+    //新线程1
+    Console.WriteLine(&quot;Entry Id:&quot; + Thread.CurrentThread.ManagedThreadId);
+    //新线程1销毁，开启新线程2
+    await Task.Run(() =&gt; Thread.Sleep(3000));
+    //下同
+    Console.WriteLine(&quot;Entry Id:&quot; + Thread.CurrentThread.ManagedThreadId);
+    await Task.Run(() =&gt; Thread.Sleep(3000));
+    Console.WriteLine(&quot;Entry Id:&quot; + Thread.CurrentThread.ManagedThreadId);
+}
+</code></pre><h3 id="System-IO"><a href="#System-IO" class="headerlink" title="System.IO"></a>System.IO</h3><p><img src="/images/MasterC/io.jpg" alt="io"></p>
+<h3 id="获取计算机上驱动器的细节"><a href="#获取计算机上驱动器的细节" class="headerlink" title="获取计算机上驱动器的细节"></a>获取计算机上驱动器的细节</h3><pre><code>DriveInfo[] drives = DriveInfo.GetDrives();
+</code></pre><h3 id="StreamWriter和StreamReader"><a href="#StreamWriter和StreamReader" class="headerlink" title="StreamWriter和StreamReader"></a>StreamWriter和StreamReader</h3><pre><code>using (StreamWriter writer = File.CreateText(&quot;1.txt&quot;))
+{
+    writer.WriteLine(&quot;hahaha&quot;);
+    writer.WriteLine(&quot;hahaha&quot;);
+    writer.Write(writer.NewLine);
+}
+等于
+using (StreamWriter writer=new StreamWriter(&quot;1.txt&quot;))
+{            }
+
+using (StreamReader reader = File.OpenText(&quot;1.txt&quot;))
+{
+    string buffer;
+    while ((buffer = reader.ReadLine()) != null)
+    {
+        Console.WriteLine(buffer);
+    }
+}
+等于
+using (StreamReader reader=new StreamReader(&quot;1.txt&quot;))
+{            }
+</code></pre><h3 id="BinaryWriter类"><a href="#BinaryWriter类" class="headerlink" title="BinaryWriter类"></a>BinaryWriter类</h3><p>允许我们从基层流中以简洁的二进制格式读取或写入离散数据类型</p>
+<pre><code>using (BinaryWriter bw=new BinaryWriter(File.OpenWrite(&quot;1.txt&quot;)))
+{
+    Console.WriteLine(&quot;Type：&quot;+bw.BaseStream);
+    bw.Write(&apos;1&apos;);
+    bw.Write(&quot;123&quot;);
+    bw.Write(123);
+    bw.Write(12.3);
+}
+using (BinaryReader br=new BinaryReader(File.OpenRead(&quot;1.txt&quot;)))
+{
+    Console.WriteLine(br.ReadString()); //只有&quot;123&quot;
+}
+</code></pre><h3 id="文件监视"><a href="#文件监视" class="headerlink" title="文件监视"></a>文件监视</h3><pre><code>FileSystemWatcher watcher = new FileSystemWatcher
+{
+    Path = Directory.GetCurrentDirectory(),
+    Filter = &quot;*.txt&quot;,
+    NotifyFilter =
+        NotifyFilters.LastAccess
+        | NotifyFilters.LastWrite
+        | NotifyFilters.FileName
+        | NotifyFilters.DirectoryName
+};
+watcher.Changed += (o, e) =&gt; Console.WriteLine(e.FullPath + &quot;\t&quot; + e.ChangeType);
+watcher.Created += (o, e) =&gt; Console.WriteLine(e.FullPath + &quot;\t&quot; + e.ChangeType);
+watcher.Deleted += (o, e) =&gt; Console.WriteLine(e.FullPath + &quot;\t&quot; + e.ChangeType);
+watcher.Renamed += (o, e) =&gt; Console.WriteLine(e.OldFullPath + &quot;\t&quot; + e.FullPath);
+watcher.EnableRaisingEvents = true;
+</code></pre><h3 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h3><pre><code>[Serializable]
+class Program
+{
+    public string Name { get; set; }
+    static void Main(string[] args)
+    {
+        Program p = new Program { Name = &quot;Main&quot; };
+        BinaryFormatter format = new BinaryFormatter();
+
+        using (var stream = File.OpenWrite(&quot;1.txt&quot;))
+        {
+            format.Serialize(stream, p);
+        }
+        using (var stream = File.OpenRead(&quot;1.txt&quot;))
+        {
+            Program p1 = (Program)format.Deserialize(stream);
+            Console.WriteLine(p1.Name);
+        }
+
+        Console.ReadKey();
+    }
+}
+</code></pre><h3 id="对象图"><a href="#对象图" class="headerlink" title="对象图"></a>对象图</h3><p><img src="/images/MasterC/map.jpg" alt="map"></p>
+<h3 id="持久化对象的格式"><a href="#持久化对象的格式" class="headerlink" title="持久化对象的格式"></a>持久化对象的格式</h3><pre><code>using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Soap;
+</code></pre><p><img src="/images/MasterC/save.jpg" alt="save"></p>
+<h3 id="XmlSerializer和SoapFormatter"><a href="#XmlSerializer和SoapFormatter" class="headerlink" title="XmlSerializer和SoapFormatter"></a>XmlSerializer和SoapFormatter</h3><p>XmlSerializer:<br>持久化为XML文档，只会保存公有已赋值字段或公共属性。可以保存偏好设置（颜色，文字大小等）<br>SoapFormatter:<br>持久化为一个SOAP消息（传递消息到Web服务或从Web服务传递消息的标准XML格式）</p>
+<pre><code>static void Main(string[] args)
+{
+    List&lt;Picture&gt; list = new List&lt;Picture&gt;
+    {
+        new Picture{ Id=0,Url=&quot;1.jpg&quot;},
+        new Picture{ Id=1,Url=&quot;2.jpg&quot;}
+    };
+    XmlSerializer format = new XmlSerializer(typeof(List&lt;Picture&gt;), &quot;Carousels&quot;);
+    或
+    SoapFormatter format = new SoapFormatter();
+
+    using (var stream = File.OpenWrite(&quot;config.xml&quot;))     //从头覆盖内容，不会重建文件
+    或
+    using (var stream = new FileStream(&quot;config.xml&quot;, FileMode.Create, FileAccess.Write, FileShare.None))   //重建文件
+    {
+        format.Serialize(stream, list);
+    }
+    using (var stream = File.OpenRead(&quot;config.xml&quot;))
+    {
+        List&lt;Picture&gt; p1 = (List&lt;Picture&gt;)format.Deserialize(stream);
+        p1.ForEach(m =&gt; Console.WriteLine(&quot;/images/&quot; + m.Url));
+    }
+
+    Console.ReadKey();
+}
+
+[Serializable]
+public class Picture
+{
+    private int size;   //XmlSerializer不会包含
+    public string Name = &quot;轮播图&quot;;
+    public int Id { get; set; }
+    public string Url { get; set; }
+}
+</code></pre><h3 id="格式化程序中的类型保真"><a href="#格式化程序中的类型保真" class="headerlink" title="格式化程序中的类型保真"></a>格式化程序中的类型保真</h3><p>BinaryFormatter，持久化对象图中对象的字段数据，和每个类型的完全限定名城和定义程序集的完整名称（强名）。这些数据使跨越.NET应用程序机器边界传递对象成为理想的选择。<br>SoapFormatter，XmsSerializer，没有序列化完整的.NET类型元数据（完全限定名称或程序集），可用于标准的.NETWeb服务，可被任何平台中的客户端调用（Windows、MAC OS X和Linux）。</p>
+<h3 id="控制生成的XML数据"><a href="#控制生成的XML数据" class="headerlink" title="控制生成的XML数据"></a>控制生成的XML数据</h3><pre><code>static void Main(string[] args)
+{
+    Picture pic = new Picture
+    {
+        Id = 1,
+        Url = &quot;2.jpg&quot;,
+        Date = DateTime.Now.ToShortDateString(),
+        Details = new List&lt;string&gt; {&quot;遍&quot;, &quot;历&quot; }
+    };
+    XmlSerializer format = new XmlSerializer(typeof(Picture));
+
+    using (var stream = new FileStream(&quot;config.xml&quot;, FileMode.Create, FileAccess.Write, FileShare.None))
+    {
+        format.Serialize(stream, pic);
+    }
+    using (var stream = File.OpenRead(&quot;config.xml&quot;))
+    {
+        Picture p1 = (Picture)format.Deserialize(stream);
+    }
+
+    Console.ReadKey();
+}
+
+[Serializable, XmlType(TypeName = &quot;SinglePicture&quot;)]
+public class Picture
+{
+    public int Id { get; set; }
+    public string Url { get; set; }
+
+    [XmlEnum]
+    public List&lt;string&gt; Details;
+
+    [XmlAttribute]
+    public string Date { get; set; }
+}
+</code></pre><p>生成的XML部分如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;SinglePicture xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; Date=&quot;2017/4/15&quot;&gt;
+  &lt;Details&gt;
+    &lt;string&gt;遍&lt;/string&gt;
+    &lt;string&gt;历&lt;/string&gt;
+  &lt;/Details&gt;
+  &lt;Id&gt;1&lt;/Id&gt;
+  &lt;Url&gt;2.jpg&lt;/Url&gt;
+&lt;/SinglePicture&gt;
+</code></pre><h3 id="使用特性定制序列化"><a href="#使用特性定制序列化" class="headerlink" title="使用特性定制序列化"></a>使用特性定制序列化</h3><pre><code>[Serializable]
+public class Picture
+{
+    public int Id { get; set; }
+    public string Url { get; set; }
+    public string Name { get; set; }
+
+    [OnSerializing]
+    private void OnSerializing(StreamingContext context)
+    {
+        Name += &quot; Date:&quot; + DateTime.Now.ToShortDateString();
+    }
+
+    [OnDeserialized]
+    private void OnDeserialized(StreamingContext context)
+    {
+        Url = Url.ToLower();
+        Name = Name.ToUpper();
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lancelot 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lancelot 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Lancelot
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://adieUkid.github.io/2017/05/09/精通C-注释笔记/" title="精通C#-注释笔记">http://adieUkid.github.io/2017/05/09/精通C-注释笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/04/C-高级编程-注释笔记/" rel="next" title="C#高级编程_注释笔记">
+                <i class="fa fa-chevron-left"></i> C#高级编程_注释笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Lancelot" />
+            
+              <p class="site-author-name" itemprop="name">Lancelot</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：C-与-NET平台"><span class="nav-number">1.</span> <span class="nav-text">第一部分：C#与.NET平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源码-IL-汇编过程"><span class="nav-number">1.1.</span> <span class="nav-text">源码-IL-汇编过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CTS"><span class="nav-number">1.2.</span> <span class="nav-text">CTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLS"><span class="nav-number">1.3.</span> <span class="nav-text">CLS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mscoree-dll工作流"><span class="nav-number">1.4.</span> <span class="nav-text">mscoree.dll工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NET命名空间举例"><span class="nav-number">1.5.</span> <span class="nav-text">.NET命名空间举例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft根命名空间"><span class="nav-number">1.6.</span> <span class="nav-text">Microsoft根命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NET-SKD"><span class="nav-number">1.7.</span> <span class="nav-text">.NET SKD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应文件"><span class="nav-number">1.8.</span> <span class="nav-text">响应文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二-三部分：C-核心编程结构-C-面向对象编程"><span class="nav-number">2.</span> <span class="nav-text">第二/三部分：C#核心编程结构/C#面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#char的静态方法"><span class="nav-number">2.1.</span> <span class="nav-text">char的静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变枚举底层存储类型"><span class="nav-number">2.2.</span> <span class="nav-text">改变枚举底层存储类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-ValueType"><span class="nav-number">2.3.</span> <span class="nav-text">System.ValueType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浅-深复制"><span class="nav-number">2.4.</span> <span class="nav-text">浅/深复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认访问修饰符"><span class="nav-number">2.5.</span> <span class="nav-text">默认访问修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Const-readonly-static"><span class="nav-number">2.6.</span> <span class="nav-text">Const,readonly,static</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四部分：高级C-编程结构"><span class="nav-number">3.</span> <span class="nav-text">第四部分：高级C#编程结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delegate关键字"><span class="nav-number">3.1.</span> <span class="nav-text">delegate关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托"><span class="nav-number">3.2.</span> <span class="nav-text">委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#event事件"><span class="nav-number">3.3.</span> <span class="nav-text">event事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventHanlder"><span class="nav-number">3.4.</span> <span class="nav-text">EventHanlder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符重载的思考"><span class="nav-number">3.5.</span> <span class="nav-text">操作符重载的思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Try-catch的CIL实现"><span class="nav-number">3.6.</span> <span class="nav-text">Try catch的CIL实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new关键字的CIL实现"><span class="nav-number">3.7.</span> <span class="nav-text">new关键字的CIL实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动属性的CIL实现"><span class="nav-number">3.8.</span> <span class="nav-text">自动属性的CIL实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序根"><span class="nav-number">3.9.</span> <span class="nav-text">应用程序根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的代"><span class="nav-number">3.10.</span> <span class="nav-text">对象的代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制垃圾回收"><span class="nav-number">3.11.</span> <span class="nav-text">强制垃圾回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GC测试"><span class="nav-number">3.12.</span> <span class="nav-text">GC测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源包装器"><span class="nav-number">3.13.</span> <span class="nav-text">资源包装器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lazy-延迟加载"><span class="nav-number">3.14.</span> <span class="nav-text">Lazy 延迟加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五部分：用-NET程序集编程"><span class="nav-number">4.</span> <span class="nav-text">第五部分：用.NET程序集编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NET程序集的作用"><span class="nav-number">4.1.</span> <span class="nav-text">.NET程序集的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序集和托管模块"><span class="nav-number">4.2.</span> <span class="nav-text">程序集和托管模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NET程序集的格式"><span class="nav-number">4.3.</span> <span class="nav-text">.NET程序集的格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有程序集"><span class="nav-number">4.4.</span> <span class="nav-text">私有程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享程序集"><span class="nav-number">4.5.</span> <span class="nav-text">共享程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强名称"><span class="nav-number">4.6.</span> <span class="nav-text">强名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在GAC中安装强名称的程序集"><span class="nav-number">4.7.</span> <span class="nav-text">在GAC中安装强名称的程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置共享程序集"><span class="nav-number">4.8.</span> <span class="nav-text">配置共享程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素"><span class="nav-number">4.9.</span> <span class="nav-text">元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type类型"><span class="nav-number">4.10.</span> <span class="nav-text">Type类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态加载程序集"><span class="nav-number">4.11.</span> <span class="nav-text">动态加载程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射共享程序集"><span class="nav-number">4.12.</span> <span class="nav-text">反射共享程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#晚期绑定"><span class="nav-number">4.13.</span> <span class="nav-text">晚期绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">4.14.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序集级别特性"><span class="nav-number">4.15.</span> <span class="nav-text">程序集级别特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建可扩展的应用程序"><span class="nav-number">4.16.</span> <span class="nav-text">构建可扩展的应用程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic"><span class="nav-number">4.17.</span> <span class="nav-text">dynamic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用动态声明的数据成员"><span class="nav-number">4.18.</span> <span class="nav-text">调用动态声明的数据成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic实际用途"><span class="nav-number">4.19.</span> <span class="nav-text">dynamic实际用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DLR-dynamic-language-runtime，动态语言运行时-的特性"><span class="nav-number">4.20.</span> <span class="nav-text">DLR(dynamic language runtime，动态语言运行时)的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用dynamic简化晚期绑定"><span class="nav-number">4.21.</span> <span class="nav-text">使用dynamic简化晚期绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互操作程序集"><span class="nav-number">4.22.</span> <span class="nav-text">互操作程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主互操作程序集"><span class="nav-number">4.23.</span> <span class="nav-text">主互操作程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入互操作元数据"><span class="nav-number">4.24.</span> <span class="nav-text">嵌入互操作元数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式树"><span class="nav-number">4.25.</span> <span class="nav-text">表达式树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程"><span class="nav-number">4.26.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Process类"><span class="nav-number">4.27.</span> <span class="nav-text">Process类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看进程中的模块"><span class="nav-number">4.28.</span> <span class="nav-text">查看进程中的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程方式启动或结束进程"><span class="nav-number">4.29.</span> <span class="nav-text">编程方式启动或结束进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProcessStartInfo启动进程"><span class="nav-number">4.30.</span> <span class="nav-text">ProcessStartInfo启动进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序域"><span class="nav-number">4.31.</span> <span class="nav-text">应用程序域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认程序域"><span class="nav-number">4.32.</span> <span class="nav-text">默认程序域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序域中加载的-NET程序集"><span class="nav-number">4.33.</span> <span class="nav-text">应用程序域中加载的.NET程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收程序集加载通知"><span class="nav-number">4.34.</span> <span class="nav-text">接收程序集加载通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新的应用程序域"><span class="nav-number">4.35.</span> <span class="nav-text">创建新的应用程序域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文边界"><span class="nav-number">4.36.</span> <span class="nav-text">上下文边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义上下文绑定对象"><span class="nav-number">4.37.</span> <span class="nav-text">定义上下文绑定对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#研究上下文"><span class="nav-number">4.38.</span> <span class="nav-text">研究上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIL"><span class="nav-number">4.39.</span> <span class="nav-text">CIL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIL标记分为3类"><span class="nav-number">4.40.</span> <span class="nav-text">CIL标记分为3类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIL基于栈的本质"><span class="nav-number">4.41.</span> <span class="nav-text">CIL基于栈的本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIL的代码标签"><span class="nav-number">4.42.</span> <span class="nav-text">CIL的代码标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ilasm-exe编译CIL代码"><span class="nav-number">4.43.</span> <span class="nav-text">使用ilasm.exe编译CIL代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CIL指令和特性"><span class="nav-number">4.44.</span> <span class="nav-text">CIL指令和特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NET-基础类库、C-和CIL数据类型的映射"><span class="nav-number">4.45.</span> <span class="nav-text">.NET 基础类库、C#和CIL数据类型的映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maxstack指令"><span class="nav-number">4.46.</span> <span class="nav-text">.maxstack指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在CIL中映射参数到本地变量"><span class="nav-number">4.47.</span> <span class="nav-text">在CIL中映射参数到本地变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this隐式引用"><span class="nav-number">4.48.</span> <span class="nav-text">this隐式引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环结构"><span class="nav-number">4.49.</span> <span class="nav-text">循环结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态程序集"><span class="nav-number">4.50.</span> <span class="nav-text">动态程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-Reflection-Emit命名空间的成员"><span class="nav-number">4.51.</span> <span class="nav-text">System.Reflection.Emit命名空间的成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ILGenerator"><span class="nav-number">4.52.</span> <span class="nav-text">ILGenerator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产生动态程序集，保存并实现延迟绑定"><span class="nav-number">4.53.</span> <span class="nav-text">产生动态程序集，保存并实现延迟绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六部分：-NET基础类库"><span class="nav-number">5.</span> <span class="nav-text">第六部分：.NET基础类库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序域和线程"><span class="nav-number">5.1.</span> <span class="nav-text">应用程序域和线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托的异步性"><span class="nav-number">5.2.</span> <span class="nav-text">委托的异步性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Threading命名空间"><span class="nav-number">5.3.</span> <span class="nav-text">Threading命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoResetEvent类"><span class="nav-number">5.4.</span> <span class="nav-text">AutoResetEvent类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TimerCallBack"><span class="nav-number">5.5.</span> <span class="nav-text">TimerCallBack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPool的好处"><span class="nav-number">5.6.</span> <span class="nav-text">ThreadPool的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parallel类"><span class="nav-number">5.7.</span> <span class="nav-text">Parallel类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#次线程访问UI线程的控件"><span class="nav-number">5.8.</span> <span class="nav-text">次线程访问UI线程的控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async-await关键字"><span class="nav-number">5.9.</span> <span class="nav-text">async await关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回void的异步方法"><span class="nav-number">5.10.</span> <span class="nav-text">返回void的异步方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个await的异步方法"><span class="nav-number">5.11.</span> <span class="nav-text">多个await的异步方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-IO"><span class="nav-number">5.12.</span> <span class="nav-text">System.IO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取计算机上驱动器的细节"><span class="nav-number">5.13.</span> <span class="nav-text">获取计算机上驱动器的细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StreamWriter和StreamReader"><span class="nav-number">5.14.</span> <span class="nav-text">StreamWriter和StreamReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BinaryWriter类"><span class="nav-number">5.15.</span> <span class="nav-text">BinaryWriter类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件监视"><span class="nav-number">5.16.</span> <span class="nav-text">文件监视</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象序列化"><span class="nav-number">5.17.</span> <span class="nav-text">对象序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象图"><span class="nav-number">5.18.</span> <span class="nav-text">对象图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持久化对象的格式"><span class="nav-number">5.19.</span> <span class="nav-text">持久化对象的格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XmlSerializer和SoapFormatter"><span class="nav-number">5.20.</span> <span class="nav-text">XmlSerializer和SoapFormatter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化程序中的类型保真"><span class="nav-number">5.21.</span> <span class="nav-text">格式化程序中的类型保真</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制生成的XML数据"><span class="nav-number">5.22.</span> <span class="nav-text">控制生成的XML数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用特性定制序列化"><span class="nav-number">5.23.</span> <span class="nav-text">使用特性定制序列化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lancelot</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.6"  zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

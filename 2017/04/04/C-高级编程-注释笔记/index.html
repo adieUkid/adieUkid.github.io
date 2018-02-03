@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Type类型var i = 2.0; var t1 = i.GetType();">
+<meta name="keywords" content="C#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#高级编程_注释笔记">
+<meta property="og:url" content="http://adieUkid.github.io/2017/04/04/C-高级编程-注释笔记/index.html">
+<meta property="og:site_name" content="Lancelot&#39;s Notes">
+<meta property="og:description" content="Type类型var i = 2.0; var t1 = i.GetType();">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://adieukid.github.io/images/ProfessionalC/domain.jpg">
+<meta property="og:updated_time" content="2018-02-03T12:34:44.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#高级编程_注释笔记">
+<meta name="twitter:description" content="Type类型var i = 2.0; var t1 = i.GetType();">
+<meta name="twitter:image" content="http://adieukid.github.io/images/ProfessionalC/domain.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://adieUkid.github.io/2017/04/04/C-高级编程-注释笔记/"/>
+
+
+
+
+
+  <title>C#高级编程_注释笔记 | Lancelot's Notes</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?94a8565d2829b2f9641fe2f93513cd52";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lancelot's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">笔记分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://adieUkid.github.io/2017/04/04/C-高级编程-注释笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lancelot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lancelot's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">C#高级编程_注释笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T15:18:06+08:00">
+                2017-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Type类型"><a href="#Type类型" class="headerlink" title="Type类型"></a>Type类型</h3><pre><code>var i = 2.0;
+var t1 = i.GetType();
+</code></pre><a id="more"></a>
+<pre><code>var t2 = i.GetTypeCode();
+Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);
+</code></pre><p>输出：类型：System.Double，类型码(enum)：Double，类型码的值：14</p>
+<pre><code>var t = typeof(Person);
+Console.WriteLine(t.Assembly);
+Console.WriteLine(t.Attributes);
+Console.WriteLine(t.BaseType);
+Console.WriteLine(t.FullName);
+Console.WriteLine(t.GetProperties()[0].Name);
+Console.WriteLine(t.GUID);
+Console.WriteLine(t.Name);
+Console.WriteLine(t.Namespace);
+Person p1 = new Person();
+if (p1.GetType()==t)
+    Console.WriteLine(&quot;Ok&quot;);
+</code></pre><h3 id="Type的成员方法"><a href="#Type的成员方法" class="headerlink" title="Type的成员方法"></a>Type的成员方法</h3><pre><code>GetConstructor[s]()     //返回ConstructorInfo
+GetEvent[s]()           //返回EventInfo
+GetField[s]()           //返回FieldInfo
+Get[Default]Member[s]() //返回MemberInfo
+GetMethod[s]()          //返回MethodInfo
+GetProperty[s]()        //返回PropertyInfo
+</code></pre><h3 id="Assembly和Type"><a href="#Assembly和Type" class="headerlink" title="Assembly和Type"></a>Assembly和Type</h3><pre><code>Assembly ass = Assembly.Load(&quot;ConsoleApplication1&quot;);
+Type t = typeof(Book);
+var b = ass.CreateInstance(t.FullName);
+var b1 = ass.CreateInstance(&quot;ConsoleApplication1.Book&quot;);
+</code></pre><h3 id="程序集"><a href="#程序集" class="headerlink" title="程序集"></a>程序集</h3><p>dll，逻辑单元。包含模块，资源等。<br>程序集强名：<br>共享程序集使用强名唯一地标识该程序集，保证全局唯一，包括：</p>
+<ol>
+<li>程序集本身的名称</li>
+<li>版本号。不同版本可以共存于一个进程。</li>
+<li>公钥。保证独一无二。</li>
+<li>文化</li>
+</ol>
+<h3 id="应用程序域"><a href="#应用程序域" class="headerlink" title="应用程序域"></a>应用程序域</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="/images/ProfessionalC/domain.jpg" alt="应用程序域"></p>
+<h4 id="不同域加载程序集"><a href="#不同域加载程序集" class="headerlink" title="不同域加载程序集"></a>不同域加载程序集</h4><pre><code>namespace AssemblyA
+{
+    // [Serializable]//只序列化，则仍由调用应用域访问
+    public class Demo : MarshalByRefObject  //继承这个基类（已序列化），才能通过另一个应用程序域来访问。
+    {
+        public Demo() { }
+        public Demo(int val1, int val2)
+        {
+            Console.WriteLine(&quot;domain：{0}中带有参数{1}和{2}的构造函数被调用&quot;, AppDomain.CurrentDomain.FriendlyName, val1, val2);
+        }
+        public void DoSome()
+        {            
+            Console.WriteLine(&quot;domain：{0}调用方法DoSome&quot;, AppDomain.CurrentDomain.FriendlyName);        
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {            
+            Console.WriteLine(&quot;domain：{0}的主函数被调用&quot;, AppDomain.CurrentDomain.FriendlyName);        
+        }
+    }
+}
+
+namespace AssemblyB
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(&quot;当前域：&quot; + AppDomain.CurrentDomain.FriendlyName);
+            AppDomain firstDomain = AppDomain.CreateDomain(&quot;First AppDomain&quot;);
+            firstDomain.ExecuteAssemblyByName(&quot;AssemblyA&quot;);     //需要添加引用或复制程序集，执行exe形式的程序集
+            firstDomain.ExecuteAssembly(&quot;AssemblyA.exe&quot;);     //上方主函数被调用
+
+            AppDomain secondDomain = AppDomain.CreateDomain(&quot;Second AppDomain&quot;);
+            var ret = secondDomain.CreateInstance(&quot;AssemblyA&quot;, &quot;AssemblyA.Demo&quot;, true, BindingFlags.CreateInstance,
+                null, new object[] { 7, 3 }, null, null);      //上方Demo类构造函数被调用
+            var obj = (Demo)ret.Unwrap();   //解除包装
+            obj.DoSome();
+
+            //实例化程序集中的类的示例
+            Demo demo = (Demo)secondDomain.CreateInstanceAndUnwrap(&quot;AssemblyA&quot;, &quot;AssemblyA.Demo&quot;);
+            demo.DoSome();     //显示：Second AppDomain调用方法DoSome
+
+            //适用：如果程序集是动态加载的，用完后卸载。
+            //主应用程序域中，无法删除已加载程序集。但可以终止应用程序域，该域中加载的程序集会从内存中清楚。
+            AppDomain.Unload(secondDomain);
+
+            //string fullName = namespaceName + &quot;.&quot; + Controller + &quot;Controller&quot;;
+            //object obj = Assembly.Load(assemblyName).CreateInstance(fullName);
+            //result = (ServerController)obj;
+
+            Console.ReadKey();
+        }
+    }
+}
+</code></pre><h4 id="当前域加载程序集"><a href="#当前域加载程序集" class="headerlink" title="当前域加载程序集"></a>当前域加载程序集</h4><pre><code>//动态加载程序集，创建实例
+//配合接口降低耦合，也可以逆向引用调用对象方法
+string fullName = &quot;AssemblyA.Demo&quot;;
+object obj = Assembly.Load(&quot;AssemblyA&quot;).CreateInstance(fullName);
+var result = (Demo)obj;
+result.DoSome();
+</code></pre><h3 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h3><p>函数&gt;方法。<br>函数包括：方法，非数据成员：索引器，构造函数，析构函数，属性。</p>
+<h3 id="构造函数初始化器"><a href="#构造函数初始化器" class="headerlink" title="构造函数初始化器"></a>构造函数初始化器</h3><pre><code>public Car(string des) : this(des , 4)
+{    
+    //...
+}
+public Car(string des,int wheel)
+{    
+    //...        
+}
+</code></pre><p>实现构造函数之间的重用: this 或: base 之后的构造函数先执行，然后再执行此构造函数。</p>
+<h3 id="partial关键词"><a href="#partial关键词" class="headerlink" title="partial关键词"></a>partial关键词</h3><p>编译时，两个不分类的属性，XML注释，接口，泛型类型的参数属性，特性和成员会合并。</p>
+<h3 id="泛型中的default关键字"><a href="#泛型中的default关键字" class="headerlink" title="泛型中的default关键字"></a>泛型中的default关键字</h3><p>初始化泛型参数T时，可以使用detault(T)。在不知道T是引用类型还是值类型的情况下，分别赋予引用类型null或者值类型0</p>
+<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>类似于C++中的函数指针（但类型不安全，参数和返回值未知）<br>面向对象编程，没有方法是孤立的。如果要传递方法， 就要把方法细节（签名和返回类型）封装在一种新类型对象中，即委托。委托是一种特殊对象，普通对象都包含数据，而委托包含的只是一个或多个方法的地址（指针）。</p>
+<h3 id="委托的定义和使用：（面向对象的角度）"><a href="#委托的定义和使用：（面向对象的角度）" class="headerlink" title="委托的定义和使用：（面向对象的角度）"></a>委托的定义和使用：（面向对象的角度）</h3><ol>
+<li><p>定义一个委托（类似定义一个类）<br><code>private delegate string GetAString();</code></p>
+</li>
+<li><p>实例化一个GetAString的委托实例（实例化一个对象）。<br>委托语法上总是接收一个参数的构造函数。<br><code>GetAString me=new GetAString(x.ToString);</code><br>或者委托推断：<br><code>GetAString me=x.ToString;</code></p>
+</li>
+<li><p>me();或者me.Invoke();<br>编译器会用me.Invoke()；代替me()；</p>
+</li>
+</ol>
+<h3 id="浅表复制，深度复制"><a href="#浅表复制，深度复制" class="headerlink" title="浅表复制，深度复制"></a>浅表复制，深度复制</h3><h4 id="浅表复制，成员对象，直接复制引用。成员值，创建值副本。"><a href="#浅表复制，成员对象，直接复制引用。成员值，创建值副本。" class="headerlink" title="浅表复制，成员对象，直接复制引用。成员值，创建值副本。"></a>浅表复制，成员对象，直接复制引用。成员值，创建值副本。</h4><h4 id="深度复制，成员对象，创建副本。成员值，创建值副本。"><a href="#深度复制，成员对象，创建副本。成员值，创建值副本。" class="headerlink" title="深度复制，成员对象，创建副本。成员值，创建值副本。"></a>深度复制，成员对象，创建副本。成员值，创建值副本。</h4><pre><code>[Serializable]  //可被序列化，实现深度复制
+public class CloneDemo  // : ICloneable，可继承接口，实现方法复制
+{
+    public int State { get; set; }
+    public StateObject innerObj { get; set; }
+
+    [Serializable]
+    public class StateObject
+    {
+        public int InnerState { get; set; }
+    }
+
+    public CloneDemo()
+    {
+        State = 1;
+        innerObj = new StateObject { InnerState = 1, };
+    }
+
+    //浅表复制
+    public CloneDemo ShadowClone()
+    {            
+        return this.MemberwiseClone() as CloneDemo;        
+    }
+
+    //深度复制
+    public CloneDemo DeepClone()
+    {
+        using (var stream = new MemoryStream())
+        {
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
+            stream.Seek(0, SeekOrigin.Begin);
+            return formatter.Deserialize(stream) as CloneDemo;
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var demo = new CloneDemo();
+        var shadow = demo.ShadowClone();
+        var deep = demo.DeepClone();
+        Console.WriteLine(&quot;demo：属性State = {0}，引用innerObj.State = {1}&quot;, demo.State, demo.innerObj.InnerState);
+        Console.WriteLine(&quot;shadow：属性State = {0}，引用innerObj.State = {1}&quot;, shadow.State, shadow.innerObj.InnerState);
+        Console.WriteLine(&quot;deep：属性State = {0}，引用innerObj.State = {1}&quot;, deep.State, deep.innerObj.InnerState);
+        demo.State = -1;
+        demo.innerObj.InnerState = -1;
+        Console.WriteLine(&quot;====================\n分别对属性和引用赋值...\n====================&quot;);
+        Console.WriteLine(&quot;demo：属性State = {0}，引用innerObj.State = {1}&quot;, demo.State, demo.innerObj.InnerState);
+        Console.WriteLine(&quot;shadow：属性State = {0}，引用innerObj.State = {1}&quot;, shadow.State, shadow.innerObj.InnerState);
+        Console.WriteLine(&quot;deep：属性State = {0}，引用innerObj.State = {1}&quot;, deep.State, deep.innerObj.InnerState);
+
+        Console.ReadKey();
+    }
+}
+</code></pre><h3 id="Array抽象类"><a href="#Array抽象类" class="headerlink" title="Array抽象类"></a>Array抽象类</h3><pre><code>Type t=...;
+Array intArr=Array.CreateInstance(typeof(t),5);
+intArr.SetValue(33,2);
+intArr.GetValue(2);
+</code></pre><p>事先不知类型，可由此创建数组。</p>
+<p>Array.Sort(数组,IComparer<t> 比较器);</t></p>
+<h3 id="Enumerator"><a href="#Enumerator" class="headerlink" title="Enumerator"></a>Enumerator</h3><p>GetEnumerator()方法用IEnumerable接口定义。foreach语句并不真的需要集合实现这个接口。有一个名为GetEnumerator()的方法，返回实现了IEnumerator接口的对象就行了。</p>
+<p>IEnumerator接口定义了Reset()方法，以与COM交互操作。</p>
+<h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><p>解析为下面的代码段：</p>
+<pre><code>var enumerator = list.GetEnumerator();
+while (enumerator.MoveNext())
+{
+    var item = enumerator.Current;
+    if (item != null)
+    {
+        Console.WriteLine(item.Name);
+    }
+}
+</code></pre><h3 id="yield语句"><a href="#yield语句" class="headerlink" title="yield语句"></a>yield语句</h3><p>包含yield语句的方法或属性也成为迭代块。必须声明为返回IEnumerator或IEnumerable接口。可包含yield return或yeild break，不能有return语句。<br>使用迭代块，编译器会生成一个yield类型，包含一个状态机。记录了迭代的当前位置。<br>foreach访问迭代器，一次访问一个。无需一次加载完所有数据。</p>
+<p>可以把yeild类型看作内部类Enumerator。</p>
+<pre><code>class My
+{
+    public class Enumerator : IEnumerator&lt;string&gt;, IEnumerator, IDisposable
+    {
+        private int state;
+        public string Current 
+        { get; private set; }
+        public void Dispose()            
+        {...}
+        public bool MoveNext()            
+        {...}
+        public void Reset()            
+        {...}
+        object IEnumerator.Current            
+        {get{return Current;}}
+    }
+}
+</code></pre><p>默认迭代是：定义为返回Enumerator的GetEnumerator()方法，是foreach默认采用的方法。自定义命名迭代返回IEnumerable。</p>
+<h3 id="集合特性"><a href="#集合特性" class="headerlink" title="集合特性"></a>集合特性</h3><ul>
+<li>IEnumerabel<t>：GetEnumerator()，返回一个实现了IEnumerator接口的枚举。可以被foreach。</t></li>
+<li>ICollection<t>：由泛型集合实现。Count属性。CopyTo()方法（把集合复制到数组中）。Add()，Remove()，Clear()方法。</t></li>
+<li>IList<t>：派生自ICollection<t>。定义了索引器，可通过指定位置，Insert()或RemoveAt()。</t></t></li>
+<li>ISet<t>：派生自ICollection<t>。由集实现。合并，交集，并集。</t></t></li>
+<li>IDictionary<tkey,tvalue>：键值集合。索引器。</tkey,tvalue></li>
+<li>ILookup<tkey,tvalue>：一个键包含多个值。</tkey,tvalue></li>
+<li>IComparer<t>：比较器实现。Compare()对集合中的元素排序。</t></li>
+<li>IEqualityComparer<t>：比较器，数组，元祖实现。该比较器可用于字典中的键。</t></li>
+<li>IProducerConsumerCollection<t>：.NET4.0。支持新的线程安全的集合类。</t></li>
+<li>IReadOnlyCollection<t>，IReadOnlyList<t>，IReadOnlyDictionary<tkey,tvalue>：初始化后不能修改的，只能检索。</tkey,tvalue></t></t></li>
+<li>IImmutableArray<t>，IImmutableList<t>，IImmutableQueue<t>，IImmutableSet<t>，<br>IImmutableDictionary<tkey,tvalue>：初始化后不能修改。不可变接口定义了不可变集合的方法和属性。</tkey,tvalue></t></t></t></t></li>
+</ul>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>先进先出（FIFO）容器。</p>
+<p>Queue<t> ，先进先出（FIFO）。<br>Enqueue()，一端添加元素。Dequeue()，另一端读取和删除元素。<br>Peek()，从头部读取一个元素，但不删除。</t></p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>后进先出（LIFO）容器。</p>
+<p>Push()，添加元素。Pop()获取最近添加的元素。<br>Peek()，返回栈顶的元素，但不删除它。</p>
+<h3 id="Lookup类"><a href="#Lookup类" class="headerlink" title="Lookup类"></a>Lookup类</h3><p>一键对多值</p>
+<pre><code>List&lt;Book&gt; list = new List&lt;Book&gt;
+{
+    new Book() { Title = &quot;b1&quot;, Price = 1 },
+    new Book() { Title = &quot;b2&quot;, Price = 2 },
+    new Book() { Title = &quot;a2&quot;, Price = 2 }
+};
+
+var bookLk = list.ToLookup(p =&gt; p.Price);
+foreach (var item in bookLk[2])
+{
+    Console.WriteLine(item.Title);
+}
+</code></pre><h3 id="集"><a href="#集" class="headerlink" title="集"></a>集</h3><p>HashSet 不重复无序，SortedSet 不重复有序</p>
+<pre><code>aSet.Add()  //是否成功添加了元素。
+aSet.IsSubsetOf(bSet)       //a是否是b的子集（b包含a所有元素）
+bSet.IsSupersetOf(aSet)     //b是否是a的超集（b包含a所有元素）
+aSet.Overlaps(bSet)         //a与b是否共享某元素。（重叠）
+aSet.UnionWith(bSet)        //向a中加入b所有的元素。
+aSet.ExceptWith(bSet)       //从a中删除b拥有的元素
+</code></pre><h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>不可变集合，需要引用System.Collections.Immutable（.NET4.5）</p>
+<pre><code>ImmutableList&lt;string&gt;.Add(&quot;&quot;)   //每次返回一个新的不变集合，不改变本身。
+var build=imList.ToBuild()      //构建器。返回一个可变集合。可以进行.Add()，.Remove()等。
+build.ToImmutable()             //返回一个变动后的不可变集合。
+</code></pre><h3 id="并发集合"><a href="#并发集合" class="headerlink" title="并发集合"></a>并发集合</h3><ul>
+<li>IProducerConsumerCollection<t><br>TryAdd(),和TryTake()。</t></li>
+<li>ConcurrentQueue<t><br>免锁定，内部链表。TryTake(),Enqueue(),TryDequeue(),TryPeek()</t></li>
+<li>ConcurrentStack<t><br>链表。Push(),TryPeek(),TryPop(),TryPopRange()</t></li>
+<li>ConcurrentBag<t><br>没有定义添加或提取项的任何顺序，线程映射到内部使用的数组，尝试减少锁定。</t></li>
+<li>ConcurrentDictionary<tkey,tvalue><br>线程安全，非阻塞键值集合。TryGetValue(),TryRemove(),TryUpdate()。没有实现IProducerConsumerCollection<t>。</t></tkey,tvalue></li>
+<li>BlockingCollection<t><br>阻塞线程。Add(),Take()。</t></li>
+</ul>
+<h3 id="dynamic类型"><a href="#dynamic类型" class="headerlink" title="dynamic类型"></a>dynamic类型</h3><p>dynamic类型允许编写忽略编译期间的类型检查代码。<br>var对象类型的确定会延迟，确定后不可变。dynamic类型可以改变多次。int-&gt;string-&gt;object</p>
+<h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><p>只能用于返回Task或void的方法。不能作为程序的入口点。</p>
+<h3 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h3><p>启动Task的3种方式：</p>
+<pre><code>1. 
+Action act = () =&gt;
+{
+    Console.WriteLine(&quot;任务开始&quot;);
+    Thread.Sleep(2000);
+};
+Task t = new Task(act);
+t.Start();
+
+2. 
+Task t = Task.Factory.StartNew(act);
+
+3. 
+Task t = Task.Run(act);    //对Factory的封装
+
+//完成通知，回调
+t.ContinueWith(task =&gt;
+{
+    Console.WriteLine(&quot;完成状态&quot;);
+    Console.WriteLine(&quot;IsCanceled={0}\tIsCompleted={1}\tIsFaulted={2}&quot;, task.IsCanceled, task.IsCompleted, task.IsFaulted);
+});
+</code></pre><h3 id="Task组合器"><a href="#Task组合器" class="headerlink" title="Task组合器"></a>Task组合器</h3><ul>
+<li>Task.WhenAll(t1,t2)<br>等待，直到全部任务都完成。</li>
+<li>Task.WhenAny(t1,t2)<br>等待，直到其中一个任务完成就会返回。</li>
+</ul>
+<h3 id="应用CancellationTokenSource，取消Task"><a href="#应用CancellationTokenSource，取消Task" class="headerlink" title="应用CancellationTokenSource，取消Task"></a>应用CancellationTokenSource，取消Task</h3><pre><code>static void Main(string[] args)
+{
+    var cts = new CancellationTokenSource();
+    Task&lt;int&gt; t = new Task&lt;int&gt;(() =&gt; Add(cts.Token), cts.Token);
+    t.Start();
+    t.ContinueWith(TaskEnded);
+    Console.ReadKey();
+    cts.Cancel();
+    Console.ReadKey();
+}
+
+static void TaskEnded(Task&lt;int&gt; task)
+{
+    Console.WriteLine(&quot;完成&quot;);
+    Console.WriteLine(&quot;IsCanceled:{0},IsCompleted:{1},IsFaulted:{2}&quot;, 
+        task.IsCanceled, task.IsCompleted, task.IsFaulted);
+
+    ①Console.WriteLine(&quot;返回值：&quot; + task.Result);
+    ②try
+    {
+        Console.WriteLine(&quot;返回值:&quot; + task.Result);
+    }
+    catch (AggregateException e)
+    {
+        var errs = e.InnerExceptions;     //与组合器配合，获取所有任务异常。
+        e.Handle(err =&gt; err is OperationCanceledException);
+    }
+}
+
+static int Add(CancellationToken token)
+{
+    Console.WriteLine(&quot;任务开始&quot;);
+    int result = 0;
+
+    ①while (!token.IsCancellationRequested)
+    {
+        result++;
+        Thread.Sleep(1000);
+    }
+
+    ②③while (true)
+    {
+        result++;
+        Thread.Sleep(1000);
+
+        ②token.ThrowIfCancellationRequested();
+
+        ③if (result == 5)
+        {
+            throw new Exception(&quot;error&quot;);
+        }
+    }
+    return result;
+}
+</code></pre><p>PS：<br>Task<tresult> t=…  ，有返回参数才有①t.Result属性。<br>任务完成则,IsCompleted:true。不论是否异常。<br>①进行逻辑判断，任务正常结束后，进入TaskEnded，结果：IsCanceled:false,IsFaulted:false<br>②通过抛AggregateException异常，立即结束任务，进入TaskEnded，结果：IsCanceled:true,IsFaulted:false<br>③通过抛自定义异常，立即结束任务，进入TaskEnded，结果：IsCanceled:false,IsFaulted:true     </tresult></p>
+<h3 id="虚拟寻址系统"><a href="#虚拟寻址系统" class="headerlink" title="虚拟寻址系统"></a>虚拟寻址系统</h3><p>32位处理器上的每个进程都可以使用4GB的内存，无论计算机实际有多少物理内存。（64位更大）。<br>包含了：可执行代码，dll，变量等</p>
+<h3 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h3><p>栈指针指向为栈保留的内存块末尾。栈实际上是向下填充的。即从高内存地址向低内存地址填充。数据入栈后，指针调整，始终指向下一空闲存储单元。数据释放（变量超出作用域），指针向上递增。<br>变量的生存期总是嵌套的，保证了栈指针是有序的。</p>
+<h3 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h3><p>堆上的内存是向上分配的。空闲空间在已用空间的上面。</p>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>gc运行时，会从堆中删除不再引用的所有对象。只要释放了能释放的所有对象，它就把其他对象移动回堆的端部。再次形成一个连续的内存块。因此，堆可以确定在什么地方存储新对象。对象移动后，需要新地址更新引用，gc会处理更新问题。</p>
+<h3 id="大对象堆"><a href="#大对象堆" class="headerlink" title="大对象堆"></a>大对象堆</h3><p>不同于主堆，存储使用大于85000个字节对象。压缩大对象比较昂贵。故大对象对上的对象不执行压缩过程。</p>
+<p>第二代和大对象堆上的回收放在后台线程执行，应用程序仅为第0代和第1代回收而阻塞，减少了暂停时间。</p>
+<h3 id="非托管资源"><a href="#非托管资源" class="headerlink" title="非托管资源"></a>非托管资源</h3><p>文件句柄，网络连接，数据库连接等。</p>
+<h3 id="托管资源"><a href="#托管资源" class="headerlink" title="托管资源"></a>托管资源</h3><p>栈，堆上的数据。</p>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><p>C#不常使用，无法确定执行时机。有析构函数的对象需要两次处理才能销毁。析构函数运行时间长，非常耗性能。</p>
+<h3 id="IDisposable接口"><a href="#IDisposable接口" class="headerlink" title="IDisposable接口"></a>IDisposable接口</h3><p>C#推荐IDisposable接口替代析构函数。声明Dispose()，释放非托管资源。控制更精准。<br>如果显式调用需要try,catch,防止异常而没有执行。<br>代替用using()语句，更简单。</p>
+<h3 id="unsafe代码块"><a href="#unsafe代码块" class="headerlink" title="unsafe代码块"></a>unsafe代码块</h3><p>unsafe可以修饰 类成员方法等。标记为不安全代码，可以使用指针语法提高性能。但带来不安全性和不方便等。</p>
+<h3 id="指针语法"><a href="#指针语法" class="headerlink" title="指针语法"></a>指针语法</h3><pre><code>int x=10;
+int*  pX,pY;
+pX= &amp;x;
+pY=px;
+*pY=20;
+</code></pre><p>结果：x内容改为20。pY与x中间没有任何关系，pY碰巧指向存储x的存储单元。<br>//pX，pY也占用4个字节，因为32位处理器上，4个字节存储一个地址。<br>&amp;表示取地址，把一个值类型转换为指针。<br>*表示获取地址的内容，把一个指针转换为值类型。</p>
+<ul>
+<li><p>强制转换：</p>
+<p>  uint y=(uint)pX;<br>  int<em> pD=(int</em>)y;</p>
+</li>
+</ul>
+<h3 id="自定义特性"><a href="#自定义特性" class="headerlink" title="自定义特性"></a>自定义特性</h3><pre><code>[FieldName(&quot;xxx&quot;)]  //FieldNameAttribute，Attribute可以省略，自动添加。搜索指定名称的类，实例化。
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Class,       //引用在哪些元素上，或的关系
+AllowMultiple=false,      //是否可以多次应用在同一元素
+Inherited=false)]      //自动应用到派生类或接口，重写的方法等
+public class FieldNameAttribute: Attribute
+{
+   public string Comment {get;set;}
+
+   private string name;
+   public FieldNameAttribute(string name)
+   {
+       this.name=name;  
+   }
+}
+</code></pre><p>使用：</p>
+<pre><code>[FieldName(&quot;xxx&quot;,Comment=&quot;xxx&quot;)]
+public string Func
+{ 
+    ... 
+}
+</code></pre><h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><ul>
+<li>属性<br>Data，可以添加的额外信息字典。<br>HelpLink，连接帮助文件上。<br>InnerException，如异常在catch中抛出，则inner为把代码发送到catch块的异常对象。<br>Source，导致异常程序或对象名。<br>StackTrace，调用栈信息。<br>TargetSite，抛出异常的方法的反射对象。  .ReflectedType获得类的Type对象。</li>
+</ul>
+<h3 id="调用者特性"><a href="#调用者特性" class="headerlink" title="调用者特性"></a>调用者特性</h3><pre><code>public class Book
+{
+    public string Title { get; set; }
+    public decimal Price { get; set; }
+
+    public void Log([CallerLineNumber] int line = 0,
+        [CallerFilePath] string path = &quot;&quot;,
+        [CallerMemberName] string name = &quot;&quot;)
+    {
+        //Do with line,path,name... 包括调用者的信息
+    }
+}
+
+Book b = new Book();
+b.Log();
+</code></pre><h3 id="ThreadPool"><a href="#ThreadPool" class="headerlink" title="ThreadPool"></a>ThreadPool</h3><pre><code>Book b = new Book() { Title = &quot;t&quot;, Price = 1 };
+ThreadPool.QueueUserWorkItem(i =&gt;
+{
+    Book b1 = i as Book;
+    Console.WriteLine(&quot;书名&quot; + b1.Title + &quot;价格&quot; + b1.Price);
+}, b);
+</code></pre><h3 id="线程池的限制"><a href="#线程池的限制" class="headerlink" title="线程池的限制"></a>线程池的限制</h3><ol>
+<li>线程池中的所有线程都是后台线程。并且不能把入池的线程改为前台线程。</li>
+<li>不能设置池中线程的优先级或名称。</li>
+<li>所有线程都是多线程单元（MTA）线程，许多COM对象都需要单线程单元（STA）线程。</li>
+<li>入池的线程只能用于时间短的任务。<br>如果需要一直运行（如word拼写检查），应创建Thread或Task使用LongRunning选项。</li>
+</ol>
+<h3 id="控制线程"><a href="#控制线程" class="headerlink" title="控制线程"></a>控制线程</h3><pre><code>var t1 = new Thread(() =&gt; { });
+t1.Priority = ThreadPriority.Highest; //优先级，优先调用。可能影响其他线程
+t1.Abort(); //停止线程，抛出异常
+t1.Join(2000);  //阻塞
+</code></pre><h3 id="Interlocked类"><a href="#Interlocked类" class="headerlink" title="Interlocked类"></a>Interlocked类</h3><p>速度快，简单的同步问题。原子操作。</p>
+<pre><code>Interlocked.CompareExchange();
+Interlocked.Increment();
+</code></pre><h3 id="Monitor类"><a href="#Monitor类" class="headerlink" title="Monitor类"></a>Monitor类</h3><p>lock语句会被编译器解析成以下代码：</p>
+<pre><code>object obj = new object();
+Monitor.Enter(obj);
+try
+{
+    //线程同步区域
+}
+finally
+{
+    Monitor.Exit(obj);
+}
+</code></pre><p>Monitor的好处是可以指定等待时间：</p>
+<pre><code>bool lockToken = false;
+Monitor.TryEnter(obj, 500, ref lockToken);
+if (lockToken)
+{
+    try
+    {
+        //线程同步区域
+    }
+    finally
+    {
+        Monitor.Exit(obj);
+    }
+}
+else
+{
+    //做其他的事情
+}
+</code></pre><h3 id="读写互斥锁"><a href="#读写互斥锁" class="headerlink" title="读写互斥锁"></a>读写互斥锁</h3><pre><code>class Program
+{
+    private static List&lt;int&gt; items = new List&lt;int&gt;() { 0, 1, 2, 3, 4, 5, 6 };
+    private static ReaderWriterLockSlim rwl = new ReaderWriterLockSlim();
+
+    static void ReaderMethod(object reader)
+    {
+        try
+        {
+            rwl.EnterReadLock();     //如果该锁是读取模式，则读取线程直接进入。累计数+1
+            for (int i = 0; i &lt; items.Count; i++)
+            {
+                Console.WriteLine(&quot;reader {0},loop {1},item {2}&quot;, reader, i, items[i]);
+            }
+        }
+        finally
+        {
+            rwl.ExitReadLock();     //读取线程退出，累计数-1。为0时退出读取模式
+        }
+    }
+
+    static void WriterMethod(object writer)
+    {
+        try
+        {
+            //Thread.Sleep(100);    //如果写入线程等待，则全部读取的线程会先执行完。否则就抢
+            while (!rwl.TryEnterWriteLock(50))      //如果取得写入锁，则进入独占写入模式。
+            {
+                Console.WriteLine(&quot;writer {0} 等待取写入锁&quot;, writer);
+                Console.WriteLine(&quot;当前读者个数&quot; + rwl.CurrentReadCount);
+            }
+            Console.WriteLine(&quot;writer {0} 取得写锁&quot;, writer);
+            for (int i = 0; i &lt; items.Count; i++)
+            {
+                items[i]++;
+                Thread.Sleep(50);
+            }
+            Console.WriteLine(&quot;writer {0} 写入完毕&quot;, writer);
+        }
+        finally
+        {
+            rwl.ExitWriteLock();     //退出独占写入模式，读写线程开始抢锁
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        var taskFac = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
+        for (int i = 0; i &lt; 6; i++)
+        {
+            if (i==1 || i==4)
+            {
+                taskFac.StartNew(WriterMethod, i);
+            }
+            else
+            {
+                taskFac.StartNew(ReaderMethod, i);
+            }
+        }
+        Console.ReadKey();
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Lancelot 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lancelot 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Lancelot
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://adieUkid.github.io/2017/04/04/C-高级编程-注释笔记/" title="C#高级编程_注释笔记">http://adieUkid.github.io/2017/04/04/C-高级编程-注释笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/27/Head-First设计模式-注释笔记/" rel="next" title="Head First设计模式_注释笔记">
+                <i class="fa fa-chevron-left"></i> Head First设计模式_注释笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/09/精通C-注释笔记/" rel="prev" title="精通C#-注释笔记">
+                精通C#-注释笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Lancelot" />
+            
+              <p class="site-author-name" itemprop="name">Lancelot</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type类型"><span class="nav-number">1.</span> <span class="nav-text">Type类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type的成员方法"><span class="nav-number">2.</span> <span class="nav-text">Type的成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Assembly和Type"><span class="nav-number">3.</span> <span class="nav-text">Assembly和Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序集"><span class="nav-number">4.</span> <span class="nav-text">程序集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序域"><span class="nav-number">5.</span> <span class="nav-text">应用程序域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图解"><span class="nav-number">5.1.</span> <span class="nav-text">图解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同域加载程序集"><span class="nav-number">5.2.</span> <span class="nav-text">不同域加载程序集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当前域加载程序集"><span class="nav-number">5.3.</span> <span class="nav-text">当前域加载程序集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法和函数"><span class="nav-number">6.</span> <span class="nav-text">方法和函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数初始化器"><span class="nav-number">7.</span> <span class="nav-text">构造函数初始化器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#partial关键词"><span class="nav-number">8.</span> <span class="nav-text">partial关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型中的default关键字"><span class="nav-number">9.</span> <span class="nav-text">泛型中的default关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托"><span class="nav-number">10.</span> <span class="nav-text">委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托的定义和使用：（面向对象的角度）"><span class="nav-number">11.</span> <span class="nav-text">委托的定义和使用：（面向对象的角度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浅表复制，深度复制"><span class="nav-number">12.</span> <span class="nav-text">浅表复制，深度复制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅表复制，成员对象，直接复制引用。成员值，创建值副本。"><span class="nav-number">12.1.</span> <span class="nav-text">浅表复制，成员对象，直接复制引用。成员值，创建值副本。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度复制，成员对象，创建副本。成员值，创建值副本。"><span class="nav-number">12.2.</span> <span class="nav-text">深度复制，成员对象，创建副本。成员值，创建值副本。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array抽象类"><span class="nav-number">13.</span> <span class="nav-text">Array抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enumerator"><span class="nav-number">14.</span> <span class="nav-text">Enumerator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foreach"><span class="nav-number">15.</span> <span class="nav-text">foreach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yield语句"><span class="nav-number">16.</span> <span class="nav-text">yield语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合特性"><span class="nav-number">17.</span> <span class="nav-text">集合特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">18.</span> <span class="nav-text">队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈"><span class="nav-number">19.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lookup类"><span class="nav-number">20.</span> <span class="nav-text">Lookup类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集"><span class="nav-number">21.</span> <span class="nav-text">集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Immutable"><span class="nav-number">22.</span> <span class="nav-text">Immutable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发集合"><span class="nav-number">23.</span> <span class="nav-text">并发集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic类型"><span class="nav-number">24.</span> <span class="nav-text">dynamic类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async"><span class="nav-number">25.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task"><span class="nav-number">26.</span> <span class="nav-text">Task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task组合器"><span class="nav-number">27.</span> <span class="nav-text">Task组合器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用CancellationTokenSource，取消Task"><span class="nav-number">28.</span> <span class="nav-text">应用CancellationTokenSource，取消Task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟寻址系统"><span class="nav-number">29.</span> <span class="nav-text">虚拟寻址系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈（stack）"><span class="nav-number">30.</span> <span class="nav-text">栈（stack）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆（heap）"><span class="nav-number">31.</span> <span class="nav-text">堆（heap）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收"><span class="nav-number">32.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大对象堆"><span class="nav-number">33.</span> <span class="nav-text">大对象堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非托管资源"><span class="nav-number">34.</span> <span class="nav-text">非托管资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#托管资源"><span class="nav-number">35.</span> <span class="nav-text">托管资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构函数"><span class="nav-number">36.</span> <span class="nav-text">析构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDisposable接口"><span class="nav-number">37.</span> <span class="nav-text">IDisposable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unsafe代码块"><span class="nav-number">38.</span> <span class="nav-text">unsafe代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针语法"><span class="nav-number">39.</span> <span class="nav-text">指针语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义特性"><span class="nav-number">40.</span> <span class="nav-text">自定义特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exception"><span class="nav-number">41.</span> <span class="nav-text">Exception</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用者特性"><span class="nav-number">42.</span> <span class="nav-text">调用者特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPool"><span class="nav-number">43.</span> <span class="nav-text">ThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的限制"><span class="nav-number">44.</span> <span class="nav-text">线程池的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制线程"><span class="nav-number">45.</span> <span class="nav-text">控制线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interlocked类"><span class="nav-number">46.</span> <span class="nav-text">Interlocked类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Monitor类"><span class="nav-number">47.</span> <span class="nav-text">Monitor类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写互斥锁"><span class="nav-number">48.</span> <span class="nav-text">读写互斥锁</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lancelot</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.6"  zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
