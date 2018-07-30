@@ -86,17 +86,16 @@
 
 
 
-<meta name="description" content="Rich Text Editing Example">
+<meta name="description" content="个人感悟">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lancelot&#39;s Notes">
-<meta property="og:url" content="http://adieUkid.github.io/files/js/professional/richtext.html">
+<meta property="og:url" content="http://adieUkid.github.io/archives/2018/07/index.html">
 <meta property="og:site_name" content="Lancelot&#39;s Notes">
-<meta property="og:description" content="Rich Text Editing Example">
+<meta property="og:description" content="个人感悟">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-04T17:19:51.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lancelot&#39;s Notes">
-<meta name="twitter:description" content="Rich Text Editing Example">
+<meta name="twitter:description" content="个人感悟">
 
 
 
@@ -126,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://adieUkid.github.io/files/js/professional/richtext.html"/>
+  <link rel="canonical" href="http://adieUkid.github.io/archives/2018/07/"/>
 
 
 
 
 
-  <title> | Lancelot's Notes</title>
+  <title>归档 | Lancelot's Notes</title>
   
 
 
@@ -161,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -299,161 +298,74 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-	<h2 class="post-title" itemprop="name headline"></h2>
-
-
-
-</header>
+      <span class="archive-page-counter">
+        
+        
+        
+          
+        
+        嗯..! 目前共计 8 篇日志。 继续努力。
+      </span>
 
       
-      
-      
-      <div class="post-body">
-        
-        
-          <!DOCTYPE html>
-<html>
-<head>
-    <title>Rich Text Editing Example</title>
-    <script type="text/javascript" src="EventUtil.js"></script>
-</head>
-<body>
-    <form method="post" action="javascript:alert('Form submitted!')">
-        <div id="divSimple">
-            <input type="button" value="Bold">
-            <input type="button" value="Italic">
-            <input type="button" value="Underline">
-            <input type="button" value="Indent">
-            <input type="button" value="Outdent">
-            <input type="button" value="Copy">
-            <input type="button" value="Cut">
-            <input type="button" value="Paste">
-        </div>
-        <div id="divComplex">
-            <input type="button" value="Create Link" id="btnCreateLink"> 
-            <input type="button" value="Change Font Size" id="btnChangeFontSize">   
-            <input type="button" value="Highlight Text" id="btnHighlight">       
-            <input type="button" value="Get HTML" id="btnGetHtml">
-            <input type="button" value="Get Selected Text" id="btnGetSelected">
-        </div>
-        <div id="divQuery">Is the current selection: 
-            <input type="button" value="Bold"> 
-            <input type="button" value="Italic">          
-            <input type="button" value="Underline">
-        </div>
-        <iframe name="richedit" style="height: 100px; width: 300px" src="blank.html"></iframe>
-        <input type="hidden" name="comments" value="">
-        <input type="submit" value="Submit Form">
-   </form>
-    <script type="text/javascript">
-        
-        (function(){
-            
-            EventUtil.addHandler(window, "load", function(){
-                frames["richedit"].document.designMode = "on";
-            });
-            
-            var simple = document.getElementById("divSimple");
-            var complex = document.getElementById("divComplex");
-            var queryDiv = document.getElementById("divQuery");                
-            
-            EventUtil.addHandler(document.forms[0], "submit", function(){
-                event = EventUtil.getEvent(event);
-                var target = EventUtil.getTarget(event);
-            
-                target.elements["comments"].value = frames["richedit"].document.body.innerHTML;
-            });
-            
-            EventUtil.addHandler(simple, "click", function(event){
-                event = EventUtil.getEvent(event);
-                var target = EventUtil.getTarget(event);
-                
-                if (target.type == "button"){                    
-                    frames["richedit"].document.execCommand(target.value.toLowerCase(), false, null);                        
-                }
-    
-            });
-
-            EventUtil.addHandler(complex, "click", function(event){
-                event = EventUtil.getEvent(event);
-                var target = EventUtil.getTarget(event);
-                
-                switch(target.id){
-                    case "btnGetHtml":
-                        alert(frames["richedit"].document.body.innerHTML);
-                        break;
-                    case "btnCreateLink":
-                        var link = prompt("What link?", "http://www.wrox.com");
-                        if (link){
-                            frames["richedit"].document.execCommand("createlink", false, link);
-                        }
-                        break;
-                    case "btnChangeFontSize":
-                        var size = prompt("What size? (1-7)", "7");
-                        if (size){
-                            frames["richedit"].document.execCommand("fontsize", false, parseInt(size,10));
-                        }
-                        break;
-                    case "btnGetSelected":
-                        if (frames["richedit"].getSelection){
-                            alert(frames["richedit"].getSelection().toString());
-                        } else if (frames["richedit"].document.selection){
-                            alert(frames["richedit"].document.selection.createRange().text);
-                        }
-                        break;
-                    case "btnHighlight":
-                        if (frames["richedit"].getSelection){
-                            var selection = frames["richedit"].getSelection();
-                            
-                            //get the range representing the selection
-                            var range = selection.getRangeAt(0);
-                            
-                            //highlight the selected text
-                            var span = frames["richedit"].document.createElement("span");
-                            span.style.backgroundColor = "yellow";
-                            range.surroundContents(span);
-                           
-                        } else if (frames["richedit"].document.selection){
-                            var range = frames["richedit"].document.selection.createRange();
-                            range.pasteHTML("<span style=\"background-color:yellow\">" + range.htmlText + "</span>");
-                        }
-                        break;
-                }
-
-            });
-            
-            EventUtil.addHandler(queryDiv, "click", function(event){
-                event = EventUtil.getEvent(event);
-                var target = EventUtil.getTarget(event);
-                
-                if (target.type == "button"){
-                    alert(frames["richedit"].document.queryCommandState(target.value.toLowerCase(), false, null));
-                }
-            });
-
-        })();
-    
-    </script>       
-</body>
-</html>
 
         
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h2 class="archive-year" id="archive-year-2018">2018</h2>
+          </div>
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/07/30/Python编程：从入门到实践/" itemprop="url">
+              
+                <span itemprop="name">Python编程：从入门到实践</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-07-30T12:43:05+08:00"
+              content="2018-07-30" >
+          07-30
+        </time>
       </div>
+
+    </header>
+  </article>
+
+
+
       
-      
-      
+
     </div>
-    
-    
-    
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -461,10 +373,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -693,10 +601,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
