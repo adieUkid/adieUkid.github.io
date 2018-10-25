@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然">
+<meta name="description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言">
 <meta name="keywords" content="C#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="精通C#_注释笔记">
 <meta property="og:url" content="http://adieUkid.github.io/2017/05/09/精通C_注释笔记/index.html">
 <meta property="og:site_name" content="Alan&#39;s Notes">
-<meta property="og:description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然">
+<meta property="og:description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://adieukid.github.io/images/MasterC/cts.jpg">
 <meta property="og:image" content="http://adieukid.github.io/images/MasterC/mscoree.jpg">
@@ -108,10 +108,10 @@
 <meta property="og:image" content="http://adieukid.github.io/images/MasterC/io.jpg">
 <meta property="og:image" content="http://adieukid.github.io/images/MasterC/map.jpg">
 <meta property="og:image" content="http://adieukid.github.io/images/MasterC/save.jpg">
-<meta property="og:updated_time" content="2018-09-13T09:48:56.263Z">
+<meta property="og:updated_time" content="2018-10-25T03:05:12.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="精通C#_注释笔记">
-<meta name="twitter:description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然">
+<meta name="twitter:description" content="第一部分：C#与.NET平台源码-IL-汇编过程.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言">
 <meta name="twitter:image" content="http://adieukid.github.io/images/MasterC/cts.jpg">
 
 
@@ -418,7 +418,7 @@
       
 
       
-        <h2 id="第一部分：C-与-NET平台"><a href="#第一部分：C-与-NET平台" class="headerlink" title="第一部分：C#与.NET平台"></a>第一部分：C#与.NET平台</h2><h3 id="源码-IL-汇编过程"><a href="#源码-IL-汇编过程" class="headerlink" title="源码-IL-汇编过程"></a>源码-IL-汇编过程</h3><p>.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言，然<a id="more"></a>而，IL却包含一些抽象概念(比如：类、异常)，这也是这种语言被称为中间语言的原因。IL被打包在DLL或EXE文件中，而DLL和EXE在.NET中的主要区别就是：只有EXE可以直接被运行，而二者都可被某个正在执行的进程动态装载。由于机器的CPU只能执行本地汇编语言，而不是IL，进一步将IL编译成汇编语言的工作(也就是第二阶段)需要在运行时进行，这个过程由即时编译器(JIT)完成。 </p>
+        <h2 id="第一部分：C-与-NET平台"><a href="#第一部分：C-与-NET平台" class="headerlink" title="第一部分：C#与.NET平台"></a>第一部分：C#与.NET平台</h2><h3 id="源码-IL-汇编过程"><a href="#源码-IL-汇编过程" class="headerlink" title="源码-IL-汇编过程"></a>源码-IL-汇编过程</h3><p>.NET语言的编译分为两个阶段.首先高级语言被编译成一种称作IL的中间语言，与高级语言相比，IL更像是机器语言<a id="more"></a>，然而，IL却包含一些抽象概念(比如：类、异常)，这也是这种语言被称为中间语言的原因。IL被打包在DLL或EXE文件中，而DLL和EXE在.NET中的主要区别就是：只有EXE可以直接被运行，而二者都可被某个正在执行的进程动态装载。由于机器的CPU只能执行本地汇编语言，而不是IL，进一步将IL编译成汇编语言的工作(也就是第二阶段)需要在运行时进行，这个过程由即时编译器(JIT)完成。 </p>
 <p>高级语言在初次被编译时，编译器做两件事：首先把编译得到的IL存储在DLL或EXE中，然后为类的每个方法创建一个stub函数，此函数会调用即时编译器，并将自身的地址作为参数传给编译器。即时编译器则从DLL或EXE中获取相应的IL，编译成机器语言，并将内存中的原零时调用函数替换成机器语言。这个过程的思想，是用已编译的方法调用未编译的方法，实质上被调用的是stub函数；stub函数再调用编译器，将自身编译为本地机器语言；最后，.NET会重新调用该方法，方法此时才被真正地执行。函数被反复调用时，机器指令会被直接执行，而只由编译器对方法进行初次编译需要花费时间。至于那些没有被调用的方法，则不会被编译。 </p>
 <p>当编译器生成一个EXE文件后， 该程序的入口函数为Main() 方法。装载器将这个EXE 文件载入，探测到该这是一个托管EXE，于是又载入 .NET运行时库文件(包括即时编译器)， 接着调用了EXE 的Main() 方法。这将触发对Main()方法的即时编译， Main()方法在内存中被替换为本地机器语言，于是 .NET应用程序开始运行。在被编译为本地语言后，应用程序便可以自由调用本地代码了。当程序中止时，本地代码从内存中释放，所以在下次运行时，IL需要被即时编译器重新编译。</p>
 <h3 id="CTS"><a href="#CTS" class="headerlink" title="CTS"></a>CTS</h3><p>类型规范，规定了类型必须如何定义才能被CLR承载。<br>內建的CTS数据类型：<br><img src="/images/MasterC/cts.jpg" alt="CTS"></p>
@@ -1684,7 +1684,7 @@ public class Picture
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

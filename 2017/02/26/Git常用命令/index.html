@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Alan&#39;s Notes">
 <meta property="og:description" content="Git$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-03T12:33:07.045Z">
+<meta property="og:updated_time" content="2018-10-25T03:05:55.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令">
 <meta name="twitter:description" content="Git$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号">
@@ -403,7 +403,9 @@
       
 
       
-        <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户<br>$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号<br><a id="more"></a><br>$ git config -l         //列出所有设置<br>$ git config –global alias.ci commit       //设置别名<br>$ git config –global alias.last ‘log -1 HEAD’  //看最后一次提交<br>$ git config –global alias.visual ‘!gitk’      //外部命令，+!<br>$ git config –global credential.helper cache   //缓存验证密码<br>$ git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”            //改造log显示，推荐</p>
+        <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户<br>$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号</p>
+<a id="more"></a>
+<p>$ git config -l         //列出所有设置<br>$ git config –global alias.ci commit       //设置别名<br>$ git config –global alias.last ‘log -1 HEAD’  //看最后一次提交<br>$ git config –global alias.visual ‘!gitk’      //外部命令，+!<br>$ git config –global credential.helper cache   //缓存验证密码<br>$ git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”            //改造log显示，推荐</p>
 <p>$ git init                  //在现有目录中初始化仓库<br>$ git add                   //如果参数是目录的路径，该命令将递归地跟踪该目录下的所有文件。add *<br>$ git commit -a             //跳过暂存，直接提交<br>$ git log  [-p] [-2]        //提交记录。显示提交的差异。只显示2条。<br>$ git log –oneline –decorate –graph –all    //输出提交历史、各个分支的指向以及项目的分支分叉情况<br>$ git status -s             //更为紧凑的格式输出</p>
 <p>$ git clone <a href="https://github.com/libgit2/libgit2" target="_blank" rel="noopener">https://github.com/libgit2/libgit2</a> [mylibgit]       //克隆现有的仓库，当前目录下创建一个名为 <code>libgit2&#39;&#39; 的目录，并在这个目录下初始化一个</code>.git 文件夹。[自定义文件夹命名]。命令会自动将其添加为远程仓库并默认以origin为简写。设置本地 master分支跟踪克隆的远程仓库的 master 分支。<br>$ git clone -o booyah       //自定义远程分支名字。创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master 。 Git 也会给你一个与 origin 的 master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。</p>
 <p>$ git diff                  //查看上次暂存之后的变动<br>$ git diff –staged         //查看已经暂存的变动</p>
@@ -613,7 +615,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

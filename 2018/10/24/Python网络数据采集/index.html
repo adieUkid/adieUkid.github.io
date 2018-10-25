@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="初见网络爬虫BeautifulSoap 简介1234567from urllib.request import urlopenfrom bs4 import BeautifulSouphtml = urlopen(&apos;http://www.smallapping.com&apos;)bsObj = BeautifulSoup(html.read(), features=&apos;lxml&apos;)print(bsObj.h">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python网络数据采集_注释笔记">
+<meta property="og:url" content="http://adieUkid.github.io/2018/10/24/Python网络数据采集/index.html">
+<meta property="og:site_name" content="Alan&#39;s Notes">
+<meta property="og:description" content="初见网络爬虫BeautifulSoap 简介1234567from urllib.request import urlopenfrom bs4 import BeautifulSouphtml = urlopen(&apos;http://www.smallapping.com&apos;)bsObj = BeautifulSoup(html.read(), features=&apos;lxml&apos;)print(bsObj.h">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/正则表达式.png">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/深网和暗网.png">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/媒体文件URL.png">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/马尔可夫模型.png">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/HTTP基本接入认证.png">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/图片demo1.png">
+<meta property="og:image" content="http://adieukid.github.io/images/python/python_scraping/图片demo2.png">
+<meta property="og:updated_time" content="2018-10-25T03:08:42.327Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python网络数据采集_注释笔记">
+<meta name="twitter:description" content="初见网络爬虫BeautifulSoap 简介1234567from urllib.request import urlopenfrom bs4 import BeautifulSouphtml = urlopen(&apos;http://www.smallapping.com&apos;)bsObj = BeautifulSoup(html.read(), features=&apos;lxml&apos;)print(bsObj.h">
+<meta name="twitter:image" content="http://adieukid.github.io/images/python/python_scraping/正则表达式.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://adieUkid.github.io/2018/10/24/Python网络数据采集/"/>
+
+
+
+
+
+  <title>Python网络数据采集_注释笔记 | Alan's Notes</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?94a8565d2829b2f9641fe2f93513cd52";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Alan's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">笔记分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://adieUkid.github.io/2018/10/24/Python网络数据采集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alan's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Python网络数据采集_注释笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T19:49:30+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="初见网络爬虫"><a href="#初见网络爬虫" class="headerlink" title="初见网络爬虫"></a>初见网络爬虫</h1><h2 id="BeautifulSoap-简介"><a href="#BeautifulSoap-简介" class="headerlink" title="BeautifulSoap 简介"></a>BeautifulSoap 简介</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://www.smallapping.com'</span>)</span><br><span class="line">bsObj = BeautifulSoup(html.read(), features=<span class="string">'lxml'</span>)</span><br><span class="line">print(bsObj.h1)</span><br><span class="line">print(bsObj.html.body.p)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>调用 bsObj.tagName 只能获取页面中的第一个指定的标签。</p>
+<h2 id="可靠的网络连接"><a href="#可靠的网络连接" class="headerlink" title="可靠的网络连接"></a>可靠的网络连接</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> HTTPError</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTitle</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urlopen(url)</span><br><span class="line">    <span class="keyword">except</span> HTTPError:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        bsObj = BeautifulSoup(html.read(), <span class="string">'lxml'</span>)</span><br><span class="line">        title = bsObj.body.h1</span><br><span class="line">    <span class="keyword">except</span> AttributeError:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">return</span> title</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">title = getTitle(<span class="string">'http://www.smallapping.com'</span>)</span><br><span class="line"><span class="keyword">if</span> title <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">    print(<span class="string">'Title could not be found'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(title)</span><br></pre></td></tr></table></figure>
+<h1 id="复杂HTML解析"><a href="#复杂HTML解析" class="headerlink" title="复杂HTML解析"></a>复杂HTML解析</h1><h2 id="不是一直都要用锤子"><a href="#不是一直都要用锤子" class="headerlink" title="不是一直都要用锤子"></a>不是一直都要用锤子</h2><p>在面对埋藏很深或格式不友好的数据时， 千万不要不经思考就写代码，一定要三思而后行：</p>
+<ul>
+<li><p>寻找“打印此页”的链接，或者看看网站有没有 HTML 样式更友好的移动版（把自己的请求头设置成处于移动设备的状态，然后接收网站移动版）。</p>
+</li>
+<li><p>寻找隐藏在 JavaScript 文件里的信息。要实现这一点，你可能需要查看网页加载的JavaScript 文件。 我曾经要把一个网站上的街道地址（以经度和纬度呈现的）整理成格式整洁的数组时，查看过内嵌谷歌地图的 JavaScript 文件，里面有每个地址的标记点。</p>
+</li>
+<li><p>虽然网页标题经常会用到，但是这个信息也许可以从网页的 URL 链接里获取。</p>
+</li>
+<li><p>如果你要找的信息只存在于一个网站上， 别处没有，那你确实是运气不佳。如果不只限于这个网站， 那么你可以找找其他数据源。有没有其他网站也显示了同样的数据？网站上显示的数据是不是从其他网站上抓取后攒出来的？</p>
+</li>
+</ul>
+<h2 id="再端一碗"><a href="#再端一碗" class="headerlink" title="再端一碗"></a>再端一碗</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> HTTPError</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://www.pythonscraping.com/pages/warandpeace.html'</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">nameList = bs.findAll(<span class="string">'span'</span>, &#123;<span class="string">'class'</span>: <span class="string">'green'</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> nameList:</span><br><span class="line">    print(name.get_text())</span><br></pre></td></tr></table></figure>
+<h3 id="findAll和find"><a href="#findAll和find" class="headerlink" title="findAll和find"></a>findAll和find</h3><p>最常用的两个函数：</p>
+<ol>
+<li><figure class="highlight plain"><figcaption><span>attributes, recursive, text, limit, keywords)```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```find(tag, attributes, recursive, text, keywords)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bs.findAll([<span class="string">'p'</span>, <span class="string">'span'</span>], &#123;<span class="string">'class'</span>: <span class="string">'green'</span>&#125;, text=<span class="string">'the prince'</span>, id=<span class="string">'text'</span> )</span><br></pre></td></tr></table></figure>
+<p>text： 筛选内容与text完全匹配的标签</p>
+<p>recursive：设置为 True， findAll 就会查找标签参数的所有子标签，以及子标签的子标签。为 False， findAll 就只查找文档的一级标签</p>
+<p>limit： 只用于findAll，前x项，按照网页上的顺序</p>
+<p>keywords： 选择特定属性的标签，如id=’text’。冗余功能，完全可以用其他技术替代。findAll(id=”text”)，等同于findAll(“”,{“id”:”text”})。偶尔还会出现问题，比如class=”class”就会错误，因为class是关键字</p>
+<h3 id="其他BeautifulSoup对象"><a href="#其他BeautifulSoup对象" class="headerlink" title="其他BeautifulSoup对象"></a>其他BeautifulSoup对象</h3><ul>
+<li><p>BeautifulSoup对象</p>
+</li>
+<li><p>标签Tag对象，find和findAll获得</p>
+</li>
+<li><p>NavigableString对象，表示标签里的文字</p>
+</li>
+<li><p>Comment对象，注释标签</p>
+</li>
+</ul>
+<h3 id="导航树"><a href="#导航树" class="headerlink" title="导航树"></a>导航树</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">"http://www.pythonscraping.com/pages/page3.html"</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>子标签和后代标签</li>
+</ol>
+<p>bsObj.body.h1 选择了 body 标签后代里的第一个 h1 标签，不会去找 body 外面的标签。</p>
+<p>字标签：<figure class="highlight plain"><figcaption><span>&#123;'id': 'giftList'&#125;).children```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">后代标签：```bs.find(&apos;table&apos;, &#123;&apos;id&apos;: &apos;giftList&apos;&#125;).descendants</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>兄弟标签</li>
+</ol>
+<p>next_siblings 和 previous_siblings，返回标签后面/前面的兄弟标签</p>
+<p>返回表格中除标题行以外的所有行：<figure class="highlight plain"><figcaption><span>&#123;'id': 'giftList'&#125;).tr.next_siblings```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">单标签版本：```next_sibling``` 和 ```previous_sibling</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>父标签</li>
+</ol>
+<p>parent 和 parents</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img = bs.find(<span class="string">'img'</span>, &#123;<span class="string">'src'</span>: <span class="string">'../img/gifts/img1.jpg'</span>&#125;)</span><br><span class="line">print(img.parent.previous_sibling.get_text())</span><br><span class="line">print(img.parent.previous)</span><br></pre></td></tr></table></figure>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a+b&#123;5&#125;(cc)*d?</span><br></pre></td></tr></table></figure>
+<p>a至少出现一次。<br>b重复5次。<br>c重复任意欧数次。<br>d可有可无。</p>
+<p>正则表达式常用符号：</p>
+<p><img src="/images/python/python_scraping/正则表达式.png" alt="正则表达式"></p>
+<h2 id="正则表达式和BeautifulSoup"><a href="#正则表达式和BeautifulSoup" class="headerlink" title="正则表达式和BeautifulSoup"></a>正则表达式和BeautifulSoup</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> img <span class="keyword">in</span> bs.findAll(<span class="string">'img'</span>, &#123;<span class="string">'src'</span>: re.compile(<span class="string">'\.\./img/gifts/img.*\.jpg'</span>)&#125;):</span><br><span class="line">    print(img.attrs)  <span class="comment"># 获取所有属性</span></span><br><span class="line">    print(img[<span class="string">'src'</span>])  <span class="comment"># 读取某一个属性</span></span><br></pre></td></tr></table></figure>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bs.findAll(<span class="keyword">lambda</span> tag: len(tag.attrs) == <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="开始采集"><a href="#开始采集" class="headerlink" title="开始采集"></a>开始采集</h1><h2 id="遍历单个域名"><a href="#遍历单个域名" class="headerlink" title="遍历单个域名"></a>遍历单个域名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> stdout</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">random.seed(datetime.datetime.now())</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(url)</span>:</span></span><br><span class="line">    html = urlopen(<span class="string">'http://en.wikipedia.org'</span>+url)</span><br><span class="line">    bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="keyword">return</span> bs.find(<span class="string">'div'</span>, id=<span class="string">'bodyContent'</span>).findAll(</span><br><span class="line">        <span class="string">'a'</span>, href=re.compile(<span class="string">'^/wiki/((?!:).)*$'</span>))  <span class="comment"># 页面链接的特点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stdout.flush()</span><br><span class="line">links = getLinks(<span class="string">'/wiki/Kevin_Bacon'</span>)</span><br><span class="line"><span class="keyword">while</span> len(links) &gt; <span class="number">0</span>:</span><br><span class="line">    newArticle = links[random.randint(<span class="number">0</span>, len(links)<span class="number">-1</span>)].attrs[<span class="string">'href'</span>]</span><br><span class="line">    print(newArticle)</span><br><span class="line">    stdout.flush()</span><br><span class="line">    links = getLinks(newArticle)</span><br></pre></td></tr></table></figure>
+<h2 id="采集整个网站"><a href="#采集整个网站" class="headerlink" title="采集整个网站"></a>采集整个网站</h2><p>深网和暗网：</p>
+<p><img src="/images/python/python_scraping/深网和暗网.png" alt="深网和暗网"></p>
+<p>链接收集和链接去重：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> stdout</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">pages = set()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> pages</span><br><span class="line"></span><br><span class="line">    html = urlopen(<span class="string">'http://en.wikipedia.org'</span>+url)</span><br><span class="line">    bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> bs.findAll(<span class="string">'a'</span>, href=re.compile(<span class="string">'^(/wiki/)'</span>)):</span><br><span class="line">        href = link[<span class="string">'href'</span>]</span><br><span class="line">        <span class="keyword">if</span> href <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> href <span class="keyword">not</span> <span class="keyword">in</span> pages:</span><br><span class="line">                print(href)</span><br><span class="line">                stdout.flush()</span><br><span class="line">                pages.add(href)</span><br><span class="line">                getLinks(href)  <span class="comment"># 注意递归次数：Python 默认的递归限制（程序递归地自我调用次数）是 1000 次</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">getLinks(<span class="string">''</span>)  <span class="comment"># 从主页开始</span></span><br></pre></td></tr></table></figure>
+<p>收集整个网站的据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> stdout</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">pages = set()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> pages</span><br><span class="line"></span><br><span class="line">    html = urlopen(<span class="string">'http://en.wikipedia.org'</span>+url)</span><br><span class="line">    bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        print(bs.h1.get_text())</span><br><span class="line">        print(bs.find(id=<span class="string">"mw-content-text"</span>).findAll(<span class="string">"p"</span>)[<span class="number">0</span>])</span><br><span class="line">        print(bs.find(id=<span class="string">"ca-edit"</span>).find(<span class="string">"span"</span>).find(<span class="string">"a"</span>).attrs[<span class="string">'href'</span>])</span><br><span class="line">    <span class="keyword">except</span> AttributeError:</span><br><span class="line">        print(<span class="string">'缺少属性，不过不必担心！'</span>)</span><br><span class="line">    stdout.flush()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> bs.findAll(<span class="string">'a'</span>, href=re.compile(<span class="string">'^(/wiki/)'</span>)):</span><br><span class="line">        href = link[<span class="string">'href'</span>]</span><br><span class="line">        <span class="keyword">if</span> href <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> href <span class="keyword">not</span> <span class="keyword">in</span> pages:</span><br><span class="line">                print(<span class="string">'------------------------\n'</span>+href)</span><br><span class="line">                stdout.flush()</span><br><span class="line">                pages.add(href)</span><br><span class="line">                getLinks(href)</span><br><span class="line"></span><br><span class="line">getLinks(<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><ol>
+<li>scrapy startproject wikiSpider</li>
+<li>在spiders文件夹下新建articleSpider.py</li>
+<li>在items.py文件中定义新的item</li>
+</ol>
+<p>每个Item对象表示网站上的一个页面，可以定义不同的条目（url、content、header、image等），这里只演示收集每页的title字段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    title = scrapy.Field()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>articleSpider.py</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> Selector</span><br><span class="line"><span class="keyword">from</span> scrapy <span class="keyword">import</span> Spider</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> wikiSpider.items <span class="keyword">import</span> Article</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArticleSpider</span><span class="params">(Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'article'</span></span><br><span class="line">    allowed_domains = [<span class="string">'en.wikipedia.org'</span>]</span><br><span class="line">    start_urls = [<span class="string">'http://en.wikipedia.org/wiki/Main_Page'</span>,</span><br><span class="line">                  <span class="string">'http://en.wikipedia.org/wiki/Python_%28programming_language%29'</span>]</span><br><span class="line"></span><br><span class="line">    custom_settings = &#123;  <span class="comment"># 爬虫级设置</span></span><br><span class="line">        <span class="string">'LOG_LEVEL'</span>: <span class="string">'INFO'</span>,  <span class="comment"># 只记录Info及以上级别</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        item = Article()</span><br><span class="line">        title = response.xpath(<span class="string">'//h1/text()'</span>)[<span class="number">0</span>].extract()</span><br><span class="line">        print(<span class="string">'Title is:'</span>, title)</span><br><span class="line">        item[<span class="string">'title'</span>] = title</span><br><span class="line">        <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动爬虫</li>
+</ol>
+<p>在主目录运行命令，<code>scrapy crawl article</code></p>
+<ol>
+<li>切换提取信息格式，指定日志文件</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl article -s LOG_FILE=wiki.txt -o articles.csv -t csv</span><br><span class="line">scrapy crawl article -o articles.json -t json</span><br><span class="line">scrapy crawl article -o articles.xml -t xml</span><br></pre></td></tr></table></figure>
+<p>也可以把结果写入文件或数据库中，只要在parse部分增加相应代码即可</p>
+<h1 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">token = <span class="string">"your api key"</span></span><br><span class="line">webRequest = urllib.request.Request(<span class="string">'http://myapi.com'</span>,headers=&#123;<span class="string">'token'</span>:token&#125;)</span><br><span class="line">html = urlopen(webRequest)</span><br></pre></td></tr></table></figure>
+<p>解析json数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCountry</span><span class="params">(ipAddress)</span>:</span></span><br><span class="line">    response = urlopen(<span class="string">'http://ip-api.com/json/'</span> +</span><br><span class="line">                       ipAddress).read().decode(<span class="string">'utf8'</span>)</span><br><span class="line">    dic = json.loads(response)</span><br><span class="line">    <span class="keyword">return</span> dic[<span class="string">'countryCode'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(getCountry(<span class="string">''</span>))</span><br></pre></td></tr></table></figure>
+<p>抓取维基百科的编辑历史的贡献者IP地址：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> HTTPError</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">random.seed(datetime.datetime.now())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(articleUrl)</span>:</span></span><br><span class="line">    html = urlopen(<span class="string">"http://en.wikipedia.org"</span>+articleUrl)</span><br><span class="line">    bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="keyword">return</span> bs.find(<span class="string">"div"</span>, &#123;<span class="string">"id"</span>: <span class="string">"bodyContent"</span>&#125;).findAll(<span class="string">"a"</span>, href=re.compile(<span class="string">"^(/wiki/)((?!:).)*$"</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHistoryIPs</span><span class="params">(pageUrl)</span>:</span></span><br><span class="line">    <span class="comment"># 编辑历史页面URL链接格式是：</span></span><br><span class="line">    <span class="comment"># http://en.wikipedia.org/w/index.php?title=Title_in_URL&amp;action=history</span></span><br><span class="line">    pageUrl = pageUrl.replace(<span class="string">"/wiki/"</span>, <span class="string">""</span>)</span><br><span class="line">    historyUrl = <span class="string">"http://en.wikipedia.org/w/index.php?title="</span> + pageUrl+<span class="string">"&amp;action=history"</span></span><br><span class="line">    print(<span class="string">"history url is: "</span>+historyUrl)</span><br><span class="line">    html = urlopen(historyUrl)</span><br><span class="line">    bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="comment"># 找出class属性是"mw-anonuserlink"的链接</span></span><br><span class="line">    <span class="comment"># 它们用IP地址代替用户名</span></span><br><span class="line">    ipAddresses = bs.findAll(<span class="string">"a"</span>, &#123;<span class="string">"class"</span>: <span class="string">"mw-anonuserlink"</span>&#125;)</span><br><span class="line">    addressList = set()</span><br><span class="line">    <span class="keyword">for</span> ipAddress <span class="keyword">in</span> ipAddresses:</span><br><span class="line">        addressList.add(ipAddress.get_text())</span><br><span class="line">    <span class="keyword">return</span> addressList</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCountry</span><span class="params">(ip)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = urlopen(<span class="string">'http://ip-api.com/json/'</span>+ip).read().decode(<span class="string">'utf8'</span>)</span><br><span class="line">    <span class="keyword">except</span> HTTPError:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    responseJson = json.loads(response)</span><br><span class="line">    <span class="keyword">return</span> responseJson[<span class="string">'countryCode'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">links = getLinks(<span class="string">"/wiki/Python_(programming_language)"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> len(links) &gt; <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> links:</span><br><span class="line">        print(<span class="string">'------------------'</span>)</span><br><span class="line">        ips = getHistoryIPs(link[<span class="string">'href'</span>])</span><br><span class="line">        <span class="keyword">for</span> ip <span class="keyword">in</span> ips:</span><br><span class="line">            country = getCountry(ip)</span><br><span class="line">            print(ip+<span class="string">' is from '</span>+country)</span><br><span class="line"></span><br><span class="line">    newLink = links[random.randint(<span class="number">0</span>, len(links)<span class="number">-1</span>)].attrs[<span class="string">'href'</span>]</span><br><span class="line">    links = getLinks(newLink)</span><br></pre></td></tr></table></figure>
+<h1 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h1><h2 id="媒体文件"><a href="#媒体文件" class="headerlink" title="媒体文件"></a>媒体文件</h2><p>存储媒体文件的两种方式：只获取文件URL链接或直接下载源文件。</p>
+<p>只获取媒体文件的URL的优缺点：</p>
+<p><img src="/images/python/python_scraping/媒体文件URL.png" alt="媒体文件URL"></p>
+<p>下载一张图片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://www.pythonscraping.com'</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">imgUrl = bs.find(<span class="string">'a'</span>, id=<span class="string">'logo'</span>).find(<span class="string">'img'</span>)[<span class="string">'src'</span>]</span><br><span class="line">urlretrieve(imgUrl, <span class="string">'logo.jpg'</span>)</span><br></pre></td></tr></table></figure>
+<p>下载所有具有src属性的资源：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">dire = <span class="string">'downloaded'</span></span><br><span class="line">baseUrl = <span class="string">'http://pythonscraping.com'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getAbsoluteURL</span><span class="params">(baseUrl, source)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> source.startswith(<span class="string">'http://www.'</span>):</span><br><span class="line">        url = <span class="string">'http://'</span> + source[<span class="number">11</span>:]</span><br><span class="line">    <span class="keyword">elif</span> source.startswith(<span class="string">'http://'</span>):</span><br><span class="line">        url = source</span><br><span class="line">    <span class="keyword">elif</span> source.startswith(<span class="string">'www.'</span>):</span><br><span class="line">        url = source[:<span class="number">4</span>]</span><br><span class="line">        url = <span class="string">'http://'</span> + url</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        url = baseUrl + <span class="string">'/'</span>+source</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> baseUrl <span class="keyword">not</span> <span class="keyword">in</span> url:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">return</span> url.split(<span class="string">'?'</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getDownloadPath</span><span class="params">(baseUrl, absoluteUrl, dire)</span>:</span></span><br><span class="line">    path = absoluteUrl.replace(<span class="string">'www.'</span>, <span class="string">''</span>)</span><br><span class="line">    path = path.replace(baseUrl, <span class="string">''</span>)</span><br><span class="line">    path = dire + path</span><br><span class="line"></span><br><span class="line">    dire = os.path.dirname(path)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(dire):</span><br><span class="line">        os.makedirs(dire)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> path</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://www.pythonscraping.com'</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">downloads = bs.findAll(src=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">for</span> download <span class="keyword">in</span> downloads:</span><br><span class="line">    fileUrl = getAbsoluteURL(baseUrl, download[<span class="string">'src'</span>])</span><br><span class="line">    <span class="keyword">if</span> fileUrl <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        print(fileUrl)</span><br><span class="line">        downPath = getDownloadPath(baseUrl, fileUrl, dire)</span><br><span class="line">        urlretrieve(fileUrl, downPath)</span><br></pre></td></tr></table></figure>
+<h2 id="把数据存储到CSV"><a href="#把数据存储到CSV" class="headerlink" title="把数据存储到CSV"></a>把数据存储到CSV</h2><p>创建csv文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'test.csv'</span>, <span class="string">'w+'</span>) <span class="keyword">as</span> csvFile:</span><br><span class="line">    writer = csv.writer(csvFile)</span><br><span class="line">    writer.writerow((<span class="string">'number'</span>, <span class="string">'number plus 2'</span>, <span class="string">'number times 2'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        writer.writerow((i, i+<span class="number">2</span>, i*<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p>常用场景，获取HTML表格并写入CSV文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://en.wikipedia.org/wiki/Comparison_of_text_editors'</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">table = bs.find(<span class="string">'table'</span>, &#123;<span class="string">'class'</span>: <span class="string">'wikitable'</span>&#125;)</span><br><span class="line">rows = table.findAll(<span class="string">'tr'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'editors.csv'</span>, <span class="string">'w+'</span>, newline=<span class="string">''</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> csvFile:</span><br><span class="line">    writer = csv.writer(csvFile)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">        csvRow = []</span><br><span class="line">        <span class="keyword">for</span> cell <span class="keyword">in</span> row.findAll([<span class="string">'td'</span>, <span class="string">'th'</span>]):</span><br><span class="line">            csvRow.append(cell.get_text())</span><br><span class="line">        writer.writerow(csvRow)</span><br></pre></td></tr></table></figure>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, unix_socket=<span class="string">'/tmp/mysql.sock'</span>, user=<span class="string">'root'</span>, passwd=<span class="keyword">None</span>, db=<span class="string">'mysql'</span>)</span><br><span class="line">cur = conn.cursor()</span><br><span class="line">cur.execute(<span class="string">"USE scraping"</span>)</span><br><span class="line">cur.execute(<span class="string">"SELECT * FROM pages WHERE id=1"</span>)</span><br><span class="line">print(cur.fetchone())</span><br><span class="line">cur.close()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<p>让数据库支持Unicode：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> scraping <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> pages <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> pages <span class="keyword">CHANGE</span> title title <span class="built_in">VARCHAR</span>(<span class="number">200</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> pages <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">10000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p>抓取并保存到MySQL：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, unix_socket=<span class="string">'/tmp/mysql.sock'</span>,</span><br><span class="line">                       user=<span class="string">'root'</span>, passwd=<span class="keyword">None</span>, db=<span class="string">'mysql'</span>, charset=<span class="string">'utf8'</span>)</span><br><span class="line">cur = conn.cursor()</span><br><span class="line">cur.execute(<span class="string">"USE scraping"</span>)</span><br><span class="line"></span><br><span class="line">random.seed(datetime.datetime.now())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">store</span><span class="params">(title, content)</span>:</span></span><br><span class="line">    cur.execute(</span><br><span class="line">        <span class="string">"INSERT INTO pages(title, content) VALUES(\"%s\",\"%s\")"</span>, (title, content))</span><br><span class="line">    cur.connection.commit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(articleUrl)</span>:</span></span><br><span class="line">    html = urlopen(<span class="string">"http://en.wikipedia.org"</span>+articleUrl)</span><br><span class="line">    bsObj = BeautifulSoup(html)</span><br><span class="line">    title = bsObj.find(<span class="string">"h1"</span>).get_text()</span><br><span class="line">    content = bsObj.find(<span class="string">"div"</span>, &#123;<span class="string">"id"</span>: <span class="string">"mw-content-text"</span>&#125;).find(<span class="string">"p"</span>).get_text()</span><br><span class="line">    store(title, content)</span><br><span class="line">    <span class="keyword">return</span> bsObj.find(<span class="string">"div"</span>, &#123;<span class="string">"id"</span>: <span class="string">"bodyContent"</span>&#125;).findAll(<span class="string">"a"</span>,</span><br><span class="line">                                                            href=re.compile(<span class="string">"^(/wiki/)((?!:).)*$"</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">links = getLinks(<span class="string">"/wiki/Kevin_Bacon"</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> len(links) &gt; <span class="number">0</span>:</span><br><span class="line">        newArticle = links[random.randint(<span class="number">0</span>, len(links)<span class="number">-1</span>)].attrs[<span class="string">"href"</span>]</span><br><span class="line">    print(newArticle)</span><br><span class="line">    links = getLinks(newArticle)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    cur.close()</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+<h2 id="email"><a href="#email" class="headerlink" title="email"></a>email</h2><p>发邮件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">'the body of email'</span>)</span><br><span class="line">msg[<span class="string">'Subject'</span>] = <span class="string">'an email'</span></span><br><span class="line">msg[<span class="string">'From'</span>] = <span class="string">'alan@python.com'</span></span><br><span class="line">msg[<span class="string">'To'</span>] = <span class="string">'some@python.com'</span></span><br><span class="line"></span><br><span class="line">s = smtplib.SMTP(<span class="string">'localhost'</span>)</span><br><span class="line">s.send_message(msg)</span><br><span class="line">s.quit()</span><br></pre></td></tr></table></figure>
+<p>Python 有两个包可以发送邮件： smtplib 和 email</p>
+<p>email 模块里包含了许多实用的邮件格式设置函数，可以用来创建邮件“包裹”。下面的示例中使用的 MIMEText 对象，为底层的 MIME（Multipurpose Internet MailExtensions，多用途互联网邮件扩展类型）协议传输创建了一封空邮件， 最后通过高层的SMTP 协议发送出去。 MIMEText 对象 msg 包括收发邮箱地址、邮件正文和主题， Python 通过它就可以创建一封格式正确的邮件。</p>
+<p>smtplib 模块用来设置服务器连接的相关信息。就像 MySQL 服务器的连接一样，这个连接必须在用完之后及时关闭，以避免同时创建太多连接而浪费资源。</p>
+<p>封装一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sendMail</span><span class="params">(subject, body)</span>:</span></span><br><span class="line">    msg = MIMEText(body)</span><br><span class="line">    msg[<span class="string">'Subject'</span>] = subject</span><br><span class="line">    msg[<span class="string">'From'</span>] = <span class="string">'christmas_alerts@python.com'</span></span><br><span class="line">    msg[<span class="string">'To'</span>] = <span class="string">'alan@python.com'</span></span><br><span class="line">    s = smtplib.SMTP(<span class="string">'localhost'</span>)</span><br><span class="line">    s.send_message(msg)</span><br><span class="line">    s.quit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bs = BeautifulSoup(urlopen(<span class="string">"https://isitchristmas.com/"</span>))</span><br><span class="line"><span class="keyword">while</span> bs.find(<span class="string">'a'</span>, &#123;<span class="string">'id'</span>: <span class="string">'answer'</span>&#125;).attrs[<span class="string">'title'</span>] == <span class="string">'不是'</span>:</span><br><span class="line">    print(<span class="string">'It is not Christmas yet.'</span>)</span><br><span class="line">    time.sleep(<span class="number">3600</span>)</span><br><span class="line">    bs = BeautifulSoup(urlopen(<span class="string">"https://isitchristmas.com/"</span>))</span><br><span class="line"></span><br><span class="line">sendMail(<span class="string">'It\'s Christmax!'</span>,</span><br><span class="line">         <span class="string">'According to http://itischristmas.com, it is Christmas!'</span>)</span><br></pre></td></tr></table></figure>
+<p>邮件程序可以做很多事情，可以发送网站访问失败、 应用测试失败的异常情况，也可以在 Amazon 网站上出现了一款卖到断货的畅销品时通知你。</p>
+<h1 id="读取文档"><a href="#读取文档" class="headerlink" title="读取文档"></a>读取文档</h1><h2 id="纯文本"><a href="#纯文本" class="headerlink" title="纯文本"></a>纯文本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">page = urlopen(<span class="string">'https://www.ietf.org/rfc/rfc1149.txt'</span>)</span><br><span class="line">print(page.read())</span><br></pre></td></tr></table></figure>
+<p>对法语文本进行编码显示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">textPage = urlopen(</span><br><span class="line">    <span class="string">"http://www.pythonscraping.com/pages/warandpeace/chapter1-ru.txt"</span>)</span><br><span class="line">print(str(textPage.read(), <span class="string">'utf8'</span>))</span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">"http://en.wikipedia.org/wiki/Python_(programming_language)"</span>)</span><br><span class="line">bsObj = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">content = bsObj.find(<span class="string">"div"</span>, &#123;<span class="string">"id"</span>: <span class="string">"mw-content-text"</span>&#125;).get_text()</span><br><span class="line">content = bytes(content, <span class="string">"UTF-8"</span>)</span><br><span class="line">content = content.decode(<span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h2><p>读取网络csv文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">data = urlopen(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/files/MontyPythonAlbums.csv'</span>).read().decode(<span class="string">'ascii'</span>, <span class="string">'ignore'</span>)</span><br><span class="line"></span><br><span class="line">dataFile = StringIO(data)</span><br><span class="line">csvReader = csv.reader(dataFile)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> csvReader:</span><br><span class="line">    print(row)   <span class="comment"># row是一个列表，代表每一行（包括列头那一行）</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">data = urlopen(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/files/MontyPythonAlbums.csv'</span>).read().decode(<span class="string">'ascii'</span>, <span class="string">'ignore'</span>)</span><br><span class="line"></span><br><span class="line">dataFile = StringIO(data)</span><br><span class="line">dictReader = csv.DictReader(dataFile)</span><br><span class="line">print(dictReader.fieldnames)  <span class="comment"># ['Name', 'Year']</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> dictReader:</span><br><span class="line">    print(row)   <span class="comment"># row是字典对象，OrderedDict([('Name', "Monty Python's Flying Circus"), ('Year', '1970')])</span></span><br></pre></td></tr></table></figure>
+<h2 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h2><p>读取PDF文件，使用PDFMiner3K库，过程略。</p>
+<h2 id="docx"><a href="#docx" class="headerlink" title="docx"></a>docx</h2><p>读取微软Word的.docx文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> zipfile <span class="keyword">import</span> ZipFile</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">wordFile = urlopen(<span class="string">"http://pythonscraping.com/pages/AWordDocument.docx"</span>).read()</span><br><span class="line">wordFile = BytesIO(wordFile)</span><br><span class="line">document = ZipFile(wordFile)</span><br><span class="line">xml_content = document.read(<span class="string">'word/document.xml'</span>)</span><br><span class="line">wordObj = BeautifulSoup(xml_content.decode(<span class="string">'utf-8'</span>))</span><br><span class="line">textStrings = wordObj.findAll(<span class="string">"w:t"</span>)  <span class="comment"># 读取文档</span></span><br><span class="line"><span class="keyword">for</span> textElem <span class="keyword">in</span> textStrings:</span><br><span class="line">    print(textElem.text)</span><br></pre></td></tr></table></figure>
+<h1 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h1><h2 id="编写代码清洗数据"><a href="#编写代码清洗数据" class="headerlink" title="编写代码清洗数据"></a>编写代码清洗数据</h2><p>语言模型n-gram：表示文字或语言中的 n 个连续的单词组成的序列。在进行自然语言分析时，使用 n-gram 或者寻找常用词组， 可以很容易地把一句话分解成若干个文字片段。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clearInput</span><span class="params">(input)</span>:</span></span><br><span class="line">    input = re.sub(<span class="string">'\n+'</span>, <span class="string">' '</span>, input)  <span class="comment"># 把换行符（或者多个换行符）替换成空格</span></span><br><span class="line">    input = re.sub(<span class="string">'\[\d*\]'</span>, <span class="string">''</span>, input)  <span class="comment"># 去掉维基百科的引用标记</span></span><br><span class="line">    input = re.sub(<span class="string">' +'</span>, <span class="string">' '</span>, input)  <span class="comment"># 把连续的多个空格替换成一个空格</span></span><br><span class="line">    input = bytes(input, <span class="string">'utf8'</span>)</span><br><span class="line">    input = input.decode(<span class="string">'ascii'</span>, <span class="string">'ignore'</span>)  <span class="comment"># 把内容转换成 UTF-8 格式以消除转义字符</span></span><br><span class="line">    cleanInput = []</span><br><span class="line">    input = input.split()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> input:</span><br><span class="line">        <span class="comment"># 去除两端的标点符号。string.punctuation，标点符号，包括：!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`&#123;|&#125;~</span></span><br><span class="line">        item = item.strip(string.punctuation)</span><br><span class="line">        <span class="keyword">if</span> len(item) &gt; <span class="number">1</span> <span class="keyword">or</span> (item.lower() == <span class="string">'a'</span> <span class="keyword">or</span> item.lower() == <span class="string">'i'</span>):</span><br><span class="line">            cleanInput.append(item)</span><br><span class="line">    <span class="keyword">return</span> cleanInput</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ngrams</span><span class="params">(input, n)</span>:</span></span><br><span class="line">    input = clearInput(input)</span><br><span class="line">    output = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(input)-n+<span class="number">1</span>):</span><br><span class="line">        output.append(input[i:i+n])</span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://en.wikipedia.org/wiki/Python_(programming_language)'</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">content = bs.find(<span class="string">"div"</span>, &#123;<span class="string">"id"</span>: <span class="string">"mw-content-text"</span>&#125;).get_text()</span><br><span class="line">ngrams = ngrams(content, <span class="number">2</span>)</span><br><span class="line">print(ngrams)</span><br><span class="line">print(<span class="string">"2-grams count is: "</span>+str(len(ngrams)))</span><br></pre></td></tr></table></figure>
+<p>数据标准化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ngrams_dict</span><span class="params">(input, n)</span>:</span></span><br><span class="line">    input = clearInput(input)</span><br><span class="line">    output = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(input)-n+<span class="number">1</span>):</span><br><span class="line">        newNGram = <span class="string">' '</span>.join(input[i:i+n])</span><br><span class="line">        <span class="keyword">if</span> newNGram <span class="keyword">in</span> output:</span><br><span class="line">            output[newNGram] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            output[newNGram] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">ngrams = ngrams_dict(content, <span class="number">2</span>)</span><br><span class="line">ngrams = OrderedDict(sorted(ngrams.items(), key=<span class="keyword">lambda</span> t: t[<span class="number">1</span>], reverse=<span class="keyword">False</span>))</span><br><span class="line">print(ngrams)</span><br></pre></td></tr></table></figure>
+<h2 id="数据存储后再清洗"><a href="#数据存储后再清洗" class="headerlink" title="数据存储后再清洗"></a>数据存储后再清洗</h2><p>使用OpenRefine，过程略。</p>
+<h1 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h1><h2 id="概括数据"><a href="#概括数据" class="headerlink" title="概括数据"></a>概括数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">content = urlopen(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/files/inaugurationSpeech.txt'</span>).read().decode(<span class="string">'utf8'</span>)</span><br><span class="line">ngrams = ngrams_dict(content, <span class="number">2</span>)</span><br><span class="line">sortedNGrams = sorted(ngrams.items(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)</span><br><span class="line">print(sortedNGrams)</span><br></pre></td></tr></table></figure>
+<p>排除常用单词：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isCommon</span><span class="params">(ngram)</span>:</span></span><br><span class="line">    commonWords = [<span class="string">"the"</span>, <span class="string">"be"</span>, <span class="string">"and"</span>, <span class="string">"of"</span>, <span class="string">"a"</span>, <span class="string">"in"</span>, <span class="string">"to"</span>, <span class="string">"have"</span>, <span class="string">"it"</span>,</span><br><span class="line">                   <span class="string">"i"</span>, <span class="string">"that"</span>, <span class="string">"for"</span>, <span class="string">"you"</span>, <span class="string">"he"</span>, <span class="string">"with"</span>, <span class="string">"on"</span>, <span class="string">"do"</span>, <span class="string">"say"</span>, <span class="string">"this"</span>,</span><br><span class="line">                   <span class="string">"they"</span>, <span class="string">"is"</span>, <span class="string">"an"</span>, <span class="string">"at"</span>, <span class="string">"but"</span>, <span class="string">"we"</span>, <span class="string">"his"</span>, <span class="string">"from"</span>, <span class="string">"that"</span>, <span class="string">"not"</span>,</span><br><span class="line">                   <span class="string">"by"</span>, <span class="string">"she"</span>, <span class="string">"or"</span>, <span class="string">"as"</span>, <span class="string">"what"</span>, <span class="string">"go"</span>, <span class="string">"their"</span>, <span class="string">"can"</span>, <span class="string">"who"</span>, <span class="string">"get"</span>,</span><br><span class="line">                   <span class="string">"if"</span>, <span class="string">"would"</span>, <span class="string">"her"</span>, <span class="string">"all"</span>, <span class="string">"my"</span>, <span class="string">"make"</span>, <span class="string">"about"</span>, <span class="string">"know"</span>, <span class="string">"will"</span>,</span><br><span class="line">                   <span class="string">"as"</span>, <span class="string">"up"</span>, <span class="string">"one"</span>, <span class="string">"time"</span>, <span class="string">"has"</span>, <span class="string">"been"</span>, <span class="string">"there"</span>, <span class="string">"year"</span>, <span class="string">"so"</span>,</span><br><span class="line">                   <span class="string">"think"</span>, <span class="string">"when"</span>, <span class="string">"which"</span>, <span class="string">"them"</span>, <span class="string">"some"</span>, <span class="string">"me"</span>, <span class="string">"people"</span>, <span class="string">"take"</span>,</span><br><span class="line">                   <span class="string">"out"</span>, <span class="string">"into"</span>, <span class="string">"just"</span>, <span class="string">"see"</span>, <span class="string">"him"</span>, <span class="string">"your"</span>, <span class="string">"come"</span>, <span class="string">"could"</span>, <span class="string">"now"</span>,</span><br><span class="line">                   <span class="string">"than"</span>, <span class="string">"like"</span>, <span class="string">"other"</span>, <span class="string">"how"</span>, <span class="string">"then"</span>, <span class="string">"its"</span>, <span class="string">"our"</span>, <span class="string">"two"</span>, <span class="string">"more"</span>,</span><br><span class="line">                   <span class="string">"these"</span>, <span class="string">"want"</span>, <span class="string">"way"</span>, <span class="string">"look"</span>, <span class="string">"first"</span>, <span class="string">"also"</span>, <span class="string">"new"</span>, <span class="string">"because"</span>,</span><br><span class="line">                   <span class="string">"day"</span>, <span class="string">"more"</span>, <span class="string">"use"</span>, <span class="string">"no"</span>, <span class="string">"man"</span>, <span class="string">"find"</span>, <span class="string">"here"</span>, <span class="string">"thing"</span>, <span class="string">"give"</span>,</span><br><span class="line">                   <span class="string">"many"</span>, <span class="string">"well"</span>]</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> ngram:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> commonWords:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ngrams_dict</span><span class="params">(input, n)</span>:</span></span><br><span class="line">    input = clearInput(input)</span><br><span class="line">    output = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(input)-n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isCommon(input[i:i+n]):</span><br><span class="line">            newNGram = <span class="string">' '</span>.join(input[i:i+n])</span><br><span class="line">            <span class="keyword">if</span> newNGram <span class="keyword">in</span> output:</span><br><span class="line">                output[newNGram] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                output[newNGram] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
+<h2 id="马尔可夫模型"><a href="#马尔可夫模型" class="headerlink" title="马尔可夫模型"></a>马尔可夫模型</h2><p>马尔可夫模型：</p>
+<p><img src="/images/python/python_scraping/马尔可夫模型.png" alt="马尔可夫模型"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wordListSum</span><span class="params">(wordList)</span>:</span></span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> word, value <span class="keyword">in</span> wordList.items():</span><br><span class="line">        sum += value</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">retrieveRandomWord</span><span class="params">(wordList)</span>:</span></span><br><span class="line">    randIndex = randint(<span class="number">1</span>, wordListSum(wordList))</span><br><span class="line">    <span class="keyword">for</span> word, value <span class="keyword">in</span> wordList.items():</span><br><span class="line">        randIndex -= value</span><br><span class="line">        <span class="keyword">if</span> randIndex &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> word</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buildWordDict</span><span class="params">(text)</span>:</span></span><br><span class="line">    <span class="comment"># 剔除换行符和引号</span></span><br><span class="line">    text = text.replace(<span class="string">'\n'</span>, <span class="string">' '</span>)</span><br><span class="line">    text = text.replace(<span class="string">'\"'</span>, <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将标点符号保留在马尔可夫链中</span></span><br><span class="line">    punctuation = [<span class="string">','</span>, <span class="string">'.'</span>, <span class="string">';'</span>, <span class="string">':'</span>]</span><br><span class="line">    <span class="keyword">for</span> symbol <span class="keyword">in</span> punctuation:</span><br><span class="line">        text = text.replace(symbol, <span class="string">' '</span>+symbol+<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line">    words = text.split(<span class="string">' '</span>)</span><br><span class="line">    words = [word <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">if</span> word != <span class="string">''</span>]</span><br><span class="line"></span><br><span class="line">    wordDict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(words)):</span><br><span class="line">        <span class="keyword">if</span> words[i<span class="number">-1</span>] <span class="keyword">not</span> <span class="keyword">in</span> wordDict:</span><br><span class="line">            wordDict[words[i<span class="number">-1</span>]] = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> words[i] <span class="keyword">not</span> <span class="keyword">in</span> wordDict[words[i<span class="number">-1</span>]]:</span><br><span class="line">            wordDict[words[i<span class="number">-1</span>]][words[i]] = <span class="number">0</span></span><br><span class="line">        wordDict[words[i<span class="number">-1</span>]][words[i]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> wordDict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">text = urlopen(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/files/inaugurationSpeech.txt'</span>).read().decode(<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">wordDict = buildWordDict(text)</span><br><span class="line"></span><br><span class="line">length = <span class="number">1000</span></span><br><span class="line">chain = <span class="string">''</span></span><br><span class="line">currentWord = <span class="string">'I'</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, length):</span><br><span class="line">    chain += currentWord + <span class="string">' '</span></span><br><span class="line">    currentWord = retrieveRandomWord(wordDict[currentWord])</span><br><span class="line">print(chain)</span><br></pre></td></tr></table></figure>
+<h1 id="穿越网页表单与登录窗口进行采集"><a href="#穿越网页表单与登录窗口进行采集" class="headerlink" title="穿越网页表单与登录窗口进行采集"></a>穿越网页表单与登录窗口进行采集</h1><h2 id="Python-Requests"><a href="#Python-Requests" class="headerlink" title="Python Requests"></a>Python Requests</h2><p>Python 的标准库 urllib 为你提供了大多数 HTTP 功能，但是它的 API 非常差。这是因为它是经过许多年一步步建立起来的——不同时期要面对的是不同的网络环境。于是为了完成最简单的任务，它需要耗费大量的工作（甚至要重写整个方法）。</p>
+<p>Requests 库就是这样一个擅长处理那些复杂的 HTTP 请求、 cookie、 header（响应头和请求头）等内容的 Python 第三方库。</p>
+<h2 id="提交一个基本表单"><a href="#提交一个基本表单" class="headerlink" title="提交一个基本表单"></a>提交一个基本表单</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">params = &#123;<span class="string">'firstname'</span>: <span class="string">'Ryan'</span>, <span class="string">'lastname'</span>: <span class="string">'Mitchell'</span>&#125;</span><br><span class="line">r = requests.post(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/pages/files/processing.php'</span>, data=params)</span><br><span class="line"></span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+<h2 id="提交文件和图像"><a href="#提交文件和图像" class="headerlink" title="提交文件和图像"></a>提交文件和图像</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">files = &#123;<span class="string">'uploadFile'</span>: open(<span class="string">'1.png'</span>, <span class="string">'rb'</span>)&#125;</span><br><span class="line">r = requests.post(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/pages/files/processing2.php'</span>, files=files)</span><br><span class="line"></span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+<h2 id="处理登录和cookie"><a href="#处理登录和cookie" class="headerlink" title="处理登录和cookie"></a>处理登录和cookie</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line"></span><br><span class="line">params = &#123;<span class="string">'username'</span>: <span class="string">'Ryan'</span>, <span class="string">'password'</span>: <span class="string">'password'</span>&#125;</span><br><span class="line">s = session.post(</span><br><span class="line">    <span class="string">'http://pythonscraping.com/pages/cookies/welcome.php'</span>, params)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Cookie is set to:'</span>)</span><br><span class="line">print(s.cookies.get_dict())</span><br><span class="line">print(<span class="string">'----------------------'</span>)</span><br><span class="line">s = session.get(<span class="string">'http://pythonscraping.com/pages/cookies/profile.php'</span>)</span><br><span class="line">print(s.text)</span><br><span class="line"></span><br><span class="line">session对象会持续跟踪会话信息，像cookie、header，甚至包括运行HTTP协议的信息，比如HTTPAdapter（为HTTP何HTTPS的链接会话提供统一接口）</span><br></pre></td></tr></table></figure>
+<p>HTTP基本接入认证：</p>
+<p><img src="/images/python/python_scraping/HTTP基本接入认证.png" alt="HTTP基本接入认证"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> requests.auth <span class="keyword">import</span> AuthBase</span><br><span class="line"><span class="keyword">from</span> requests.auth <span class="keyword">import</span> HTTPBasicAuth</span><br><span class="line"></span><br><span class="line">auth = HTTPBasicAuth(<span class="string">'ryan'</span>, <span class="string">'password'</span>)</span><br><span class="line">r = requests.post(</span><br><span class="line">    url=<span class="string">'http://pythonscraping.com/pages/auth/login.php'</span>, auth=auth)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+<h1 id="采集Javascript"><a href="#采集Javascript" class="headerlink" title="采集Javascript"></a>采集Javascript</h1><p>在Python中用Selenium执行JavaScript：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment">#1 只能采集到加载前的页面</span></span><br><span class="line">r = requests.get(<span class="string">'http://pythonscraping.com/pages/javascript/ajaxDemo.html'</span>)</span><br><span class="line">print(r.text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#2 使用Selenium模拟浏览器打开页面</span></span><br><span class="line">browser = webdriver.Chrome()  <span class="comment"># 将chromedriver.exe的路径加入到path中</span></span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com'</span>)  <span class="comment"># 新开一个浏览器</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3 使用Selenium模拟浏览器等待</span></span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">'--headless'</span>)  <span class="comment"># 无界面模式</span></span><br><span class="line">chrome_options.add_argument(<span class="string">'--disable-gpu'</span>)</span><br><span class="line">driver = webdriver.Chrome(chrome_options=chrome_options)</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com/pages/javascript/ajaxDemo.html'</span>)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">print(driver.find_element_by_id(<span class="string">'content'</span>).text)</span><br><span class="line">driver.close()</span><br><span class="line"></span><br><span class="line"><span class="comment">#4 Selenium的通用选择器</span></span><br><span class="line">driver.find_elements_by_css_selector(<span class="string">"#content"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#5 可以搭配BeautifulSoup来解析网页内容</span></span><br><span class="line">pageSource = driver.page_source</span><br><span class="line">bsObj = BeautifulSoup(pageSource)</span><br><span class="line">print(bsObj.find(id=<span class="string">"content"</span>).get_text())</span><br></pre></td></tr></table></figure>
+<p>隐式等待：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com/pages/javascript/ajaxDemo.html'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    element = WebDriverWait(driver, <span class="number">10</span>).until(</span><br><span class="line">        EC.presence_of_element_located((By.ID, <span class="string">'loadedButton'</span>)))</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    print(driver.find_element_by_id(<span class="string">'content'</span>).text)</span><br><span class="line">    driver.close()</span><br></pre></td></tr></table></figure>
+<p>WebDriverWait 和 expected_conditions，这两个模块组合起来构成了 Selenium 的隐式等待（implicit wait）。元素被触发的期望条件（expected condition）有很多种，包括：</p>
+<ul>
+<li><p>弹出一个提示框</p>
+</li>
+<li><p>一个元素被选中（比如文本框）</p>
+</li>
+<li><p>页面的标题改变了，或者某个文字显示在页面上或者某个元素里</p>
+</li>
+<li><p>一个元素在 DOM 中变成可见的，或者一个元素从 DOM 中消失了</p>
+</li>
+</ul>
+<p>元素用定位器（locator）指定，By对象选择的策略：</p>
+<ul>
+<li><p>ID：在上面的例子里用过；通过 HTML 的 id 属性查找元素</p>
+</li>
+<li><p>CLASS_NAME：通过 HTML 的 class 属性来查找元素</p>
+</li>
+<li><p>CSS_SELECTOR：通过 CSS 的 class、 id、 tag 属性名来查找元素，用 #idName、 .className、 tagName 表示</p>
+</li>
+<li><p>LINK_TEXT：通过链接文字查找 HTML 的 <a> 标签。例如，如果一个链接的文字是“Next”，就可以用 (By.LINK_TEXT, “Next”) 来选择</a></p>
+</li>
+<li><p>PARTIAL_LINK_TEXT：与 LINK_TEXT 类似，只是通过部分链接文字来查找</p>
+</li>
+<li><p>NAME：通过 HTML 标签的 name 属性查找。这在处理 HTML 表单时非常方便</p>
+</li>
+<li><p>TAG_NAME：通过 HTML 标签的名称查找</p>
+</li>
+<li><p>XPATH：用 XPath 表达式选择匹配的元素</p>
+</li>
+</ul>
+<p>XPath文档：<a href="https://msdn.microsoft.com/zh-cn/zn-CH/enus/library/ms256471" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-cn/zn-CH/enus/library/ms256471</a></p>
+<h2 id="处理重定向"><a href="#处理重定向" class="headerlink" title="处理重定向"></a>处理重定向</h2><p>识别一个页面已经完成重定向：从页面开始加载时就“监视 ” DOM 中的一个元素，然后重复调用这个元素直到 Selenium 抛出一个 StaleElementReferenceException 异常。也就是说，元素不在页面的DOM里了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.remote.webelement <span class="keyword">import</span> WebElement</span><br><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> StaleElementReferenceException</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">waitForLoad</span><span class="params">(driver)</span>:</span></span><br><span class="line">    elem = driver.find_element_by_tag_name(<span class="string">'html'</span>)</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">20</span>:</span><br><span class="line">            print(<span class="string">'Timing out after 10 seconds and returning'</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        time.sleep(<span class="number">.5</span>)</span><br><span class="line">        <span class="keyword">if</span> elem != driver.find_element_by_tag_name(<span class="string">'html'</span>):</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="comment"># try:</span></span><br><span class="line">        <span class="comment">#     elem == driver.find_element_by_tag_name('html')</span></span><br><span class="line">        <span class="comment"># except StaleElementReferenceException:</span></span><br><span class="line">        <span class="comment">#     return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com/pages/javascript/redirectDemo1.html'</span>)</span><br><span class="line">waitForLoad(driver)</span><br><span class="line">print(driver.page_source)</span><br></pre></td></tr></table></figure>
+<h1 id="图像识别与文字处理"><a href="#图像识别与文字处理" class="headerlink" title="图像识别与文字处理"></a>图像识别与文字处理</h1><h2 id="OCR库"><a href="#OCR库" class="headerlink" title="OCR库"></a>OCR库</h2><p>Pillow，Tesseract。</p>
+<p>安装：<code>conda install -c simonflueckiger tesserocr pillow</code></p>
+<p>设置训练数据文件路径：<code>setx TESSDATA_PREFIX &#39;D:\Program Files\Tesseract OCR\&#39;</code></p>
+<h2 id="处理格式规范的文字"><a href="#处理格式规范的文字" class="headerlink" title="处理格式规范的文字"></a>处理格式规范的文字</h2><p><img src="/images/python/python_scraping/图片demo1.png" alt="图片demo1"><br><img src="/images/python/python_scraping/图片demo2.png" alt="图片demo2"></p>
+<p><code>tesseract demo.png text</code>：将某个图片的文字识别出来，保存到text.txt文件中</p>
+<p>如果图片图片背景有渐变色，文字识别变得困难，可以使用Pillow库创建一个阈值过滤器来去掉渐变的背景色，只把文字流下来，从而利于Tesseract读取。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cleanFile</span><span class="params">(filePath, newFilePath)</span>:</span></span><br><span class="line">    image = Image.open(filePath)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 对图片进行阈值过滤，然后保存</span></span><br><span class="line">    image = image.point(<span class="keyword">lambda</span> x: <span class="number">0</span> <span class="keyword">if</span> x &lt; <span class="number">120</span> <span class="keyword">else</span> <span class="number">255</span>)</span><br><span class="line">    image.save(newFilePath)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 调用系统的tesseract命令对图片进行OCR</span></span><br><span class="line">    subprocess.call([<span class="string">'tesseract'</span>, newFilePath, <span class="string">'output'</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 打开文件读取结果</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'output.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        print(f.read())</span><br><span class="line"></span><br><span class="line">cleanFile(<span class="string">'demo1.png'</span>, <span class="string">'demo_clean.png'</span>)</span><br></pre></td></tr></table></figure>
+<p>从网站图片中抓取文字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开亚马逊《战争与和平》图书详情页</span></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://www.amazon.com/War-Peace-Leo-Nikolayevich-Tolstoy/dp/1427030200'</span>)</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 单击图书预览按钮</span></span><br><span class="line">driver.find_element_by_id(<span class="string">'sitbLogoImg'</span>).click()</span><br><span class="line">imageList = set()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待页面加载完成</span></span><br><span class="line">time.sleep(<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 当向右箭头可以点击时，开始翻页</span></span><br><span class="line"><span class="keyword">while</span> <span class="string">'pointer'</span> <span class="keyword">in</span> driver.find_element_by_id(<span class="string">'sitbReaderRightPageTurner'</span>).get_attribute(<span class="string">'style'</span>):</span><br><span class="line">    driver.find_element_by_id(<span class="string">'sitbReaderRightPageTurner'</span>).click()</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 获取已加载的新页面（一次可以加载多个页面，但是重复的页面不能加载到集合中）</span></span><br><span class="line">    pages = driver.find_elements_by_xpath(<span class="string">"//div[@class='pageImage']/div/img"</span>)</span><br><span class="line">    <span class="keyword">for</span> page <span class="keyword">in</span> pages:</span><br><span class="line">        image = page.get_attribute(<span class="string">'src'</span>)</span><br><span class="line">        imageList.add(image)</span><br><span class="line">driver.quit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用Tesseract处理我们收集的图片URL链接</span></span><br><span class="line"><span class="keyword">for</span> image <span class="keyword">in</span> sorted(imageList):</span><br><span class="line">    imgName = image[image[<span class="number">0</span>:image.find(<span class="string">'?'</span>)].rfind(<span class="string">'/'</span>)+<span class="number">1</span>:image.find(<span class="string">'?'</span>)]</span><br><span class="line">    name = imgName[<span class="number">0</span>:imgName.rfind(<span class="string">'.'</span>)]</span><br><span class="line">    urlretrieve(image, imgName)</span><br><span class="line">    p = subprocess.Popen([<span class="string">'tesseract'</span>, imgName, name],</span><br><span class="line">                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line">    p.wait()</span><br><span class="line">    f = open(name+<span class="string">'.txt'</span>, <span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="读取验证码与训练Tesseract"><a href="#读取验证码与训练Tesseract" class="headerlink" title="读取验证码与训练Tesseract"></a>读取验证码与训练Tesseract</h2><p>首先要把大量的验证码样本下载到一个文件夹里，建议使用验证码的真实结果给每个样本文件命名（即 4MmC3.jpg）。</p>
+<p>第二步是准确地告诉 Tesseract 一张图片中的每个字符是什么，以及每个字符的具体位置。这里需要创建一些矩形定位文件（box file），示例：</p>
+<p>4 15 26 33 55 0<br>M 38 13 67 45 0<br>m 79 15 101 26 0<br>C 111 33 136 60 0<br>3 147 17 176 45 0</p>
+<p>第一列符号是图片中的每个字符，后面的 4 个数字分别是包围这个字符的最小矩形的坐标（图片左下角是原点 (0,0)， 4 个数字分别对应每个字符的左下角 x 坐标、左下角 y 坐标、右上角 x 坐标和右上角 y 坐标），最后一个数字“0”表示图片样本的编号。</p>
+<p>制作矩形定位文件的工具，Tesseract OCR Chopper（<a href="http://pp19dd.com/tesseract-ocr-chopper/）。" target="_blank" rel="noopener">http://pp19dd.com/tesseract-ocr-chopper/）。</a></p>
+<p>备份一下这个文件夹。</p>
+<p>完成所有的数据分析工作和创建 Tesseract 所需的训练文件，一共有六个步骤。</p>
+<p>一个 Python 版的解决方案（<a href="https://github.com/REMitchell/tesseract-trainer）。" target="_blank" rel="noopener">https://github.com/REMitchell/tesseract-trainer）。</a></p>
+<h2 id="获取验证码提交答案"><a href="#获取验证码提交答案" class="headerlink" title="获取验证码提交答案"></a>获取验证码提交答案</h2><p>常用的处理方法就是，首先把验证码图片下载到硬盘里，清理干净，然后用 Tesseract 处理图片，最后返回符合网站要求的识别结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen, urlretrieve</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageOps</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cleanImage</span><span class="params">(imagePath)</span>:</span></span><br><span class="line">    image = Image.open(imagePath)</span><br><span class="line">    image = image.point(<span class="keyword">lambda</span> x: <span class="number">0</span> <span class="keyword">if</span> x &lt; <span class="number">143</span> <span class="keyword">else</span> <span class="number">255</span>)</span><br><span class="line">    borderImage = ImageOps.expand(image, border=<span class="number">20</span>, fill=<span class="string">'white'</span>)</span><br><span class="line">    borderImage.save(imagePath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html = urlopen(<span class="string">'http://www.pythonscraping.com/humans-only'</span>)</span><br><span class="line">bs = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line"><span class="comment"># 收集需要处理的表单数据（包括验证码和输入字段）</span></span><br><span class="line">imageLocation = bs.find(<span class="string">'img'</span>, &#123;<span class="string">'title'</span>: <span class="string">'Image CAPTCHA'</span>&#125;)[<span class="string">'src'</span>]</span><br><span class="line">formBuildId = bs.find(<span class="string">'input'</span>, &#123;<span class="string">'name'</span>: <span class="string">'form_build_id'</span>&#125;)[<span class="string">'value'</span>]</span><br><span class="line">captchaSid = bs.find(<span class="string">'input'</span>, &#123;<span class="string">'name'</span>: <span class="string">'captcha_sid'</span>&#125;)[<span class="string">'value'</span>]</span><br><span class="line">captchaToken = bs.find(<span class="string">'input'</span>, &#123;<span class="string">'name'</span>: <span class="string">'captcha_token'</span>&#125;)[<span class="string">'value'</span>]</span><br><span class="line"></span><br><span class="line">captchaUrl = <span class="string">'http://pythonscraping.com'</span>+imageLocation</span><br><span class="line">urlretrieve(captchaUrl, <span class="string">'captcha.jpg'</span>)</span><br><span class="line">cleanImage(<span class="string">'captcha.jpg'</span>)</span><br><span class="line">p = subprocess.Popen([<span class="string">'tesseract'</span>, <span class="string">'captcha.jpg'</span>, <span class="string">'captcha'</span>],</span><br><span class="line">                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line">p.wait()</span><br><span class="line">f = open(<span class="string">'captcha.txt'</span>, <span class="string">'r'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理识别结果中的空格和换行符</span></span><br><span class="line">captchaResponse = f.read().replace(<span class="string">' '</span>, <span class="string">''</span>).replace(<span class="string">'\n'</span>, <span class="string">''</span>)</span><br><span class="line">print(<span class="string">'Captcha solution attempt: '</span>+captchaResponse)</span><br><span class="line"><span class="keyword">if</span> len(captchaResponse) == <span class="number">5</span>:</span><br><span class="line">    params = &#123;<span class="string">'captcha_token'</span>: captchaToken,</span><br><span class="line">              <span class="string">'captcha_sid'</span>: captchaSid,</span><br><span class="line">              <span class="string">'form_id'</span>: <span class="string">'comment_node_page_form'</span>,</span><br><span class="line">              <span class="string">'form_build_id'</span>: formBuildId,</span><br><span class="line">              <span class="string">'captcha_response'</span>: captchaResponse,</span><br><span class="line">              <span class="string">'name'</span>: <span class="string">'Nobody'</span>,</span><br><span class="line">              <span class="string">'subject'</span>: <span class="string">'Nosubject'</span>,</span><br><span class="line">              <span class="string">'comment_body[und][0][value]'</span>: <span class="string">'中文内容'</span>&#125;</span><br><span class="line">    r = requests.post(</span><br><span class="line">        <span class="string">'http://www.pythonscraping.com/comment/reply/10'</span>, data=params)</span><br><span class="line">    responseObj = BeautifulSoup(r.text, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="keyword">if</span> responseObj.find(<span class="string">'div'</span>, &#123;<span class="string">'class'</span>: <span class="string">'messages'</span>&#125;) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        print(responseObj.find(<span class="string">'div'</span>, &#123;<span class="string">'class'</span>: <span class="string">'messages'</span>&#125;).get_text())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'There was a problem reading the CAPTCHA correctly!'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="避开采集陷阱"><a href="#避开采集陷阱" class="headerlink" title="避开采集陷阱"></a>避开采集陷阱</h1><h2 id="让网络机器人看起来像人类用户"><a href="#让网络机器人看起来像人类用户" class="headerlink" title="让网络机器人看起来像人类用户"></a>让网络机器人看起来像人类用户</h2><h3 id="修改请求头"><a href="#修改请求头" class="headerlink" title="修改请求头"></a>修改请求头</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">session = requests.Session()</span><br><span class="line">headers = &#123;<span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"</span>,</span><br><span class="line">           <span class="string">"Accept"</span>: <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"</span>&#125;</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/api/v4/questions/35441232/answers?include=data%5B%2A%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Ccreated_time%2Cupdated_time%2Creview_info%2Crelevant_info%2Cquestion%2Cexcerpt%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%3Bdata%5B%2A%5D.mark_infos%5B%2A%5D.url%3Bdata%5B%2A%5D.author.follower_count%2Cbadge%5B%2A%5D.topics&amp;limit=50&amp;offset=0&amp;sort_by=default'</span></span><br><span class="line"></span><br><span class="line">req = session.get(url, headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'d.json'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    d = json.loads(req.text)</span><br><span class="line">    json.dump(d, f, ensure_ascii=<span class="keyword">False</span>, indent=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="处理cookie"><a href="#处理cookie" class="headerlink" title="处理cookie"></a>处理cookie</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com'</span>)</span><br><span class="line">driver.implicitly_wait(<span class="number">1</span>)</span><br><span class="line">print(driver.get_cookies())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">driver.delete_all_cookies()</span><br><span class="line">driver.add_cookie(&#123;<span class="string">'name'</span>: <span class="string">'foo'</span>, <span class="string">'value'</span>: <span class="string">'bar'</span>, <span class="string">'path'</span>: <span class="string">'/'</span>, <span class="string">'secure'</span>: <span class="keyword">True</span>&#125;)</span><br><span class="line">print(driver.get_window_size())</span><br><span class="line">driver.get_screenshot_as_file(<span class="string">'foo.png'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="避免蜜罐"><a href="#避免蜜罐" class="headerlink" title="避免蜜罐"></a>避免蜜罐</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.remote.webelement <span class="keyword">import</span> WebElement</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com/pages/itsatrap.html'</span>)</span><br><span class="line">links = driver.find_elements_by_tag_name(<span class="string">'a'</span>)</span><br><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> links:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> link.is_displayed():</span><br><span class="line">        print(<span class="string">'The link '</span>+link.get_attribute(<span class="string">'href'</span>)+<span class="string">' is a trap'</span>)</span><br><span class="line"></span><br><span class="line">fields = driver.find_elements_by_tag_name(<span class="string">'input'</span>)</span><br><span class="line"><span class="keyword">for</span> field <span class="keyword">in</span> fields:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> field.is_displayed():</span><br><span class="line">        print(<span class="string">'Do not change value of '</span>+field.get_attribute(<span class="string">'name'</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="问题检查表"><a href="#问题检查表" class="headerlink" title="问题检查表"></a>问题检查表</h2><p>如果你已经登录网站却不能保持登录状态，或者网站上出现了其他的“登录状态”异常，请检查你的 cookie。 确认在加载每个页面时 cookie 都被正确调用，而且你的 cookie 在<br>每次发起请求时都发送到了网站上。</p>
+<p>如果你在客户端遇到了 HTTP 错误， 尤其是 403 禁止访问错误，这可能说明网站已经把你的 IP 当作机器人了，不再接受你的任何请求。你要么等待你的 IP 地址从网站黑名单里移除，要么就换个 IP 地址（可以去星巴克上网，或者看看第 14 章的内容）。如果你确定自己并没有被封杀，那么再检查下面的内容：</p>
+<ul>
+<li><p>确认你的爬虫在网站上的速度不是特别快。 快速采集是一种恶习，会对网管的服务器造成沉重的负担，还会让你陷入违法境地， 也是 IP 被网站列入黑名单的首要原因。给你的爬虫增加延迟，让它们在夜深人静的时候运行。切记：匆匆忙忙写程序或收集数据都是拙劣项目管理的表现；应该提前做好计划，避免临阵慌乱<br>访问者。如果你不确定请求头的值怎样才算合适，就用你自己浏览器的请求头吧</p>
+</li>
+<li><p>还有一件必须做的事情： 修改你的请求头！有些网站会封杀任何声称自己是爬虫的访问者。如果你不确定请求头的值怎样才算合适，就用你自己浏览器的请求头吧</p>
+</li>
+<li><p>确认你没有点击或访问任何人类用户通常不能点击或接入的信息</p>
+</li>
+</ul>
+<h1 id="用爬虫测试网站"><a href="#用爬虫测试网站" class="headerlink" title="用爬虫测试网站"></a>用爬虫测试网站</h1><h2 id="Python-单元测试"><a href="#Python-单元测试" class="headerlink" title="Python 单元测试"></a>Python 单元测试</h2><ul>
+<li><p>为每个单元测试的开始和结束提供 setUp 和 tearDown 函数</p>
+</li>
+<li><p>提供不同类型的“断言”语句让测试成功或失败</p>
+</li>
+<li><p>把所有以 test<em> 开头的函数当作单元测试运行，忽略不带 test</em> 的函数</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAddition</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Setting up the test'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Tearing down the test'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_twoPlusTwo</span><span class="params">(self)</span>:</span></span><br><span class="line">        total = <span class="number">2</span>+<span class="number">2</span></span><br><span class="line">        self.assertEqual(total, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_twoPlusOne</span><span class="params">(self)</span>:</span></span><br><span class="line">        total = <span class="number">2</span>+<span class="number">1</span></span><br><span class="line">        self.assertEqual(total, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+<p>setUp 和 tearDown这两个函数在每个测试方法的开始和结束都会运行一次。</p>
+<p>测试维基百科：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestWikipedia</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    bsObj = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUpClass</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">'1'</span>)</span><br><span class="line">        <span class="keyword">global</span> bsObj</span><br><span class="line">        url = <span class="string">'http://en.wikipedia.org/wiki/Monty_Python'</span></span><br><span class="line">        bsObj = BeautifulSoup(urlopen(url), <span class="string">'lxml'</span>)</span><br><span class="line">        print(<span class="string">'2'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_titleText</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> bsObj</span><br><span class="line">        pageTitle = bsObj.find(<span class="string">'h1'</span>).get_text()</span><br><span class="line">        self.assertEqual(<span class="string">'Monty Python'</span>, pageTitle)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_contentExists</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> bsObj</span><br><span class="line">        content = bsObj.find(<span class="string">'div'</span>, &#123;<span class="string">'id'</span>: <span class="string">'mw-content-text'</span>&#125;)</span><br><span class="line">        self.assertIsNotNone(content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+<p>setUpClass函数只在类的初始化阶段运行一次（与每个测试启动时都运行的 setUp 函数不同）。</p>
+<h2 id="Selenium-单元测试"><a href="#Selenium-单元测试" class="headerlink" title="Selenium 单元测试"></a>Selenium 单元测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://en.wikipedia.org/wiki/Monty_Python'</span>)</span><br><span class="line"><span class="keyword">assert</span> <span class="string">'Monty Python'</span> <span class="keyword">in</span> driver.title</span><br><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
+<p>Selenium 单元测试的时候需要比写 Python 单元测试更加随意，断言语句甚至可以整合到生产代码中。</p>
+<p><strong>与网站进行交互：</strong></p>
+<p>Selenium 也可以对任何给定元素执行很多操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">myElement.click()</span><br><span class="line">myElement.click_and_hold()</span><br><span class="line">myElement.release()</span><br><span class="line">myElement.double_click()</span><br><span class="line">myElement.send_keys_to_element(<span class="string">"content to enter"</span>)</span><br></pre></td></tr></table></figure>
+<p>动作链：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.remote.webelement <span class="keyword">import</span> WebElement</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com/pages/files/form.html'</span>)</span><br><span class="line"></span><br><span class="line">firstnameField = driver.find_element_by_name(<span class="string">'firstname'</span>)</span><br><span class="line">lastnameField = driver.find_element_by_name(<span class="string">'lastname'</span>)</span><br><span class="line">submitButton = driver.find_element_by_id(<span class="string">'submit'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 方法1 ###</span></span><br><span class="line">firstnameField.send_keys(<span class="string">'Ryan'</span>)</span><br><span class="line">lastnameField.send_keys(<span class="string">'Mitchell'</span>)</span><br><span class="line">submitButton.click()</span><br><span class="line"></span><br><span class="line"><span class="comment">### 方法2 ###</span></span><br><span class="line">actions = ActionChains(driver).click(firstnameField).send_keys(</span><br><span class="line">    <span class="string">'Ryan'</span>).click(lastnameField).send_keys(<span class="string">'Mitchell'</span>).send_keys(Keys.RETURN)  <span class="comment"># Keys.RETURN 回车键</span></span><br><span class="line">actions.perform()</span><br><span class="line"></span><br><span class="line">print(driver.find_element_by_tag_name(<span class="string">'body'</span>).text)</span><br><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>鼠标拖放动作</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.remote.webelement <span class="keyword">import</span> WebElement</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://pythonscraping.com/pages/javascript/draggableDemo.html'</span>)</span><br><span class="line">print(driver.find_element_by_id(<span class="string">'message'</span>).text)</span><br><span class="line"></span><br><span class="line">element = driver.find_element_by_id(<span class="string">'draggable'</span>)</span><br><span class="line">target = driver.find_element_by_id(<span class="string">'div2'</span>)</span><br><span class="line">actions = ActionChains(driver).drag_and_drop(element, target).perform()</span><br><span class="line"></span><br><span class="line">print(driver.find_element_by_id(<span class="string">'message'</span>).text)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>截屏</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.remote.webelement <span class="keyword">import</span> WebElement</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">'http://www.pythonscraping.com/'</span>)</span><br><span class="line">driver.get_screenshot_as_file(<span class="string">'pythonscraping.png'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Python单元测试与Selenium单元测试的选择"><a href="#Python单元测试与Selenium单元测试的选择" class="headerlink" title="Python单元测试与Selenium单元测试的选择"></a>Python单元测试与Selenium单元测试的选择</h2><p>Python 的单元测试语法严谨冗长，更适合为大多数大型项目写测试，而 Selenium 的测试方式灵活且功能强大，可以成为一些网站功能测试的首选。两者组合是最佳拍档。</p>
+<h1 id="远程采集"><a href="#远程采集" class="headerlink" title="远程采集"></a>远程采集</h1><h2 id="Tor代理服务器"><a href="#Tor代理服务器" class="headerlink" title="Tor代理服务器"></a>Tor代理服务器</h2><p>洋葱路由（The Onion Router）网络，常用缩写为 Tor，是一种 IP 地址匿名手段。由网络志愿者服务器构建的洋葱路由器网络， 通过不同服务器构成多个层（就像洋葱）把客户端包在最里面。数据进入网络之前会被加密，因此任何服务器都不能偷取通信数据。另外，虽然每一个服务器的入站和出站通信都可以被查到， 但是要想查出通信的真正起点和终点，必须知道整个通信链路上所有服务器的入站和出站通信细节，而这基本是不可能实现的。</p>
+<p>PySocks 是一个非常简单的 Python 代理服务器通信模块，它可以和 Tor 配合使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socks</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line">socks.set_default_proxy(socks.SOCKS5, <span class="string">"localhost"</span>, <span class="number">9150</span>)</span><br><span class="line">socket.socket = socks.socksocket</span><br><span class="line">print(urlopen(<span class="string">'http://icanhazip.com'</span>).read())</span><br></pre></td></tr></table></figure>
+<p>如果你想在 Tor 里面用 Selenium 和 PhantomJS，不需要 PySocks，只需要增加 service_args 参数设置代理端口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">service_args = [ <span class="string">'--proxy=localhost:9150'</span>, <span class="string">'--proxy-type=socks5'</span>, ]</span><br><span class="line">driver = webdriver.PhantomJS(executable_path=<span class="string">'&lt;path to PhantomJS&gt;'</span>, service_args=service_args)</span><br><span class="line">driver.get(<span class="string">"http://icanhazip.com"</span>)</span><br><span class="line">print(driver.page_source)</span><br><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><strong>robots.txt</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#Welcome to my robots.txt file!</span><br><span class="line">User-agent: *</span><br><span class="line">Disallow: *</span><br><span class="line">User-agent: Googlebot</span><br><span class="line">Allow: *</span><br><span class="line">Disallow: /private</span><br><span class="line"></span><br><span class="line">Twitter 的 robots.txt 文件对 Google 的规则</span><br><span class="line">#Google Search Engine Robot</span><br><span class="line">User-agent: Googlebot</span><br><span class="line">Allow: /?_escaped_fragment_</span><br><span class="line">Allow: /?lang=</span><br><span class="line">Allow: /hashtag/*?src=</span><br><span class="line">Allow: /search?q=%23</span><br><span class="line">Disallow: /search/realtime</span><br><span class="line">Disallow: /search/users</span><br><span class="line">Disallow: /search/*/grid</span><br><span class="line">Disallow: /*?</span><br><span class="line">Disallow: /*/followers</span><br><span class="line">Disallow: /*/following</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Alan 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Alan 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Alan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://adieUkid.github.io/2018/10/24/Python网络数据采集/" title="Python网络数据采集_注释笔记">http://adieUkid.github.io/2018/10/24/Python网络数据采集/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/流畅的Python_注释笔记/" rel="next" title="流畅的Python_注释笔记">
+                <i class="fa fa-chevron-left"></i> 流畅的Python_注释笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Alan" />
+            
+              <p class="site-author-name" itemprop="name">Alan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初见网络爬虫"><span class="nav-number">1.</span> <span class="nav-text">初见网络爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BeautifulSoap-简介"><span class="nav-number">1.1.</span> <span class="nav-text">BeautifulSoap 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可靠的网络连接"><span class="nav-number">1.2.</span> <span class="nav-text">可靠的网络连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复杂HTML解析"><span class="nav-number">2.</span> <span class="nav-text">复杂HTML解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不是一直都要用锤子"><span class="nav-number">2.1.</span> <span class="nav-text">不是一直都要用锤子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再端一碗"><span class="nav-number">2.2.</span> <span class="nav-text">再端一碗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#findAll和find"><span class="nav-number">2.2.1.</span> <span class="nav-text">findAll和find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他BeautifulSoup对象"><span class="nav-number">2.2.2.</span> <span class="nav-text">其他BeautifulSoup对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航树"><span class="nav-number">2.2.3.</span> <span class="nav-text">导航树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">2.3.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式和BeautifulSoup"><span class="nav-number">2.4.</span> <span class="nav-text">正则表达式和BeautifulSoup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">2.5.</span> <span class="nav-text">Lambda表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始采集"><span class="nav-number">3.</span> <span class="nav-text">开始采集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历单个域名"><span class="nav-number">3.1.</span> <span class="nav-text">遍历单个域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采集整个网站"><span class="nav-number">3.2.</span> <span class="nav-text">采集整个网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy"><span class="nav-number">3.3.</span> <span class="nav-text">Scrapy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用API"><span class="nav-number">4.</span> <span class="nav-text">使用API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储数据"><span class="nav-number">5.</span> <span class="nav-text">存储数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体文件"><span class="nav-number">5.1.</span> <span class="nav-text">媒体文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把数据存储到CSV"><span class="nav-number">5.2.</span> <span class="nav-text">把数据存储到CSV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-number">5.3.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#email"><span class="nav-number">5.4.</span> <span class="nav-text">email</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取文档"><span class="nav-number">6.</span> <span class="nav-text">读取文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#纯文本"><span class="nav-number">6.1.</span> <span class="nav-text">纯文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSV"><span class="nav-number">6.2.</span> <span class="nav-text">CSV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF"><span class="nav-number">6.3.</span> <span class="nav-text">PDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docx"><span class="nav-number">6.4.</span> <span class="nav-text">docx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据清洗"><span class="nav-number">7.</span> <span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码清洗数据"><span class="nav-number">7.1.</span> <span class="nav-text">编写代码清洗数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据存储后再清洗"><span class="nav-number">7.2.</span> <span class="nav-text">数据存储后再清洗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自然语言处理"><span class="nav-number">8.</span> <span class="nav-text">自然语言处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概括数据"><span class="nav-number">8.1.</span> <span class="nav-text">概括数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马尔可夫模型"><span class="nav-number">8.2.</span> <span class="nav-text">马尔可夫模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#穿越网页表单与登录窗口进行采集"><span class="nav-number">9.</span> <span class="nav-text">穿越网页表单与登录窗口进行采集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Requests"><span class="nav-number">9.1.</span> <span class="nav-text">Python Requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交一个基本表单"><span class="nav-number">9.2.</span> <span class="nav-text">提交一个基本表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交文件和图像"><span class="nav-number">9.3.</span> <span class="nav-text">提交文件和图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理登录和cookie"><span class="nav-number">9.4.</span> <span class="nav-text">处理登录和cookie</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#采集Javascript"><span class="nav-number">10.</span> <span class="nav-text">采集Javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理重定向"><span class="nav-number">10.1.</span> <span class="nav-text">处理重定向</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像识别与文字处理"><span class="nav-number">11.</span> <span class="nav-text">图像识别与文字处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OCR库"><span class="nav-number">11.1.</span> <span class="nav-text">OCR库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理格式规范的文字"><span class="nav-number">11.2.</span> <span class="nav-text">处理格式规范的文字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取验证码与训练Tesseract"><span class="nav-number">11.3.</span> <span class="nav-text">读取验证码与训练Tesseract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取验证码提交答案"><span class="nav-number">11.4.</span> <span class="nav-text">获取验证码提交答案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#避开采集陷阱"><span class="nav-number">12.</span> <span class="nav-text">避开采集陷阱</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#让网络机器人看起来像人类用户"><span class="nav-number">12.1.</span> <span class="nav-text">让网络机器人看起来像人类用户</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改请求头"><span class="nav-number">12.1.1.</span> <span class="nav-text">修改请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理cookie"><span class="nav-number">12.1.2.</span> <span class="nav-text">处理cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免蜜罐"><span class="nav-number">12.1.3.</span> <span class="nav-text">避免蜜罐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题检查表"><span class="nav-number">12.2.</span> <span class="nav-text">问题检查表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用爬虫测试网站"><span class="nav-number">13.</span> <span class="nav-text">用爬虫测试网站</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-单元测试"><span class="nav-number">13.1.</span> <span class="nav-text">Python 单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selenium-单元测试"><span class="nav-number">13.2.</span> <span class="nav-text">Selenium 单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python单元测试与Selenium单元测试的选择"><span class="nav-number">13.3.</span> <span class="nav-text">Python单元测试与Selenium单元测试的选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程采集"><span class="nav-number">14.</span> <span class="nav-text">远程采集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tor代理服务器"><span class="nav-number">14.1.</span> <span class="nav-text">Tor代理服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">15.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-paper-plane"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alan</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="250" alpha="0.6"  zIndex="0" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

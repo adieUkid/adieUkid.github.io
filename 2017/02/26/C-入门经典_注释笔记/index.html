@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="checked关键字：//检查赋值是否数据溢出//或者配置，项目-属性-生成-高级，检查上溢下溢">
+<meta name="description" content="checked关键字用来检查赋值是否数据溢出，或者在VS中配置，项目-属性-生成-高级，检查上溢下溢。 1234checked     //unchecked 不检查&amp;#123;    destination = (int)source;&amp;#125;">
 <meta name="keywords" content="C#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#入门经典_注释笔记">
 <meta property="og:url" content="http://adieUkid.github.io/2017/02/26/C-入门经典_注释笔记/index.html">
 <meta property="og:site_name" content="Alan&#39;s Notes">
-<meta property="og:description" content="checked关键字：//检查赋值是否数据溢出//或者配置，项目-属性-生成-高级，检查上溢下溢">
+<meta property="og:description" content="checked关键字用来检查赋值是否数据溢出，或者在VS中配置，项目-属性-生成-高级，检查上溢下溢。 1234checked     //unchecked 不检查&amp;#123;    destination = (int)source;&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-13T09:48:26.303Z">
+<meta property="og:updated_time" content="2018-10-25T03:29:53.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#入门经典_注释笔记">
-<meta name="twitter:description" content="checked关键字：//检查赋值是否数据溢出//或者配置，项目-属性-生成-高级，检查上溢下溢">
+<meta name="twitter:description" content="checked关键字用来检查赋值是否数据溢出，或者在VS中配置，项目-属性-生成-高级，检查上溢下溢。 1234checked     //unchecked 不检查&amp;#123;    destination = (int)source;&amp;#125;">
 
 
 
@@ -403,420 +403,142 @@
       
 
       
-        <h3 id="checked关键字："><a href="#checked关键字：" class="headerlink" title="checked关键字："></a>checked关键字：</h3><p>//检查赋值是否数据溢出<br>//或者配置，项目-属性-生成-高级，检查上溢下溢</p>
+        <h3 id="checked关键字"><a href="#checked关键字" class="headerlink" title="checked关键字"></a>checked关键字</h3><p>用来检查赋值是否数据溢出，或者在VS中配置，项目-属性-生成-高级，检查上溢下溢。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">checked</span>     <span class="comment">//unchecked 不检查</span></span><br><span class="line">&#123;</span><br><span class="line">    destination = (<span class="keyword">int</span>)source;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<pre><code>checked//unchecked 不检查
-{
-    destination = (int)source;
-}
-</code></pre><h3 id="委托："><a href="#委托：" class="headerlink" title="委托："></a>委托：</h3><p>2种写法：</p>
-<pre><code>1，Calcul cal=new Calcul(Add);
-2, Calcul cal=Add;
-</code></pre><p>或</p>
-<pre><code>1,Calcul cal;   cal=new Calcul(Add);
-2,Calcul cal;   cal=Add;
-</code></pre><p>ps:情况2自动初始化一个委托</p>
-<h3 id="二维数组："><a href="#二维数组：" class="headerlink" title="二维数组："></a>二维数组：</h3><pre><code>int[,] ints = new int[10,4];
-ints[2, 2] = 1;
-</code></pre><h3 id="ref-out关键字"><a href="#ref-out关键字" class="headerlink" title="ref out关键字"></a>ref out关键字</h3><p>ref out 等也可以改变函数的签名(命名+参数），从而实现重载</p>
-<h3 id="断点："><a href="#断点：" class="headerlink" title="断点："></a>断点：</h3><p>可以设置中断条件和击中次数。<br>如，a&gt;=100，次数=100</p>
-<h3 id="析构函数："><a href="#析构函数：" class="headerlink" title="析构函数："></a>析构函数：</h3><pre><code>class MyClass{
-     ~MyClass(){
-    }
-}
-</code></pre><p>~ 析构函数，垃圾回收器回收时自动调用<br>还将隐式调用基类的析构函数</p>
-<h3 id="隐藏基类方法，在子类中定义时加"><a href="#隐藏基类方法，在子类中定义时加" class="headerlink" title="隐藏基类方法，在子类中定义时加"></a>隐藏基类方法，在子类中定义时加</h3><pre><code>new public void Do(){
-    ...
-}
-</code></pre><h3 id="类型比较："><a href="#类型比较：" class="headerlink" title="类型比较："></a>类型比较：</h3><pre><code>myObj.GetType()==typeof(MyObjClass)
-</code></pre><p>对对象类型的比较</p>
-<p>myObj is objBase<br>myObj是objBase的子类，实现类，同类都为true</p>
-<h3 id="重载运算符：-例如："><a href="#重载运算符：-例如：" class="headerlink" title="重载运算符：  例如：+"></a>重载运算符：  例如：+</h3><p>需要再进行+运算的类内部定义<br>ps:1，不能重载+=，-=。但如果重载它们对应的简单运算符，如+，则+=仍能像预期那样执行。<br>2，不能重载=，因为它有基本用途<br>3，不能重载&amp;&amp;和||，但同1理，重载&amp;和|就够了<br>4，&lt;和&gt;，&lt;=和&gt;=必须成对重载</p>
-<pre><code>class Person
-{
-    public int Age { get; set; }
-    public decimal Price { get; set; }
-    public string Name { get; set; }
-
-    public static Person operator +(Person p1, Person p2)
-    {
-        return new Person { Age = p1.Age + p2.Age };
-    }
-
-    public static bool operator &gt;(Person left, Person right)
-    {
-        return left.Age &gt; right.Age;
-    }
-
-    public static bool operator &lt;(Person left, Person right)
-    {
-        return left.Price &lt; right.Price;
-    }
-}
-</code></pre><h3 id="IComparable接口："><a href="#IComparable接口：" class="headerlink" title="IComparable接口："></a>IComparable接口：</h3><p>定义在要比较的对象的类中实现，类要实现IComparable接口</p>
-<pre><code>public int CompareTo(object obj)
-{
-    var person = obj as Person;
-    if (person == null) throw new ArgumentException(&quot;参数错误&quot;);
-    return Age - person.Age;
-}
-</code></pre><h3 id="重写隐式-implicit-，显式-explicit-转换："><a href="#重写隐式-implicit-，显式-explicit-转换：" class="headerlink" title="重写隐式(implicit)，显式(explicit)转换："></a>重写隐式(implicit)，显式(explicit)转换：</h3><pre><code>class Person1
-{
-    public int Age { get; set; }
-
-    public static implicit operator Person2(Person1 p1)
-    {
-        Person2 p = new Person2 { Age = p1.Age };
-        return p;
-    }
-}
-
-class Person2
-{
-    public double Age { get; set; }
-
-    public static explicit operator Person1(Person2 p2)
-    {
-        Person1 p1 = new Person1();
-        checked { p1.Age = (int)p2.Age; }
-        return p1;
-    }
-}
-</code></pre><p>ps：<br>同样可作用于泛型集合</p>
-<h3 id="父子类相互转换："><a href="#父子类相互转换：" class="headerlink" title="父子类相互转换："></a>父子类相互转换：</h3><p> 1会报错，2不会报错。<br>不能把父类实例转换成子类实例，只能把父类变量类型转换成子类变量类型</p>
-<pre><code>1
-Person p = new Person();
-Man m = (Man)p;
-2
-Person p1 = new Man();
-Man m1 = (Man) p1;
-</code></pre><p>如果强转换成as 则都不会报错，1为null，2不为null</p>
-<h3 id="运算符："><a href="#运算符：" class="headerlink" title="??运算符："></a>??运算符：</h3><pre><code>int? val1 = null;
-int result = val1*5 ?? 10;
-int? result2=val1*5 ?? 10;
-</code></pre><p>??等式的结果可以是int或int?，等式会自动进行转换</p>
-<h3 id="default关键字："><a href="#default关键字：" class="headerlink" title="default关键字："></a>default关键字：</h3><p>如果T是引用类型，则输出null<br>如果T是值类型，则输出默认值<br>e.g.   int  -&gt;  0</p>
-<pre><code>Class MyClass&lt;T&gt;{
-    public MyClass(){
-        Console.WriteLine(default(T));
-    }
-}
-</code></pre><h3 id="约束类型"><a href="#约束类型" class="headerlink" title="约束类型"></a>约束类型</h3><pre><code>class MyClass&lt;T1, T2&gt; : MyClassBase 
-     where T1 : class,new () where T2 : T1
-{   }
-</code></pre><p>ps:<br>1，约束类型：struct值类型，class引用类型，base-class任意基类，interface接口，new()有一个公共无参构造函数<br>2，多个约束之间用，分隔<br>3，new()作约束必须是指定的最后一个<br>4，约束必须出现在继承说明符的后面</p>
-<h3 id="协变和抗变："><a href="#协变和抗变：" class="headerlink" title="协变和抗变："></a>协变和抗变：</h3><p>应用于泛型接口和委托，继承关系默认支持协变<br>1，协变</p>
-<pre><code>List&lt;string&gt; liststr = new List&lt;string&gt;();
-List&lt;object&gt; listobj = new List&lt;object&gt;();
-listobj.AddRange(liststr); //参数为IEnumerable&lt;object&gt;
-</code></pre><p>定义：</p>
-<pre><code>public class List&lt;T&gt; : IEnumerable&lt;T&gt;...
-public interface IEnumerable&lt;out T&gt; : IEnumerable
-</code></pre><p>ps：1，使用关键字out，则类型参数T只能作为方法的返回值<br>2，泛型类型参数可以从一个派生类隐式转化为基类，让一个带有协变参数的泛型接口（或委托）可以接收类型更加精细化，具体化的泛型接口（或委托）作为参数，可以看成OO中多态的一个延伸。</p>
-<p>2，抗变（逆变）</p>
-<pre><code>class MyComparer : IComparer&lt;object&gt;
-{
-    public int Compare(object x, object y)
-    {
-        throw new NotImplementedException();
-    }
-}
-
-IComparer&lt;object&gt; comobj = new MyComparer();
-liststr.Sort(comobj); //参数为IComparer&lt;string&gt;
-</code></pre><p>定义：</p>
-<pre><code>public interface IComparer&lt;in T&gt;
-</code></pre><p>ps：1，使用关键字in，则类型参数T只能作为方法的参数<br>2，泛型类型参数可以从一个基类隐式转化为派生类，让一个带有协变参数的泛型接口（或委托）可以接收粒度更粗的泛型接口或委托作为参数，这个过程实际上是参数类型更加精细化的过程。</p>
-<p>总结：协变让一个粗粒度接口（或委托）可以接收一个更加具体的接口（或委托）作为参数（或返回值）；逆变让一个接口（或委托）的参数类型（或返回值）类型更加具体化，也就是参数类型更强，更明确。</p>
-<h3 id="引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可。"><a href="#引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可。" class="headerlink" title="引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可。"></a>引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可。</h3><h3 id="委托的应用："><a href="#委托的应用：" class="headerlink" title="委托的应用："></a>委托的应用：</h3><pre><code>delegate int OperationDelegate(int left,int right);
-void Function(OperationDelegate del)
-{
-    int left,right;
-    //...
-    del(left,right);
-}
-void int OperationEx(int left,int right)
-{ return left+right; }
-</code></pre><p>//Main<br>1,用方法创建委托</p>
-<pre><code>void Function(new OperationDelegate(OperationEx));
-</code></pre><p>2,直接传递方法(默认创建委托)</p>
-<pre><code>void Function(OperationEx);
-</code></pre><p>3,匿名方法</p>
-<pre><code>void Function(delegate(int left,int right){  return left+right; });
-</code></pre><p>4,Lambda表达式</p>
-<pre><code>void Function((left,right) =&gt; left+right);  
-//参数类型不用指定，会通过上下文推断出类型
-Function((left,right) =&gt; (left-right)*right);
-</code></pre><p>//Lambda表达式本质还是委托<br>//用Func<string x,int="" y...="">来简化一个委托的定义。代替delegate xx….</string></p>
-<h3 id="Lambda表达式的解释："><a href="#Lambda表达式的解释：" class="headerlink" title="Lambda表达式的解释："></a>Lambda表达式的解释：</h3><p>可以用两种方式解释Lambda表达式，<br>第一，Lambda表达式是一个委托，可以把它表示为<br>如下泛型类型：<br>Action - lambda表达式不带参，返回void，<br>Action&lt;&gt; - lambda表达式最多8个参数，返回void，<br>Func&lt;&gt; - lambda表达式最多8个参数，返回不是void<br>//e.g.<br>Func<int,int,bool>  lamb，前面的是参数，最后的bool是返回值</int,int,bool></p>
-<p>第二，可以把Lambda表达式解释为表达式树。<br>并不能直接执行。LINQ架构的泛型类 Expression&lt;&gt;，可用于封装Lambda表达式，<br>把它转换为相应的SQL脚本，以便在数据库中直接执行</p>
-<h3 id="工作目录："><a href="#工作目录：" class="headerlink" title="工作目录："></a>工作目录：</h3><pre><code>//设置当前工作目录，并不是转移文件！
-Directory.SetCurrentDirectory(Directory.GetCurrentDirectory()+&quot;\\demo&quot;);
-//当前工作目录字符串
-Directory.GetCurrentDirectory();
-</code></pre><h3 id="FileStream："><a href="#FileStream：" class="headerlink" title="FileStream："></a>FileStream：</h3><pre><code>FileInfo file = new FileInfo(&quot;test.txt&quot;);
-//创建一个只读的流
-FileStream stream = file.OpenRead();
-//创建一个只写的流
-FileStream stream1 = File.OpenWrite(&quot;test.txt&quot;);
-//将文件指针移动到文件的第8个字节，起始位置为第1个字节
-stream.Seek(8, SeekOrigin.Begin);
-//将指针从当前位置向前移动2个字节，则指向8+2=10个字节
-stream.Seek(2, SeekOrigin.Begin);
-//查找文件中倒数第5个字节
-stream.Seek(-5, SeekOrigin.End);
-//FileStream 操作字节或字节数组的流
-//Stream(StreamReader或StreamWriter)操作的是字符
-</code></pre><h3 id="FileStream读取数据："><a href="#FileStream读取数据：" class="headerlink" title="FileStream读取数据："></a>FileStream读取数据：</h3><pre><code>//读取本身cs文件 
-byte[] byData = new byte[200];
-char[] charData = new char[200];
-try
-{
-    FileStream stream = new FileStream(&quot;../../Program.cs&quot;, FileMode.Open);
-    stream.Seek(110, SeekOrigin.Begin);
-    stream.Read(byData, 2, 190);
-}
-catch (Exception e)
-{
-    Console.WriteLine(&quot;AN IO Exception throw!&quot;);
-    Console.WriteLine(e.ToString());
-    Console.ReadKey();
-    throw;
-}
-Decoder d = Encoding.UTF8.GetDecoder();
-d.GetChars(byData, 0, byData.Length, charData, 0);
-Console.WriteLine(charData);
-</code></pre><h3 id="FileStream写入："><a href="#FileStream写入：" class="headerlink" title="FileStream写入："></a>FileStream写入：</h3><pre><code>byte[] byData;
-char[] charData;
-try
-{
-    FileStream file = new FileStream(&quot;test1.txt&quot;, FileMode.Create);
-    charData = &quot;This is a charData array!&quot;.ToCharArray();
-    byData = new byte[charData.Length];
-    Encoder encoder = Encoding.UTF8.GetEncoder();
-    encoder.GetBytes(charData, 0, charData.Length, byData, 0, true);
-    file.Seek(0, SeekOrigin.Begin);
-    file.Write(byData, 0, byData.Length);
-}
-catch (Exception)
-{
-    //...
-    throw;
-}
-</code></pre><h3 id="StreamReader-Writer的权限："><a href="#StreamReader-Writer的权限：" class="headerlink" title="StreamReader/Writer的权限："></a>StreamReader/Writer的权限：</h3><p>StreamReader/Writer 总是拥有对文件的读写权限，为了使用高级参数如，FileMode,FileAccess，可以在FileStream构造函数指定这些参数，然后通过FileStream创建StreamReader/Writer</p>
-<h3 id="读取数据的选择："><a href="#读取数据的选择：" class="headerlink" title="读取数据的选择："></a>读取数据的选择：</h3><p>1，小文件，StreamReader.ReadToEnd();<br>2，大型文件，StreamReader.ReadLine(); 循环判断是否为空   或者</p>
-<pre><code>foreach (var item in File.ReadLines(&quot;test.txt&quot;,Encoding.Default))
-{
-    Console.WriteLine(item);
-}
-File.ReadLines 一次读取一行，迭代读取。返回IEnumerable&lt;string&gt;
-File.ReadAllLines  打开一个文件，读取文件的所有行，然后关闭文件。返回string[]
-</code></pre><h3 id="压缩和解压缩类-输入读取类："><a href="#压缩和解压缩类-输入读取类：" class="headerlink" title="压缩和解压缩类 输入读取类："></a>压缩和解压缩类 输入读取类：</h3><pre><code>System.IO.Compression;
-
-static void SaveCompressedFile(string fileName, string data)
-{
-    FileStream file = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-    GZipStream zip = new GZipStream(file, CompressionMode.Compress);
-    StreamWriter sw = new StreamWriter(zip,Encoding.Default);
-    sw.Write(data);
-    sw.Close();
-}
-static string LoadCompressedFile(string fileName)
-{
-    FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-    GZipStream zip = new GZipStream(file, CompressionMode.Decompress);
-    StreamReader sr = new StreamReader(zip, Encoding.Default);
-    string data = sr.ReadToEnd();
-    sr.Close();
-    return data;
-}
-</code></pre><h3 id="C-6-0-新特性"><a href="#C-6-0-新特性" class="headerlink" title="C#6.0 新特性"></a>C#6.0 新特性</h3><p>1，字符串插值（String Interpolation）</p>
-<pre><code>之前：
-var Name = &quot;Jack&quot;;
-var results = &quot;Hello&quot; + Name; 或者  var results = string.Format(&quot;Hello {0}&quot;, Name);
-Now：
-var results = $&quot;Hello {Name}&quot;;
-
-之前：
-Person p = new Person {FirstName = &quot;Jack&quot;, LastName = &quot;Wang&quot;, Age = 100};
-var results = string.Format(&quot;First Name: {0} LastName: {1} Age: { 2} &quot;, p.FirstName, p.LastName, p.Age);
-Now：
-var results = $&quot;First Name:{p.FirstName} LastName:{p.LastName} Age：{p.Age}&quot;;
-</code></pre><p>PS:还可以插入代码 - 相当于小脚本或Razor 的@{     }，不过只能作用于string</p>
-<pre><code>Console.WriteLine($&quot;Jack is saying { new Tools().SayHello() }&quot;);
-</code></pre><p>2，空操作符 ( ?. )</p>
-<pre><code>之前：
-if (user != null &amp;&amp; user.Project != null &amp;&amp; user.Project.Tasks != null &amp;&amp; user.Project.Tasks.Count &gt; 0)
-{
-    Console.WriteLine(user.Project.Tasks.First().Name);
-}
-Now：
-Console.WriteLine(user?.Project?.Tasks?.First()?.Name);
-</code></pre><p>还可用于数组索引器</p>
-<pre><code>User[] users = null;
-Console.WriteLine(users?[1].Name); // 正常
-Console.WriteLine(users[1]?.Name); // 报错
-</code></pre><p>PS：以下代码并不会报错，也不会有输出。减少了空异常，但是我们却需要小心使用，因为有的时候我们确实是需要抛出空异常。那么使用这个特性反而隐藏了Bug</p>
-<pre><code>User user = null;
-user?.SayHello();
-</code></pre><h3 id="C-6-0-新特性-2："><a href="#C-6-0-新特性-2：" class="headerlink" title="C#6.0 新特性 2："></a>C#6.0 新特性 2：</h3><p>3， NameOf</p>
-<pre><code>Console.WriteLine(nameof(User.Name)); //  output: Name
-Console.WriteLine(nameof(System.Linq)); // output: Linq
-Console.WriteLine(nameof(List&lt;User&gt;)); // output: List
-</code></pre><p>PS：NameOf只会返回Member的字符串，如果前面有对象或者命名空间，NameOf只会返回 . 的最后一部分, 另外NameOf有很多情况是不支持的，比如方法，关键字，对象的实例以及字符串和表达式</p>
-<p>4，表达式方法体<br>一句话的方法体可以直接写成箭头函数，而不再需要大括号</p>
-<pre><code>private static string SayHello() =&gt; &quot;Hello World&quot;;
-private static string JackSayHello() =&gt; $&quot;Jack {SayHello()}&quot;;
-Console.WriteLine(SayHello());
-Console.WriteLine(JackSayHello());
-</code></pre><h3 id="序列化对象："><a href="#序列化对象：" class="headerlink" title="序列化对象："></a>序列化对象：</h3><pre><code>using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-
-[Serializable]
-class Product
-{
-    public long Id;
-
-    public string Name;
-
-    public double Price;
-
-    [NonSerialized]
-    string Notes;
-    public Product(long id, string name, double price, string notes)
-    {
-        Id = id;
-        Name = name;
-        Price = price;
-        Notes = notes;
-    }
-    public override string ToString()
-    {
-        return $&quot;{Id}：{Name} (${Price:F2}) {Notes}&quot;;
-    }
-}
-
-//Main中
-List&lt;Product&gt; list = new List&lt;Product&gt;()
-{
-    new Product(1,&quot;Pung&quot;,1000.0,&quot;Good stuff.&quot;),
-    new Product(2,&quot;Soup&quot;,25.0,&quot;Tasty.&quot;),
-    new Product(4,&quot;Hat Sauce&quot;,12.0,&quot;One for the kids.&quot;)
-};
-
-Console.WriteLine(&quot;Products to save:&quot;);
-list.ForEach(p =&gt; Console.WriteLine(p.ToString()));
-
-IFormatter serializer = new BinaryFormatter();
-FileStream file = new FileStream(&quot;Products.bin&quot;, FileMode.Create, FileAccess.Write);
-serializer.Serialize(file, list);
-file.Close();
-
-FileStream fileLoad = new FileStream(&quot;Products.bin&quot;, FileMode.Open, FileAccess.Read);
-List&lt;Product&gt; list2 = serializer.Deserialize(fileLoad) as List&lt;Product&gt;;
-fileLoad.Close();
-</code></pre><h3 id="监控文件："><a href="#监控文件：" class="headerlink" title="监控文件："></a>监控文件：</h3><pre><code>private FileSystemWatcher watcher;
-
-public Form1()
-{
-    watcher = new FileSystemWatcher();
-    watcher.Deleted += new FileSystemEventHandler(OnDelete);
-    watcher.Renamed += new RenamedEventHandler(OnRenamed);
-    InitializeComponent();
-}
-
-public void OnRenamed(object source, RenamedEventArgs e)
-{          
-        StreamWriter sw = new StreamWriter(@&quot;F:\Logs\log.txt&quot;, true);
-        sw.WriteLine($&quot;File renamed from {e.OldName} to {e.FullPath}&quot;);
-        sw.Close();
-}
-public void OnDelete(object source, FileSystemEventArgs e) //...
-
-private void btnWatch_Click(object sender, EventArgs e)
-{
-    watcher.Path = Path.GetDirectoryName(txtLocation.Text);
-    watcher.Filter = Path.GetFileName(txtLocation.Text);
-    watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
-    watcher.EnableRaisingEvents = true;
-}
-</code></pre><h3 id="XPath查询xml语言："><a href="#XPath查询xml语言：" class="headerlink" title="XPath查询xml语言："></a>XPath查询xml语言：</h3><pre><code>XmlDocument xml = new XmlDocument();
-xml.Load(&quot;../../Demo.xml&quot;);
-XmlElement e = xml.DocumentElement;
-var node = e.SelectSingleNode(&quot;Book[Title=&apos;韩寒&apos;]&quot;);
-Console.WriteLine(node.SelectSingleNode(&quot;Content&quot;).InnerText);
-xml.Save(&quot;../../Demo.xml&quot;);
-</code></pre><h3 id="LINQ查询大数集合："><a href="#LINQ查询大数集合：" class="headerlink" title="LINQ查询大数集合："></a>LINQ查询大数集合：</h3><pre><code>private static int[] GetNumbers(int count)
-{
-    Random ran = new Random(0);
-    int[] result = new int[count];
-    for (int i = 0; i &lt; count; i++)
-    {
-        result[i] = ran.Next();
-    }
-    return result;
-}
-
-static void Main(string[] args)
-{
-    var nums = GetNumbers(12345678);
-    var query = from n in nums
-                where n &gt; 1000
-                select n;
-    Console.WriteLine(query.Count());
-    Console.WriteLine(query.Max());
-    Console.WriteLine(query.Min());
-    // 默认版本.Sum()返回的是int，数值太大导致溢出
-    Console.WriteLine(query.Sum(p=&gt;(long)p));
-    Console.WriteLine(query.Average());
-    Console.ReadKey();
-}
-</code></pre><h3 id="LINQ-2："><a href="#LINQ-2：" class="headerlink" title="LINQ 2："></a>LINQ 2：</h3><p>单值查询   .Distinct()（只选取没有重复的元素）<br>任意符合   .Any()（任意元素符合条件返回true）<br>全部符合   .All()（全部元素符合条件返回true）</p>
-<p>.First()和.FirstOrDefault()区别：<br>.First()当条件不满足时，抛出异常<br>.FirstOrDefault()当条件不满足时，返回一个null</p>
-<h3 id="LINQ-3："><a href="#LINQ-3：" class="headerlink" title="LINQ 3："></a>LINQ 3：</h3><p>集运算符：<br>.Intersect()    使用默认的相等比较器得出两个序列的交集<br>.Except()       同上，得出差集<br>.Union()         同上，得出并集</p>
+<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>2种写法：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Calcul cal=<span class="keyword">new</span> Calcul(Add);</span><br><span class="line"></span><br><span class="line">Calcul cal=Add;</span><br></pre></td></tr></table></figure>
+<p>情况2自动初始化一个委托。</p>
+<h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[,] ints = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>,<span class="number">4</span>];</span><br><span class="line">ints[<span class="number">2</span>, <span class="number">2</span>] = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="ref-out关键字"><a href="#ref-out关键字" class="headerlink" title="ref out关键字"></a>ref out关键字</h3><p>ref out 等也可以改变函数的签名(命名+参数），从而实现重载</p>
+<h3 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h3><p>可以设置中断条件和击中次数。如，a&gt;=100，次数=100。</p>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MyClass</span>&#123;</span><br><span class="line">        ~MyClass()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>~ 析构函数，垃圾回收器回收时自动调用，还将隐式调用基类的析构函数。</p>
+<h3 id="隐藏基类方法，在子类中定义时加"><a href="#隐藏基类方法，在子类中定义时加" class="headerlink" title="隐藏基类方法，在子类中定义时加"></a>隐藏基类方法，在子类中定义时加</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Do</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="类型比较"><a href="#类型比较" class="headerlink" title="类型比较"></a>类型比较</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myObj.GetType()==<span class="keyword">typeof</span>(MyObjClass)</span><br></pre></td></tr></table></figure>
+<p>对象类型的比较：</p>
+<p><code>myObj is objBase</code>，myObj是objBase的子类，实现类，同类都为true。</p>
+<h3 id="重载运算符，例如："><a href="#重载运算符，例如：" class="headerlink" title="重载运算符，例如：+"></a>重载运算符，例如：+</h3><p>需要在进行+运算的类内部定义。</p>
+<ul>
+<li>不能重载+=，-=。但如果重载它们对应的简单运算符，如+，则+=仍能像预期那样执行</li>
+<li>不能重载=，因为它有基本用途</li>
+<li>不能重载&amp;&amp;和||，但同1理，重载&amp;和|就够了</li>
+<li>&lt;和&gt;，&lt;=和&gt;=必须成对重载</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">decimal</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Person <span class="keyword">operator</span> +(Person p1, Person p2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person &#123; Age = p1.Age + p2.Age &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &gt;(Person left, Person right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> left.Age &gt; right.Age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(Person left, Person right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> left.Price &lt; right.Price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="IComparable接口"><a href="#IComparable接口" class="headerlink" title="IComparable接口"></a>IComparable接口</h3><p>定义在要比较的对象的类中实现，类要实现IComparable接口。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">CompareTo</span>(<span class="params"><span class="keyword">object</span> obj</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> person = obj <span class="keyword">as</span> Person;</span><br><span class="line">    <span class="keyword">if</span> (person == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">"参数错误"</span>);</span><br><span class="line">    <span class="keyword">return</span> Age - person.Age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="重写隐式-implicit-，显式-explicit-转换"><a href="#重写隐式-implicit-，显式-explicit-转换" class="headerlink" title="重写隐式(implicit)，显式(explicit)转换"></a>重写隐式(implicit)，显式(explicit)转换</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Person1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">Person2</span>(<span class="params">Person1 p1</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Person2 p = <span class="keyword">new</span> Person2 &#123; Age = p1.Age &#125;;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Person2</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">Person1</span>(<span class="params">Person2 p2</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Person1 p1 = <span class="keyword">new</span> Person1();</span><br><span class="line">        <span class="keyword">checked</span> &#123; p1.Age = (<span class="keyword">int</span>)p2.Age; &#125;</span><br><span class="line">        <span class="keyword">return</span> p1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样可作用于泛型集合。</p>
+<h3 id="父子类相互转换"><a href="#父子类相互转换" class="headerlink" title="父子类相互转换"></a>父子类相互转换</h3><p>1会报错，2不会报错。不能把父类实例转换成子类实例，只能把父类变量类型转换成子类变量类型。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1</span></span><br><span class="line">Person p = <span class="keyword">new</span> Person();</span><br><span class="line">Man m = (Man)p;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line">Person p1 = <span class="keyword">new</span> Man();</span><br><span class="line">Man m1 = (Man) p1;</span><br></pre></td></tr></table></figure>
+<p>如果强转换成as 则都不会报错，1为null，2不为null。</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="??运算符"></a>??运算符</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>? val1 = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">int</span> result = val1*<span class="number">5</span> ?? <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>? result2=val1*<span class="number">5</span> ?? <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>??等式的结果可以是int或int?，等式会自动进行转换。</p>
+<h3 id="default关键字"><a href="#default关键字" class="headerlink" title="default关键字"></a>default关键字</h3><p>如果T是引用类型，则输出null。</p>
+<p>如果T是值类型，则输出默认值。e.g.int -&gt; 0。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class MyClass&lt;T&gt;&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="keyword">default</span>(T));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="约束类型"><a href="#约束类型" class="headerlink" title="约束类型"></a>约束类型</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class MyClass&lt;T1, T2&gt; : MyClassBase </span><br><span class="line">        where T1 : class,new () where T2 : T1</span><br><span class="line">&#123;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>约束类型：struct值类型，class引用类型，base-class任意基类，interface接口，new()有一个公共无参构造函数</li>
+<li>多个约束之间用，分隔</li>
+<li>new()作约束必须是指定的最后一个</li>
+<li>约束必须出现在继承说明符的后面</li>
+</ul>
+<h3 id="协变和抗变"><a href="#协变和抗变" class="headerlink" title="协变和抗变"></a>协变和抗变</h3><p>应用于泛型接口和委托，继承关系默认支持协变。</p>
+<p><strong>协变</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="keyword">string</span>&gt; liststr = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;();</span><br><span class="line">List&lt;<span class="keyword">object</span>&gt; listobj = <span class="keyword">new</span> List&lt;<span class="keyword">object</span>&gt;();</span><br><span class="line">listobj.AddRange(liststr); <span class="comment">//参数为IEnumerable&lt;object&gt;</span></span><br></pre></td></tr></table></figure>
+<p>定义：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class List&lt;T&gt; : IEnumerable&lt;T&gt;...</span><br><span class="line"></span><br><span class="line">public interface IEnumerable&lt;out T&gt; : IEnumerable</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用关键字out，则类型参数T只能作为方法的返回值</li>
+<li>泛型类型参数可以从一个派生类隐式转化为基类，让一个带有协变参数的泛型接口（或委托）可以接收类型更加精细化，具体化的泛型接口（或委托）作为参数，可以看成OO中多态的一个延伸</li>
+</ul>
+<p><strong>抗变（逆变）</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class MyComparer : IComparer&lt;object&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Compare</span>(<span class="params"><span class="keyword">object</span> x, <span class="keyword">object</span> y</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IComparer&lt;<span class="keyword">object</span>&gt; comobj = <span class="keyword">new</span> MyComparer();</span><br><span class="line">liststr.Sort(comobj); <span class="comment">//参数为IComparer&lt;string&gt;</span></span><br></pre></td></tr></table></figure>
+<p>定义：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public interface IComparer&lt;in T&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用关键字in，则类型参数T只能作为方法的参数</li>
+<li>泛型类型参数可以从一个基类隐式转化为派生类，让一个带有协变参数的泛型接口（或委托）可以接收粒度更粗的泛型接口或委托作为参数，这个过程实际上是参数类型更加精细化的过程</li>
+</ul>
+<p>总结：</p>
+<p>协变让一个粗粒度接口（或委托）可以接收一个更加具体的接口（或委托）作为参数（或返回值）；逆变让一个接口（或委托）的参数类型（或返回值）类型更加具体化，也就是参数类型更强，更明确。</p>
+<h3 id="引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可"><a href="#引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可" class="headerlink" title="引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可"></a>引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可</h3><h3 id="委托的应用"><a href="#委托的应用" class="headerlink" title="委托的应用"></a>委托的应用</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">int</span> <span class="title">OperationDelegate</span>(<span class="params"><span class="keyword">int</span> left,<span class="keyword">int</span> right</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Function</span>(<span class="params">OperationDelegate del</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left,right;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    del(left,right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="keyword">int</span> <span class="title">OperationEx</span>(<span class="params"><span class="keyword">int</span> left,<span class="keyword">int</span> right</span>)</span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> left+right; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>用方法创建委托：<code>void Function(new OperationDelegate(OperationEx));</code></p>
+</li>
+<li><p>直接传递方法(默认创建委托)：<code>void Function(OperationEx);</code></p>
+</li>
+<li><p>匿名方法：<code>void Function(delegate(int left,int right){  return left+right; });</code></p>
+</li>
+<li><p>Lambda表达式：</p>
+</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Function</span>(<span class="params">(left,right</span>) </span>=&gt; left+right);  </span><br><span class="line"><span class="comment">//参数类型不用指定，会通过上下文推断出类型</span></span><br><span class="line"></span><br><span class="line">Function((left,right) =&gt; (left-right)*right);</span><br><span class="line"><span class="comment">//Lambda表达式本质还是委托</span></span><br><span class="line"><span class="comment">//用Func&lt;string x,int y...&gt;来简化一个委托的定义。代替delegate xx....</span></span><br></pre></td></tr></table></figure>
+<h3 id="Lambda表达式的解释"><a href="#Lambda表达式的解释" class="headerlink" title="Lambda表达式的解释"></a>Lambda表达式的解释</h3><p>可以用两种方式解释Lambda表达式。</p>
+<p>第一，Lambda表达式是一个委托，可以把它表示为如下泛型类型：</p>
+<p>Action - lambda表达式不带参，返回void;<br>Action&lt;&gt; - lambda表达式最多8个参数，返回void;<br>Func&lt;&gt; - lambda表达式最多8个参数，返回不是void;</p>
+<p>e.g.Func<int,int,bool> lamb。前面的是参数，最后的bool是返回值。</int,int,bool></p>
+<p>第二，可以把Lambda表达式解释为表达式树:</p>
+<p>并不能直接执行。LINQ架构的泛型类 Expression&lt;&gt;，可用于封装Lambda表达式，把它转换为相应的SQL脚本，以便在数据库中直接执行。</p>
+<h3 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置当前工作目录，并不是转移文件！</span></span><br><span class="line">Directory.SetCurrentDirectory(Directory.GetCurrentDirectory()+<span class="string">"\\demo"</span>);</span><br><span class="line"><span class="comment">//当前工作目录字符串</span></span><br><span class="line">Directory.GetCurrentDirectory();</span><br></pre></td></tr></table></figure>
+<h3 id="FileStream"><a href="#FileStream" class="headerlink" title="FileStream"></a>FileStream</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FileInfo file = <span class="keyword">new</span> FileInfo(<span class="string">"test.txt"</span>);</span><br><span class="line"><span class="comment">//创建一个只读的流</span></span><br><span class="line">FileStream stream = file.OpenRead();</span><br><span class="line"><span class="comment">//创建一个只写的流</span></span><br><span class="line">FileStream stream1 = File.OpenWrite(<span class="string">"test.txt"</span>);</span><br><span class="line"><span class="comment">//将文件指针移动到文件的第8个字节，起始位置为第1个字节</span></span><br><span class="line">stream.Seek(<span class="number">8</span>, SeekOrigin.Begin);</span><br><span class="line"><span class="comment">//将指针从当前位置向前移动2个字节，则指向8+2=10个字节</span></span><br><span class="line">stream.Seek(<span class="number">2</span>, SeekOrigin.Begin);</span><br><span class="line"><span class="comment">//查找文件中倒数第5个字节</span></span><br><span class="line">stream.Seek(<span class="number">-5</span>, SeekOrigin.End);</span><br><span class="line"><span class="comment">//FileStream 操作字节或字节数组的流</span></span><br><span class="line"><span class="comment">//Stream(StreamReader或StreamWriter)操作的是字符</span></span><br></pre></td></tr></table></figure>
+<h3 id="FileStream读取数据"><a href="#FileStream读取数据" class="headerlink" title="FileStream读取数据"></a>FileStream读取数据</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取本身cs文件 </span></span><br><span class="line"><span class="keyword">byte</span>[] byData = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">200</span>];</span><br><span class="line"><span class="keyword">char</span>[] charData = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">200</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    FileStream stream = <span class="keyword">new</span> FileStream(<span class="string">"../../Program.cs"</span>, FileMode.Open);</span><br><span class="line">    stream.Seek(<span class="number">110</span>, SeekOrigin.Begin);</span><br><span class="line">    stream.Read(byData, <span class="number">2</span>, <span class="number">190</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"AN IO Exception throw!"</span>);</span><br><span class="line">    Console.WriteLine(e.ToString());</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">    <span class="keyword">throw</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Decoder d = Encoding.UTF8.GetDecoder();</span><br><span class="line">d.GetChars(byData, <span class="number">0</span>, byData.Length, charData, <span class="number">0</span>);</span><br><span class="line">Console.WriteLine(charData);</span><br></pre></td></tr></table></figure>
+<h3 id="FileStream写入"><a href="#FileStream写入" class="headerlink" title="FileStream写入"></a>FileStream写入</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] byData;</span><br><span class="line"><span class="keyword">char</span>[] charData;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    FileStream file = <span class="keyword">new</span> FileStream(<span class="string">"test1.txt"</span>, FileMode.Create);</span><br><span class="line">    charData = <span class="string">"This is a charData array!"</span>.ToCharArray();</span><br><span class="line">    byData = <span class="keyword">new</span> <span class="keyword">byte</span>[charData.Length];</span><br><span class="line">    Encoder encoder = Encoding.UTF8.GetEncoder();</span><br><span class="line">    encoder.GetBytes(charData, <span class="number">0</span>, charData.Length, byData, <span class="number">0</span>, <span class="literal">true</span>);</span><br><span class="line">    file.Seek(<span class="number">0</span>, SeekOrigin.Begin);</span><br><span class="line">    file.Write(byData, <span class="number">0</span>, byData.Length);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">throw</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="StreamReader-Writer的权限"><a href="#StreamReader-Writer的权限" class="headerlink" title="StreamReader/Writer的权限"></a>StreamReader/Writer的权限</h3><p>StreamReader/Writer 总是拥有对文件的读写权限，为了使用高级参数如，FileMode,FileAccess，可以在FileStream构造函数指定这些参数，然后通过FileStream创建StreamReader/Writer。</p>
+<h3 id="读取数据的选择"><a href="#读取数据的选择" class="headerlink" title="读取数据的选择"></a>读取数据的选择</h3><p>1，小文件，<code>StreamReader.ReadToEnd();</code></p>
+<p>2，大型文件，<code>StreamReader.ReadLine();</code> 循环判断是否为空或者</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> File.ReadLines(<span class="string">"test.txt"</span>,Encoding.Default))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">File.ReadLines 一次读取一行，迭代读取。返回IEnumerable&lt;<span class="keyword">string</span>&gt;</span><br><span class="line">File.ReadAllLines  打开一个文件，读取文件的所有行，然后关闭文件。返回<span class="keyword">string</span>[]</span><br></pre></td></tr></table></figure>
+<h3 id="压缩和解压缩类-输入读取类"><a href="#压缩和解压缩类-输入读取类" class="headerlink" title="压缩和解压缩类 输入读取类"></a>压缩和解压缩类 输入读取类</h3><p>System.IO.Compression</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SaveCompressedFile</span>(<span class="params"><span class="keyword">string</span> fileName, <span class="keyword">string</span> data</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FileStream file = <span class="keyword">new</span> FileStream(fileName, FileMode.Create, FileAccess.Write);</span><br><span class="line">    GZipStream zip = <span class="keyword">new</span> GZipStream(file, CompressionMode.Compress);</span><br><span class="line">    StreamWriter sw = <span class="keyword">new</span> StreamWriter(zip,Encoding.Default);</span><br><span class="line">    sw.Write(data);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">string</span> <span class="title">LoadCompressedFile</span>(<span class="params"><span class="keyword">string</span> fileName</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FileStream file = <span class="keyword">new</span> FileStream(fileName, FileMode.Open, FileAccess.Read);</span><br><span class="line">    GZipStream zip = <span class="keyword">new</span> GZipStream(file, CompressionMode.Decompress);</span><br><span class="line">    StreamReader sr = <span class="keyword">new</span> StreamReader(zip, Encoding.Default);</span><br><span class="line">    <span class="keyword">string</span> data = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-6-0-新特性"><a href="#C-6-0-新特性" class="headerlink" title="C#6.0 新特性"></a>C#6.0 新特性</h3><ol>
+<li>字符串插值（String Interpolation）</li>
+</ol>
+<p>之前：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Name = <span class="string">"Jack"</span>;</span><br><span class="line"><span class="keyword">var</span> results = <span class="string">"Hello"</span> + Name; 或者  <span class="keyword">var</span> results = <span class="keyword">string</span>.Format(<span class="string">"Hello &#123;0&#125;"</span>, Name);</span><br></pre></td></tr></table></figure>
+<p>Now：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = <span class="string">$"Hello <span class="subst">&#123;Name&#125;</span>"</span>;</span><br></pre></td></tr></table></figure>
+<p>之前：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Person &#123;FirstName = <span class="string">"Jack"</span>, LastName = <span class="string">"Wang"</span>, Age = <span class="number">100</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> results = <span class="keyword">string</span>.Format(<span class="string">"First Name: &#123;0&#125; LastName: &#123;1&#125; Age: &#123; 2&#125; "</span>, p.FirstName, p.LastName, p.Age);</span><br></pre></td></tr></table></figure>
+<p>Now：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = <span class="string">$"First Name:<span class="subst">&#123;p.FirstName&#125;</span> LastName:<span class="subst">&#123;p.LastName&#125;</span> Age：<span class="subst">&#123;p.Age&#125;</span>"</span>;</span><br></pre></td></tr></table></figure>
+<p>还可以插入代码 - 相当于小脚本或Razor 的@{     }，不过只能作用于string。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">$"Jack is saying <span class="subst">&#123; new Tools().SayHello() &#125;</span>"</span>);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>空操作符 ( ?. )</li>
+</ol>
+<p>之前：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (user != <span class="literal">null</span> &amp;&amp; user.Project != <span class="literal">null</span> &amp;&amp; user.Project.Tasks != <span class="literal">null</span> &amp;&amp; user.Project.Tasks.Count &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(user.Project.Tasks.First().Name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(user?.Project?.Tasks?.First()?.Name);</span><br></pre></td></tr></table></figure>
+<p>还可用于数组索引器：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User[] users = <span class="literal">null</span>;</span><br><span class="line">Console.WriteLine(users?[<span class="number">1</span>].Name); <span class="comment">// 正常</span></span><br><span class="line">Console.WriteLine(users[<span class="number">1</span>]?.Name); <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+<p>以下代码并不会报错，也不会有输出。减少了空异常，但是我们却需要小心使用，因为有的时候我们确实是需要抛出空异常。那么使用这个特性反而隐藏了Bug。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user = <span class="literal">null</span>;</span><br><span class="line">user?.SayHello();</span><br></pre></td></tr></table></figure>
+<h3 id="C-6-0-新特性-2"><a href="#C-6-0-新特性-2" class="headerlink" title="C#6.0 新特性 2"></a>C#6.0 新特性 2</h3><ol>
+<li>NameOf</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="keyword">nameof</span>(User.Name)); <span class="comment">//  output: Name</span></span><br><span class="line">Console.WriteLine(<span class="keyword">nameof</span>(System.Linq)); <span class="comment">// output: Linq</span></span><br><span class="line">Console.WriteLine(<span class="keyword">nameof</span>(List&lt;User&gt;)); <span class="comment">// output: List</span></span><br></pre></td></tr></table></figure>
+<p>NameOf只会返回Member的字符串，如果前面有对象或者命名空间，NameOf只会返回 . 的最后一部分, 另外NameOf有很多情况是不支持的，比如方法，关键字，对象的实例以及字符串和表达式。</p>
+<ol>
+<li>表达式方法体</li>
+</ol>
+<p>一句话的方法体可以直接写成箭头函数，而不再需要大括号。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">SayHello</span>(<span class="params"></span>) </span>=&gt; <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">JackSayHello</span>(<span class="params"></span>) </span>=&gt; <span class="string">$"Jack <span class="subst">&#123;SayHello()&#125;</span>"</span>;</span><br><span class="line">Console.WriteLine(SayHello());</span><br><span class="line">Console.WriteLine(JackSayHello());</span><br></pre></td></tr></table></figure>
+<h3 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.Serialization;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.Serialization.Formatters.Binary;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Serializable</span>]</span><br><span class="line"><span class="keyword">class</span> <span class="title">Product</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">long</span> Id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> Price;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">NonSerialized</span>]</span><br><span class="line">    <span class="keyword">string</span> Notes;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Product</span>(<span class="params"><span class="keyword">long</span> id, <span class="keyword">string</span> name, <span class="keyword">double</span> price, <span class="keyword">string</span> notes</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Id = id;</span><br><span class="line">        Name = name;</span><br><span class="line">        Price = price;</span><br><span class="line">        Notes = notes;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">ToString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">$"<span class="subst">&#123;Id&#125;</span>：<span class="subst">&#123;Name&#125;</span> ($<span class="subst">&#123;Price:F2&#125;</span>) <span class="subst">&#123;Notes&#125;</span>"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Main中</span></span><br><span class="line">List&lt;Product&gt; list = <span class="keyword">new</span> List&lt;Product&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Product(<span class="number">1</span>,<span class="string">"Pung"</span>,<span class="number">1000.0</span>,<span class="string">"Good stuff."</span>),</span><br><span class="line">    <span class="keyword">new</span> Product(<span class="number">2</span>,<span class="string">"Soup"</span>,<span class="number">25.0</span>,<span class="string">"Tasty."</span>),</span><br><span class="line">    <span class="keyword">new</span> Product(<span class="number">4</span>,<span class="string">"Hat Sauce"</span>,<span class="number">12.0</span>,<span class="string">"One for the kids."</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Console.WriteLine(<span class="string">"Products to save:"</span>);</span><br><span class="line">list.ForEach(p =&gt; Console.WriteLine(p.ToString()));</span><br><span class="line"></span><br><span class="line">IFormatter serializer = <span class="keyword">new</span> BinaryFormatter();</span><br><span class="line">FileStream file = <span class="keyword">new</span> FileStream(<span class="string">"Products.bin"</span>, FileMode.Create, FileAccess.Write);</span><br><span class="line">serializer.Serialize(file, list);</span><br><span class="line">file.Close();</span><br><span class="line"></span><br><span class="line">FileStream fileLoad = <span class="keyword">new</span> FileStream(<span class="string">"Products.bin"</span>, FileMode.Open, FileAccess.Read);</span><br><span class="line">List&lt;Product&gt; list2 = serializer.Deserialize(fileLoad) <span class="keyword">as</span> List&lt;Product&gt;;</span><br><span class="line">fileLoad.Close();</span><br></pre></td></tr></table></figure>
+<h3 id="监控文件"><a href="#监控文件" class="headerlink" title="监控文件"></a>监控文件</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> FileSystemWatcher watcher;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    watcher = <span class="keyword">new</span> FileSystemWatcher();</span><br><span class="line">    watcher.Deleted += <span class="keyword">new</span> FileSystemEventHandler(OnDelete);</span><br><span class="line">    watcher.Renamed += <span class="keyword">new</span> RenamedEventHandler(OnRenamed);</span><br><span class="line">    InitializeComponent();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnRenamed</span>(<span class="params"><span class="keyword">object</span> source, RenamedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;          </span><br><span class="line">        StreamWriter sw = <span class="keyword">new</span> StreamWriter(<span class="string">@"F:\Logs\log.txt"</span>, <span class="literal">true</span>);</span><br><span class="line">        sw.WriteLine(<span class="string">$"File renamed from <span class="subst">&#123;e.OldName&#125;</span> to <span class="subst">&#123;e.FullPath&#125;</span>"</span>);</span><br><span class="line">        sw.Close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnDelete</span>(<span class="params"><span class="keyword">object</span> source, FileSystemEventArgs e</span>) <span class="comment">//...</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnWatch_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    watcher.Path = Path.GetDirectoryName(txtLocation.Text);</span><br><span class="line">    watcher.Filter = Path.GetFileName(txtLocation.Text);</span><br><span class="line">    watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;</span><br><span class="line">    watcher.EnableRaisingEvents = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="XPath查询xml语言"><a href="#XPath查询xml语言" class="headerlink" title="XPath查询xml语言"></a>XPath查询xml语言</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">XmlDocument xml = <span class="keyword">new</span> XmlDocument();</span><br><span class="line">xml.Load(<span class="string">"../../Demo.xml"</span>);</span><br><span class="line">XmlElement e = xml.DocumentElement;</span><br><span class="line"><span class="keyword">var</span> node = e.SelectSingleNode(<span class="string">"Book[Title='韩寒']"</span>);</span><br><span class="line">Console.WriteLine(node.SelectSingleNode(<span class="string">"Content"</span>).InnerText);</span><br><span class="line">xml.Save(<span class="string">"../../Demo.xml"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="LINQ查询大数集合"><a href="#LINQ查询大数集合" class="headerlink" title="LINQ查询大数集合"></a>LINQ查询大数集合</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] <span class="title">GetNumbers</span>(<span class="params"><span class="keyword">int</span> count</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Random ran = <span class="keyword">new</span> Random(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[count];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        result[i] = ran.Next();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nums = GetNumbers(<span class="number">12345678</span>);</span><br><span class="line">    <span class="keyword">var</span> query = <span class="keyword">from</span> n <span class="keyword">in</span> nums</span><br><span class="line">                <span class="keyword">where</span> n &gt; <span class="number">1000</span></span><br><span class="line">                <span class="keyword">select</span> n;</span><br><span class="line">    Console.WriteLine(query.Count());</span><br><span class="line">    Console.WriteLine(query.Max());</span><br><span class="line">    Console.WriteLine(query.Min());</span><br><span class="line">    <span class="comment">// 默认版本.Sum()返回的是int，数值太大导致溢出</span></span><br><span class="line">    Console.WriteLine(query.Sum(p=&gt;(<span class="keyword">long</span>)p));</span><br><span class="line">    Console.WriteLine(query.Average());</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="LINQ-2"><a href="#LINQ-2" class="headerlink" title="LINQ 2"></a>LINQ 2</h3><p>单值查询：.Distinct()（只选取没有重复的元素）<br>任意符合：.Any()（任意元素符合条件返回true）<br>全部符合：.All()（全部元素符合条件返回true）</p>
+<p>.First()和.FirstOrDefault()区别：</p>
+<p>.First()当条件不满足时，抛出异常;<br>.FirstOrDefault()当条件不满足时，返回一个null;</p>
+<h3 id="LINQ-3"><a href="#LINQ-3" class="headerlink" title="LINQ 3"></a>LINQ 3</h3><p>集运算符：</p>
+<p>.Intersect()：使用默认的相等比较器得出两个序列的交集<br>.Except()：同上，得出差集<br>.Union()：同上，得出并集</p>
 <p>Join查询：</p>
-<pre><code>var orderIds = from n in list select n;
-var customers=from n in list
-            join m in orderIds on n.Id equals m.Id  //equals 关键词，必须
-            select n.Amount+m.Amount;
-</code></pre><h3 id="LINQ-TO-XML："><a href="#LINQ-TO-XML：" class="headerlink" title="LINQ TO XML："></a>LINQ TO XML：</h3><pre><code>//从字符串转换
-XDocument d1 = XDocument.Parse(@&quot;
-    &lt;customers ID=&quot;&quot;A&quot;&quot; City=&quot;&quot;NY&quot;&quot; Region=&quot;&quot;North American&quot;&quot;&gt;
-      &lt; order Item = &quot;&quot;Widget&quot;&quot; Price = &quot;&quot;100&quot;&quot; /&gt;
-      &lt; order Item = &quot;&quot;Tire&quot;&quot; Price = &quot;&quot;200&quot;&quot; /&gt;
-    &lt;/ customers &gt; 
-&quot;);
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> orderIds = <span class="keyword">from</span> n <span class="keyword">in</span> list <span class="keyword">select</span> n;</span><br><span class="line"><span class="keyword">var</span> customers=<span class="keyword">from</span> n <span class="keyword">in</span> list</span><br><span class="line">                <span class="keyword">join</span> m <span class="keyword">in</span> orderIds <span class="keyword">on</span> n.Id <span class="keyword">equals</span> m.Id  <span class="comment">//equals 关键词，必须</span></span><br><span class="line">                <span class="keyword">select</span> n.Amount+m.Amount;</span><br></pre></td></tr></table></figure>
+<h3 id="LINQ-TO-XML"><a href="#LINQ-TO-XML" class="headerlink" title="LINQ TO XML"></a>LINQ TO XML</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从字符串转换</span></span><br><span class="line">XDocument d1 = XDocument.Parse(<span class="string">@"</span></span><br><span class="line"><span class="string">    &lt;customers ID=""A"" City=""NY"" Region=""North American""&gt;</span></span><br><span class="line"><span class="string">        &lt; order Item = ""Widget"" Price = ""100"" /&gt;</span></span><br><span class="line"><span class="string">        &lt; order Item = ""Tire"" Price = ""200"" /&gt;</span></span><br><span class="line"><span class="string">    &lt;/ customers &gt; </span></span><br><span class="line"><span class="string">"</span>);</span><br><span class="line"></span><br><span class="line">XDocument doc = <span class="keyword">new</span> XDocument(</span><br><span class="line">    <span class="comment">//内部有其他元素，则有闭合标签</span></span><br><span class="line">    <span class="keyword">new</span> XElement(<span class="string">"customers"</span>,</span><br><span class="line">        <span class="keyword">new</span> XAttribute(<span class="string">"ID"</span>, <span class="string">"A"</span>),</span><br><span class="line">        <span class="keyword">new</span> XAttribute(<span class="string">"City"</span>, <span class="string">"NY"</span>),</span><br><span class="line">        <span class="keyword">new</span> XAttribute(<span class="string">"Region"</span>, <span class="string">"North American"</span>),</span><br><span class="line">        <span class="comment">//内部没有其他元素，则自闭</span></span><br><span class="line">        <span class="keyword">new</span> XElement(<span class="string">"order"</span>,</span><br><span class="line">            <span class="keyword">new</span> XAttribute(<span class="string">"Item"</span>, <span class="string">"Widget"</span>),</span><br><span class="line">            <span class="keyword">new</span> XAttribute(<span class="string">"Price"</span>, <span class="number">100</span>)</span><br><span class="line">        ),</span><br><span class="line">        <span class="keyword">new</span> XElement(<span class="string">"order"</span>,</span><br><span class="line">            <span class="keyword">new</span> XAttribute(<span class="string">"Item"</span>, <span class="string">"Tire"</span>),</span><br><span class="line">            <span class="keyword">new</span> XAttribute(<span class="string">"Price"</span>, <span class="number">200</span>)</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span> path = <span class="string">"../../demo.xml"</span>;</span><br><span class="line">doc.Save(path);</span><br><span class="line"></span><br><span class="line">XDocument d = XDocument.Load(path);</span><br><span class="line">Console.WriteLine(d);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> query = <span class="keyword">from</span> n <span class="keyword">in</span> doc.Descendants(<span class="string">"order"</span>) <span class="keyword">select</span> n.Name;</span><br><span class="line"><span class="comment">//.Elements()返回第一级子元素</span></span><br><span class="line"><span class="comment">//.Descendants()返回所有子元素</span></span><br><span class="line"><span class="comment">// 重载形式可以指定元素名</span></span><br><span class="line"><span class="comment">//.Attributes()返回当前元素所有特性</span></span><br></pre></td></tr></table></figure>
 
-XDocument doc = new XDocument(
-    //内部有其他元素，则有闭合标签
-    new XElement(&quot;customers&quot;,
-        new XAttribute(&quot;ID&quot;, &quot;A&quot;),
-        new XAttribute(&quot;City&quot;, &quot;NY&quot;),
-        new XAttribute(&quot;Region&quot;, &quot;North American&quot;),
-        //内部没有其他元素，则自闭
-        new XElement(&quot;order&quot;,
-            new XAttribute(&quot;Item&quot;, &quot;Widget&quot;),
-            new XAttribute(&quot;Price&quot;, 100)
-        ),
-        new XElement(&quot;order&quot;,
-            new XAttribute(&quot;Item&quot;, &quot;Tire&quot;),
-            new XAttribute(&quot;Price&quot;, 200)
-        )
-    )
-);
-string path = &quot;../../demo.xml&quot;;
-doc.Save(path);
-
-XDocument d = XDocument.Load(path);
-Console.WriteLine(d);
-
-var query = from n in doc.Descendants(&quot;order&quot;) select n.Name;
-//.Elements()返回第一级子元素
-//.Descendants()返回所有子元素
-// 重载形式可以指定元素名
-//.Attributes()返回当前元素所有特性
-</code></pre>
       
     </div>
     
@@ -1013,7 +735,7 @@ var query = from n in doc.Descendants(&quot;order&quot;) select n.Name;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1068,7 +790,7 @@ var query = from n in doc.Descendants(&quot;order&quot;) select n.Name;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#checked关键字："><span class="nav-number">1.</span> <span class="nav-text">checked关键字：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托："><span class="nav-number">2.</span> <span class="nav-text">委托：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组："><span class="nav-number">3.</span> <span class="nav-text">二维数组：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref-out关键字"><span class="nav-number">4.</span> <span class="nav-text">ref out关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断点："><span class="nav-number">5.</span> <span class="nav-text">断点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构函数："><span class="nav-number">6.</span> <span class="nav-text">析构函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏基类方法，在子类中定义时加"><span class="nav-number">7.</span> <span class="nav-text">隐藏基类方法，在子类中定义时加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型比较："><span class="nav-number">8.</span> <span class="nav-text">类型比较：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载运算符：-例如："><span class="nav-number">9.</span> <span class="nav-text">重载运算符：  例如：+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IComparable接口："><span class="nav-number">10.</span> <span class="nav-text">IComparable接口：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写隐式-implicit-，显式-explicit-转换："><span class="nav-number">11.</span> <span class="nav-text">重写隐式(implicit)，显式(explicit)转换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父子类相互转换："><span class="nav-number">12.</span> <span class="nav-text">父子类相互转换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符："><span class="nav-number">13.</span> <span class="nav-text">??运算符：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#default关键字："><span class="nav-number">14.</span> <span class="nav-text">default关键字：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束类型"><span class="nav-number">15.</span> <span class="nav-text">约束类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协变和抗变："><span class="nav-number">16.</span> <span class="nav-text">协变和抗变：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可。"><span class="nav-number">17.</span> <span class="nav-text">引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托的应用："><span class="nav-number">18.</span> <span class="nav-text">委托的应用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda表达式的解释："><span class="nav-number">19.</span> <span class="nav-text">Lambda表达式的解释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作目录："><span class="nav-number">20.</span> <span class="nav-text">工作目录：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileStream："><span class="nav-number">21.</span> <span class="nav-text">FileStream：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileStream读取数据："><span class="nav-number">22.</span> <span class="nav-text">FileStream读取数据：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileStream写入："><span class="nav-number">23.</span> <span class="nav-text">FileStream写入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StreamReader-Writer的权限："><span class="nav-number">24.</span> <span class="nav-text">StreamReader/Writer的权限：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取数据的选择："><span class="nav-number">25.</span> <span class="nav-text">读取数据的选择：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩和解压缩类-输入读取类："><span class="nav-number">26.</span> <span class="nav-text">压缩和解压缩类 输入读取类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-6-0-新特性"><span class="nav-number">27.</span> <span class="nav-text">C#6.0 新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-6-0-新特性-2："><span class="nav-number">28.</span> <span class="nav-text">C#6.0 新特性 2：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化对象："><span class="nav-number">29.</span> <span class="nav-text">序列化对象：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控文件："><span class="nav-number">30.</span> <span class="nav-text">监控文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XPath查询xml语言："><span class="nav-number">31.</span> <span class="nav-text">XPath查询xml语言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ查询大数集合："><span class="nav-number">32.</span> <span class="nav-text">LINQ查询大数集合：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ-2："><span class="nav-number">33.</span> <span class="nav-text">LINQ 2：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ-3："><span class="nav-number">34.</span> <span class="nav-text">LINQ 3：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ-TO-XML："><span class="nav-number">35.</span> <span class="nav-text">LINQ TO XML：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#checked关键字"><span class="nav-number">1.</span> <span class="nav-text">checked关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托"><span class="nav-number">2.</span> <span class="nav-text">委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">3.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref-out关键字"><span class="nav-number">4.</span> <span class="nav-text">ref out关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断点"><span class="nav-number">5.</span> <span class="nav-text">断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构函数"><span class="nav-number">6.</span> <span class="nav-text">析构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏基类方法，在子类中定义时加"><span class="nav-number">7.</span> <span class="nav-text">隐藏基类方法，在子类中定义时加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型比较"><span class="nav-number">8.</span> <span class="nav-text">类型比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载运算符，例如："><span class="nav-number">9.</span> <span class="nav-text">重载运算符，例如：+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IComparable接口"><span class="nav-number">10.</span> <span class="nav-text">IComparable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写隐式-implicit-，显式-explicit-转换"><span class="nav-number">11.</span> <span class="nav-text">重写隐式(implicit)，显式(explicit)转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父子类相互转换"><span class="nav-number">12.</span> <span class="nav-text">父子类相互转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">13.</span> <span class="nav-text">??运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#default关键字"><span class="nav-number">14.</span> <span class="nav-text">default关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束类型"><span class="nav-number">15.</span> <span class="nav-text">约束类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协变和抗变"><span class="nav-number">16.</span> <span class="nav-text">协变和抗变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可"><span class="nav-number">17.</span> <span class="nav-text">引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托的应用"><span class="nav-number">18.</span> <span class="nav-text">委托的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda表达式的解释"><span class="nav-number">19.</span> <span class="nav-text">Lambda表达式的解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作目录"><span class="nav-number">20.</span> <span class="nav-text">工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileStream"><span class="nav-number">21.</span> <span class="nav-text">FileStream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileStream读取数据"><span class="nav-number">22.</span> <span class="nav-text">FileStream读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileStream写入"><span class="nav-number">23.</span> <span class="nav-text">FileStream写入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StreamReader-Writer的权限"><span class="nav-number">24.</span> <span class="nav-text">StreamReader/Writer的权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取数据的选择"><span class="nav-number">25.</span> <span class="nav-text">读取数据的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩和解压缩类-输入读取类"><span class="nav-number">26.</span> <span class="nav-text">压缩和解压缩类 输入读取类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-6-0-新特性"><span class="nav-number">27.</span> <span class="nav-text">C#6.0 新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-6-0-新特性-2"><span class="nav-number">28.</span> <span class="nav-text">C#6.0 新特性 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化对象"><span class="nav-number">29.</span> <span class="nav-text">序列化对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控文件"><span class="nav-number">30.</span> <span class="nav-text">监控文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XPath查询xml语言"><span class="nav-number">31.</span> <span class="nav-text">XPath查询xml语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ查询大数集合"><span class="nav-number">32.</span> <span class="nav-text">LINQ查询大数集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ-2"><span class="nav-number">33.</span> <span class="nav-text">LINQ 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ-3"><span class="nav-number">34.</span> <span class="nav-text">LINQ 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINQ-TO-XML"><span class="nav-number">35.</span> <span class="nav-text">LINQ TO XML</span></a></li></ol></div>
             
 
           </div>

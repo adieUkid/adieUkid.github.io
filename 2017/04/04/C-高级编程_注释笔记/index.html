@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="Type类型var i = 2.0; var t1 = i.GetType();">
+<meta name="description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&amp;quot;类型：&amp;quot; + t1 + &amp;quot;，类型码：&amp;quot; + t2 + &amp;quot;，类型码的值：&amp;quot; + (int)t2);">
 <meta name="keywords" content="C#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#高级编程_注释笔记">
 <meta property="og:url" content="http://adieUkid.github.io/2017/04/04/C-高级编程_注释笔记/index.html">
 <meta property="og:site_name" content="Alan&#39;s Notes">
-<meta property="og:description" content="Type类型var i = 2.0; var t1 = i.GetType();">
+<meta property="og:description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&amp;quot;类型：&amp;quot; + t1 + &amp;quot;，类型码：&amp;quot; + t2 + &amp;quot;，类型码的值：&amp;quot; + (int)t2);">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://adieukid.github.io/images/ProfessionalC/domain.jpg">
-<meta property="og:updated_time" content="2018-09-13T09:48:30.907Z">
+<meta property="og:updated_time" content="2018-10-25T03:06:20.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#高级编程_注释笔记">
-<meta name="twitter:description" content="Type类型var i = 2.0; var t1 = i.GetType();">
+<meta name="twitter:description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&amp;quot;类型：&amp;quot; + t1 + &amp;quot;，类型码：&amp;quot; + t2 + &amp;quot;，类型码的值：&amp;quot; + (int)t2);">
 <meta name="twitter:image" content="http://adieukid.github.io/images/ProfessionalC/domain.jpg">
 
 
@@ -405,25 +405,11 @@
       
 
       
-        <h3 id="Type类型"><a href="#Type类型" class="headerlink" title="Type类型"></a>Type类型</h3><pre><code>var i = 2.0;
-var t1 = i.GetType();
-</code></pre><a id="more"></a>
-<pre><code>var t2 = i.GetTypeCode();
-Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);
-</code></pre><p>输出：类型：System.Double，类型码(enum)：Double，类型码的值：14</p>
-<pre><code>var t = typeof(Person);
-Console.WriteLine(t.Assembly);
-Console.WriteLine(t.Attributes);
-Console.WriteLine(t.BaseType);
-Console.WriteLine(t.FullName);
-Console.WriteLine(t.GetProperties()[0].Name);
-Console.WriteLine(t.GUID);
-Console.WriteLine(t.Name);
-Console.WriteLine(t.Namespace);
-Person p1 = new Person();
-if (p1.GetType()==t)
-    Console.WriteLine(&quot;Ok&quot;);
-</code></pre><h3 id="Type的成员方法"><a href="#Type的成员方法" class="headerlink" title="Type的成员方法"></a>Type的成员方法</h3><pre><code>GetConstructor[s]()     //返回ConstructorInfo
+        <h3 id="Type类型"><a href="#Type类型" class="headerlink" title="Type类型"></a>Type类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i = 2.0;</span><br><span class="line">var t1 = i.GetType();</span><br><span class="line">var t2 = i.GetTypeCode();</span><br><span class="line">Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>输出：类型：System.Double，类型码(enum)：Double，类型码的值：14</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var t = typeof(Person);</span><br><span class="line">Console.WriteLine(t.Assembly);</span><br><span class="line">Console.WriteLine(t.Attributes);</span><br><span class="line">Console.WriteLine(t.BaseType);</span><br><span class="line">Console.WriteLine(t.FullName);</span><br><span class="line">Console.WriteLine(t.GetProperties()[0].Name);</span><br><span class="line">Console.WriteLine(t.GUID);</span><br><span class="line">Console.WriteLine(t.Name);</span><br><span class="line">Console.WriteLine(t.Namespace);</span><br><span class="line">Person p1 = new Person();</span><br><span class="line">if (p1.GetType()==t)</span><br><span class="line">    Console.WriteLine(&quot;Ok&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="Type的成员方法"><a href="#Type的成员方法" class="headerlink" title="Type的成员方法"></a>Type的成员方法</h3><pre><code>GetConstructor[s]()     //返回ConstructorInfo
 GetEvent[s]()           //返回EventInfo
 GetField[s]()           //返回FieldInfo
 Get[Default]Member[s]() //返回MemberInfo
@@ -1120,7 +1106,7 @@ else
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

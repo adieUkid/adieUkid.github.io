@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程">
+<meta name="description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程 多用组合，少用继承 设计交互对象之间的松耦合 扩展-关闭原则：类应该对扩展开发，对修改关闭。 依赖抽象，不要依赖具体类。 最少知识原则：只和你的密友谈话。 好莱坞原则：高层组件对待低层组件的方式：别调用我们，我们会调用你。避免高层和低层出现明显的环装依赖 一个类应该只有一个引起变化的原因。高内聚，低耦合。（单一">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Head First设计模式_注释笔记">
 <meta property="og:url" content="http://adieUkid.github.io/2017/02/27/Head-First设计模式_注释笔记/index.html">
 <meta property="og:site_name" content="Alan&#39;s Notes">
-<meta property="og:description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程">
+<meta property="og:description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程 多用组合，少用继承 设计交互对象之间的松耦合 扩展-关闭原则：类应该对扩展开发，对修改关闭。 依赖抽象，不要依赖具体类。 最少知识原则：只和你的密友谈话。 好莱坞原则：高层组件对待低层组件的方式：别调用我们，我们会调用你。避免高层和低层出现明显的环装依赖 一个类应该只有一个引起变化的原因。高内聚，低耦合。（单一">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://adieukid.github.io/images/Head-First/celuezhe.jpg">
 <meta property="og:image" content="http://adieukid.github.io/images/Head-First/guanchazhe.jpg">
@@ -111,10 +111,10 @@
 <meta property="og:image" content="http://adieukid.github.io/images/Head-First/zhuangtai.jpg">
 <meta property="og:image" content="http://adieukid.github.io/images/Head-First/peidui.jpg">
 <meta property="og:image" content="http://adieukid.github.io/images/Head-First/fenlei.jpg">
-<meta property="og:updated_time" content="2018-09-13T09:47:35.245Z">
+<meta property="og:updated_time" content="2018-10-25T03:05:49.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Head First设计模式_注释笔记">
-<meta name="twitter:description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程">
+<meta name="twitter:description" content="设计原则 把可能变化之处独立出来，以免影响固定代码。 针对接口编程，而不是针对实现编程 多用组合，少用继承 设计交互对象之间的松耦合 扩展-关闭原则：类应该对扩展开发，对修改关闭。 依赖抽象，不要依赖具体类。 最少知识原则：只和你的密友谈话。 好莱坞原则：高层组件对待低层组件的方式：别调用我们，我们会调用你。避免高层和低层出现明显的环装依赖 一个类应该只有一个引起变化的原因。高内聚，低耦合。（单一">
 <meta name="twitter:image" content="http://adieukid.github.io/images/Head-First/celuezhe.jpg">
 
 
@@ -423,7 +423,7 @@
       
         <h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><ol>
 <li>把可能变化之处独立出来，以免影响固定代码。</li>
-<li>针对接口编程，而不是针对实现编程<a id="more"></a></li>
+<li>针对接口编程，而不是针对实现编程</li>
 <li>多用组合，少用继承</li>
 <li>设计交互对象之间的松耦合</li>
 <li>扩展-关闭原则：类应该对扩展开发，对修改关闭。</li>
@@ -432,6 +432,7 @@
 <li>好莱坞原则：高层组件对待低层组件的方式：别调用我们，我们会调用你。<br>避免高层和低层出现明显的环装依赖</li>
 <li>一个类应该只有一个引起变化的原因。高内聚，低耦合。（单一职责）</li>
 </ol>
+<a id="more"></a>
 <h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><pre><code>7：
 //采用
 public int GetCount()
@@ -1268,7 +1269,7 @@ internal class SoldOutState : State
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
