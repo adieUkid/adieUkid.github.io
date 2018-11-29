@@ -86,20 +86,20 @@
 
 
 
-<meta name="description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&amp;quot;类型：&amp;quot; + t1 + &amp;quot;，类型码：&amp;quot; + t2 + &amp;quot;，类型码的值：&amp;quot; + (int)t2);">
+<meta name="description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);">
 <meta name="keywords" content="C#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#高级编程_注释笔记">
 <meta property="og:url" content="http://adieUkid.github.io/2017/04/04/C-高级编程_注释笔记/index.html">
 <meta property="og:site_name" content="Alan&#39;s Notes">
-<meta property="og:description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&amp;quot;类型：&amp;quot; + t1 + &amp;quot;，类型码：&amp;quot; + t2 + &amp;quot;，类型码的值：&amp;quot; + (int)t2);">
+<meta property="og:description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://adieukid.github.io/images/ProfessionalC/domain.jpg">
-<meta property="og:updated_time" content="2018-10-25T03:06:20.013Z">
+<meta property="og:image" content="http://adieukid.github.io/images/CSharp/ProfessionalC/domain.jpg">
+<meta property="og:updated_time" content="2018-11-29T01:53:18.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#高级编程_注释笔记">
-<meta name="twitter:description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&amp;quot;类型：&amp;quot; + t1 + &amp;quot;，类型码：&amp;quot; + t2 + &amp;quot;，类型码的值：&amp;quot; + (int)t2);">
-<meta name="twitter:image" content="http://adieukid.github.io/images/ProfessionalC/domain.jpg">
+<meta name="twitter:description" content="Type类型1234var i = 2.0;var t1 = i.GetType();var t2 = i.GetTypeCode();Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);">
+<meta name="twitter:image" content="http://adieukid.github.io/images/CSharp/ProfessionalC/domain.jpg">
 
 
 
@@ -405,208 +405,52 @@
       
 
       
-        <h3 id="Type类型"><a href="#Type类型" class="headerlink" title="Type类型"></a>Type类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i = 2.0;</span><br><span class="line">var t1 = i.GetType();</span><br><span class="line">var t2 = i.GetTypeCode();</span><br><span class="line">Console.WriteLine(&quot;类型：&quot; + t1 + &quot;，类型码：&quot; + t2 + &quot;，类型码的值：&quot; + (int)t2);</span><br></pre></td></tr></table></figure>
+        <h3 id="Type类型"><a href="#Type类型" class="headerlink" title="Type类型"></a>Type类型</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">2.0</span>;</span><br><span class="line"><span class="keyword">var</span> t1 = i.GetType();</span><br><span class="line"><span class="keyword">var</span> t2 = i.GetTypeCode();</span><br><span class="line">Console.WriteLine(<span class="string">"类型："</span> + t1 + <span class="string">"，类型码："</span> + t2 + <span class="string">"，类型码的值："</span> + (<span class="keyword">int</span>)t2);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>输出：类型：System.Double，类型码(enum)：Double，类型码的值：14</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var t = typeof(Person);</span><br><span class="line">Console.WriteLine(t.Assembly);</span><br><span class="line">Console.WriteLine(t.Attributes);</span><br><span class="line">Console.WriteLine(t.BaseType);</span><br><span class="line">Console.WriteLine(t.FullName);</span><br><span class="line">Console.WriteLine(t.GetProperties()[0].Name);</span><br><span class="line">Console.WriteLine(t.GUID);</span><br><span class="line">Console.WriteLine(t.Name);</span><br><span class="line">Console.WriteLine(t.Namespace);</span><br><span class="line">Person p1 = new Person();</span><br><span class="line">if (p1.GetType()==t)</span><br><span class="line">    Console.WriteLine(&quot;Ok&quot;);</span><br></pre></td></tr></table></figure>
-<h3 id="Type的成员方法"><a href="#Type的成员方法" class="headerlink" title="Type的成员方法"></a>Type的成员方法</h3><pre><code>GetConstructor[s]()     //返回ConstructorInfo
-GetEvent[s]()           //返回EventInfo
-GetField[s]()           //返回FieldInfo
-Get[Default]Member[s]() //返回MemberInfo
-GetMethod[s]()          //返回MethodInfo
-GetProperty[s]()        //返回PropertyInfo
-</code></pre><h3 id="Assembly和Type"><a href="#Assembly和Type" class="headerlink" title="Assembly和Type"></a>Assembly和Type</h3><pre><code>Assembly ass = Assembly.Load(&quot;ConsoleApplication1&quot;);
-Type t = typeof(Book);
-var b = ass.CreateInstance(t.FullName);
-var b1 = ass.CreateInstance(&quot;ConsoleApplication1.Book&quot;);
-</code></pre><h3 id="程序集"><a href="#程序集" class="headerlink" title="程序集"></a>程序集</h3><p>dll，逻辑单元。包含模块，资源等。<br>程序集强名：<br>共享程序集使用强名唯一地标识该程序集，保证全局唯一，包括：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = <span class="keyword">typeof</span>(Person);</span><br><span class="line">Console.WriteLine(t.Assembly);</span><br><span class="line">Console.WriteLine(t.Attributes);</span><br><span class="line">Console.WriteLine(t.BaseType);</span><br><span class="line">Console.WriteLine(t.FullName);</span><br><span class="line">Console.WriteLine(t.GetProperties()[<span class="number">0</span>].Name);</span><br><span class="line">Console.WriteLine(t.GUID);</span><br><span class="line">Console.WriteLine(t.Name);</span><br><span class="line">Console.WriteLine(t.Namespace);</span><br><span class="line">Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">if</span> (p1.GetType()==t)</span><br><span class="line">    Console.WriteLine(<span class="string">"Ok"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Type的成员方法"><a href="#Type的成员方法" class="headerlink" title="Type的成员方法"></a>Type的成员方法</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GetConstructor[s]()     <span class="comment">//返回ConstructorInfo</span></span><br><span class="line">GetEvent[s]()           <span class="comment">//返回EventInfo</span></span><br><span class="line">GetField[s]()           <span class="comment">//返回FieldInfo</span></span><br><span class="line">Get[Default]Member[s]() <span class="comment">//返回MemberInfo</span></span><br><span class="line">GetMethod[s]()          <span class="comment">//返回MethodInfo</span></span><br><span class="line">GetProperty[s]()        <span class="comment">//返回PropertyInfo</span></span><br></pre></td></tr></table></figure>
+<h3 id="Assembly和Type"><a href="#Assembly和Type" class="headerlink" title="Assembly和Type"></a>Assembly和Type</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Assembly ass = Assembly.Load(<span class="string">"ConsoleApplication1"</span>);</span><br><span class="line">Type t = <span class="keyword">typeof</span>(Book);</span><br><span class="line"><span class="keyword">var</span> b = ass.CreateInstance(t.FullName);</span><br><span class="line"><span class="keyword">var</span> b1 = ass.CreateInstance(<span class="string">"ConsoleApplication1.Book"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="程序集"><a href="#程序集" class="headerlink" title="程序集"></a>程序集</h3><p>dll，逻辑单元。包含模块，资源等。</p>
+<p>程序集强名：共享程序集使用强名唯一地标识该程序集，保证全局唯一，包括：</p>
 <ol>
 <li>程序集本身的名称</li>
 <li>版本号。不同版本可以共存于一个进程。</li>
 <li>公钥。保证独一无二。</li>
 <li>文化</li>
 </ol>
-<h3 id="应用程序域"><a href="#应用程序域" class="headerlink" title="应用程序域"></a>应用程序域</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="/images/ProfessionalC/domain.jpg" alt="应用程序域"></p>
-<h4 id="不同域加载程序集"><a href="#不同域加载程序集" class="headerlink" title="不同域加载程序集"></a>不同域加载程序集</h4><pre><code>namespace AssemblyA
-{
-    // [Serializable]//只序列化，则仍由调用应用域访问
-    public class Demo : MarshalByRefObject  //继承这个基类（已序列化），才能通过另一个应用程序域来访问。
-    {
-        public Demo() { }
-        public Demo(int val1, int val2)
-        {
-            Console.WriteLine(&quot;domain：{0}中带有参数{1}和{2}的构造函数被调用&quot;, AppDomain.CurrentDomain.FriendlyName, val1, val2);
-        }
-        public void DoSome()
-        {            
-            Console.WriteLine(&quot;domain：{0}调用方法DoSome&quot;, AppDomain.CurrentDomain.FriendlyName);        
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {            
-            Console.WriteLine(&quot;domain：{0}的主函数被调用&quot;, AppDomain.CurrentDomain.FriendlyName);        
-        }
-    }
-}
-
-namespace AssemblyB
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine(&quot;当前域：&quot; + AppDomain.CurrentDomain.FriendlyName);
-            AppDomain firstDomain = AppDomain.CreateDomain(&quot;First AppDomain&quot;);
-            firstDomain.ExecuteAssemblyByName(&quot;AssemblyA&quot;);     //需要添加引用或复制程序集，执行exe形式的程序集
-            firstDomain.ExecuteAssembly(&quot;AssemblyA.exe&quot;);     //上方主函数被调用
-
-            AppDomain secondDomain = AppDomain.CreateDomain(&quot;Second AppDomain&quot;);
-            var ret = secondDomain.CreateInstance(&quot;AssemblyA&quot;, &quot;AssemblyA.Demo&quot;, true, BindingFlags.CreateInstance,
-                null, new object[] { 7, 3 }, null, null);      //上方Demo类构造函数被调用
-            var obj = (Demo)ret.Unwrap();   //解除包装
-            obj.DoSome();
-
-            //实例化程序集中的类的示例
-            Demo demo = (Demo)secondDomain.CreateInstanceAndUnwrap(&quot;AssemblyA&quot;, &quot;AssemblyA.Demo&quot;);
-            demo.DoSome();     //显示：Second AppDomain调用方法DoSome
-
-            //适用：如果程序集是动态加载的，用完后卸载。
-            //主应用程序域中，无法删除已加载程序集。但可以终止应用程序域，该域中加载的程序集会从内存中清楚。
-            AppDomain.Unload(secondDomain);
-
-            //string fullName = namespaceName + &quot;.&quot; + Controller + &quot;Controller&quot;;
-            //object obj = Assembly.Load(assemblyName).CreateInstance(fullName);
-            //result = (ServerController)obj;
-
-            Console.ReadKey();
-        }
-    }
-}
-</code></pre><h4 id="当前域加载程序集"><a href="#当前域加载程序集" class="headerlink" title="当前域加载程序集"></a>当前域加载程序集</h4><pre><code>//动态加载程序集，创建实例
-//配合接口降低耦合，也可以逆向引用调用对象方法
-string fullName = &quot;AssemblyA.Demo&quot;;
-object obj = Assembly.Load(&quot;AssemblyA&quot;).CreateInstance(fullName);
-var result = (Demo)obj;
-result.DoSome();
-</code></pre><h3 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h3><p>函数&gt;方法。<br>函数包括：方法，非数据成员：索引器，构造函数，析构函数，属性。</p>
-<h3 id="构造函数初始化器"><a href="#构造函数初始化器" class="headerlink" title="构造函数初始化器"></a>构造函数初始化器</h3><pre><code>public Car(string des) : this(des , 4)
-{    
-    //...
-}
-public Car(string des,int wheel)
-{    
-    //...        
-}
-</code></pre><p>实现构造函数之间的重用: this 或: base 之后的构造函数先执行，然后再执行此构造函数。</p>
+<h3 id="应用程序域"><a href="#应用程序域" class="headerlink" title="应用程序域"></a>应用程序域</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="/images/CSharp/ProfessionalC/domain.jpg" alt="应用程序域"></p>
+<h4 id="不同域加载程序集"><a href="#不同域加载程序集" class="headerlink" title="不同域加载程序集"></a>不同域加载程序集</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AssemblyA</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// [Serializable]//只序列化，则仍由调用应用域访问</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> : <span class="title">MarshalByRefObject</span>  <span class="comment">//继承这个基类（已序列化），才能通过另一个应用程序域来访问。</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Demo</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Demo</span>(<span class="params"><span class="keyword">int</span> val1, <span class="keyword">int</span> val2</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"domain：&#123;0&#125;中带有参数&#123;1&#125;和&#123;2&#125;的构造函数被调用"</span>, AppDomain.CurrentDomain.FriendlyName, val1, val2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoSome</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;            </span><br><span class="line">            Console.WriteLine(<span class="string">"domain：&#123;0&#125;调用方法DoSome"</span>, AppDomain.CurrentDomain.FriendlyName);        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;            </span><br><span class="line">            Console.WriteLine(<span class="string">"domain：&#123;0&#125;的主函数被调用"</span>, AppDomain.CurrentDomain.FriendlyName);        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">AssemblyB</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"当前域："</span> + AppDomain.CurrentDomain.FriendlyName);</span><br><span class="line">            AppDomain firstDomain = AppDomain.CreateDomain(<span class="string">"First AppDomain"</span>);</span><br><span class="line">            firstDomain.ExecuteAssemblyByName(<span class="string">"AssemblyA"</span>);     <span class="comment">//需要添加引用或复制程序集，执行exe形式的程序集</span></span><br><span class="line">            firstDomain.ExecuteAssembly(<span class="string">"AssemblyA.exe"</span>);     <span class="comment">//上方主函数被调用</span></span><br><span class="line">    </span><br><span class="line">            AppDomain secondDomain = AppDomain.CreateDomain(<span class="string">"Second AppDomain"</span>);</span><br><span class="line">            <span class="keyword">var</span> ret = secondDomain.CreateInstance(<span class="string">"AssemblyA"</span>, <span class="string">"AssemblyA.Demo"</span>, <span class="literal">true</span>, BindingFlags.CreateInstance,</span><br><span class="line">                <span class="literal">null</span>, <span class="keyword">new</span> <span class="keyword">object</span>[] &#123; <span class="number">7</span>, <span class="number">3</span> &#125;, <span class="literal">null</span>, <span class="literal">null</span>);      <span class="comment">//上方Demo类构造函数被调用</span></span><br><span class="line">            <span class="keyword">var</span> obj = (Demo)ret.Unwrap();   <span class="comment">//解除包装</span></span><br><span class="line">            obj.DoSome();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//实例化程序集中的类的示例</span></span><br><span class="line">            Demo demo = (Demo)secondDomain.CreateInstanceAndUnwrap(<span class="string">"AssemblyA"</span>, <span class="string">"AssemblyA.Demo"</span>);</span><br><span class="line">            demo.DoSome();     <span class="comment">//显示：Second AppDomain调用方法DoSome</span></span><br><span class="line">    </span><br><span class="line">            <span class="comment">//适用：如果程序集是动态加载的，用完后卸载。</span></span><br><span class="line">            <span class="comment">//主应用程序域中，无法删除已加载程序集。但可以终止应用程序域，该域中加载的程序集会从内存中清楚。</span></span><br><span class="line">            AppDomain.Unload(secondDomain);</span><br><span class="line">    </span><br><span class="line">            <span class="comment">//string fullName = namespaceName + "." + Controller + "Controller";</span></span><br><span class="line">            <span class="comment">//object obj = Assembly.Load(assemblyName).CreateInstance(fullName);</span></span><br><span class="line">            <span class="comment">//result = (ServerController)obj;</span></span><br><span class="line">    </span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="当前域加载程序集"><a href="#当前域加载程序集" class="headerlink" title="当前域加载程序集"></a>当前域加载程序集</h4> <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//动态加载程序集，创建实例</span></span><br><span class="line"><span class="comment">//配合接口降低耦合，也可以逆向引用调用对象方法</span></span><br><span class="line"><span class="keyword">string</span> fullName = <span class="string">"AssemblyA.Demo"</span>;</span><br><span class="line"><span class="keyword">object</span> obj = Assembly.Load(<span class="string">"AssemblyA"</span>).CreateInstance(fullName);</span><br><span class="line"><span class="keyword">var</span> result = (Demo)obj;</span><br><span class="line">result.DoSome();</span><br></pre></td></tr></table></figure>
+<h3 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h3><p>函数&gt;方法。<br>函数包括：方法，非数据成员：索引器，构造函数，析构函数，属性。</p>
+<h3 id="构造函数初始化器"><a href="#构造函数初始化器" class="headerlink" title="构造函数初始化器"></a>构造函数初始化器</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Car</span>(<span class="params"><span class="keyword">string</span> des</span>) : <span class="title">this</span>(<span class="params">des , <span class="number">4</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Car</span>(<span class="params"><span class="keyword">string</span> des,<span class="keyword">int</span> wheel</span>)</span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="comment">//...		</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现构造函数之间的重用: this 或: base 之后的构造函数先执行，然后再执行此构造函数。</p>
 <h3 id="partial关键词"><a href="#partial关键词" class="headerlink" title="partial关键词"></a>partial关键词</h3><p>编译时，两个不分类的属性，XML注释，接口，泛型类型的参数属性，特性和成员会合并。</p>
 <h3 id="泛型中的default关键字"><a href="#泛型中的default关键字" class="headerlink" title="泛型中的default关键字"></a>泛型中的default关键字</h3><p>初始化泛型参数T时，可以使用detault(T)。在不知道T是引用类型还是值类型的情况下，分别赋予引用类型null或者值类型0</p>
-<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>类似于C++中的函数指针（但类型不安全，参数和返回值未知）<br>面向对象编程，没有方法是孤立的。如果要传递方法， 就要把方法细节（签名和返回类型）封装在一种新类型对象中，即委托。委托是一种特殊对象，普通对象都包含数据，而委托包含的只是一个或多个方法的地址（指针）。</p>
+<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>类似于C++中的函数指针（但类型不安全，参数和返回值未知）。</p>
+<p>面向对象编程，没有方法是孤立的。如果要传递方法， 就要把方法细节（签名和返回类型）封装在一种新类型对象中，即委托。委托是一种特殊对象，普通对象都包含数据，而委托包含的只是一个或多个方法的地址（指针）。</p>
 <h3 id="委托的定义和使用：（面向对象的角度）"><a href="#委托的定义和使用：（面向对象的角度）" class="headerlink" title="委托的定义和使用：（面向对象的角度）"></a>委托的定义和使用：（面向对象的角度）</h3><ol>
-<li><p>定义一个委托（类似定义一个类）<br><code>private delegate string GetAString();</code></p>
+<li><p>定义一个委托（类似定义一个类）<br> <code>private delegate string GetAString();</code></p>
 </li>
-<li><p>实例化一个GetAString的委托实例（实例化一个对象）。<br>委托语法上总是接收一个参数的构造函数。<br><code>GetAString me=new GetAString(x.ToString);</code><br>或者委托推断：<br><code>GetAString me=x.ToString;</code></p>
+<li><p>实例化一个GetAString的委托实例（实例化一个对象）。委托语法上总是接收一个参数的构造函数。<br> <code>GetAString me=new GetAString(x.ToString);</code><br> 或者委托推断：<br> <code>GetAString me=x.ToString;</code></p>
 </li>
-<li><p>me();或者me.Invoke();<br>编译器会用me.Invoke()；代替me()；</p>
+<li><p>me();或者me.Invoke();</p>
 </li>
 </ol>
-<h3 id="浅表复制，深度复制"><a href="#浅表复制，深度复制" class="headerlink" title="浅表复制，深度复制"></a>浅表复制，深度复制</h3><h4 id="浅表复制，成员对象，直接复制引用。成员值，创建值副本。"><a href="#浅表复制，成员对象，直接复制引用。成员值，创建值副本。" class="headerlink" title="浅表复制，成员对象，直接复制引用。成员值，创建值副本。"></a>浅表复制，成员对象，直接复制引用。成员值，创建值副本。</h4><h4 id="深度复制，成员对象，创建副本。成员值，创建值副本。"><a href="#深度复制，成员对象，创建副本。成员值，创建值副本。" class="headerlink" title="深度复制，成员对象，创建副本。成员值，创建值副本。"></a>深度复制，成员对象，创建副本。成员值，创建值副本。</h4><pre><code>[Serializable]  //可被序列化，实现深度复制
-public class CloneDemo  // : ICloneable，可继承接口，实现方法复制
-{
-    public int State { get; set; }
-    public StateObject innerObj { get; set; }
-
-    [Serializable]
-    public class StateObject
-    {
-        public int InnerState { get; set; }
-    }
-
-    public CloneDemo()
-    {
-        State = 1;
-        innerObj = new StateObject { InnerState = 1, };
-    }
-
-    //浅表复制
-    public CloneDemo ShadowClone()
-    {            
-        return this.MemberwiseClone() as CloneDemo;        
-    }
-
-    //深度复制
-    public CloneDemo DeepClone()
-    {
-        using (var stream = new MemoryStream())
-        {
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(stream, this);
-            stream.Seek(0, SeekOrigin.Begin);
-            return formatter.Deserialize(stream) as CloneDemo;
-        }
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        var demo = new CloneDemo();
-        var shadow = demo.ShadowClone();
-        var deep = demo.DeepClone();
-        Console.WriteLine(&quot;demo：属性State = {0}，引用innerObj.State = {1}&quot;, demo.State, demo.innerObj.InnerState);
-        Console.WriteLine(&quot;shadow：属性State = {0}，引用innerObj.State = {1}&quot;, shadow.State, shadow.innerObj.InnerState);
-        Console.WriteLine(&quot;deep：属性State = {0}，引用innerObj.State = {1}&quot;, deep.State, deep.innerObj.InnerState);
-        demo.State = -1;
-        demo.innerObj.InnerState = -1;
-        Console.WriteLine(&quot;====================\n分别对属性和引用赋值...\n====================&quot;);
-        Console.WriteLine(&quot;demo：属性State = {0}，引用innerObj.State = {1}&quot;, demo.State, demo.innerObj.InnerState);
-        Console.WriteLine(&quot;shadow：属性State = {0}，引用innerObj.State = {1}&quot;, shadow.State, shadow.innerObj.InnerState);
-        Console.WriteLine(&quot;deep：属性State = {0}，引用innerObj.State = {1}&quot;, deep.State, deep.innerObj.InnerState);
-
-        Console.ReadKey();
-    }
-}
-</code></pre><h3 id="Array抽象类"><a href="#Array抽象类" class="headerlink" title="Array抽象类"></a>Array抽象类</h3><pre><code>Type t=...;
-Array intArr=Array.CreateInstance(typeof(t),5);
-intArr.SetValue(33,2);
-intArr.GetValue(2);
-</code></pre><p>事先不知类型，可由此创建数组。</p>
+<p>编译器会用me.Invoke()；代替me()；</p>
+<h3 id="浅表复制，深度复制"><a href="#浅表复制，深度复制" class="headerlink" title="浅表复制，深度复制"></a>浅表复制，深度复制</h3><h4 id="浅表复制，成员对象，直接复制引用。成员值，创建值副本。"><a href="#浅表复制，成员对象，直接复制引用。成员值，创建值副本。" class="headerlink" title="浅表复制，成员对象，直接复制引用。成员值，创建值副本。"></a>浅表复制，成员对象，直接复制引用。成员值，创建值副本。</h4><h4 id="深度复制，成员对象，创建副本。成员值，创建值副本。"><a href="#深度复制，成员对象，创建副本。成员值，创建值副本。" class="headerlink" title="深度复制，成员对象，创建副本。成员值，创建值副本。"></a>深度复制，成员对象，创建副本。成员值，创建值副本。</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Serializable</span>]  <span class="comment">//可被序列化，实现深度复制</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CloneDemo</span>  <span class="comment">// : ICloneable，可继承接口，实现方法复制</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> State &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> StateObject innerObj &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Serializable</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StateObject</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> InnerState &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CloneDemo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        State = <span class="number">1</span>;</span><br><span class="line">        innerObj = <span class="keyword">new</span> StateObject &#123; InnerState = <span class="number">1</span>, &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//浅表复制</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CloneDemo <span class="title">ShadowClone</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;            </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.MemberwiseClone() <span class="keyword">as</span> CloneDemo;        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//深度复制</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CloneDemo <span class="title">DeepClone</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> stream = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> formatter = <span class="keyword">new</span> BinaryFormatter();</span><br><span class="line">            formatter.Serialize(stream, <span class="keyword">this</span>);</span><br><span class="line">            stream.Seek(<span class="number">0</span>, SeekOrigin.Begin);</span><br><span class="line">            <span class="keyword">return</span> formatter.Deserialize(stream) <span class="keyword">as</span> CloneDemo;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> demo = <span class="keyword">new</span> CloneDemo();</span><br><span class="line">        <span class="keyword">var</span> shadow = demo.ShadowClone();</span><br><span class="line">        <span class="keyword">var</span> deep = demo.DeepClone();</span><br><span class="line">        Console.WriteLine(<span class="string">"demo：属性State = &#123;0&#125;，引用innerObj.State = &#123;1&#125;"</span>, demo.State, demo.innerObj.InnerState);</span><br><span class="line">        Console.WriteLine(<span class="string">"shadow：属性State = &#123;0&#125;，引用innerObj.State = &#123;1&#125;"</span>, shadow.State, shadow.innerObj.InnerState);</span><br><span class="line">        Console.WriteLine(<span class="string">"deep：属性State = &#123;0&#125;，引用innerObj.State = &#123;1&#125;"</span>, deep.State, deep.innerObj.InnerState);</span><br><span class="line">        demo.State = <span class="number">-1</span>;</span><br><span class="line">        demo.innerObj.InnerState = <span class="number">-1</span>;</span><br><span class="line">        Console.WriteLine(<span class="string">"====================\n分别对属性和引用赋值...\n===================="</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"demo：属性State = &#123;0&#125;，引用innerObj.State = &#123;1&#125;"</span>, demo.State, demo.innerObj.InnerState);</span><br><span class="line">        Console.WriteLine(<span class="string">"shadow：属性State = &#123;0&#125;，引用innerObj.State = &#123;1&#125;"</span>, shadow.State, shadow.innerObj.InnerState);</span><br><span class="line">        Console.WriteLine(<span class="string">"deep：属性State = &#123;0&#125;，引用innerObj.State = &#123;1&#125;"</span>, deep.State, deep.innerObj.InnerState);</span><br><span class="line"></span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Array抽象类"><a href="#Array抽象类" class="headerlink" title="Array抽象类"></a>Array抽象类</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Type t=...;</span><br><span class="line">Array intArr=Array.CreateInstance(<span class="keyword">typeof</span>(t),<span class="number">5</span>);</span><br><span class="line">intArr.SetValue(<span class="number">33</span>,<span class="number">2</span>);</span><br><span class="line">intArr.GetValue(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>事先不知类型，可由此创建数组。</p>
 <p>Array.Sort(数组,IComparer<t> 比较器);</t></p>
 <h3 id="Enumerator"><a href="#Enumerator" class="headerlink" title="Enumerator"></a>Enumerator</h3><p>GetEnumerator()方法用IEnumerable接口定义。foreach语句并不真的需要集合实现这个接口。有一个名为GetEnumerator()的方法，返回实现了IEnumerator接口的对象就行了。</p>
 <p>IEnumerator接口定义了Reset()方法，以与COM交互操作。</p>
 <h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><p>解析为下面的代码段：</p>
-<pre><code>var enumerator = list.GetEnumerator();
-while (enumerator.MoveNext())
-{
-    var item = enumerator.Current;
-    if (item != null)
-    {
-        Console.WriteLine(item.Name);
-    }
-}
-</code></pre><h3 id="yield语句"><a href="#yield语句" class="headerlink" title="yield语句"></a>yield语句</h3><p>包含yield语句的方法或属性也成为迭代块。必须声明为返回IEnumerator或IEnumerable接口。可包含yield return或yeild break，不能有return语句。<br>使用迭代块，编译器会生成一个yield类型，包含一个状态机。记录了迭代的当前位置。<br>foreach访问迭代器，一次访问一个。无需一次加载完所有数据。</p>
-<p>可以把yeild类型看作内部类Enumerator。</p>
-<pre><code>class My
-{
-    public class Enumerator : IEnumerator&lt;string&gt;, IEnumerator, IDisposable
-    {
-        private int state;
-        public string Current 
-        { get; private set; }
-        public void Dispose()            
-        {...}
-        public bool MoveNext()            
-        {...}
-        public void Reset()            
-        {...}
-        object IEnumerator.Current            
-        {get{return Current;}}
-    }
-}
-</code></pre><p>默认迭代是：定义为返回Enumerator的GetEnumerator()方法，是foreach默认采用的方法。自定义命名迭代返回IEnumerable。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> enumerator = list.GetEnumerator();</span><br><span class="line"><span class="keyword">while</span> (enumerator.MoveNext())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> item = enumerator.Current;</span><br><span class="line">    <span class="keyword">if</span> (item != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(item.Name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="yield语句"><a href="#yield语句" class="headerlink" title="yield语句"></a>yield语句</h3><p>包含yield语句的方法或属性也成为迭代块。必须声明为返回IEnumerator或IEnumerable接口。可包含yield return或yeild break，不能有return语句。</p>
+<p>使用迭代块，编译器会生成一个yield类型，包含一个状态机。记录了迭代的当前位置。</p>
+<p>foreach访问迭代器，一次访问一个。无需一次加载完所有数据。可以把yeild类型看作内部类Enumerator。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">My</span></span><br><span class="line">&#123;</span><br><span class="line">    public class Enumerator : IEnumerator&lt;string&gt;, IEnumerator, IDisposable</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> state;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Current &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)            </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">bool</span> <span class="title">MoveNext</span>(<span class="params"></span>)            </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Reset</span>(<span class="params"></span>)            </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">object</span> IEnumerator.Current &#123;<span class="keyword">get</span> &#123; <span class="keyword">return</span> Current; &#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认迭代是：定义为返回Enumerator的GetEnumerator()方法，是foreach默认采用的方法。自定义命名迭代返回IEnumerable。</p>
 <h3 id="集合特性"><a href="#集合特性" class="headerlink" title="集合特性"></a>集合特性</h3><ul>
 <li>IEnumerabel<t>：GetEnumerator()，返回一个实现了IEnumerator接口的枚举。可以被foreach。</t></li>
 <li>ICollection<t>：由泛型集合实现。Count属性。CopyTo()方法（把集合复制到数组中）。Add()，Remove()，Clear()方法。</t></li>
@@ -618,129 +462,46 @@ while (enumerator.MoveNext())
 <li>IEqualityComparer<t>：比较器，数组，元祖实现。该比较器可用于字典中的键。</t></li>
 <li>IProducerConsumerCollection<t>：.NET4.0。支持新的线程安全的集合类。</t></li>
 <li>IReadOnlyCollection<t>，IReadOnlyList<t>，IReadOnlyDictionary<tkey,tvalue>：初始化后不能修改的，只能检索。</tkey,tvalue></t></t></li>
-<li>IImmutableArray<t>，IImmutableList<t>，IImmutableQueue<t>，IImmutableSet<t>，<br>IImmutableDictionary<tkey,tvalue>：初始化后不能修改。不可变接口定义了不可变集合的方法和属性。</tkey,tvalue></t></t></t></t></li>
+<li>IImmutableArray<t>，IImmutableList<t>，IImmutableQueue<t>，IImmutableSet<t>，</t></t></t></t></li>
+<li>IImmutableDictionary<tkey,tvalue>：初始化后不能修改。不可变接口定义了不可变集合的方法和属性。</tkey,tvalue></li>
 </ul>
 <h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>先进先出（FIFO）容器。</p>
 <p>Queue<t> ，先进先出（FIFO）。<br>Enqueue()，一端添加元素。Dequeue()，另一端读取和删除元素。<br>Peek()，从头部读取一个元素，但不删除。</t></p>
 <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>后进先出（LIFO）容器。</p>
 <p>Push()，添加元素。Pop()获取最近添加的元素。<br>Peek()，返回栈顶的元素，但不删除它。</p>
 <h3 id="Lookup类"><a href="#Lookup类" class="headerlink" title="Lookup类"></a>Lookup类</h3><p>一键对多值</p>
-<pre><code>List&lt;Book&gt; list = new List&lt;Book&gt;
-{
-    new Book() { Title = &quot;b1&quot;, Price = 1 },
-    new Book() { Title = &quot;b2&quot;, Price = 2 },
-    new Book() { Title = &quot;a2&quot;, Price = 2 }
-};
-
-var bookLk = list.ToLookup(p =&gt; p.Price);
-foreach (var item in bookLk[2])
-{
-    Console.WriteLine(item.Title);
-}
-</code></pre><h3 id="集"><a href="#集" class="headerlink" title="集"></a>集</h3><p>HashSet 不重复无序，SortedSet 不重复有序</p>
-<pre><code>aSet.Add()  //是否成功添加了元素。
-aSet.IsSubsetOf(bSet)       //a是否是b的子集（b包含a所有元素）
-bSet.IsSupersetOf(aSet)     //b是否是a的超集（b包含a所有元素）
-aSet.Overlaps(bSet)         //a与b是否共享某元素。（重叠）
-aSet.UnionWith(bSet)        //向a中加入b所有的元素。
-aSet.ExceptWith(bSet)       //从a中删除b拥有的元素
-</code></pre><h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>不可变集合，需要引用System.Collections.Immutable（.NET4.5）</p>
-<pre><code>ImmutableList&lt;string&gt;.Add(&quot;&quot;)   //每次返回一个新的不变集合，不改变本身。
-var build=imList.ToBuild()      //构建器。返回一个可变集合。可以进行.Add()，.Remove()等。
-build.ToImmutable()             //返回一个变动后的不可变集合。
-</code></pre><h3 id="并发集合"><a href="#并发集合" class="headerlink" title="并发集合"></a>并发集合</h3><ul>
-<li>IProducerConsumerCollection<t><br>TryAdd(),和TryTake()。</t></li>
-<li>ConcurrentQueue<t><br>免锁定，内部链表。TryTake(),Enqueue(),TryDequeue(),TryPeek()</t></li>
-<li>ConcurrentStack<t><br>链表。Push(),TryPeek(),TryPop(),TryPopRange()</t></li>
-<li>ConcurrentBag<t><br>没有定义添加或提取项的任何顺序，线程映射到内部使用的数组，尝试减少锁定。</t></li>
-<li>ConcurrentDictionary<tkey,tvalue><br>线程安全，非阻塞键值集合。TryGetValue(),TryRemove(),TryUpdate()。没有实现IProducerConsumerCollection<t>。</t></tkey,tvalue></li>
-<li>BlockingCollection<t><br>阻塞线程。Add(),Take()。</t></li>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Book&gt; list = <span class="keyword">new</span> List&lt;Book&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Book() &#123; Title = <span class="string">"b1"</span>, Price = <span class="number">1</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Book() &#123; Title = <span class="string">"b2"</span>, Price = <span class="number">2</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Book() &#123; Title = <span class="string">"a2"</span>, Price = <span class="number">2</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bookLk = list.ToLookup(p =&gt; p.Price);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> bookLk[<span class="number">2</span>])</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item.Title);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="集"><a href="#集" class="headerlink" title="集"></a>集</h3><p>HashSet 不重复无序，SortedSet 不重复有序</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aSet.Add()  <span class="comment">//是否成功添加了元素。</span></span><br><span class="line">aSet.IsSubsetOf(bSet)       <span class="comment">//a是否是b的子集（b包含a所有元素）</span></span><br><span class="line">bSet.IsSupersetOf(aSet)     <span class="comment">//b是否是a的超集（b包含a所有元素）</span></span><br><span class="line">aSet.Overlaps(bSet)         <span class="comment">//a与b是否共享某元素。（重叠）</span></span><br><span class="line">aSet.UnionWith(bSet)        <span class="comment">//向a中加入b所有的元素。</span></span><br><span class="line">aSet.ExceptWith(bSet)       <span class="comment">//从a中删除b拥有的元素</span></span><br></pre></td></tr></table></figure>
+<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><p>不可变集合，需要引用System.Collections.Immutable（.NET4.5）</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImmutableList&lt;<span class="keyword">string</span>&gt;.Add(<span class="string">""</span>)   <span class="comment">//每次返回一个新的不变集合，不改变本身。</span></span><br><span class="line"><span class="keyword">var</span> build=imList.ToBuild()      <span class="comment">//构建器。返回一个可变集合。可以进行.Add()，.Remove()等。</span></span><br><span class="line">build.ToImmutable()             <span class="comment">//返回一个变动后的不可变集合。</span></span><br></pre></td></tr></table></figure>
+<h3 id="并发集合"><a href="#并发集合" class="headerlink" title="并发集合"></a>并发集合</h3><ul>
+<li>IProducerConsumerCollection<t>：TryAdd(),和TryTake()。</t></li>
+<li>ConcurrentQueue<t>：免锁定，内部链表。TryTake(),Enqueue(),TryDequeue(),TryPeek()</t></li>
+<li>ConcurrentStack<t>：链表。Push(),TryPeek(),TryPop(),TryPopRange()</t></li>
+<li>ConcurrentBag<t>：没有定义添加或提取项的任何顺序，线程映射到内部使用的数组，尝试减少锁定。</t></li>
+<li>ConcurrentDictionary<tkey,tvalue>：线程安全，非阻塞键值集合。TryGetValue(),TryRemove(),TryUpdate()。没有实现IProducerConsumerCollection<t>。</t></tkey,tvalue></li>
+<li>BlockingCollection<t>：阻塞线程。Add(),Take()。</t></li>
 </ul>
-<h3 id="dynamic类型"><a href="#dynamic类型" class="headerlink" title="dynamic类型"></a>dynamic类型</h3><p>dynamic类型允许编写忽略编译期间的类型检查代码。<br>var对象类型的确定会延迟，确定后不可变。dynamic类型可以改变多次。int-&gt;string-&gt;object</p>
+<h3 id="dynamic类型"><a href="#dynamic类型" class="headerlink" title="dynamic类型"></a>dynamic类型</h3><p>dynamic类型允许编写忽略编译期间的类型检查代码。</p>
+<p>var对象类型的确定会延迟，确定后不可变。dynamic类型可以改变多次。int-&gt;string-&gt;object</p>
 <h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><p>只能用于返回Task或void的方法。不能作为程序的入口点。</p>
 <h3 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h3><p>启动Task的3种方式：</p>
-<pre><code>1. 
-Action act = () =&gt;
-{
-    Console.WriteLine(&quot;任务开始&quot;);
-    Thread.Sleep(2000);
-};
-Task t = new Task(act);
-t.Start();
-
-2. 
-Task t = Task.Factory.StartNew(act);
-
-3. 
-Task t = Task.Run(act);    //对Factory的封装
-
-//完成通知，回调
-t.ContinueWith(task =&gt;
-{
-    Console.WriteLine(&quot;完成状态&quot;);
-    Console.WriteLine(&quot;IsCanceled={0}\tIsCompleted={1}\tIsFaulted={2}&quot;, task.IsCanceled, task.IsCompleted, task.IsFaulted);
-});
-</code></pre><h3 id="Task组合器"><a href="#Task组合器" class="headerlink" title="Task组合器"></a>Task组合器</h3><ul>
-<li>Task.WhenAll(t1,t2)<br>等待，直到全部任务都完成。</li>
-<li>Task.WhenAny(t1,t2)<br>等待，直到其中一个任务完成就会返回。</li>
+<p>1.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Action act = () =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"任务开始"</span>);</span><br><span class="line">    Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Task t = <span class="keyword">new</span> Task(act);</span><br><span class="line">t.Start();</span><br></pre></td></tr></table></figure></p>
+<p>2.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Task t = Task.Factory.StartNew(act);</span><br></pre></td></tr></table></figure></p>
+<p>3.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Task t = Task.Run(act);    <span class="comment">//对Factory的封装</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//完成通知，回调</span></span><br><span class="line">t.ContinueWith(task =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"完成状态"</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">"IsCanceled=&#123;0&#125;\tIsCompleted=&#123;1&#125;\tIsFaulted=&#123;2&#125;"</span>, task.IsCanceled, task.IsCompleted, task.IsFaulted);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Task组合器"><a href="#Task组合器" class="headerlink" title="Task组合器"></a>Task组合器</h3><ul>
+<li>Task.WhenAll(t1,t2)：等待，直到全部任务都完成。</li>
+<li>Task.WhenAny(t1,t2)：等待，直到其中一个任务完成就会返回。</li>
 </ul>
-<h3 id="应用CancellationTokenSource，取消Task"><a href="#应用CancellationTokenSource，取消Task" class="headerlink" title="应用CancellationTokenSource，取消Task"></a>应用CancellationTokenSource，取消Task</h3><pre><code>static void Main(string[] args)
-{
-    var cts = new CancellationTokenSource();
-    Task&lt;int&gt; t = new Task&lt;int&gt;(() =&gt; Add(cts.Token), cts.Token);
-    t.Start();
-    t.ContinueWith(TaskEnded);
-    Console.ReadKey();
-    cts.Cancel();
-    Console.ReadKey();
-}
-
-static void TaskEnded(Task&lt;int&gt; task)
-{
-    Console.WriteLine(&quot;完成&quot;);
-    Console.WriteLine(&quot;IsCanceled:{0},IsCompleted:{1},IsFaulted:{2}&quot;, 
-        task.IsCanceled, task.IsCompleted, task.IsFaulted);
-
-    ①Console.WriteLine(&quot;返回值：&quot; + task.Result);
-    ②try
-    {
-        Console.WriteLine(&quot;返回值:&quot; + task.Result);
-    }
-    catch (AggregateException e)
-    {
-        var errs = e.InnerExceptions;     //与组合器配合，获取所有任务异常。
-        e.Handle(err =&gt; err is OperationCanceledException);
-    }
-}
-
-static int Add(CancellationToken token)
-{
-    Console.WriteLine(&quot;任务开始&quot;);
-    int result = 0;
-
-    ①while (!token.IsCancellationRequested)
-    {
-        result++;
-        Thread.Sleep(1000);
-    }
-
-    ②③while (true)
-    {
-        result++;
-        Thread.Sleep(1000);
-
-        ②token.ThrowIfCancellationRequested();
-
-        ③if (result == 5)
-        {
-            throw new Exception(&quot;error&quot;);
-        }
-    }
-    return result;
-}
-</code></pre><p>PS：<br>Task<tresult> t=…  ，有返回参数才有①t.Result属性。<br>任务完成则,IsCompleted:true。不论是否异常。<br>①进行逻辑判断，任务正常结束后，进入TaskEnded，结果：IsCanceled:false,IsFaulted:false<br>②通过抛AggregateException异常，立即结束任务，进入TaskEnded，结果：IsCanceled:true,IsFaulted:false<br>③通过抛自定义异常，立即结束任务，进入TaskEnded，结果：IsCanceled:false,IsFaulted:true     </tresult></p>
-<h3 id="虚拟寻址系统"><a href="#虚拟寻址系统" class="headerlink" title="虚拟寻址系统"></a>虚拟寻址系统</h3><p>32位处理器上的每个进程都可以使用4GB的内存，无论计算机实际有多少物理内存。（64位更大）。<br>包含了：可执行代码，dll，变量等</p>
-<h3 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h3><p>栈指针指向为栈保留的内存块末尾。栈实际上是向下填充的。即从高内存地址向低内存地址填充。数据入栈后，指针调整，始终指向下一空闲存储单元。数据释放（变量超出作用域），指针向上递增。<br>变量的生存期总是嵌套的，保证了栈指针是有序的。</p>
+<h3 id="应用CancellationTokenSource，取消Task"><a href="#应用CancellationTokenSource，取消Task" class="headerlink" title="应用CancellationTokenSource，取消Task"></a>应用CancellationTokenSource，取消Task</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cts = <span class="keyword">new</span> CancellationTokenSource();</span><br><span class="line">        Task&lt;<span class="keyword">int</span>&gt; t = <span class="keyword">new</span> Task&lt;<span class="keyword">int</span>&gt;(() =&gt; Add(cts.Token), cts.Token);</span><br><span class="line">        t.Start();</span><br><span class="line">        t.ContinueWith(TaskEnded);</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">        cts.Cancel();</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">TaskEnded</span>(<span class="params">Task&lt;<span class="keyword">int</span>&gt; task</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"完成"</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"IsCanceled:&#123;0&#125;,IsCompleted:&#123;1&#125;,IsFaulted:&#123;2&#125;"</span>, </span><br><span class="line">            task.IsCanceled, task.IsCompleted, task.IsFaulted);</span><br><span class="line">        </span><br><span class="line">        ①Console.WriteLine(<span class="string">"返回值："</span> + task.Result);</span><br><span class="line">        ②<span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"返回值:"</span> + task.Result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (AggregateException e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> errs = e.InnerExceptions;     <span class="comment">//与组合器配合，获取所有任务异常。</span></span><br><span class="line">            e.Handle(err =&gt; err <span class="keyword">is</span> OperationCanceledException);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params">CancellationToken token</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"任务开始"</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        ①<span class="keyword">while</span> (!token.IsCancellationRequested)</span><br><span class="line">        &#123;</span><br><span class="line">            result++;</span><br><span class="line">            Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        ②③<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            result++;</span><br><span class="line">            Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">    </span><br><span class="line">            ②token.ThrowIfCancellationRequested();</span><br><span class="line">    </span><br><span class="line">            ③<span class="keyword">if</span> (result == <span class="number">5</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"error"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Task<tresult> t=…  ，有返回参数才有①t.Result属性。任务完成则，IsCompleted:true。不论是否异常。</tresult></p>
+<p>①进行逻辑判断，任务正常结束后，进入TaskEnded，结果：IsCanceled:false,IsFaulted:false 。</p>
+<p>②通过抛AggregateException异常，立即结束任务，进入TaskEnded，结果：IsCanceled:true,IsFaulted:false。</p>
+<p>③通过抛自定义异常，立即结束任务，进入TaskEnded，结果：IsCanceled:false,IsFaulted:true。</p>
+<h3 id="虚拟寻址系统"><a href="#虚拟寻址系统" class="headerlink" title="虚拟寻址系统"></a>虚拟寻址系统</h3><p>32位处理器上的每个进程都可以使用4GB的内存，无论计算机实际有多少物理内存（64位更大）。包含了：可执行代码，dll，变量等。</p>
+<h3 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h3><p>栈指针指向为栈保留的内存块末尾。栈实际上是向下填充的。即从高内存地址向低内存地址填充。数据入栈后，指针调整，始终指向下一空闲存储单元。数据释放（变量超出作用域），指针向上递增。</p>
+<p>变量的生存期总是嵌套的，保证了栈指针是有序的。</p>
 <h3 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h3><p>堆上的内存是向上分配的。空闲空间在已用空间的上面。</p>
 <h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>gc运行时，会从堆中删除不再引用的所有对象。只要释放了能释放的所有对象，它就把其他对象移动回堆的端部。再次形成一个连续的内存块。因此，堆可以确定在什么地方存储新对象。对象移动后，需要新地址更新引用，gc会处理更新问题。</p>
 <h3 id="大对象堆"><a href="#大对象堆" class="headerlink" title="大对象堆"></a>大对象堆</h3><p>不同于主堆，存储使用大于85000个字节对象。压缩大对象比较昂贵。故大对象对上的对象不执行压缩过程。</p>
@@ -748,168 +509,46 @@ static int Add(CancellationToken token)
 <h3 id="非托管资源"><a href="#非托管资源" class="headerlink" title="非托管资源"></a>非托管资源</h3><p>文件句柄，网络连接，数据库连接等。</p>
 <h3 id="托管资源"><a href="#托管资源" class="headerlink" title="托管资源"></a>托管资源</h3><p>栈，堆上的数据。</p>
 <h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><p>C#不常使用，无法确定执行时机。有析构函数的对象需要两次处理才能销毁。析构函数运行时间长，非常耗性能。</p>
-<h3 id="IDisposable接口"><a href="#IDisposable接口" class="headerlink" title="IDisposable接口"></a>IDisposable接口</h3><p>C#推荐IDisposable接口替代析构函数。声明Dispose()，释放非托管资源。控制更精准。<br>如果显式调用需要try,catch,防止异常而没有执行。<br>代替用using()语句，更简单。</p>
+<h3 id="IDisposable接口"><a href="#IDisposable接口" class="headerlink" title="IDisposable接口"></a>IDisposable接口</h3><p>C#推荐IDisposable接口替代析构函数。声明Dispose()，释放非托管资源，控制更精准。</p>
+<p>如果显式调用需要try catch，防止异常而没有执行。</p>
+<p>代替用using()语句，更简单。</p>
 <h3 id="unsafe代码块"><a href="#unsafe代码块" class="headerlink" title="unsafe代码块"></a>unsafe代码块</h3><p>unsafe可以修饰 类成员方法等。标记为不安全代码，可以使用指针语法提高性能。但带来不安全性和不方便等。</p>
-<h3 id="指针语法"><a href="#指针语法" class="headerlink" title="指针语法"></a>指针语法</h3><pre><code>int x=10;
-int*  pX,pY;
-pX= &amp;x;
-pY=px;
-*pY=20;
-</code></pre><p>结果：x内容改为20。pY与x中间没有任何关系，pY碰巧指向存储x的存储单元。<br>//pX，pY也占用4个字节，因为32位处理器上，4个字节存储一个地址。<br>&amp;表示取地址，把一个值类型转换为指针。<br>*表示获取地址的内容，把一个指针转换为值类型。</p>
-<ul>
-<li><p>强制转换：</p>
-<p>  uint y=(uint)pX;<br>  int<em> pD=(int</em>)y;</p>
-</li>
+<h3 id="指针语法"><a href="#指针语法" class="headerlink" title="指针语法"></a>指针语法</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>*  pX,pY;</span><br><span class="line">pX= &amp;x;</span><br><span class="line">pY=px;</span><br><span class="line">*pY=<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p>x内容改为20。pY与x中间没有任何关系，pY碰巧指向存储x的存储单元。</p>
+<p>//pX，pY也占用4个字节，因为32位处理器上，4个字节存储一个地址。</p>
+<p>&amp;表示取地址，把一个值类型转换为指针。</p>
+<p>*表示获取地址的内容，把一个指针转换为值类型。</p>
+<p>强制转换：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint</span> y=(<span class="keyword">uint</span>)pX;</span><br><span class="line"><span class="keyword">int</span>* pD=(<span class="keyword">int</span>*)y;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义特性"><a href="#自定义特性" class="headerlink" title="自定义特性"></a>自定义特性</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">FieldName(<span class="meta-string">"xxx"</span>)</span>]  <span class="comment">//FieldNameAttribute，Attribute可以省略，自动添加。搜索指定名称的类，实例化。</span></span><br><span class="line">[<span class="meta">AttributeUsage(AttributeTargets.Property | AttributeTargets.Class,       //引用在哪些元素上，或的关系</span></span><br><span class="line"><span class="meta">AllowMultiple=false,      //是否可以多次应用在同一元素</span></span><br><span class="line"><span class="meta">Inherited=false)</span>]      <span class="comment">//自动应用到派生类或接口，重写的方法等</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FieldNameAttribute</span>: <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Comment &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FieldNameAttribute</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">FieldName(<span class="meta-string">"xxx"</span>,Comment=<span class="meta-string">"xxx"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> Func</span><br><span class="line">&#123; </span><br><span class="line">    <span class="comment">//... </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><ul>
+<li>属性</li>
 </ul>
-<h3 id="自定义特性"><a href="#自定义特性" class="headerlink" title="自定义特性"></a>自定义特性</h3><pre><code>[FieldName(&quot;xxx&quot;)]  //FieldNameAttribute，Attribute可以省略，自动添加。搜索指定名称的类，实例化。
-[AttributeUsage(AttributeTargets.Property | AttributeTargets.Class,       //引用在哪些元素上，或的关系
-AllowMultiple=false,      //是否可以多次应用在同一元素
-Inherited=false)]      //自动应用到派生类或接口，重写的方法等
-public class FieldNameAttribute: Attribute
-{
-   public string Comment {get;set;}
-
-   private string name;
-   public FieldNameAttribute(string name)
-   {
-       this.name=name;  
-   }
-}
-</code></pre><p>使用：</p>
-<pre><code>[FieldName(&quot;xxx&quot;,Comment=&quot;xxx&quot;)]
-public string Func
-{ 
-    ... 
-}
-</code></pre><h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><ul>
-<li>属性<br>Data，可以添加的额外信息字典。<br>HelpLink，连接帮助文件上。<br>InnerException，如异常在catch中抛出，则inner为把代码发送到catch块的异常对象。<br>Source，导致异常程序或对象名。<br>StackTrace，调用栈信息。<br>TargetSite，抛出异常的方法的反射对象。  .ReflectedType获得类的Type对象。</li>
-</ul>
-<h3 id="调用者特性"><a href="#调用者特性" class="headerlink" title="调用者特性"></a>调用者特性</h3><pre><code>public class Book
-{
-    public string Title { get; set; }
-    public decimal Price { get; set; }
-
-    public void Log([CallerLineNumber] int line = 0,
-        [CallerFilePath] string path = &quot;&quot;,
-        [CallerMemberName] string name = &quot;&quot;)
-    {
-        //Do with line,path,name... 包括调用者的信息
-    }
-}
-
-Book b = new Book();
-b.Log();
-</code></pre><h3 id="ThreadPool"><a href="#ThreadPool" class="headerlink" title="ThreadPool"></a>ThreadPool</h3><pre><code>Book b = new Book() { Title = &quot;t&quot;, Price = 1 };
-ThreadPool.QueueUserWorkItem(i =&gt;
-{
-    Book b1 = i as Book;
-    Console.WriteLine(&quot;书名&quot; + b1.Title + &quot;价格&quot; + b1.Price);
-}, b);
-</code></pre><h3 id="线程池的限制"><a href="#线程池的限制" class="headerlink" title="线程池的限制"></a>线程池的限制</h3><ol>
+<p>Data，可以添加的额外信息字典。</p>
+<p>HelpLink，连接帮助文件上。</p>
+<p>InnerException，如异常在catch中抛出，则inner为把代码发送到catch块的异常对象。</p>
+<p>Source，导致异常程序或对象名。</p>
+<p>StackTrace，调用栈信息。</p>
+<p>TargetSite，抛出异常的方法的反射对象。  .ReflectedType获得类的Type对象。</p>
+<h3 id="调用者特性"><a href="#调用者特性" class="headerlink" title="调用者特性"></a>调用者特性</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Book</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Title &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">decimal</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params">[CallerLineNumber] <span class="keyword">int</span> line = <span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        [CallerFilePath] <span class="keyword">string</span> path = <span class="string">""</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        [CallerMemberName] <span class="keyword">string</span> name = <span class="string">""</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//Do with line,path,name... 包括调用者的信息</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Book b = <span class="keyword">new</span> Book();</span><br><span class="line">b.Log();</span><br></pre></td></tr></table></figure>
+<h3 id="ThreadPool"><a href="#ThreadPool" class="headerlink" title="ThreadPool"></a>ThreadPool</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Book b = <span class="keyword">new</span> Book() &#123; Title = <span class="string">"t"</span>, Price = <span class="number">1</span> &#125;;</span><br><span class="line">ThreadPool.QueueUserWorkItem(i =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Book b1 = i <span class="keyword">as</span> Book;</span><br><span class="line">    Console.WriteLine(<span class="string">"书名"</span> + b1.Title + <span class="string">"价格"</span> + b1.Price);</span><br><span class="line">&#125;, b);</span><br></pre></td></tr></table></figure>
+<h3 id="线程池的限制"><a href="#线程池的限制" class="headerlink" title="线程池的限制"></a>线程池的限制</h3><ol>
 <li>线程池中的所有线程都是后台线程。并且不能把入池的线程改为前台线程。</li>
 <li>不能设置池中线程的优先级或名称。</li>
 <li>所有线程都是多线程单元（MTA）线程，许多COM对象都需要单线程单元（STA）线程。</li>
 <li>入池的线程只能用于时间短的任务。<br>如果需要一直运行（如word拼写检查），应创建Thread或Task使用LongRunning选项。</li>
 </ol>
-<h3 id="控制线程"><a href="#控制线程" class="headerlink" title="控制线程"></a>控制线程</h3><pre><code>var t1 = new Thread(() =&gt; { });
-t1.Priority = ThreadPriority.Highest; //优先级，优先调用。可能影响其他线程
-t1.Abort(); //停止线程，抛出异常
-t1.Join(2000);  //阻塞
-</code></pre><h3 id="Interlocked类"><a href="#Interlocked类" class="headerlink" title="Interlocked类"></a>Interlocked类</h3><p>速度快，简单的同步问题。原子操作。</p>
-<pre><code>Interlocked.CompareExchange();
-Interlocked.Increment();
-</code></pre><h3 id="Monitor类"><a href="#Monitor类" class="headerlink" title="Monitor类"></a>Monitor类</h3><p>lock语句会被编译器解析成以下代码：</p>
-<pre><code>object obj = new object();
-Monitor.Enter(obj);
-try
-{
-    //线程同步区域
-}
-finally
-{
-    Monitor.Exit(obj);
-}
-</code></pre><p>Monitor的好处是可以指定等待时间：</p>
-<pre><code>bool lockToken = false;
-Monitor.TryEnter(obj, 500, ref lockToken);
-if (lockToken)
-{
-    try
-    {
-        //线程同步区域
-    }
-    finally
-    {
-        Monitor.Exit(obj);
-    }
-}
-else
-{
-    //做其他的事情
-}
-</code></pre><h3 id="读写互斥锁"><a href="#读写互斥锁" class="headerlink" title="读写互斥锁"></a>读写互斥锁</h3><pre><code>class Program
-{
-    private static List&lt;int&gt; items = new List&lt;int&gt;() { 0, 1, 2, 3, 4, 5, 6 };
-    private static ReaderWriterLockSlim rwl = new ReaderWriterLockSlim();
+<h3 id="控制线程"><a href="#控制线程" class="headerlink" title="控制线程"></a>控制线程</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t1 = <span class="keyword">new</span> Thread(() =&gt; &#123; &#125;);</span><br><span class="line">t1.Priority = ThreadPriority.Highest; <span class="comment">//优先级，优先调用。可能影响其他线程</span></span><br><span class="line">t1.Abort(); <span class="comment">//停止线程，抛出异常</span></span><br><span class="line">t1.Join(<span class="number">2000</span>);  <span class="comment">//阻塞</span></span><br></pre></td></tr></table></figure>
+<h3 id="Interlocked类"><a href="#Interlocked类" class="headerlink" title="Interlocked类"></a>Interlocked类</h3><p>速度快，简单的同步问题。原子操作。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Interlocked.CompareExchange();</span><br><span class="line">Interlocked.Increment();</span><br></pre></td></tr></table></figure>
+<h3 id="Monitor类"><a href="#Monitor类" class="headerlink" title="Monitor类"></a>Monitor类</h3><p>lock语句会被编译器解析成以下代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> obj = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line">Monitor.Enter(obj);</span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//线程同步区域</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span></span><br><span class="line">&#123;</span><br><span class="line">    Monitor.Exit(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Monitor的好处是可以指定等待时间：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> lockToken = <span class="literal">false</span>;</span><br><span class="line">Monitor.TryEnter(obj, <span class="number">500</span>, <span class="keyword">ref</span> lockToken);</span><br><span class="line"><span class="keyword">if</span> (lockToken)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//线程同步区域</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">finally</span></span><br><span class="line">    &#123;</span><br><span class="line">        Monitor.Exit(obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//做其他的事情</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="读写互斥锁"><a href="#读写互斥锁" class="headerlink" title="读写互斥锁"></a>读写互斥锁</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;<span class="keyword">int</span>&gt; items = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt;() &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReaderWriterLockSlim rwl = <span class="keyword">new</span> ReaderWriterLockSlim();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReaderMethod</span>(<span class="params"><span class="keyword">object</span> reader</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            rwl.EnterReadLock();     <span class="comment">//如果该锁是读取模式，则读取线程直接进入。累计数+1</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; items.Count; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"reader &#123;0&#125;,loop &#123;1&#125;,item &#123;2&#125;"</span>, reader, i, items[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span></span><br><span class="line">        &#123;</span><br><span class="line">            rwl.ExitReadLock();     <span class="comment">//读取线程退出，累计数-1。为0时退出读取模式</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">WriterMethod</span>(<span class="params"><span class="keyword">object</span> writer</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//Thread.Sleep(100);    //如果写入线程等待，则全部读取的线程会先执行完。否则就抢</span></span><br><span class="line">            <span class="keyword">while</span> (!rwl.TryEnterWriteLock(<span class="number">50</span>))      <span class="comment">//如果取得写入锁，则进入独占写入模式。</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"writer &#123;0&#125; 等待取写入锁"</span>, writer);</span><br><span class="line">                Console.WriteLine(<span class="string">"当前读者个数"</span> + rwl.CurrentReadCount);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine(<span class="string">"writer &#123;0&#125; 取得写锁"</span>, writer);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; items.Count; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                items[i]++;</span><br><span class="line">                Thread.Sleep(<span class="number">50</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine(<span class="string">"writer &#123;0&#125; 写入完毕"</span>, writer);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span></span><br><span class="line">        &#123;</span><br><span class="line">            rwl.ExitWriteLock();     <span class="comment">//退出独占写入模式，读写线程开始抢锁</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> taskFac = <span class="keyword">new</span> TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i==<span class="number">1</span> || i==<span class="number">4</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                taskFac.StartNew(WriterMethod, i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                taskFac.StartNew(ReaderMethod, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    static void ReaderMethod(object reader)
-    {
-        try
-        {
-            rwl.EnterReadLock();     //如果该锁是读取模式，则读取线程直接进入。累计数+1
-            for (int i = 0; i &lt; items.Count; i++)
-            {
-                Console.WriteLine(&quot;reader {0},loop {1},item {2}&quot;, reader, i, items[i]);
-            }
-        }
-        finally
-        {
-            rwl.ExitReadLock();     //读取线程退出，累计数-1。为0时退出读取模式
-        }
-    }
-
-    static void WriterMethod(object writer)
-    {
-        try
-        {
-            //Thread.Sleep(100);    //如果写入线程等待，则全部读取的线程会先执行完。否则就抢
-            while (!rwl.TryEnterWriteLock(50))      //如果取得写入锁，则进入独占写入模式。
-            {
-                Console.WriteLine(&quot;writer {0} 等待取写入锁&quot;, writer);
-                Console.WriteLine(&quot;当前读者个数&quot; + rwl.CurrentReadCount);
-            }
-            Console.WriteLine(&quot;writer {0} 取得写锁&quot;, writer);
-            for (int i = 0; i &lt; items.Count; i++)
-            {
-                items[i]++;
-                Thread.Sleep(50);
-            }
-            Console.WriteLine(&quot;writer {0} 写入完毕&quot;, writer);
-        }
-        finally
-        {
-            rwl.ExitWriteLock();     //退出独占写入模式，读写线程开始抢锁
-        }
-    }
-
-    static void Main(string[] args)
-    {
-        var taskFac = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
-        for (int i = 0; i &lt; 6; i++)
-        {
-            if (i==1 || i==4)
-            {
-                taskFac.StartNew(WriterMethod, i);
-            }
-            else
-            {
-                taskFac.StartNew(ReaderMethod, i);
-            }
-        }
-        Console.ReadKey();
-    }
-}
-</code></pre>
       
     </div>
     
@@ -1055,6 +694,11 @@ else
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDUyOC8xNzA1NQ"></div>
+    </div>
+
+  
 
 
 
@@ -1106,7 +750,7 @@ else
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1128,7 +772,7 @@ else
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1342,6 +986,17 @@ else
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

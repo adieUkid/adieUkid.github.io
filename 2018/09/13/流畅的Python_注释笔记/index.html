@@ -114,7 +114,7 @@
 <meta property="og:image" content="http://adieukid.github.io/images/python/fluent_python/导入时和运行时.png">
 <meta property="og:image" content="http://adieukid.github.io/images/python/fluent_python/type和object.png">
 <meta property="og:image" content="http://adieukid.github.io/images/python/fluent_python/ABCMeta和type.png">
-<meta property="og:updated_time" content="2018-10-25T03:05:21.370Z">
+<meta property="og:updated_time" content="2018-10-25T05:46:48.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="流畅的Python_注释笔记">
 <meta name="twitter:description" content="Python 数据模型特殊方法内置函数会调用特殊方法，一般无需直接调用特殊方法，除了__init__方法。">
@@ -428,21 +428,16 @@
 <a id="more"></a>
 <p><code>__len__</code>：调用len(obj)，解释器会自动调用 <code>obj.__len__()</code>。</p>
 <p>对于Python内置的类型（list,str等），CPython还会抄近路提升计算速度，直接返回PyVarObject（内存中长度可变的内置对象的C语言结构体）里的ob_size属性</p>
-<p><code>__repr__</code>：被repr()函数调用，或者直接在控制台输入，把一个对象用字符串的形式表达出来以便辨认。面向开发者使用</p>
-<p><code>__str__</code>：被str()函数调用，或者用print函数打印时调用，返回的字符串对中断用户更友好。面向用户的</p>
+<p><code>__repr__</code>：被repr()函数调用，或者直接在控制台输入，把一个对象用字符串的形式表达出来以便辨认。面向开发者使用<br><code>__str__</code>：被str()函数调用，或者用print函数打印时调用，返回的字符串对中断用户更友好。面向用户的</p>
 <p>区别：如果一个对象没有<code>__str__</code>函数，Python又需要调用时，会用<code>__repr__</code>代替</p>
-<p><code>__add__</code>：执行+运算</p>
-<p><code>__mul__</code>：执行*运算</p>
+<p><code>__add__</code>：执行+运算<br><code>__mul__</code>：执行*运算</p>
 <p>PS：中缀运算符的原则是，不改变操作对象，而是产生出一个新的值</p>
-<p><code>__rmul__</code>：解决交换律问题</p>
-<p><code>__bool__</code>：被bool()函数调用，应该返回bool类型</p>
+<p><code>__rmul__</code>：解决交换律问题<br><code>__bool__</code>：被bool()函数调用，应该返回bool类型</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__bool__</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> bool(self.a <span class="keyword">or</span> self.b)</span><br></pre></td></tr></table></figure>
 <h1 id="序列构成的数组"><a href="#序列构成的数组" class="headerlink" title="序列构成的数组"></a>序列构成的数组</h1><h2 id="内置序列"><a href="#内置序列" class="headerlink" title="内置序列"></a>内置序列</h2><p>按元素类型分类：</p>
-<p>容器序列：list、tuple、collections.deque，可以存放不同类型的数据</p>
-<p>扁平序列：str、bytes、bytearray、memoryview、array.array，只能容纳一种类型</p>
+<p>容器序列：list、tuple、collections.deque，可以存放不同类型的数据<br>扁平序列：str、bytes、bytearray、memoryview、array.array，只能容纳一种类型</p>
 <p>按是否能被修改分类：</p>
-<p>可变序列：list、bytearray、array.array、collections.deque、memoryview</p>
-<p>不可变序列：tuple、str、bytes</p>
+<p>可变序列：list、bytearray、array.array、collections.deque、memoryview<br>不可变序列：tuple、str、bytes</p>
 <h2 id="列表推导式、生成器表达式"><a href="#列表推导式、生成器表达式" class="headerlink" title="列表推导式、生成器表达式"></a>列表推导式、生成器表达式</h2><h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><p>生成新的列表</p>
 <p><code>str = &#39;测试字符串&#39;</code><br><code>arr = [ord(x) for x in str if ord(x) &gt; 30000]</code></p>
 <p>与使用filter加map的比较</p>
@@ -1403,6 +1398,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDUyOC8xNzA1NQ"></div>
+    </div>
+
+  
 
 
 
@@ -1454,7 +1454,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1476,7 +1476,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1690,6 +1690,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

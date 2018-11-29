@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Alan&#39;s Notes">
 <meta property="og:description" content="checked关键字用来检查赋值是否数据溢出，或者在VS中配置，项目-属性-生成-高级，检查上溢下溢。 1234checked     //unchecked 不检查&amp;#123;    destination = (int)source;&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T03:29:53.416Z">
+<meta property="og:updated_time" content="2018-10-25T04:46:57.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#入门经典_注释笔记">
 <meta name="twitter:description" content="checked关键字用来检查赋值是否数据溢出，或者在VS中配置，项目-属性-生成-高级，检查上溢下溢。 1234checked     //unchecked 不检查&amp;#123;    destination = (int)source;&amp;#125;">
@@ -466,14 +466,10 @@
 <p>协变让一个粗粒度接口（或委托）可以接收一个更加具体的接口（或委托）作为参数（或返回值）；逆变让一个接口（或委托）的参数类型（或返回值）类型更加具体化，也就是参数类型更强，更明确。</p>
 <h3 id="引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可"><a href="#引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可" class="headerlink" title="引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可"></a>引发事件时，会依次调用程序列表中每个处理程序，只要它们满足指定的条件即可</h3><h3 id="委托的应用"><a href="#委托的应用" class="headerlink" title="委托的应用"></a>委托的应用</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">int</span> <span class="title">OperationDelegate</span>(<span class="params"><span class="keyword">int</span> left,<span class="keyword">int</span> right</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Function</span>(<span class="params">OperationDelegate del</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left,right;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    del(left,right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="keyword">int</span> <span class="title">OperationEx</span>(<span class="params"><span class="keyword">int</span> left,<span class="keyword">int</span> right</span>)</span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> left+right; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>用方法创建委托：<code>void Function(new OperationDelegate(OperationEx));</code></p>
-</li>
-<li><p>直接传递方法(默认创建委托)：<code>void Function(OperationEx);</code></p>
-</li>
-<li><p>匿名方法：<code>void Function(delegate(int left,int right){  return left+right; });</code></p>
-</li>
-<li><p>Lambda表达式：</p>
-</li>
+<li>用方法创建委托：<code>void Function(new OperationDelegate(OperationEx));</code></li>
+<li>直接传递方法(默认创建委托)：<code>void Function(OperationEx);</code></li>
+<li>匿名方法：<code>void Function(delegate(int left,int right){  return left+right; });</code></li>
+<li>Lambda表达式：</li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Function</span>(<span class="params">(left,right</span>) </span>=&gt; left+right);  </span><br><span class="line"><span class="comment">//参数类型不用指定，会通过上下文推断出类型</span></span><br><span class="line"></span><br><span class="line">Function((left,right) =&gt; (left-right)*right);</span><br><span class="line"><span class="comment">//Lambda表达式本质还是委托</span></span><br><span class="line"><span class="comment">//用Func&lt;string x,int y...&gt;来简化一个委托的定义。代替delegate xx....</span></span><br></pre></td></tr></table></figure>
 <h3 id="Lambda表达式的解释"><a href="#Lambda表达式的解释" class="headerlink" title="Lambda表达式的解释"></a>Lambda表达式的解释</h3><p>可以用两种方式解释Lambda表达式。</p>
@@ -684,6 +680,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDUyOC8xNzA1NQ"></div>
+    </div>
+
+  
 
 
 
@@ -735,7 +736,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -757,7 +758,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -971,6 +972,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

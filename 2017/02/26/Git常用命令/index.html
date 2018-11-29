@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Git$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号">
+<meta name="description" content="Git">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git常用命令">
 <meta property="og:url" content="http://adieUkid.github.io/2017/02/26/Git常用命令/index.html">
 <meta property="og:site_name" content="Alan&#39;s Notes">
-<meta property="og:description" content="Git$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号">
+<meta property="og:description" content="Git">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T03:05:55.816Z">
+<meta property="og:updated_time" content="2018-10-25T03:33:41.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令">
-<meta name="twitter:description" content="Git$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号">
+<meta name="twitter:description" content="Git">
 
 
 
@@ -403,21 +403,9 @@
       
 
       
-        <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>$ git config –global user.name “John Doe”      //设置用户名邮箱–global 只针对当前用户<br>$ git config –global user.email johndoe@example.com    //去掉–global，针对特定项目使用不同的账号</p>
-<a id="more"></a>
-<p>$ git config -l         //列出所有设置<br>$ git config –global alias.ci commit       //设置别名<br>$ git config –global alias.last ‘log -1 HEAD’  //看最后一次提交<br>$ git config –global alias.visual ‘!gitk’      //外部命令，+!<br>$ git config –global credential.helper cache   //缓存验证密码<br>$ git config –global alias.lg “log –graph –pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit –date=relative”            //改造log显示，推荐</p>
-<p>$ git init                  //在现有目录中初始化仓库<br>$ git add                   //如果参数是目录的路径，该命令将递归地跟踪该目录下的所有文件。add *<br>$ git commit -a             //跳过暂存，直接提交<br>$ git log  [-p] [-2]        //提交记录。显示提交的差异。只显示2条。<br>$ git log –oneline –decorate –graph –all    //输出提交历史、各个分支的指向以及项目的分支分叉情况<br>$ git status -s             //更为紧凑的格式输出</p>
-<p>$ git clone <a href="https://github.com/libgit2/libgit2" target="_blank" rel="noopener">https://github.com/libgit2/libgit2</a> [mylibgit]       //克隆现有的仓库，当前目录下创建一个名为 <code>libgit2&#39;&#39; 的目录，并在这个目录下初始化一个</code>.git 文件夹。[自定义文件夹命名]。命令会自动将其添加为远程仓库并默认以origin为简写。设置本地 master分支跟踪克隆的远程仓库的 master 分支。<br>$ git clone -o booyah       //自定义远程分支名字。创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master 。 Git 也会给你一个与 origin 的 master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。</p>
-<p>$ git diff                  //查看上次暂存之后的变动<br>$ git diff –staged         //查看已经暂存的变动</p>
-<p>$ git rm  1.txt                 //删除文件，跟踪清单和本地<br>$ git rm –cached README        //仓库中删除（亦即从暂存区域移除） ，但保留在当前工作目录中<br>$ git mv 1.txt dir/2.txt        //移动文件，也可重命名</p>
-<p>$ git checkout a.md         //还原成上次提交时的样子，只能撤销没add进暂存区的文件<br>$ git reset HEAD 1.txt      //取消暂存区中的文件<br>$ git commit –amend           //重新提交，覆盖上次提交</p>
-<p>$ git remote            //查看已经配置的远程仓库<br>$ git remote -v         //显示需要读写远程仓库使用的 Git 保存的简写与URL<br>$ git remote add <shortname> <url>  //添加一个新的远程 Git 仓库<br>$ git remote show origin            // URL 与跟踪分支的信息<br>$ git remote rename pb paul         //修改一个远程仓库的简写名<br>$ git remote rm paul                //移除一个远程仓库<br>$ git push origin v1.5              //推送标签到远程<br>$ git push origin –tags               //推送远程没有的所有标签<br>$ git push origin –delete serverfix           //删除远程分支</url></shortname></p>
-<p>$ git fetch origin master[:newb]    //拉取pb的仓库中有但你没有的信息[并新建成分支newb]<br>$ git checkout -b master origin/master      //新建本地分支映射远程分支<br>$ git pull                  //自动的抓取然后合并远程分支到当前分支=fetch+checkout<br>$ git push origin master    //推送到远程仓库的某一分支。需要：拥有写入权限，且本地与远程数据同步时。</p>
-<p>$ git tag                   //列出已有的标签<br>$ git tag -l ‘v1.8.5*’          //只对 1.8.5 系列<br>$ git tag -a v1.4 -m ‘my version 1.4’       //创建一个附注标签<br>$ git show v1.4                    //标签信息<br>$ git tag v1.4-lw               //创建轻量标签，没有保存任何其他信息<br>$ git tag                       //查看<br>$ git tag -a v1.2 9fceb02       //后期打标签<br>$ git checkout -b version2 v2.0.0           //在特定的标签上创建一个新分支</p>
-<p>$ git stash                 //暂存当前所有改动<br>$ git stash list            //查看暂存记录<br>$ git stash apply           //还原已暂存代码<br>$ git stash drop [stash_id] //删除暂存记录，[删除某条]<br>$ git stash pop                //快捷：还原+删除<br>$ git stash clear           //清空暂存区记录</p>
-<p>$ git branch [–merged/–no-merged]     //分支列表,[查看已/未与当前分支合并的分支],如与master合并的分支可以删除，无损失<br>$ git branch -v             //查看每个分支最后一次提交<br>$ git branch -a             //查看所有分支（远程和本地）<br>$ git branch -r             //查看所有远程分支<br>$ git branch testing            //分支创建<br>$ git checkout testing      //分支切换<br>$ git checkout -b iss53     //新建并切换到新分支<br>$ git checkout -b serverfix origin/serverfix        //在某分支之上建立分支<br>$ git checkout master       //合并分支①<br>$ git merge iss53           //合并分支②<br>$ git branch -d hotfix      //删除分支</p>
-<p>$ git rebase master                     //以master为基底进行变基，重演experiment的提交过程，并清理提交历史。只对尚未推送或分享给别人的本地修改执行变基操作清理历史<br>$ git checkout master                   //往回切换到master分支<br>$ git merge experiment                  //master快进到目标点</p>
-<h3 id="忽略列表-gitignore"><a href="#忽略列表-gitignore" class="headerlink" title="忽略列表(.gitignore)"></a>忽略列表(.gitignore)</h3><p>*      //匹配零个或多个任意，<em>.a<br>//支持glob模式(简化正则表达式)<br>[abc]   //匹配a或b或c<br>?       //只匹配一个任意字符<br>!lib.a  //忽略lib.a以外的文件<br>[0-9]   //匹配所有 0 到 9 的数<br>/</em>.txt  //只忽略当前文件夹下的文件，不包括子目录 a/<em>.txt<br>build/  //忽略所有build/目录下的文件<br>doc/**/</em>.pdf    //忽略所有.pdf文件在doc/ 目录下<br>**    //匹配任意中间目录，比如 a/**/z 可以匹配 a/z , a/b/z 或a/b/c/z 等</p>
+        <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><a id="more"></a>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git config --global user.name "John Doe"      //设置用户名邮箱--global 只针对当前用户</span><br><span class="line"><span class="meta">$</span> git config --global user.email johndoe@example.com    //去掉--global，针对特定项目使用不同的账号</span><br><span class="line"><span class="meta">$</span> git config -l         //列出所有设置</span><br><span class="line"><span class="meta">$</span> git config --global alias.ci commit       //设置别名</span><br><span class="line"><span class="meta">$</span> git config --global alias.last 'log -1 HEAD'  //看最后一次提交</span><br><span class="line"><span class="meta">$</span> git config --global alias.visual '!gitk'      //外部命令，+!</span><br><span class="line"><span class="meta">$</span> git config --global credential.helper cache   //缓存验证密码</span><br><span class="line"><span class="meta">$</span> git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --date=relative"            //改造log显示，推荐</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git init                  //在现有目录中初始化仓库</span><br><span class="line"><span class="meta">$</span> git add                   //如果参数是目录的路径，该命令将递归地跟踪该目录下的所有文件。add *</span><br><span class="line"><span class="meta">$</span> git commit -a             //跳过暂存，直接提交</span><br><span class="line"><span class="meta">$</span> git log  [-p] [-2]        //提交记录。显示提交的差异。只显示2条。</span><br><span class="line"><span class="meta">$</span> git log --oneline --decorate --graph --all	//输出提交历史、各个分支的指向以及项目的分支分叉情况</span><br><span class="line"><span class="meta">$</span> git status -s             //更为紧凑的格式输出</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git clone https://github.com/libgit2/libgit2 [mylibgit]       //克隆现有的仓库，当前目录下创建一个名为 `libgit2'' 的目录，并在这个目录下初始化一个 `.git 文件夹。[自定义文件夹命名]。命令会自动将其添加为远程仓库并默认以origin为简写。设置本地 master分支跟踪克隆的远程仓库的 master 分支。</span><br><span class="line"><span class="meta">$</span> git clone -o booyah       //自定义远程分支名字。创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master 。 Git 也会给你一个与 origin 的 master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git diff                  //查看上次暂存之后的变动</span><br><span class="line"><span class="meta">$</span> git diff --staged         //查看已经暂存的变动</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git rm  1.txt                 //删除文件，跟踪清单和本地</span><br><span class="line"><span class="meta">$</span> git rm --cached README        //仓库中删除（亦即从暂存区域移除） ，但保留在当前工作目录中</span><br><span class="line"><span class="meta">$</span> git mv 1.txt dir/2.txt        //移动文件，也可重命名</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git checkout a.md         //还原成上次提交时的样子，只能撤销没add进暂存区的文件</span><br><span class="line"><span class="meta">$</span> git reset HEAD 1.txt      //取消暂存区中的文件</span><br><span class="line"><span class="meta">$</span> git commit --amend	       //重新提交，覆盖上次提交</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git remote            //查看已经配置的远程仓库</span><br><span class="line"><span class="meta">$</span> git remote -v         //显示需要读写远程仓库使用的 Git 保存的简写与URL</span><br><span class="line"><span class="meta">$</span> git remote add &lt;shortname&gt; &lt;url&gt;  //添加一个新的远程 Git 仓库</span><br><span class="line"><span class="meta">$</span> git remote show origin            // URL 与跟踪分支的信息</span><br><span class="line"><span class="meta">$</span> git remote rename pb paul         //修改一个远程仓库的简写名</span><br><span class="line"><span class="meta">$</span> git remote rm paul                //移除一个远程仓库</span><br><span class="line"><span class="meta">$</span> git push origin v1.5              //推送标签到远程</span><br><span class="line"><span class="meta">$</span> git push origin --tags	           //推送远程没有的所有标签</span><br><span class="line"><span class="meta">$</span> git push origin --delete serverfix	       //删除远程分支</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git fetch origin master[:newb]    //拉取pb的仓库中有但你没有的信息[并新建成分支newb]</span><br><span class="line"><span class="meta">$</span> git checkout -b master origin/master      //新建本地分支映射远程分支 </span><br><span class="line"><span class="meta">$</span> git pull                  //自动的抓取然后合并远程分支到当前分支=fetch+checkout</span><br><span class="line"><span class="meta">$</span> git push origin master    //推送到远程仓库的某一分支。需要：拥有写入权限，且本地与远程数据同步时。</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git tag                   //列出已有的标签</span><br><span class="line"><span class="meta">$</span> git tag -l 'v1.8.5*'          //只对 1.8.5 系列</span><br><span class="line"><span class="meta">$</span> git tag -a v1.4 -m 'my version 1.4'       //创建一个附注标签</span><br><span class="line"><span class="meta">$</span> git show v1.4	                //标签信息</span><br><span class="line"><span class="meta">$</span> git tag v1.4-lw               //创建轻量标签，没有保存任何其他信息</span><br><span class="line"><span class="meta">$</span> git tag                       //查看</span><br><span class="line"><span class="meta">$</span> git tag -a v1.2 9fceb02       //后期打标签	</span><br><span class="line"><span class="meta">$</span> git checkout -b version2 v2.0.0           //在特定的标签上创建一个新分支</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git stash                 //暂存当前所有改动</span><br><span class="line"><span class="meta">$</span> git stash list            //查看暂存记录</span><br><span class="line"><span class="meta">$</span> git stash apply           //还原已暂存代码</span><br><span class="line"><span class="meta">$</span> git stash drop [stash_id] //删除暂存记录，[删除某条]</span><br><span class="line"><span class="meta">$</span> git stash pop	            //快捷：还原+删除</span><br><span class="line"><span class="meta">$</span> git stash clear           //清空暂存区记录</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git branch [--merged/--no-merged]     //分支列表,[查看已/未与当前分支合并的分支],如与master合并的分支可以删除，无损失</span><br><span class="line"><span class="meta">$</span> git branch -v             //查看每个分支最后一次提交</span><br><span class="line"><span class="meta">$</span> git branch -a             //查看所有分支（远程和本地）</span><br><span class="line"><span class="meta">$</span> git branch -r             //查看所有远程分支</span><br><span class="line"><span class="meta">$</span> git branch testing            //分支创建</span><br><span class="line"><span class="meta">$</span> git checkout testing      //分支切换</span><br><span class="line"><span class="meta">$</span> git checkout -b iss53     //新建并切换到新分支</span><br><span class="line"><span class="meta">$</span> git checkout -b serverfix origin/serverfix    	//在某分支之上建立分支</span><br><span class="line"><span class="meta">$</span> git checkout master       //合并分支①</span><br><span class="line"><span class="meta">$</span> git merge iss53           //合并分支②</span><br><span class="line"><span class="meta">$</span> git branch -d hotfix      //删除分支</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git rebase master                     //以master为基底进行变基，重演experiment的提交过程，并清理提交历史。只对尚未推送或分享给别人的本地修改执行变基操作清理历史</span><br><span class="line"><span class="meta">$</span> git checkout master                   //往回切换到master分支</span><br><span class="line"><span class="meta">$</span> git merge experiment                  //master快进到目标点</span><br></pre></td></tr></table></figure>
+<h3 id="忽略列表-gitignore"><a href="#忽略列表-gitignore" class="headerlink" title="忽略列表(.gitignore)"></a>忽略列表(.gitignore)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\*      //匹配零个或多个任意，*.a		</span><br><span class="line">//支持glob模式(简化正则表达式)</span><br><span class="line">[abc]   //匹配a或b或c</span><br><span class="line">?       //只匹配一个任意字符</span><br><span class="line">!lib.a  //忽略lib.a以外的文件</span><br><span class="line">[0-9]   //匹配所有 0 到 9 的数</span><br><span class="line">/*.txt  //只忽略当前文件夹下的文件，不包括子目录 a/*.txt</span><br><span class="line">build/  //忽略所有build/目录下的文件</span><br><span class="line">doc/**/*.pdf    //忽略所有.pdf文件在doc/ 目录下</span><br><span class="line">\*\*    //匹配任意中间目录，比如 a/**/z 可以匹配 a/z , a/b/z 或a/b/c/z 等</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -564,6 +552,11 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDUyOC8xNzA1NQ"></div>
+    </div>
+
+  
 
 
 
@@ -615,7 +608,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -637,7 +630,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -851,6 +844,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
