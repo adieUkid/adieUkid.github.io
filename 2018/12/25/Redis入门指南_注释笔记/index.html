@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://adieukid.github.io/images/DB/redis_guide/复制5.png">
 <meta property="og:image" content="http://adieukid.github.io/images/DB/redis_guide/哨兵架构.png">
 <meta property="og:image" content="http://adieukid.github.io/images/DB/redis_guide/创建集群.png">
-<meta property="og:updated_time" content="2018-12-26T06:59:57.631Z">
+<meta property="og:updated_time" content="2018-12-26T07:06:55.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis入门指南_注释笔记">
 <meta name="twitter:description" content="简介SQL型和NoSQL型的区别SQL：适合存储结构化数据，如用户的帐号、地址。  这些数据通常需要做结构化查询 这些数据的规模、增长的速度通常是可以预期的 事务性、一致性  NoSQL：适合存储非结构化数据，如文章、评论、微博。  这些数据通常用于模糊处理，如全文搜索、机器学习 这些数据是海量的，而且增长的速度是难以预期的， 根据数据的特点，NoSQL 数据库通常具有无限（至少接近）伸缩性 按k">
@@ -788,12 +788,12 @@
 <h3 id="实践：在线的好友"><a href="#实践：在线的好友" class="headerlink" title="实践：在线的好友"></a>实践：在线的好友</h3><p>有时网站本来就要记录全站用户的最后访问时间，这时就可以直接利 数据获得最后一次访问发生在10分钟内的用户列表（即在线用户）。 </p>
 <p>最直接的方法就是将上面存储在线用户列表的 online_users 变量存入 Redis 的一个集合类型的键中然后和用户的好友列表取交集。然而这种方法需要在服务端 和客户端传输数据，如果在线用户多的话会有较大的网络开销，而且这种方法也不能通过 Redis 的事务功能实现原子操作。为了解决这些问题，我们希望实现一个方法将 ZRANGEBYSCORE 命令的结果直接存入一个新键中而不返回到客户端。思路如下： </p>
 <p><img src="/images/DB/redis_guide/在线好友.png" alt="在线好友"></p>
-<h1 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Redis 的脚本功能，允许开发者使用Lua语言编写脚本传到 Redis 中执行。在Lua脚本中可以调用大部分的 Redis 命令，类似于“存储过程”。</p>
+<h1 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Redis 的脚本功能，允许开发者使用 Lua 语言编写脚本传到 Redis 中执行。在 Lua 脚本中可以调用大部分的 Redis 命令，类似于“存储过程”。</p>
 <p>好处：</p>
 <ol>
 <li>减少网络开销，只需发送一个请求即可。</li>
 <li>原子操作。事务可以完成的所有功能都可以用脚本来实现。</li>
-<li>复用。客户端发送的脚本会永久存储在Redis中，供以后复用。</li>
+<li>复用。客户端发送的脚本会永久存储在 Redis 中，供以后复用。</li>
 </ol>
 <h2 id="Lua语言"><a href="#Lua语言" class="headerlink" title="Lua语言"></a>Lua语言</h2><p>Lua，在葡萄牙语中是“月亮”的意思。</p>
 <h3 id="Lua语法"><a href="#Lua语法" class="headerlink" title="Lua语法"></a>Lua语法</h3><ol>
@@ -802,25 +802,24 @@
 <p> <img src="/images/DB/redis_guide/Lua常用数据类型.png" alt="Lua常用数据类型"></p>
 </li>
 <li><p>变量</p>
-<p> Lua的变量分为全局变量和局部变量。全局变量无需声明就可以直接使用，默认值是nil。如：</p>
+<p> Lua 的变量分为全局变量和局部变量。全局变量无需声明就可以直接使用，默认值是 nil。如：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span>       <span class="comment">-- 为全局变量a赋值</span></span><br><span class="line"><span class="built_in">print</span>(b)    <span class="comment">-- 无需声明即可使用，默认值是nil</span></span><br><span class="line">a = <span class="literal">nil</span>     <span class="comment">-- 删除全局变量a的方法是将其赋值为nil。全局变量没有声明和未声明之分，只有非nil和nil的区别</span></span><br></pre></td></tr></table></figure>
-<p> 在Redis脚本中不能使用全局变量，只允许使用局部变量以防止脚本之间相互影响。<br> 声明局部变量的方法为local变量名，就像这样：</p>
+<p> 在 Redis 脚本中不能使用全局变量，只允许使用局部变量以防止脚本之间相互影响。<br> 声明局部变量的方法为 local 变量名，就像这样：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> c     <span class="comment">--声明一个局部变量c，默认值是nil</span></span><br><span class="line"><span class="keyword">local</span> d = <span class="number">1</span> <span class="comment">--声明一个局部变量d并赋值为1</span></span><br><span class="line"><span class="keyword">local</span> e,f   <span class="comment">--可以同时声明多个局部变量</span></span><br></pre></td></tr></table></figure>
 <p> 声明一个存储函数的局部变量的方法为：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> say_hi = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">'hi'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p> 变量名必须是非数字开头，只能包含字母、数字和下划线，区分大小写。不能与保留字相同。</p>
 </li>
 <li><p>注释</p>
-<p> 单行注释 –<br> 多行注释 – [[</p>
-<pre><code>多行...
-</code></pre><p> ]]</p>
+<p> 单行注释 ：--<br> 多行注释：</p>
+ <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- [[</span></span><br><span class="line">    多行</span><br><span class="line">]]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>赋值</p>
-<p> Lua支持多重赋值。</p>
+<p> Lua 支持多重赋值。</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> a,b = <span class="number">1</span>,<span class="number">2</span></span><br><span class="line"><span class="keyword">local</span> c,d = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>   <span class="comment">-- 3被舍弃了</span></span><br><span class="line"><span class="keyword">local</span> e,f = <span class="number">1</span>   <span class="comment">-- f的值是nil</span></span><br></pre></td></tr></table></figure>
-<p> 执行多重赋值时，Lua会先计算所有表达式的值。比如：</p>
+<p> 执行多重赋值时，Lua 会先计算所有表达式的值。比如：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">local</span> i = <span class="number">1</span></span><br><span class="line">i, a[i] = i+<span class="number">1</span>,<span class="number">5</span></span><br></pre></td></tr></table></figure>
-<p> 计算所有表达式的值：<code>i, a[1] = 2,5</code>。所以最后结果是i为2，a为{5,2,3}。</p>
+<p> 计算所有表达式的值：<code>i, a[1] = 2,5</code>。所以最后结果是i为2，a为 {5,2,3}。</p>
 </li>
 <li><p>操作符</p>
 <ul>
@@ -829,7 +828,7 @@
 <li><p>逻辑操作符，not and or</p>
 <p>  <img src="/images/DB/redis_guide/Lua逻辑操作符.png" alt="Lua逻辑操作符"></p>
 </li>
-<li><p>连接操作符，..。用来连接两个字符串，比如：</p>
+<li><p>连接操作符：..，用来连接两个字符串。比如：</p>
   <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">'The price is '</span> .. <span class="number">25</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>取长度操作符</p>
@@ -839,11 +838,11 @@
 </li>
 <li><p>if语句</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件 <span class="keyword">then</span></span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">elseif</span> 条件 <span class="keyword">then</span></span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p> Lua中只有nil和false才是假，其他值（包括空字符串和0），都被认为是真。所以直接调用 </p>
+<p> Lua 中只有 nil 和 false 才是假，其他值（包括空字符串和0），都被认为是真。所以直接调用 </p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> redis.call(<span class="string">'exists'</span>,<span class="string">'key'</span>) <span class="keyword">then</span> .</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <p> 则调用结果永远为真，需要这样写：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> redis.call(<span class="string">'exists'</span>,<span class="string">'key'</span>)==<span class="number">1</span> <span class="keyword">then</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p> Lua可以省略’;’，也并不强制要求缩进。</p>
+<p> Lua 可以省略’;’，也并不强制要求缩进。</p>
 </li>
 <li><p>循环语句</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 条件 <span class="keyword">do</span></span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">repeat</span></span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">until</span> 条件</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> 变量 = 初值，终值 [，步长] <span class="keyword">do</span></span><br><span class="line">    语句</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -856,11 +855,11 @@
 <p> Lua规定数组的索引从1开始。</p>
 <p> 遍历表：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(a) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="built_in">print</span>(v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p> ipairs是内置函数，实现类似迭代器的功能。</p>
+<p> ipairs 是内置函数，实现类似迭代器的功能。</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i =<span class="number">1</span>, #a <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="built_in">print</span>(a[i])</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p> #a的作用是获取表a的长度。</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">pairs</span>(people) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="built_in">print</span>(v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p> pairs 与 ipairs 的区别在于前者会遍历所有值不为nil的索引，而后者只会从索引1开始递增遍历到最后一个值不为nil的整数索引。</p>
+<p> pairs 与 ipairs 的区别在于前者会遍历所有值不为 nil 的索引，而后者只会从索引1开始递增遍历到最后一个值不为nil的整数索引。</p>
 </li>
 <li><p>函数</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> square = <span class="function"><span class="keyword">function</span> <span class="params">(num)</span></span></span><br><span class="line">    <span class="keyword">return</span> num * num</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -876,17 +875,17 @@
 <p>文档：<a href="http://www.lua.org/manual/5.3/" target="_blank" rel="noopener">http://www.lua.org/manual/5.3/</a></p>
 <ol>
 <li><p>String库</p>
-<p> 可以通过字符串类型的变量以OOP的形式访问，如 <code>string.len(var)</code> 可以写成 <code>var:len()</code>。</p>
+<p> 可以通过字符串类型的变量以 OOP 的形式访问，如 <code>string.len(var)</code> 可以写成 <code>var:len()</code>。</p>
 <p> 获取长度：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>.<span class="built_in">len</span>(str)</span><br></pre></td></tr></table></figure>
 <p> 转换大小写：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>.<span class="built_in">lower</span>(str)</span><br><span class="line"><span class="built_in">string</span>.<span class="built_in">upper</span>(str)</span><br></pre></td></tr></table></figure>
 <p> 截取：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>.<span class="built_in">sub</span>(str,start [, <span class="keyword">end</span>])</span><br></pre></td></tr></table></figure>
-<p> end为负数则从后面开始计算。</p>
+<p> end 为负数则从后面开始计算。</p>
 </li>
 <li><p>Table库</p>
-<p> Table库中的大部分函数处理的都是数组形式的表。</p>
+<p> Table 库中的大部分函数处理的都是数组形式的表。</p>
 <p> 将数组转换为字符串：</p>
  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">table</span>.<span class="built_in">concat</span>(<span class="built_in">table</span> [, sep [, i [, j ]]])</span><br><span class="line"></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">concat</span>(&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, <span class="string">','</span> ,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <p> 向数组中插入元素：</p>
@@ -902,16 +901,16 @@
 </li>
 </ol>
 <h3 id="其他库"><a href="#其他库" class="headerlink" title="其他库"></a>其他库</h3><p>Redis 还通过 cjson 库和 cmsgpack 库提供了对 JSON 和 MessagePack 的支持。Redis 自动加载了这两个库，在脚本中可以分别通过 cjson 和 cmsgpack 两个全局变量来访问对应的库。</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> people = &#123;</span><br><span class="line">  name = <span class="string">'Bob'</span>,</span><br><span class="line">  aqe = <span class="number">29</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> json_people_str = cjson.encode(people)</span><br><span class="line"><span class="keyword">local</span> json_people_obj = cjson.decode(people)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> msgpack_people_str = cmsgpack.pack(people)</span><br><span class="line"><span class="keyword">local</span> msqpack_people_obj = cmsgpack.<span class="built_in">unpack</span>(people)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> people = &#123;</span><br><span class="line">  name = <span class="string">'Bob'</span>,</span><br><span class="line">  aqe = <span class="number">29</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> json_people_str = cjson.encode(people)</span><br><span class="line"><span class="keyword">local</span> json_people_obj = cjson.decode(people)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> msgpack_people_str = cmsgpack.pack(people)</span><br><span class="line"><span class="keyword">local</span> msqpack_people_obj = cmsgpack.<span class="built_in">unpack</span>(people)</span><br></pre></td></tr></table></figure>
 <h2 id="Redis与Lua"><a href="#Redis与Lua" class="headerlink" title="Redis与Lua"></a>Redis与Lua</h2><h3 id="在脚本中调用Redis命令"><a href="#在脚本中调用Redis命令" class="headerlink" title="在脚本中调用Redis命令"></a>在脚本中调用Redis命令</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis.call(<span class="string">'set'</span>, <span class="string">'foo'</span>, <span class="string">'bar'</span>)</span><br><span class="line"><span class="keyword">local</span> v = redis.call(<span class="string">'get'</span>, <span class="string">'foo'</span>)</span><br></pre></td></tr></table></figure>
 <p>redis.call 函数会将 Redis 的5种返回类型转换成对应的Lua数据类型：</p>
 <p>整数回复        -》 数字类型<br>字符串回复      -》 字符串类型<br>多行字符串回复   -》 表类型（数组形式）<br>状态回复        -》 表类型（只有一个ok字段）<br>错误回复        -》 表类型（只有一个err字段）</p>
 <p>空结果比较特殊，对应Lua的false。<br>Redis 还提供了 redio.pcall 函数，功能与 redis.call 相同，唯一的区别是当命令执行出错时 redis.pcall 会记录错误并继续执行，而 redis.call 会直接返回错误，不会继续执行。</p>
-<h3 id="从脚本中返回值"><a href="#从脚本中返回值" class="headerlink" title="从脚本中返回值"></a>从脚本中返回值</h3><p>同样 Redis 会自动将脚本返回值的Lua数据类型转换成 Redis 的返回值类型。转换关系与上节的规则相反。<br>Lua的false比较特殊，会被转换成空结果。</p>
+<h3 id="从脚本中返回值"><a href="#从脚本中返回值" class="headerlink" title="从脚本中返回值"></a>从脚本中返回值</h3><p>同样 Redis 会自动将脚本返回值的 Lua 数据类型转换成 Redis 的返回值类型。转换关系与上节的规则相反。<br>Lua 的 false 比较特殊，会被转换成空结果。</p>
 <h3 id="脚本相关命令"><a href="#脚本相关命令" class="headerlink" title="脚本相关命令"></a>脚本相关命令</h3><ol>
 <li><p>EVAL命令</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> 脚本内容 key参数的数量 [key ...] [arg ...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"return redis.call('set',KEYS[1], ARGV[1])"</span> 1 foo bar</span><br><span class="line">get foo     <span class="comment"># bar</span></span><br></pre></td></tr></table></figure>
-<p> EVAL命令依据第二个参数将后面的所有参数分别存入脚本中KEYS和ARGV两个表类型的全局变量．当脚本不需要任何参数时也不能省略这个参数（设为0).</p>
+<p> EVAL 命令依据第二个参数将后面的所有参数分别存入脚本中 KEYS 和 ARGV 两个表类型的全局变量．当脚本不需要任何参数时也不能省略这个参数（设为0).</p>
 </li>
 <li><p>EVALSHA命令</p>
 <p> Redis 在执行 EVAL 命令时会计算脚本的 SHA1 摘要并记录在脚本缓存中，执行 EVALSHA 命令时 Redis 会根据提供的摘要从脚本缓存中查找对应的脚本内容，如果找到了则执行脚本，否则会返回错误，以此来节省带宽。<br> 很多编程语言的 Redis 客户端执行 EVAL 命令时，都会代替开发者执行 EVALSHA 命令，失败了才会执行 EVAL 命令。</p>
@@ -927,7 +926,7 @@
 <li>禁用脚本的全局变量保证每个脚本都是相对隔离的</li>
 </ol>
 <p>为了保证服务器的安全和不依赖外界条件，独立性。</p>
-<p>Redis还对脚本中的随机数和会产生随机结果的命令进行了特殊的处理：<br><img src="/images/DB/redis_guide/Lua随机数.png" alt="Lua随机数"></p>
+<p>Redis 还对脚本中的随机数和会产生随机结果的命令进行了特殊的处理：<br><img src="/images/DB/redis_guide/Lua随机数.png" alt="Lua随机数"></p>
 <h3 id="其他脚本相关命令"><a href="#其他脚本相关命令" class="headerlink" title="其他脚本相关命令"></a>其他脚本相关命令</h3><p>一般由客户端封装起来，开发者很少使用到。</p>
 <ol>
 <li><p>将脚本加入缓存：script load<br> 加入缓存而不执行，<code>script load &quot;return 1&quot;</code>。返回脚本的SHA1摘要。</p>
@@ -939,7 +938,7 @@
 <li><p>强制终止当前脚本的执行：script kill</p>
 </li>
 </ol>
-<h3 id="原子性和执行时间"><a href="#原子性和执行时间" class="headerlink" title="原子性和执行时间"></a>原子性和执行时间</h3><p>Redis 的脚本执行是原子的，执行期间不会执行其他命令。Redis 提供了 lua-time-limit 参数限制脚本的最长运行时间，默认为5秒钟。脚本运行时间超过这一默认为5秒钟。当脚本运行时间超过这一限制后，Redi s将开始接受其他命令但不会执行（以确保脚本的原子性），而是会返回“Busy”错误。</p>
+<h3 id="原子性和执行时间"><a href="#原子性和执行时间" class="headerlink" title="原子性和执行时间"></a>原子性和执行时间</h3><p>Redis 的脚本执行是原子的，执行期间不会执行其他命令。Redis 提供了 lua-time-limit 参数限制脚本的最长运行时间，默认为5秒钟。脚本运行时间超过这一默认为5秒钟。当脚本运行时间超过这一限制后，Redis 将开始接受其他命令但不会执行（以确保脚本的原子性），而是会返回“Busy”错误。</p>
 <p>此时，如果脚本没有修改数据的话，可以通过 script kill 终止当前脚本的运行。如果有修改数据的话，可以使用 shutdown nosave 命令强行终止 redis。<br>shutdown nosave 和 shutdown 的区别在于前者将不会进行持久化操作，发生在上一次快照后的数据库修改都将丢失。</p>
 <h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>这时我们希望 Redis 能将数据从内存中以某种形式同步到硬盘中，使得重启后可以根据硬盘中的记录恢复数据。这一过程就是持久化。Redis 支持两种方式的持久化，RDB和AOF。前者会根据指定的规则“定时”将内存中的数据存储在硬盘上，而后者在每次执行命令后将命令本身记录下来。两种持久化方式可以单独使用其中一种，但更多情况下是将二者结合使用。</p>
 <h2 id="RDB方式"><a href="#RDB方式" class="headerlink" title="RDB方式"></a>RDB方式</h2><p>当符合一定条件时 Redis 会自动将内存中的所有数据生成一份副本并存储在硬盘上，这个过程即为“快照”。<br>Redis 会在以下几种情况下对数据进行快照：</p>
@@ -955,7 +954,7 @@
 <h3 id="用户执行save或bgsave命令"><a href="#用户执行save或bgsave命令" class="headerlink" title="用户执行save或bgsave命令"></a>用户执行save或bgsave命令</h3><ol>
 <li><p>save<br> 同步阻塞其他所有请求执行快照操作，导致 redis 较长时间不响应，避免在生产环境使用。</p>
 </li>
-<li><p>bgsave<br> 在后台异步地进行快照操作，继续相应其他请求。执行后立即返回ok，然后通过 lastsave 命令获取最近一次成功执行快照的时间（unix时间戳）。</p>
+<li><p>bgsave<br> 在后台异步地进行快照操作，继续相应其他请求。执行后立即返回 ok，然后通过 lastsave 命令获取最近一次成功执行快照的时间（unix时间戳）。</p>
 </li>
 </ol>
 <h3 id="fluahsall"><a href="#fluahsall" class="headerlink" title="fluahsall"></a>fluahsall</h3><p>redis 会清除数据库中所有数据。不论是否满足自动快照条件，只有自动快照条件不为空，redis 就会执行一次快照操作。当没有定义自动快照条件时，flushall 不会进行快照。</p>
@@ -965,7 +964,7 @@
 <ol>
 <li>Redis 使用 fork 函数复制一份当前进程（父进程）的副本（子进程）。</li>
 <li>父进程继续接收并处理客户端发来的命令，而子进程开始将内存中的数据写入硬盘中的临时文件。</li>
-<li>当子进程写入完所有数据后会用该临时文件替换旧的RDB文件，至此一次快照操作完成。</li>
+<li>当子进程写入完所有数据后会用该临时文件替换旧的 RDB 文件，至此一次快照操作完成。</li>
 </ol>
 <p>写时复制（copy-on-write）：</p>
 <p><img src="/images/DB/redis_guide/copy-on-write.png" alt="copy-on-write"></p>
@@ -991,14 +990,14 @@
 <p>更自动化的方案：<strong>哨兵</strong>。</p>
 <h3 id="无硬盘复制"><a href="#无硬盘复制" class="headerlink" title="无硬盘复制"></a>无硬盘复制</h3><p>基于RDB方式的复制具有以下缺点：</p>
 <ol>
-<li><p>当主数据库禁用RDB快照时（即删除了所有的配置文件中的save语句），如果执行了复制初始化操作，Redis依然会生成RDB快照，所以下次启动后主数据库会以该快照恢复数据。因为复制发生的时间不能确定，这使得恢复的数据可能是任何时间点的。</p>
+<li><p>当主数据库禁用RDB快照时（即删除了所有的配置文件中的 save 语句），如果执行了复制初始化操作，Redis 依然会生成RDB快照，所以下次启动后主数据库会以该快照恢复数据。因为复制发生的时间不能确定，这使得恢复的数据可能是任何时间点的。</p>
 </li>
 <li><p>因为复制初始化时需要在硬盘中创建RDB快照文件，所以如果硬盘性能很慢（如网络硬盘）时这一过程会对性能产生影响。</p>
 </li>
 </ol>
 <p>开启无硬盘复制选项：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repl-disless-sync yes</span><br></pre></td></tr></table></figure></p>
 <p>在与从数据库进行复制初始化时将不会将快照内容存储到硬盘上，而是直接通过网络发送给从数据库，避免了硬盘的性能瓶颈。</p>
-<h3 id="增量复制"><a href="#增量复制" class="headerlink" title="增量复制"></a>增量复制</h3><p>当主从数据库链接断开后，从数据库会发送SYNC命令来重新进行一次完成复制操作，即使断开期间数据库的变化很小（甚至没有）。<br>Redis 2.8版之后实现了主从断线重连的情况下的增量复制。</p>
+<h3 id="增量复制"><a href="#增量复制" class="headerlink" title="增量复制"></a>增量复制</h3><p>当主从数据库链接断开后，从数据库会发送 SYNC 命令来重新进行一次完成复制操作，即使断开期间数据库的变化很小（甚至没有）。<br>Redis 2.8版之后实现了主从断线重连的情况下的增量复制。</p>
 <p>增量复制基于以下3点实现：</p>
 <ol>
 <li>从数据库会存储主数据库的运行ID(run id）。每个 Redis 运行实例均会拥有一个唯一的运行ID，每当实例重启后，就会自动生成一个新的运行ID。</li>
